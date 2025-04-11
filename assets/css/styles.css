@@ -1,0 +1,28 @@
+p{ 
+    
+    color: black;   
+     /*color de la fuente*/
+      font-size:24 px;
+     /*tamaño de la fuente*/ 
+     /*estilo */ 
+     font-weight: bold; 
+     /* negrito o fuerte*/ 
+    }  
+    
+body {  
+      text-align: center;/*alineación del texto*/
+      background-color: lightblue; /*color de fondo del body*/ 
+      font-style: italic;
+    color : black;
+} 
+     /* color y alineación de la etiqueta h1*/ 
+h1 {  
+        font-weight: bold;
+        /* negrito o fuerte*/ 
+        text-align: center;/*alineación*/ 
+ }
+
+.contenedor{
+        background-color: yellow;
+      }
+         

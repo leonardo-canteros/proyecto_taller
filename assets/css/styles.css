@@ -1,28 +1,81 @@
-p{ 
-    
-    color: black;   
-     /*color de la fuente*/
-      font-size:24 px;
-     /*tamaño de la fuente*/ 
-     /*estilo */ 
-     font-weight: bold; 
-     /* negrito o fuerte*/ 
-    }  
-    
-body {  
-      text-align: center;/*alineación del texto*/
-      background-color: lightblue; /*color de fondo del body*/ 
-      font-style: italic;
-    color : black;
-} 
-     /* color y alineación de la etiqueta h1*/ 
-h1 {  
-        font-weight: bold;
-        /* negrito o fuerte*/ 
-        text-align: center;/*alineación*/ 
- }
+.quienes-somos {
+  padding: 2rem 0;
+}
 
-.contenedor{
-        background-color: yellow;
-      }
-         
+.vision-empresa {
+  margin-bottom: 3rem;
+}
+
+.vision-texto {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  text-align: justify;
+  color: #333;
+}
+
+.titulo-seccion {
+  text-align: center;
+  margin: 3rem 0 2rem;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #007b5e;
+}
+
+/* CARD GROUPS */
+.card-group-dueño,
+.card-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.card {
+  flex: 1 1 250px;
+  max-width: 300px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card-img-top {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-bottom: 1px solid #eee;
+}
+
+.card-body {
+  padding: 1rem;
+  background-color: #f9f9f9;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.card-text {
+  font-size: 0.95rem;
+  color: #555;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .card {
+      flex: 1 1 100%;
+      max-width: 100%;
+  }
+
+  .card-img-top {
+      height: 200px;
+  }
+}

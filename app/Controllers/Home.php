@@ -1,4 +1,4 @@
-<?php
+<?php namespace App\Controllers;
 
 namespace App\Controllers;
 
@@ -7,7 +7,7 @@ class Home extends BaseController
     /*public function index(): string
     {
         return view('principal.html');
-    }*/
+    
 
     public function index()
 	{
@@ -16,12 +16,12 @@ class Home extends BaseController
 		echo view('Views/principal_view');
 		echo view('Views/footer_view');
 	}
-
-    public function quienes_somos()
+	*/
+    public function index()
 	{
 		echo View('Views/head_view');
 		echo view('Views/navbar_view');
-		echo view('Views/quienesSomos');
+		echo view('Views/quienes_somos');
 		echo view('Views/footer_view');
 	}
 /*

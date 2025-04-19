@@ -7,7 +7,7 @@ class Home extends BaseController
     /*public function index(): string
     {
         return view('principal.html');
-    
+    }
 
     public function index()
 	{
@@ -50,5 +50,6 @@ class Home extends BaseController
 	}
 
 */
+
 
 }

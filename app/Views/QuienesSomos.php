@@ -7,8 +7,8 @@
     <title>QUIENES SOMOS</title>
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
+ <!--   <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <a class="navbar-brand" href="#">Navbar</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -43,7 +43,8 @@
     </div>
   </div>
 </nav>
-    <div class="container quienes-somos">
+-->
+<div class="container quienes-somos">
         <section class="vision-empresa">
             <p class="vision-texto">Soñamos con un mundo donde cada mascota reciba el amor, el respeto y el cuidado que merece. 
                 Nuestra visión es ser un lugar de confianza y calidez, donde el vínculo entre humanos y animales se fortalezca cada día a través 

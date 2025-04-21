@@ -1,4 +1,5 @@
-<?php namespace App\Controllers;
+<?php 
+namespace App\Controllers;
 
 class Home extends BaseController
 {
@@ -17,7 +18,7 @@ class Home extends BaseController
 	
     public function quienes_somos()
 	{
-		echo View('head_view');
+		echo view('head_view');
 		echo view('navbar_view');
 		echo view('quienes_somos');
 		echo view('footer_view');

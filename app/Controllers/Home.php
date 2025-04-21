@@ -1,30 +1,31 @@
 <?php namespace App\Controllers;
 
-namespace App\Controllers;
-
 class Home extends BaseController
 {
     /*public function index(): string
     {
         return view('principal.html');
     }
+ */
+    public function index()
+	{
+		echo view('head_view');
+		echo view('navbar_view');
+		echo view('principal_view');
+		echo view('footer_view');
+	}
+	
+    public function quienes_somos()
+	{
+		echo View('head_view');
+		echo view('navbar_view');
+		echo view('quienes_somos');
+		echo view('footer_view');
+	}
 
-    public function index()
-	{
-		echo view('Views/head_view');
-		echo view('Views/navbar_view');
-		echo view('Views/principal_view');
-		echo view('Views/footer_view');
-	}
-	*/
-    public function index()
-	{
-		echo View('Views/head_view');
-		echo view('Views/navbar_view');
-		echo view('Views/quienes_somos');
-		echo view('Views/footer_view');
-	}
-/*
+
+
+	/*
     public function acerca_de()
 	{
 		echo view('front/head_view');

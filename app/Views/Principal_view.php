@@ -1,13 +1,4 @@
-<!DOCTYPE html> 
- <html> 
-  <head>
-    <link href="../assets/css/styles.css" rel="stylesheet" >
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <title>Ejemplo 1</title> 
-     </head> 
-      <body> 
-      <div class="contentPRINC">
-    <section>
+ <section>
         <div class="contenedor">
             <h2>Prepárate para la batalla definitiva en WARFARE: La Última Resistencia</h2>
                 <div class="descripcion" >
@@ -43,7 +34,3 @@
           </div>
       
       <!-- fin carrusel-->
-</div>  
-
-      </body>  
-      </html>  

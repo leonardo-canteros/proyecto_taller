@@ -20,7 +20,7 @@ $routes->setDefaultController('Home');
 $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
-//$routes->setAutoRoute(true);
+//$routes->setAutoRoute(false);
 
 /**
  * --------------------------------------------------------------------
@@ -31,9 +31,9 @@ $routes->set404Override();
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
-$routes->get('principal', 'home::index' );
-$routes->get('quienes_somos', 'home::quienes_somos'); // Error de escritura "quienene"
-$routes->get('acerca_de', 'home::acerca_de'); // "home" en minúsculas
+$routes->get('principal', 'Home::index' );
+$routes->get('quienes_somos', 'Home::quienes_somos');
+$routes->get('acerca_de', 'Home::acerca_de'); // "home" en minúsculas
 $routes->get('registro', 'home::registro'); // "home" en minúsculas
 $routes->get('login', 'home::login' );
 $routes->get('footer', 'home::footer' );

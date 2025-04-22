@@ -13,23 +13,23 @@
                   <div class="card-body">
                     <h5 class="card-title">Jack Reacher</h5>
                     <p class="card-text">Jack siempre fue un amante del diseño y la moda desde joven, pero lo que más le fascinaba era la ropa que nunca pasa de moda. Después de años de trabajar con diseñadores de alta costura y de viajar por el mundo para conocer las mejores tendencias internacionales, Jack decidió fundar su propia tienda de ropa elegante. Su pasión por lo atemporal y lo sofisticado lo llevó a crear un lugar donde los clientes pudieran encontrar prendas que los hicieran sentir especiales en cualquier ocasión.</p>
-                    <p class="card-text"><small class="text-body-secondary">Last updated 5 mins ago</small></p>
+                    <p class="card-text"><small class="text-body-secondary"></small></p>
                   </div>
                 </div>
                 <div class="card">
                   <img src="/proyecto_taller/assets/img/riquelme.jpg" class="card-img-top" alt="Victor Romanov">
                   <div class="card-body">
                     <h5 class="card-title">Victor Romanov</h5>
-                    <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                    <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+                    <p class="card-text">Víctor Romanov es un diseñador de moda especializado en ropa elegante, reconocido por su estilo refinado, líneas limpias y una estética que equilibra lo clásico con lo contemporáneo. Su enfoque está marcado por una búsqueda constante de la perfección en los detalles, desde la caída precisa de una tela hasta la armonía cromática de cada colección.</p>
+                    <p class="card-text"><small class="text-body-secondary"></small></p>
                   </div>
                 </div>
                 <div class="card">
                   <img src="/proyecto_taller/assets/img/idolo.jpg" class="card-img-top" alt="Victor Quincose">
                   <div class="card-body">
-                    <h5 class="card-title">Victor</h5>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                    <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+                    <h5 class="card-title">Carlos Manuel Gutierrez</h5>
+                    <p class="card-text">Carlos Manuel Gutiérrez pasó de las pistas de Fórmula 1 a convertirse en un símbolo de elegancia contemporánea. Conocido por su precisión al volante y su instinto competitivo, ahora canaliza esa misma atención al detalle en el mundo de la moda, donde ha logrado posicionarse como un referente del estilo masculino refinado.</p>
+                    <p class="card-text"><small class="text-body-secondary"></small></p>
                   </div>
                 </div>
               </div>

@@ -1,0 +1,239 @@
+body {
+  background-color:rgb(75, 71, 71) ;
+  color: #333;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/*.c1{
+  text-align: center;
+  font-weight: bold;
+  font-style: italic;
+}*/
+
+header {
+  background-color:rgb(75, 71, 71);
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+}
+    
+section {
+  padding: 20px; /* espaciado para la sección de 20 pixeles */
+  flex: 1; /* Hace que esta sección ocupe el espacio disponible */
+}
+
+.logo {
+  display: block; /* Para eliminar el espacio adicional que algunos navegadores agregan a las img. */ 
+  margin: 0 auto; /* Centrar las imágenes horizontalmente */
+  max-width: 100%; /* Asegurar que las imágenes no excedan el ancho del contenedor */
+  border: 3px solid rgb(238, 229, 229); /* Contorno de 3px con un color  alrededor de la img.*/
+  border-radius: 10px; /* Borde redondeado de 10px para suavizar el contorno */
+  box-shadow: inset 0 0 15px rgb(179, 172, 172), 0 0 30px rgb(179, 172, 172) ;
+  width: 25vw;  /* 50% del ancho */
+  height: 25vh; /* 50% del alto */
+  object-fit: cover; /* Mantiene la proporción de la imagen y la recorta si es necesario */
+}
+
+.titulo{
+  font-family: 'Handjet', cursive;
+  text-align: center;
+  font-weight: bold;
+  font-style: italic;  
+  color: rgb(238, 229, 229);
+}
+
+.menu{
+  border: 2px solid rgb(238, 229, 229);
+  padding: 20px;
+  border-radius : 15px ;
+  max-width: 2500px;
+  box-shadow: inset 0 0 15px rgb(179, 172, 172), 0 0 30px rgb(179, 172, 172) ;
+  width: 60vw; /* Ancho del menú: 50% del ancho del viewport */
+  margin: auto;
+}
+
+/* Estilos para el nav y enlaces de ul y li */
+nav {
+  background-color: rgb(75, 71, 71);
+  padding: 10px;
+  }
+  
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+nav ul li {
+  display: inline-block;
+  margin-right: 20px;
+}  
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+}
+
+nav ul li a:hover {
+  background-color:#2d2a2e ;
+}
+
+.contenedor{
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.contenedor h2{
+  text-align: left;
+  font-size: 20px;
+ font-family: 'Handjet', cursive;
+  font-weight: bold;
+  font-style: italic; 
+  color: antiquewhite; 
+}
+
+.descripcion{
+  margin-right: 35px ;
+  margin-left: 35px;
+  display: flex;
+  align-items: center;
+}
+
+.Dparrafo{
+  padding-top: auto;
+  padding-right: 150px;
+  flex: 1;
+  color: rgb(193, 139, 243);
+  font-weight: bold;
+  font-style: italic; 
+}
+
+.imagen{
+  margin-right: auto;
+  margin-top: 35px;
+  margin-bottom: 35px;
+  border: 3px solid black; /* Contorno de 3px con un color  alrededor de la img.*/
+  border-radius: 10px; /* Borde redondeado de 10px para suavizar el contorno */
+  box-shadow: inset 0 0 15px rgb(111, 3, 184), 0 0 30px rgb(111, 3, 184)  ;
+  width: 30vw;  
+  height: 35vh; 
+  object-fit: cover; /* Mantiene la proporción de la imagen y la recorta si es necesario */
+}
+
+/*----------------------------------------------------------------------------------------*/
+.quienes-somos {
+  padding: 2rem 0;
+}
+
+.vision-empresa {
+  margin-bottom: 3rem;
+}
+
+.vision-texto {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  text-align: justify;
+  color: #333;
+}
+
+.titulo-seccion {
+  text-align: center;
+  margin: 3rem 0 2rem;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #007b5e;
+}
+
+/* CARD GROUPS */
+.card-group-dueño,
+.card-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.card {
+  flex: 1 1 250px;
+  max-width: 300px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card-img-top {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-bottom: 1px solid #eee;
+}
+
+.card-body {
+  padding: 1rem;
+  background-color: #f9f9f9;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.card-text {
+  font-size: 0.95rem;
+  color: #555;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .card {
+      flex: 1 1 100%;
+      max-width: 100%;
+  }
+
+  .card-img-top {
+      height: 200px;
+  }
+}
+
+
+/*------------------------------------------------------------------------------------------*/
+.footer {
+  background-color: #2d2a2e; /* Color de fondo del footer */
+  padding: 10px ; 
+  margin-top: auto;
+  justify-content: space-between ;
+  display: flex;
+}
+
+.footer-content {
+  max-width: 800px; /* Ancho máximo del contenido del footer */
+  margin: 0 auto; /* Centrar el contenido del footer horizontalmente */
+  text-align: center;
+}
+
+.links img{
+  width: 35px;
+  margin-inline: 10px;
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+.footer p{
+  color: antiquewhite;
+  text-align: right;
+  margin-top: 2vw;
+}

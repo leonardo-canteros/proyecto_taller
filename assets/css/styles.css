@@ -136,10 +136,21 @@ nav ul li a:hover {
   height: 35vh; 
   object-fit: cover; /* Mantiene la proporción de la imagen y la recorta si es necesario */
 }
+/*--------------------------------------principal--------------------------------------------------*/
+.carousel-item img {
+  width: 100%;          /* Ocupa el 100% del contenedor */
+  height: auto;         /* Mantiene la proporción */
+  max-height: 400px;    /* Limita la altura máxima */
+}
+
 
 /*----------------------------------------------------------------------------------------*/
 .quienes-somos {
   padding: 2rem 0;
+}
+
+body.pagina-quienes {
+background-color: beige;
 }
 
 .vision-empresa {
@@ -147,17 +158,22 @@ nav ul li a:hover {
 }
 
 .vision-texto {
-  font-size: 1.2rem;
-  line-height: 1.8;
-  text-align: justify;
+  text-align: center;
+  font-family: 'Playfair Display', serif; /* fuente elegante */
+  font-size: 1.5rem;
+  line-height: 1.6;
   color: #333;
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
 }
+
 
 .titulo-seccion {
   text-align: center;
   margin: 3rem 0 2rem;
   font-size: 2rem;
-  font-weight: bold;
+  font-family: 'Playfair Display', serif; /* fuente elegante */
   color: #007b5e;
 }
 
@@ -267,6 +283,118 @@ nav ul li a:hover {
   font-size: 0.95rem;
   color: #555;
 }
+/*--------------------------------------Comercializacion----------------------------------------------------*/
+body.pagina-contacto {
+  background-color: #454C59;
+}
+
+/* CONTENEDOR PRINCIPAL */
+.comercializacion {
+  max-width: 1200px;
+  margin: auto;
+  padding: 40px 20px;
+}
+
+/* ========== ENTREGAS ========== */
+
+.entregas {
+  margin-bottom: 60px;
+}
+
+.entregas h1 {
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 40px;
+  color: white;
+}
+
+/* Cada entrega */
+.entrega1, .entrega2, .entrega3 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+/* Intercalado */
+.entrega1 img, .entrega3 img {
+  order: 2;
+}
+.entrega2 img {
+  order: 1;
+}
+
+/* Imagenes */
+.entregas img {
+  width: 160px;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Textos */
+.entregas p {
+  flex: 1;
+  font-size: 1.1rem;
+  color: #444;
+  margin: 0 20px;
+}
+
+/* ========== PAGOS ========== */
+
+.pago {
+  text-align: center;
+}
+
+.pago h1 {
+  color: white;
+  font-size: 2rem;
+  margin-bottom: 40px;
+}
+
+.pagos {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+/* Imágenes de métodos de pago */
+.pagos img {
+  width: 90px;
+  height: 90px;
+  object-fit: contain; /* o 'cover', según prefieras */
+}
+
+
+.pagos a img:hover {
+  transform: scale(1.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .entrega1, .entrega2, .entrega3 {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .entrega1 img, .entrega2 img, .entrega3 img {
+    order: 0;
+    margin-top: 20px;
+  }
+
+  .pagos {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+
+}
+
+
 
 
 /*--------------------------------------footer----------------------------------------------------*/

@@ -2,13 +2,13 @@
 <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img src="/proyecto_taller/assets/img/definitiva.jpg" class="d-block w-100" alt="Imagen 1">
+        <img src="/proyecto_taller/assets/img/canTfor.jpg" class="d-block w-100" alt="Imagen 1">
       </div>
       <div class="carousel-item">
-        <img src="/proyecto_taller/assets/img/ginola3.png" class="d-block w-100" alt="Imagen 2">
+        <img src="/proyecto_taller/assets/img/canTfor.jpg" class="d-block w-100" alt="Imagen 2">
       </div>
       <div class="carousel-item">
-        <img src="/proyecto_taller/assets/img/ginola2.png" class="d-block w-100" alt="Imagen 3">
+        <img src="/proyecto_taller/assets/img/canTfor.jpg" class="d-block w-100" alt="Imagen 3">
       </div>
     </div>
     <!-- Controles de navegación -->

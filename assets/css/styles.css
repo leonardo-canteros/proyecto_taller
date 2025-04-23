@@ -137,10 +137,46 @@ nav ul li a:hover {
   object-fit: cover; /* Mantiene la proporción de la imagen y la recorta si es necesario */
 }
 /*--------------------------------------principal--------------------------------------------------*/
+/* Estilos para el carrusel */
+.carousel {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.carousel-inner {
+  width: 100%;
+  height: 70vh; /* Altura fija para el carrusel (ajusta según necesidad) */
+  overflow: hidden;
+}
+
+.carousel-item {
+  height: 100%; /* Asegura que el item ocupe toda la altura del carrusel */
+}
+
 .carousel-item img {
-  width: 100%;          /* Ocupa el 100% del contenedor */
-  height: auto;         /* Mantiene la proporción */
-  max-height: 400px;    /* Limita la altura máxima */
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Muestra la imagen completa sin recortar */
+  background-color: #f8f9fa; /* Fondo por si la imagen no llena todo el espacio */
+}
+
+/* Opcional: Estilos para los controles */
+.carousel-control-prev, 
+.carousel-control-next {
+  background-color: rgba(0, 0, 0, 0.3); /* Fondo semitransparente */
+  width: 5%; /* Ancho de los botones de control */
+}
+
+/* Opcional: Ajustar para pantallas pequeñas */
+@media (max-width: 768px) {
+  .carousel-item img {
+    max-height: 60vh; /* Altura menor en dispositivos móviles */
+  }
+  
+  .carousel-control-prev, 
+  .carousel-control-next {
+    width: 10%; /* Botones más grandes en móviles */
+  }
 }
 
 

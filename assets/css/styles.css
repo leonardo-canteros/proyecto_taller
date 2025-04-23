@@ -13,14 +13,17 @@ body {
 }*/
 
 header {
-  background-color:rgb(75, 71, 71);
-  color: #fff;
-  text-align: center;
-  padding: 20px;
+  background-color: #252A37;
+  padding: 20px 40px; /* Añade espacio interno */
+  min-height: 80px;   /* Establece una altura mínima */
+  color: white;       /* Asegúrate de que el texto sea visible */
+  display: flex;      /* Centra el contenido vertical y horizontalmente */
+  align-items: center;
 }
+
     
 section {
-  padding: 20px; /* espaciado para la sección de 20 pixeles */
+  padding: px; /* espaciado para la sección de 20 pixeles */
   flex: 1; /* Hace que esta sección ocupe el espacio disponible */
 }
 
@@ -32,10 +35,14 @@ section {
   border-radius: 10px; /* Borde redondeado de 10px para suavizar el contorno */
   box-shadow: inset 0 0 15px rgb(179, 172, 172), 0 0 30px rgb(179, 172, 172) ;
   width: 25vw;  /* 50% del ancho */
-  height: 25vh; /* 50% del alto */
+  height: 35vh; /* 50% del alto */
   object-fit: cover; /* Mantiene la proporción de la imagen y la recorta si es necesario */
 }
 
+.logonav{
+  border-radius: 5px; /* Borde redondeado de 10px para suavizar el contorno */
+  border: 3px solid rgb(238, 229, 229);
+}
 .titulo{
   font-family: 'Handjet', cursive;
   text-align: center;
@@ -43,6 +50,8 @@ section {
   font-style: italic;  
   color: rgb(238, 229, 229);
 }
+
+
 
 .menu{
   border: 2px solid rgb(238, 229, 229);
@@ -56,7 +65,7 @@ section {
 
 /* Estilos para el nav y enlaces de ul y li */
 nav {
-  background-color: rgb(75, 71, 71);
+  background-color:#7B9EA6;
   padding: 10px;
   }
   
@@ -73,15 +82,17 @@ nav ul li {
 }  
 
 nav ul li a {
-  color: #fff;
+  color: #ffffff;
   text-decoration: none;
   padding: 8px 16px;
   border-radius: 5px;
 }
 
 nav ul li a:hover {
-  background-color:#2d2a2e ;
+  background-color:#394F64 ;
 }
+
+
 
 .contenedor{
   width: 100%;
@@ -125,10 +136,57 @@ nav ul li a:hover {
   height: 35vh; 
   object-fit: cover; /* Mantiene la proporción de la imagen y la recorta si es necesario */
 }
+/*--------------------------------------principal--------------------------------------------------*/
+/* Estilos para el carrusel */
+.carousel {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.carousel-inner {
+  width: 100%;
+  height: 70vh; /* Altura fija para el carrusel (ajusta según necesidad) */
+  overflow: hidden;
+}
+
+.carousel-item {
+  height: 100%; /* Asegura que el item ocupe toda la altura del carrusel */
+}
+
+.carousel-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Muestra la imagen completa sin recortar */
+  background-color: #f8f9fa; /* Fondo por si la imagen no llena todo el espacio */
+}
+
+/* Opcional: Estilos para los controles */
+.carousel-control-prev, 
+.carousel-control-next {
+  background-color: rgba(0, 0, 0, 0.3); /* Fondo semitransparente */
+  width: 5%; /* Ancho de los botones de control */
+}
+
+/* Opcional: Ajustar para pantallas pequeñas */
+@media (max-width: 768px) {
+  .carousel-item img {
+    max-height: 60vh; /* Altura menor en dispositivos móviles */
+  }
+  
+  .carousel-control-prev, 
+  .carousel-control-next {
+    width: 10%; /* Botones más grandes en móviles */
+  }
+}
+
 
 /*----------------------------------------------------------------------------------------*/
 .quienes-somos {
   padding: 2rem 0;
+}
+
+body.pagina-quienes {
+background-color: beige;
 }
 
 .vision-empresa {
@@ -136,17 +194,22 @@ nav ul li a:hover {
 }
 
 .vision-texto {
-  font-size: 1.2rem;
-  line-height: 1.8;
-  text-align: justify;
+  text-align: center;
+  font-family: 'Playfair Display', serif; /* fuente elegante */
+  font-size: 1.5rem;
+  line-height: 1.6;
   color: #333;
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
 }
+
 
 .titulo-seccion {
   text-align: center;
   margin: 3rem 0 2rem;
   font-size: 2rem;
-  font-weight: bold;
+  font-family: 'Playfair Display', serif; /* fuente elegante */
   color: #007b5e;
 }
 
@@ -208,9 +271,169 @@ nav ul li a:hover {
       height: 200px;
   }
 }
+/*----------------------------------------contacto--------------------------------------------------*/
+
+/* Estilo general del formulario */
+#contactForm {
+  max-width: 500px;
+  margin: 50px auto; /* Centrado vertical y horizontal */
+  padding: 30px;
+  background-color: #D9D9D9;
+  border: 1px solid #ced4da;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo de los labels */
+#contactForm label {
+  font-weight: 500;
+  color: #333;
+}
+
+/* Estilo de los inputs */
+#contactForm .form-control {
+  border-radius: 10px;
+  border: 1px solid #ced4da;
+}
+
+/* Estilo del botón */
+#contactForm button {
+  width: 100%;
+  background-color: #7B9EA6;
+  border: none;
+  font-weight: bold;
+  border-radius: 10px;
+  transition: background-color 0.3s ease;
+}
+
+#contactForm button:hover {
+  background-color: #5f7f86;
+}
+
+/* Checkbox alineado y espaciado */
+#contactForm .form-check {
+  margin-top: 20px;
+}
+
+#contactForm .form-check-label {
+  font-size: 0.95rem;
+  color: #555;
+}
+/*--------------------------------------Comercializacion----------------------------------------------------*/
+body.pagina-contacto {
+  background-color: #454C59;
+}
+
+/* CONTENEDOR PRINCIPAL */
+.comercializacion {
+  max-width: 1200px;
+  margin: auto;
+  padding: 40px 20px;
+}
+
+/* ========== ENTREGAS ========== */
+
+.entregas {
+  margin-bottom: 60px;
+}
+
+.entregas h1 {
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 40px;
+  color: white;
+}
+
+/* Cada entrega */
+.entrega1, .entrega2, .entrega3 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+/* Intercalado */
+.entrega1 img, .entrega3 img {
+  order: 2;
+}
+.entrega2 img {
+  order: 1;
+}
+
+/* Imagenes */
+.entregas img {
+  width: 160px;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Textos */
+.entregas p {
+  flex: 1;
+  font-size: 1.1rem;
+  color: #444;
+  margin: 0 20px;
+}
+
+/* ========== PAGOS ========== */
+
+.pago {
+  text-align: center;
+}
+
+.pago h1 {
+  color: white;
+  font-size: 2rem;
+  margin-bottom: 40px;
+}
+
+.pagos {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+/* Imágenes de métodos de pago */
+.pagos img {
+  width: 90px;
+  height: 90px;
+  object-fit: contain; /* o 'cover', según prefieras */
+}
 
 
-/*------------------------------------------------------------------------------------------*/
+.pagos a img:hover {
+  transform: scale(1.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .entrega1, .entrega2, .entrega3 {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .entrega1 img, .entrega2 img, .entrega3 img {
+    order: 0;
+    margin-top: 20px;
+  }
+
+  .pagos {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+
+}
+
+
+
+
+/*--------------------------------------footer----------------------------------------------------*/
 .footer {
   background-color: #2d2a2e; /* Color de fondo del footer */
   padding: 10px ; 

@@ -33,8 +33,8 @@ $routes->set404Override();
 $routes->get('/', 'Home::index');
 $routes->get('principal', 'Home::index' );
 $routes->get('quienes_somos', 'Home::quienes_somos');
-$routes->get('acerca_de', 'Home::acerca_de'); // "home" en minúsculas
-$routes->get('registro', 'home::registro'); // "home" en minúsculas
+$routes->get('Contacto', 'Home::Contacto'); // "home" en minúsculas
+$routes->get('Comercializacion', 'home::Comercializacion'); // "home" en minúsculas
 $routes->get('login', 'home::login' );
 $routes->get('footer', 'home::footer' );
 /**

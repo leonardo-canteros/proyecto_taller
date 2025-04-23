@@ -11,7 +11,7 @@
   <body>
 
     <header>
-        <img class="logo" src="https://i.pinimg.com/736x/93/25/f5/9325f50338930889503996ac26af56c6.jpg" alt="img">
-        <p class="titulo" >WELCOM TO DE HOUSE</p>
+        <img class="logo" src="/proyecto_taller/assets/img/canTfor.jpg" alt="img">
+        
     </header>
 

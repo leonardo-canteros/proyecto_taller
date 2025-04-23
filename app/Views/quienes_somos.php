@@ -1,3 +1,6 @@
+
+<body class="pagina-quienes">
+
 <div class="container quienes-somos">
         <section class="vision-empresa">
             <p class="vision-texto">La verdadera elegancia no se trata solo de lo que vistes, sino de cómo te haces sentir cuando te lo pones. En nuestra colección
@@ -6,7 +9,7 @@
         </section>
 
         <section class="equipo">
-            <h2 class="titulo-seccion">Nuestro Equipo</h2>
+            <h2 class="titulo-seccion">NUESTRO EQUIPO</h2>
             <div class="card-group-dueño">
                 <div class="card">
                   <img src="/proyecto_taller/assets/img/messiteamo.jpg" class="card-img-top" alt="Jack Reacher">

@@ -18,7 +18,7 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="comercializacion">Comercialización</a>
+          <a class="nav-link" href="Comercializacion">Comercialización</a>
         </li>
 
         <li class="nav-item">

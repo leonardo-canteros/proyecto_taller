@@ -13,7 +13,6 @@
         }
     </script>
 
-    
 <form id="contactForm" onsubmit="handleSubmit(event)">
   <div class="mb-3">
     <label for="exampleInputNombre" class="form-label">Nombre</label>

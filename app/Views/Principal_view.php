@@ -2,7 +2,7 @@
 <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img src="/proyecto_taller/assets/img/canTfor.jpg" class="d-block w-100" alt="Imagen 1">
+        <img src="/proyecto_taller/assets/img/lawachadeleo2.jpeg" class="d-block w-100" alt="Imagen 1">
       </div>
       <div class="carousel-item">
         <img src="/proyecto_taller/assets/img/canTfor.jpg" class="d-block w-100" alt="Imagen 2">

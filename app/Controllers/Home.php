@@ -41,24 +41,13 @@ class Home extends BaseController
 		echo view('Comercializacion');
 		echo view('footer_view');
 	}
-/*
-	public function registro()
+
+	public function termino_usos()
 	{
-		echo view('front/head_view');
-		echo view('front/navbar_view');
-		echo view('front/registro');
-		echo view('front/footer_view');
+		echo view('head_view');
+		echo view('navbar_view');
+		echo view('termino_usos');
+		echo view('footer_view');
 	}
-
-	public function login()
-	{
-		echo view('front/head_view');
-		echo view('front/navbar_view');
-		echo view('front/login');
-		echo view('front/footer_view');
-	}
-
-*/
-
 
 }

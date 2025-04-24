@@ -1,4 +1,3 @@
-
 <body class="pagina-quienes">
 
 <div class="container quienes-somos">

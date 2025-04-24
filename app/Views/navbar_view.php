@@ -26,7 +26,7 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="terminos_de_uso">Términos de Uso</a>
+          <a class="nav-link" href="termino_usos">Términos Y Usos</a>
         </li>
 
       </ul>

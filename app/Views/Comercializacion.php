@@ -7,7 +7,9 @@
                 <div class = "marketing">
                     <img src="/proyecto_taller/assets/img/marketing.webp" alt="marketing"> 
                     </div>
-                <h1> INFORMACION DE ENVIOS </h1>
+                    <div class= "entregas">
+                    <h1> INFORMACION DE ENVIOS </h1>
+                </div>
                 <div class = "marketing">
                     <img src="/proyecto_taller/assets/img/envio.webp" alt="envio"> 
                     </div>
@@ -31,36 +33,11 @@
                 <p>Local 4 : Provincia:  Cordoba | distrito: capital | direccion : Caseros 730   </p>
                 <img src="/proyecto_taller/assets/img/leoantigays4.webp"  alt="Kordova">
                 </div>
-            
-
-
-
-            </div>
-            <h1> ENVIOS LOCALES</h1>
-        <div class="entrega3">
-            <p>ANDREANI: Envios a todo el pais. 10% costo de envio </p>
-            <img src="/proyecto_taller/assets/img/andreani.jpeg"  alt="Andreani">
-            
-             </div>
-        <div class="entrega3">
-        <img src="/proyecto_taller/assets/img/correoargentino.jpg"  alt="CorreoArg">
-        <p>CORREO ARGENTINO: Envios a todo el pais. 5% de envio</p>
-        
-             </div>
-        <div class="entrega3"> 
-        <p>OCA : Corrientes , Buenos Aires, Cordoba. 10% costo de envio</p>
-        <img src="/proyecto_taller/assets/img/oca.png"  alt="OCA">
         </div>
-
-            <h1>ENVIOS AL EXTRANJERO</h1>
-            <br>
-       <div class="entrega3"> 
-            <p>FedEx: Envios al Extranjero. Costo dependiendo la region </p>
-            <img src="/proyecto_taller/assets/img/fedex.jpeg" alt="FedEx">
-        </div>
-
     </div>
-    
+
+
+
     <div  class = "pago">
         <h1>FORMAS DE PAGOS </h1>
         <div class = "pagos">

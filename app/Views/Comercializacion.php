@@ -43,7 +43,6 @@
         <div class = "pagos">
             <br>
             <a href = "https://www.mercadopago.com.ar/">
-            
             <img src="/proyecto_taller/assets/img/mercadoPago.png" alt="mercadoPago">
             </a>
             <a href = "https://www.bna.com.ar/Personas">

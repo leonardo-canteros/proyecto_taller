@@ -14,7 +14,7 @@
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="/proyecto_taller/assets/img/messiteamo.jpg" class="d-block w-100" alt="Elegancia Redefinida">
+                <img src="/proyecto_taller/assets/img/goat.webp" class="d-block w-100" alt="Elegancia Redefinida">
                 <div class="carousel-caption d-none d-md-block">
                     <h5>Elegancia Redefinida</h5>
                     <p>Diseños exclusivos para ocasiones especiales</p>
@@ -41,13 +41,13 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-6 intro-text">
-                    <h2 class="section-title">Moda Elegante</h2>
-                    <p>En Moda Elegante, creemos que la verdadera elegancia trasciende las tendencias pasajeras. Desde 2010, hemos estado diseñando prendas que combinan artesanía excepcional con materiales de la más alta calidad.</p>
+                    <h2 class="section-title">Costura Fina</h2>
+                    <p>En Costura Fina, creemos que la verdadera elegancia trasciende las tendencias pasajeras. Desde 2010, hemos estado diseñando prendas que combinan artesanía excepcional con materiales de la más alta calidad.</p>
                     <p>Nuestra filosofía se centra en crear piezas atemporales que no solo visten tu cuerpo, sino que también expresan tu personalidad y sofisticación. Cada prenda en nuestra colección ha sido cuidadosamente seleccionada para ofrecerte lo mejor en moda premium.</p>
                     
                 </div>
                 <div class="col-md-6">
-                    <img src="/proyecto_taller/assets/img/messiteamo.jpg" alt="Nuestra filosofía" class="intro-image img-fluid">
+                    <img src="/proyecto_taller/assets/img/fotoportada.webp" alt="Nuestra filosofía" class="intro-image img-fluid">
                 </div>
             </div>
         </div>
@@ -90,7 +90,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="card product-card">
-                        <img src="/proyecto_taller/assets/img/messiteamo.jpg" class="card-img-top product-img" alt="Traje Elegante">
+                        <img src="/proyecto_taller/assets/img/marino.webp" class="card-img-top product-img" alt="Traje Elegante">
                         <div class="card-body">
                             <h5 class="card-title">Traje Elegante Marino</h5>
                             <p class="card-text">Traje de dos piezas en lana merino, perfecto para ocasiones formales y eventos de negocios.</p>
@@ -101,7 +101,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="card product-card">
-                        <img src="/proyecto_taller/assets/img/messiteamo.jpg" class="card-img-top product-img" alt="Vestido de Noche">
+                        <img src="/proyecto_taller/assets/img/vestido.webp" class="card-img-top product-img" alt="Vestido de Noche">
                         <div class="card-body">
                             <h5 class="card-title">Vestido de Noche Negro</h5>
                             <p class="card-text">Vestido largo en seda natural con detalles de encaje, ideal para galas y eventos especiales.</p>
@@ -112,7 +112,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="card product-card">
-                        <img src="/proyecto_taller/assets/img/messiteamo.jpg" class="card-img-top product-img" alt="Camisa Clásica">
+                        <img src="/proyecto_taller/assets/img/camisa.webp" class="card-img-top product-img" alt="Camisa Clásica">
                         <div class="card-body">
                             <h5 class="card-title">Camisa Clásica Blanca</h5>
                             <p class="card-text">Camisa de algodón egipcio con cuello francés y dobles puños, esencial para cualquier guardarropa.</p>

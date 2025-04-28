@@ -8,11 +8,18 @@
                     <img src="/proyecto_taller/assets/img/marketing.webp" alt="marketing"> 
                     </div>
                     <div class= "entregas">
-                    <h1> INFORMACION DE ENVIOS </h1>
-                </div>
+                        <h1> CAMBIOS Y/O DEVOLUCIONES </h1></div>
+                <div class = "marketing">
+                    <img src="/proyecto_taller/assets/img/kambio.webp" alt="kambio"> 
+                 </div>
+
+                <div class= "entregas">
+                        <h1> INFORMACION DE ENVIOS </h1></div>
                 <div class = "marketing">
                     <img src="/proyecto_taller/assets/img/envio.webp" alt="envio"> 
-                    </div>
+                 </div>
+         <div>
+            </div>
     <div class="entregas"> 
         <h1>ENTREGAS</h1> 
         <div class ="entregasLocal">

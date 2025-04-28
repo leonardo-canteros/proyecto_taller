@@ -12,6 +12,13 @@ body {
   font-style: italic;
 }*/
 
+.tittle{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 25px 0; /* espacio arriba y abajo */
+  width: 100%;
+}
 header {
   background-color: #252A37;
   padding: 20px 40px; /* Añade espacio interno */
@@ -379,51 +386,110 @@ background-color: beige;
   color: #007b5e;
 }
 
-/* CARD GROUPS */
-.card-group-dueño,
-.card-group {
+.card-group-dueño {
   display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-  justify-content: center;
+  gap: 20px; /* espacio entre tarjetas */
+  justify-content: center; /* centra las tarjetas */
+  flex-wrap: wrap; /* permite que bajen si no hay espacio */
 }
 
 .card {
-  flex: 1 1 250px;
-  max-width: 300px;
-  border: 1px solid #ddd;
-  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #fff;
+  border-radius: 15px;
   overflow: hidden;
-  transition: transform 0.3s ease;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  width: 280px; /* <-- tamaño más pequeño de la card */
 }
 
 .card:hover {
   transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .card-img-top {
   width: 100%;
-  height: 250px;
-  object-fit: cover;
-  border-bottom: 1px solid #eee;
+  height: 250px; /* ajustamos el alto de imagen también */
+  object-fit: cover; /* recorta o ajusta la imagen sin deformarla */
 }
 
 .card-body {
-  padding: 1rem;
-  background-color: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+  padding: 15px; /* menos padding para una sensación más compacta */
 }
 
 .card-title {
-  font-size: 1.25rem;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-  color: #333;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: center;
 }
 
 .card-text {
-  font-size: 0.95rem;
+  flex-grow: 1;
+  margin-bottom: 10px;
   color: #555;
+  font-size: 0.95rem;
+  text-align: justify;
+}
+
+.text-body-secondary {
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+}
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Dos columnas */
+  gap: 20px; /* Espacio entre las cards */
+  padding: 20px;
+}
+
+/* Ajustes para cada card dentro del contenedor */
+.cards-container .card1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cards-container .card1:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.cards-container .card1-img-top {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+}
+
+.cards-container .card1-body {
+  padding: 20px;
+  text-align: center;
+}
+
+.cards-container .card1-title {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.cards-container .card1-text {
+  font-size: 1rem;
+  color: #555;
+  text-align: justify;
 }
 
 /* Responsive tweaks */

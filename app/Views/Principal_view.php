@@ -107,7 +107,7 @@
                 <div class="fp-card">
                     <img src="/proyecto_taller/assets/img/vestido.webp" class="fp-img" alt="Vestido de Noche">
                     <div class="fp-card-body">
-                        <h5 class="fp-card-title">Vestido de Noche Negro</h5>
+                        <h5 class="fp-card-title">Vestido de Noche Blanco</h5>
                         <p class="fp-card-text">Vestido largo en seda natural con detalles de encaje, ideal para galas y eventos especiales.</p>
                         <p class="fp-price">$249.99</p>
                     </div>

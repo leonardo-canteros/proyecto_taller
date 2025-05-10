@@ -44,30 +44,29 @@
     </div>
 
 
-
-    <div  class = "pago">
-        <h1>FORMAS DE PAGOS </h1>
-        <div class = "pagos">
-            <br>
-            <a href = "https://www.mercadopago.com.ar/">
+<div class="pago">
+    <h1>FORMAS DE PAGOS</h1>  
+    <div class="pagos">
+        <br>
+        <a href="https://www.mercadopago.com.ar/" target="_blank">
             <img src="/proyecto_taller/assets/img/mercadoPago.png" alt="mercadoPago">
-            </a>
-            <a href = "https://www.bna.com.ar/Personas">
+        </a>
+        <a href="https://www.bna.com.ar/Personas" target="_blank">
             <img src="/proyecto_taller/assets/img/tranferencia.png" alt="BNA">
-            </a>
-            <a href = "https://www.posnet.com.ar/">
+        </a>
+        <a href="https://www.posnet.com.ar/" target="_blank">
             <img src="/proyecto_taller/assets/img/tarjeta.jpg" alt="Tarjeta">
-            </a>
-            <a href = "https://www.paypal.com/ar/home">
+        </a>
+        <a href="https://www.paypal.com/ar/home" target="_blank">
             <img src="/proyecto_taller/assets/img/paypal.png" alt="paypal">
-            </a>
-            <a href = "https://www.binance.com/es-AR">
+        </a>
+        <a href="https://www.binance.com/es-AR" target="_blank">
             <img src="/proyecto_taller/assets/img/btc.png" alt="BTC">
-            </a>
-            <a href= "#">
+        </a>
+        <a href="#" target="_blank">
             <img src="/proyecto_taller/assets/img/efectivo.png" alt="efectivo">
-            </a>
-        </div>
+        </a>
     </div>
+</div>
 </div>
 

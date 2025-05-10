@@ -21,7 +21,7 @@
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="/proyecto_taller/assets/img/messiteamo.jpg" class="d-block w-100" alt="Accesorios Premium">
+                <img src="/proyecto_taller/assets/img/carrusel.webp" class="d-block w-100" alt="Accesorios Premium">
                 <div class="carousel-caption d-none d-md-block">
                     <h5>Accesorios Premium</h5>
                     <p>Complementa tu estilo con nuestras piezas exclusivas</p>
@@ -83,48 +83,52 @@
         </div>
     </div>
 
-    <!-- Sección de productos principales -->
-    <div class="products-section">
-        <div class="container">
-            <h2 class="section-title text-center">Productos Destacados</h2>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="card product-card">
-                        <img src="/proyecto_taller/assets/img/marino.webp" class="card-img-top product-img" alt="Traje Elegante">
-                        <div class="card-body">
-                            <h5 class="card-title">Traje Elegante Marino</h5>
-                            <p class="card-text">Traje de dos piezas en lana merino, perfecto para ocasiones formales y eventos de negocios.</p>
-                            <p class="h5">$299.99</p>
-                        
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card product-card">
-                        <img src="/proyecto_taller/assets/img/vestido.webp" class="card-img-top product-img" alt="Vestido de Noche">
-                        <div class="card-body">
-                            <h5 class="card-title">Vestido de Noche Negro</h5>
-                            <p class="card-text">Vestido largo en seda natural con detalles de encaje, ideal para galas y eventos especiales.</p>
-                            <p class="h5">$249.99</p>
-                            
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card product-card">
-                        <img src="/proyecto_taller/assets/img/camisa.webp" class="card-img-top product-img" alt="Camisa Clásica">
-                        <div class="card-body">
-                            <h5 class="card-title">Camisa Clásica Blanca</h5>
-                            <p class="card-text">Camisa de algodón egipcio con cuello francés y dobles puños, esencial para cualquier guardarropa.</p>
-                            <p class="h5">$89.99</p>
-                        
-                        </div>
+                    <!-- Sección de productos principales -->
+<div class="featured-products-section">
+    <div class="fp-container">
+        <h2 class="fp-title text-center">Productos Destacados</h2>
+        <!-- Ajuste con clases responsivas -->
+        <div class="fp-grid">
+        
+            <!-- Producto 1 -->
+            <div class="fp-col">
+                <div class="fp-card">
+                    <img src="/proyecto_taller/assets/img/marino.webp" class="fp-img" alt="Traje Elegante">
+                    <div class="fp-card-body">
+                        <h5 class="fp-card-title">Traje Elegante Marino</h5>
+                        <p class="fp-card-text">Traje de dos piezas en lana merino, perfecto para ocasiones formales y eventos de negocios.</p>
+                        <p class="fp-price">$299.99</p>
                     </div>
                 </div>
             </div>
-           
+
+            <!-- Producto 2 -->
+            <div class="fp-col">
+                <div class="fp-card">
+                    <img src="/proyecto_taller/assets/img/vestido.webp" class="fp-img" alt="Vestido de Noche">
+                    <div class="fp-card-body">
+                        <h5 class="fp-card-title">Vestido de Noche Blanco</h5>
+                        <p class="fp-card-text">Vestido largo en seda natural con detalles de encaje, ideal para galas y eventos especiales.</p>
+                        <p class="fp-price">$249.99</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Producto 3 -->
+            <div class="fp-col">
+                <div class="fp-card">
+                    <img src="/proyecto_taller/assets/img/camisa.webp" class="fp-img" alt="Camisa Clásica">
+                    <div class="fp-card-body">
+                        <h5 class="fp-card-title">Camisa Clásica Blanca</h5>
+                        <p class="fp-card-text">Camisa de algodón egipcio con cuello francés y dobles puños, esencial para cualquier guardarropa.</p>
+                        <p class="fp-price">$89.99</p>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
+</div>
 
    
 

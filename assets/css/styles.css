@@ -30,8 +30,8 @@ header {
 
     
 section {
-  padding: px; /* espaciado para la sección de 20 pixeles */
-  flex: 1; /* Hace que esta sección ocupe el espacio disponible */
+  padding: 20px ;/* espaciado para la sección de 20 pixeles */
+  flex : 1; /* Hace que esta sección ocupe el espacio disponible */
 }
 
 .logo {
@@ -58,8 +58,6 @@ section {
   color: rgb(238, 229, 229);
 }
 
-
-
 .menu{
   border: 2px solid rgb(238, 229, 229);
   padding: 20px;
@@ -80,7 +78,7 @@ nav ul {
   list-style: none;
   margin: 0;
   padding: 0;
-  text-align: justify;
+  text-align: center;
 }
 
 nav ul li {
@@ -273,6 +271,7 @@ body {
 .product-img {
     height: 300px;
     object-fit: cover;
+    width: 100%;
 }
 
 /* Botones */
@@ -313,28 +312,46 @@ h1, h2, h3, h4, h5 {
     left: 0;
 }
 
-
 /* Responsive */
+@media (max-width: 992px) {
+    .hero-carousel {
+        height: 500px;
+    }
+
+    .container-productos {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+}
+
 @media (max-width: 768px) {
     .hero-carousel {
         height: 400px;
     }
-    
+
     .intro-image {
         margin-top: 30px;
         height: 300px;
     }
-    
+
     .intro-text {
         padding-right: 0;
     }
-    
+
     .services-section .col-md-4 {
         margin-bottom: 30px;
     }
-    
+
     .product-img {
-        height: 200px;
+        width: 100%;
+        height: auto;
+        max-height: 300px;
+        object-fit: cover;
+    }
+
+    .container-productos {
+        padding-left: 1rem;
+        padding-right: 1rem;
     }
 }
 
@@ -342,17 +359,55 @@ h1, h2, h3, h4, h5 {
     .hero-carousel {
         height: 300px;
     }
-    
+
     .intro-section, 
     .services-section,
     .products-section {
         padding: 50px 0;
     }
-    
+
     .section-title {
         margin-bottom: 30px;
     }
+
+    .card-title {
+        font-size: 1rem;
+    }
+
+    .card-text {
+        font-size: 0.9rem;
+    }
+
+    .btn-elegant {
+        padding: 8px 20px;
+        font-size: 0.9rem;
+    }
+
+    .container-productos {
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+    }
 }
+
+/* === CONTENEDOR DE PRODUCTOS PERSONALIZADO === */
+.container-productos {
+    width: 100%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    box-sizing: border-box;
+}
+
+/* Fix para cards superpuestas entre 869px y 773px */
+@media (max-width: 869px) and (min-width: 773px) {
+    .row.row-cols-md-3 > .col {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
 /*------------------------------------------quienes_somos----------------------------------------------*/
 .quienes-somos {
   padding: 2rem 0;
@@ -449,6 +504,117 @@ background-color: beige;
   grid-template-columns: repeat(2, 1fr); /* Dos columnas */
   gap: 20px; /* Espacio entre las cards */
   padding: 20px;
+
+}
+
+
+/* quienessomos-modifiparacard */
+/* Estilos generales para la sección de testimonios */
+.testimonials-section {
+  padding: 3rem 0;
+  background-color: #f5f5f5;
+}
+
+.ts-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Grid de testimonios */
+.ts-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 2rem;
+}
+
+/* Estilos para las tarjetas de testimonio */
+.ts-card {
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ts-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.ts-img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  object-position: top;
+  border-bottom: 1px solid #eee;
+}
+
+.ts-card-body {
+  padding: 1.5rem;
+}
+
+.ts-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #2c3e50;
+}
+
+.ts-text {
+  color: #555;
+  line-height: 1.6;
+  font-size: 0.95rem;
+  margin-bottom: 0;
+}
+
+/* Responsive adjustments */
+@media (min-width: 576px) {
+  .ts-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .ts-img {
+    height: 220px;
+  }
+}
+
+@media (min-width: 768px) {
+  .testimonials-section {
+    padding: 4rem 0;
+  }
+  
+  .ts-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .ts-img {
+    height: 200px;
+  }
+}
+
+@media (min-width: 992px) {
+  .ts-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  
+  .ts-img {
+    height: 180px;
+  }
+  
+  .ts-title {
+    font-size: 1.2rem;
+  }
+  
+  .ts-text {
+    font-size: 0.9rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .ts-img {
+    height: 200px;
+  }
 }
 
 /* Ajustes para cada card dentro del contenedor */
@@ -494,15 +660,141 @@ background-color: beige;
 
 /* Responsive tweaks */
 @media (max-width: 768px) {
-  .card {
-      flex: 1 1 100%;
-      max-width: 100%;
+  .card-img-top {
+    height: auto;
+    max-width: 100%;
+    object-fit: cover;
   }
 
-  .card-img-top {
-      height: 200px;
+  .card {
+    width: 100%;
   }
 }
+
+
+
+
+/*---------------------cards modificadas------------ */
+/* Estilos generales para la sección de productos */
+.featured-products-section {
+  padding: 2rem 0;
+  background-color: #f8f9fa;
+}
+
+.fp-title {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #343a40;
+  font-weight: 600;
+}
+
+.fp-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* Grid de productos */
+.fp-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1.5rem;
+}
+
+/* Estilos para las tarjetas de productos */
+.fp-card {
+  border: none;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: white;
+}
+
+.fp-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.fp-img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.fp-card:hover .fp-img {
+  transform: scale(1.03);
+}
+
+.fp-card-body {
+  padding: 1.5rem;
+}
+
+.fp-card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: #212529;
+}
+
+.fp-card-text {
+  color: #6c757d;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.fp-price {
+  color: #007bff;
+  font-weight: 700;
+  font-size: 1.25rem;
+  margin-bottom: 0;
+}
+
+/* Responsive adjustments */
+@media (min-width: 576px) {
+  .fp-grid {
+      grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 768px) {
+  .fp-grid {
+      grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .fp-img {
+      height: 280px;
+  }
+}
+
+@media (min-width: 992px) {
+  .fp-title {
+      font-size: 2.25rem;
+  }
+  
+  .fp-card-title {
+      font-size: 1.35rem;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .fp-title {
+      font-size: 1.6rem;
+  }
+  
+  .fp-img {
+      height: 200px;
+  }
+  
+  .fp-card-body {
+      padding: 1.25rem;
+  }
+}
+
+
 /*----------------------------------------contacto--------------------------------------------------*/
 
 /* Estilo general del formulario */
@@ -689,29 +981,68 @@ body.pagina-contacto {
 
 
 /*--------------------------------------footer----------------------------------------------------*/
+/* ===================== FOOTER GENERAL ===================== */
 .footer {
-  background-color: #2d2a2e; /* Color de fondo del footer */
-  padding: 10px ; 
+  background-color: #2d2a2e; /* Color de fondo */
+  padding: 20px 15px;
   margin-top: auto;
-  justify-content: space-between ;
   display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; /* Permite que se acomode en columnas en móviles */
 }
 
+/* ===================== CONTENIDO CENTRADO ===================== */
 .footer-content {
-  max-width: 800px; /* Ancho máximo del contenido del footer */
-  margin: 0 auto; /* Centrar el contenido del footer horizontalmente */
+  flex: 1 1 100%; /* Ocupa todo el ancho disponible en móviles */
+  max-width: 800px;
+  margin: 10px auto;
   text-align: center;
 }
 
-.links img{
-  width: 35px;
-  margin-inline: 10px;
-  margin-top: 15px;
-  margin-bottom: 10px;
+/* ===================== ICONOS DE ENLACES ===================== */
+.links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 10px;
 }
 
-.footer p{
+.links img {
+  width: 35px;
+  height: 35px;
+  margin: 10px;
+  transition: transform 0.3s ease;
+}
+
+.links img:hover {
+  transform: scale(1.1);
+}
+
+/* ===================== TEXTO DEL FOOTER ===================== */
+.footer p {
   color: antiquewhite;
-  text-align: right;
-  margin-top: 2vw;
+  text-align: center;
+  margin: 15px 0 0;
+  font-size: 0.9rem;
+}
+
+/* ===================== RESPONSIVE DESIGN ===================== */
+@media (max-width: 768px) {
+  .footer {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-content,
+  .footer p {
+    text-align: center;
+  }
+
+  .links img {
+    width: 30px;
+    height: 30px;
+  }
 }

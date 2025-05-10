@@ -1,10 +1,10 @@
 <?php namespace Config;
 
-// Create a new instance of our RouteCollection class.
+// Crea una nueva instancia de nuestra clase RouteCollection.
 $routes = Services::routes();
 
-// Load the system's routing file first, so that the app and ENVIRONMENT
-// can override as needed.
+// Carga primero el archivo de rutas del sistema, para que la aplicación y el entorno
+// puedan sobrescribirlo si es necesario.
 if (file_exists(SYSTEMPATH . 'Config/Routes.php'))
 {
 	require SYSTEMPATH . 'Config/Routes.php';
@@ -12,46 +12,44 @@ if (file_exists(SYSTEMPATH . 'Config/Routes.php'))
 
 /**
  * --------------------------------------------------------------------
- * Router Setup
+ * Configuración del enrutador
  * --------------------------------------------------------------------
  */
-$routes->setDefaultNamespace('App\Controllers');
-$routes->setDefaultController('Home');
-$routes->setDefaultMethod('index');
-$routes->setTranslateURIDashes(false);
-$routes->set404Override();
-//$routes->setAutoRoute(false);
+$routes->setDefaultNamespace('App\Controllers');  // Espacio de nombres por defecto para los controladores
+$routes->setDefaultController('Home');            // Controlador por defecto
+$routes->setDefaultMethod('index');               // Método por defecto
+$routes->setTranslateURIDashes(false);            // No traducir guiones a guiones bajos
+$routes->set404Override();                        // Manejador personalizado para errores 404 (si se configura)
+//$routes->setAutoRoute(false);                   // Desactivar el enrutamiento automático (comentado)
 
 /**
  * --------------------------------------------------------------------
- * Route Definitions
+ * Definición de rutas
  * --------------------------------------------------------------------
  */
 
-// We get a performance increase by specifying the default
-// route since we don't have to scan directories.
+// Obtenemos un aumento de rendimiento al especificar la ruta por defecto
+// ya que no es necesario escanear directorios.
 $routes->get('/', 'Home::index');
-$routes->get('principal', 'Home::index' );
+$routes->get('principal', 'Home::index');
 $routes->get('quienes_somos', 'Home::quienes_somos');
-$routes->get('Contacto', 'Home::Contacto'); // "home" en minúsculas
-$routes->get('Comercializacion', 'home::Comercializacion'); // "home" en minúsculas
-$routes->get('termino_usos', 'home::termino_usos' );
-$routes->get('footer', 'home::footer' );
+$routes->get('Contacto', 'Home::Contacto'); // "Home" en mayúscula
+$routes->get('Comercializacion', 'home::Comercializacion'); // "home" en minúscula
+$routes->get('termino_usos', 'home::termino_usos');
+$routes->get('footer', 'home::footer');
+
 /**
  * --------------------------------------------------------------------
- * Additional Routing
+ * Rutas adicionales
  * --------------------------------------------------------------------
  *
- * There will often be times that you need additional routing and you
- * need it to be able to override any defaults in this file. Environment
- * based routes is one such time. require() additional route files here
- * to make that happen.
+ * A menudo necesitarás rutas adicionales y
+ * querrás que puedan sobrescribir cualquier valor por defecto en este archivo.
+ * Las rutas basadas en entorno son un ejemplo de ello. Usa require() para cargar archivos adicionales aquí.
  *
- * You will have access to the $routes object within that file without
- * needing to reload it.
+ * Tendrás acceso al objeto $routes dentro de ese archivo sin necesidad de volver a cargarlo.
  */
 if (file_exists(APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php'))
 {
 	require APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php';
 }
-

@@ -26,12 +26,7 @@ class Database extends Config
      */
     public array $default = [
         'DSN'          => '',
-        'hostname'     => env('database.default.hostname', 'localhost'),
-        'username'     => env('database.default.username', 'root'),
-        'password'     => env('database.default.password', ''),
-        'database'     => env('database.default.database', 'costura_fina'),
-        'DBDriver'     => env('database.default.DBDriver', 'MySQLi'),
-        'DBPrefix'     => env('database.default.DBPrefix', ''),
+    
         'pConnect'     => false,
         'DBDebug'      => true,
         'charset'      => 'utf8mb4',

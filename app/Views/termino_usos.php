@@ -19,15 +19,15 @@
     </ul>
 
     <h2>4. Envíos y Devoluciones</h2>
-    <p>Los envíos se procesan dentro de 2 a 5 días hábiles. Podés consultar nuestra <a href="/politica-devoluciones.php">Política de Devoluciones</a> para más detalles.</p>
+    <p>Los envíos se procesan dentro de 2 a 5 días hábiles. Podés consultar nuestra Política de Devoluciones para más detalles.</p>
 
     <h2>5. Protección de Datos</h2>
-    <p>Respetamos tu privacidad. Tus datos serán tratados según nuestra <a href="/politica-privacidad.php">Política de Privacidad</a> y no serán compartidos con terceros sin consentimiento.</p>
+    <p>Respetamos tu privacidad. Tus datos serán tratados según nuestra Política de Privacidad y no serán compartidos con terceros sin consentimiento.</p>
 
     <h2>6. Modificaciones</h2>
     <p> Costura Fina puede actualizar estos Términos en cualquier momento. Te recomendamos revisarlos regularmente.</p>
 
     <h2>7. Contacto</h2>
-    <p>Para consultas, escribinos a <a href="mailto:contacto@CucitoFine.com">contacto@CucitoFine.com</a>.</p>
+    <p>Para consultas, escribinos a contacto@CucitoFine.com.</p>
 
   </div>

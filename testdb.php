@@ -1,9 +1,12 @@
 <?php
-$conexion = new mysqli("localhost", "proyecto_cf", "9dejulio1449", "costura_fina");
+header("Content-Type: text/html; charset=utf-8");
 
-if ($conexion->connect_error) {
-    echo "Error: No se pudo conectar a la base de datos";
-} else {
-    echo "¡Conexión exitosa a la base de datos!";
+$mysqli = new mysqli("localhost", "proyecto_cf", "9dejulio1449", "costura fina");
+
+if ($mysqli->connect_error) {
+    die("Error de conexión: " . $mysqli->connect_error);
 }
+echo "Conexión exitosa";
+
+$mysqli->close();
 ?>

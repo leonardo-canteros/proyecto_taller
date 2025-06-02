@@ -44,38 +44,41 @@
         <h1> RESEÑAS </h1>
         </div>
 
-        <div class="cards-container">
-  <div class="card1">
-    <img src="/proyecto_taller/assets/img/marteeeen.webp" class="card1-img-top" alt="Martin Palermo">
-    <div class="card1-body">
-      <h5 class="card1-title">Martin Palermo</h5>
-      <p class="card1-text">La calidad de los trajes es simplemente espectacular. Los materiales son de primera y el corte se adapta perfecto al cuerpo, brindando comodidad sin perder elegancia. Cada vez que uso uno de estos trajes recibo elogios. Sin duda, una inversión que vale la pena.</p>
-    </div>
-  </div>
+        <div class="testimonials-section">
+  <div class="ts-container">
+    <div class="ts-grid">
+      <div class="ts-card">
+        <img src="/proyecto_taller/assets/img/marteeeen.webp" class="ts-img" alt="Martin Palermo">
+        <div class="ts-card-body">
+          <h5 class="ts-title">Martin Palermo</h5>
+          <p class="ts-text">La calidad de los trajes es simplemente espectacular. Los materiales son de primera y el corte se adapta perfecto al cuerpo, brindando comodidad sin perder elegancia. Cada vez que uso uno de estos trajes recibo elogios. Sin duda, una inversión que vale la pena.</p>
+        </div>
+      </div>
 
-  <div class="card1">
-    <img src="/proyecto_taller/assets/img/zinedine.webp" class="card1-img-top" alt="Zinedine Zidane">
-    <div class="card1-body">
-      <h5 class="card1-title">Zinedine Zidane</h5>
-      <p class="card1-text">Las camisas son de una confección impecable. Se nota la dedicación en cada costura. Además de lucir muy bien, son súper cómodas para largas jornadas de trabajo o eventos importantes. Me encanta la variedad de estilos y colores disponibles.</p>
-    </div>
-  </div>
+      <div class="ts-card">
+        <img src="/proyecto_taller/assets/img/zinedine.webp" class="ts-img" alt="Zinedine Zidane">
+        <div class="ts-card-body">
+          <h5 class="ts-title">Zinedine Zidane</h5>
+          <p class="ts-text">Las camisas son de una confección impecable. Se nota la dedicación en cada costura. Además de lucir muy bien, son súper cómodas para largas jornadas de trabajo o eventos importantes. Me encanta la variedad de estilos y colores disponibles.</p>
+        </div>
+      </div>
 
-  <div class="card1">
-    <img src="/proyecto_taller/assets/img/andrew.webp" class="card1-img-top" alt="Andrew Garfield">
-    <div class="card1-body">
-      <h5 class="card1-title">Andrew Garfield</h5>
-      <p class="card1-text">Estos pantalones son lo mejor que he comprado en mucho tiempo. El tejido es suave pero resistente, ideal para el uso diario. Lo que más me sorprendió fue la comodidad, se ajustan perfecto y permiten moverse con total libertad, siempre manteniendo una apariencia elegante.</p>
-    </div>
-  </div>
+      <div class="ts-card">
+        <img src="/proyecto_taller/assets/img/andrew.webp" class="ts-img" alt="Andrew Garfield">
+        <div class="ts-card-body">
+          <h5 class="ts-title">Andrew Garfield</h5>
+          <p class="ts-text">Estos pantalones son lo mejor que he comprado en mucho tiempo. El tejido es suave pero resistente, ideal para el uso diario. Lo que más me sorprendió fue la comodidad, se ajustan perfecto y permiten moverse con total libertad, siempre manteniendo una apariencia elegante.</p>
+        </div>
+      </div>
 
-  <div class="card1">
-    <img src="/proyecto_taller/assets/img/megan.webp" class="card1-img-top" alt="...">
-    <div class="card1-body">
-      <h5 class="card1-title">Megan Fox</h5>
-      <p class="card1-text">Estoy enamorada de los vestidos. Son elegantes, delicados y muy cómodos de llevar. Cada diseño transmite una sensación de sofisticación, perfecta para cualquier evento especial. El tejido cae de manera preciosa, y lo mejor es que me siento cómoda durante toda la noche.</p>
+      <div class="ts-card">
+        <img src="/proyecto_taller/assets/img/megan.webp" class="ts-img" alt="Megan Fox">
+        <div class="ts-card-body">
+          <h5 class="ts-title">Megan Fox</h5>
+          <p class="ts-text">Estoy enamorada de los vestidos. Son elegantes, delicados y muy cómodos de llevar. Cada diseño transmite una sensación de sofisticación, perfecta para cualquier evento especial. El tejido cae de manera preciosa, y lo mejor es que me siento cómoda durante toda la noche.</p>
+        </div>
+      </div>
     </div>
   </div>
 </div>
-
-    </div>
+</div>

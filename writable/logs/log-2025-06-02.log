@@ -1,0 +1,4 @@
+CRITICAL - 2025-06-02 19:53:12 --> ErrorException: Constant expression contains invalid operations
+[Method: POST, Route: productos/crear]
+in APPPATH\Config\Database.php on line 27.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()

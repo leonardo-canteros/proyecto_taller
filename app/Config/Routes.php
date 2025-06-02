@@ -33,11 +33,26 @@ $routes->set404Override();                        // Manejador personalizado par
 $routes->get('/', 'Home::index');
 $routes->get('principal', 'Home::index');
 $routes->get('quienes_somos', 'Home::quienes_somos');
-$routes->get('Contacto', 'Home::Contacto'); // "Home" en mayúscula
-$routes->get('Comercializacion', 'home::Comercializacion'); // "home" en minúscula
+$routes->get('Contacto', 'Home::Contacto'); 
+$routes->get('Comercializacion', 'home::Comercializacion'); 
 $routes->get('termino_usos', 'home::termino_usos');
 $routes->get('footer', 'home::footer');
 
+// Rutas CRUD para usuarios 
+$routes->get('usuarios', 'UsuarioController::index'); // Listar todos
+$routes->get('usuarios/(:num)', 'UsuarioController::show/$1'); // Ver uno
+$routes->post('usuarios/crear', 'UsuarioController::create'); // Crear
+$routes->put('usuarios/editar/(:num)', 'UsuarioController::update/$1'); // Actualizar
+$routes->delete('usuarios/eliminar/(:num)', 'UsuarioController::delete/$1'); // Eliminar
+
+
+// CRUD de Productos
+$routes->get('productos', 'ProductoController::index'); // Listar todos
+$routes->get('productos/crear', 'ProductoController::crearView'); // Vista de creación (formulario)
+$routes->post('productos/crear', 'ProductoController::crear'); // Procesar creación (POST)
+$routes->get('productos/editar/(:num)', 'ProductoController::editarView/$1'); // Vista de edición
+$routes->put('productos/editar/(:num)', 'ProductoController::editar/$1'); // Procesar edición (PUT)
+$routes->delete('productos/eliminar/(:num)', 'ProductoController::eliminar/$1'); // Eliminar (DELETE)
 /**
  * --------------------------------------------------------------------
  * Rutas adicionales

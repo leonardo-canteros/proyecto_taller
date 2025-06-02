@@ -14,7 +14,15 @@ class Home extends BaseController
 		echo view('navbar_view');
 		echo view('principal_view');
 		echo view('footer_view');
+		
 	}
+
+	public function testdb()
+{
+    $db = \Config\Database::connect();
+    echo $db->connect() ? '✅ ¡Conexión exitosa!' : '❌ No se pudo conectar.';
+}
+
 	
     public function quienes_somos()
 	{

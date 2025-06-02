@@ -1,0 +1,8 @@
+CRITICAL - 2025-05-28 00:56:21 --> ErrorException: Constant expression contains invalid operations
+[Method: GET, Route: /]
+in APPPATH\Config\Database.php on line 27.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2025-05-28 00:58:10 --> ErrorException: Constant expression contains invalid operations
+[Method: GET, Route: /]
+in APPPATH\Config\Database.php on line 27.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()

@@ -52,7 +52,7 @@ $routes->get('productos/crear', 'ProductoController::crearView'); // Vista de cr
 $routes->post('productos/crear', 'ProductoController::crear'); // Procesar creación (POST)
 $routes->get('productos/editar/(:num)', 'ProductoController::editarView/$1'); // Vista de edición
 $routes->put('productos/editar/(:num)', 'ProductoController::editar/$1'); // Procesar edición (PUT)
-$routes->delete('productos/eliminar/(:num)', 'ProductoController::eliminar/$1'); // Eliminar (DELETE)
+$routes->delete('productos/eliminar/(:num)', 'ProductoController::eliminar/$1');
 /**
  * --------------------------------------------------------------------
  * Rutas adicionales

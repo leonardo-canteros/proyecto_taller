@@ -39,12 +39,13 @@ $routes->get('termino_usos', 'home::termino_usos');
 $routes->get('footer', 'home::footer');
 
 // Rutas CRUD para usuarios 
-$routes->get('usuarios', 'UsuarioController::index'); // Listar todos
-$routes->get('usuarios/(:num)', 'UsuarioController::show/$1'); // Ver uno
-$routes->post('usuarios/crear', 'UsuarioController::create'); // Crear
-$routes->put('usuarios/editar/(:num)', 'UsuarioController::update/$1'); // Actualizar
-$routes->delete('usuarios/eliminar/(:num)', 'UsuarioController::delete/$1'); // Eliminar
-
+$routes->get('usuarios', 'UserController::index'); // Listar todos (incluyendo desactivados)
+$routes->get('usuarios/activos', 'UserController::activos'); // Listar solo activos
+$routes->get('usuarios/(:num)', 'UserController::show/$1'); // Ver uno (incluyendo desactivados)
+$routes->post('usuarios/crear', 'UserController::crear'); // Crear
+$routes->put('usuarios/editar/(:num)', 'UserController::update/$1'); // Actualizar
+$routes->delete('usuarios/eliminar/(:num)', 'UserController::delete/$1'); // Eliminación lógica
+$routes->put('usuarios/restaurar/(:num)', 'UserController::restaurar/$1'); // Restaurar usuario
 
 // CRUD de Productos
 $routes->get('productos', 'ProductoController::index'); // Listar todos

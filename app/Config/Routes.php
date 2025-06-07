@@ -39,12 +39,13 @@ $routes->get('termino_usos', 'home::termino_usos');
 $routes->get('footer', 'home::footer');
 
 // Rutas CRUD para usuarios 
-$routes->get('usuarios', 'UsuarioController::index'); // Listar todos
-$routes->get('usuarios/(:num)', 'UsuarioController::show/$1'); // Ver uno
-$routes->post('usuarios/crear', 'UsuarioController::create'); // Crear
-$routes->put('usuarios/editar/(:num)', 'UsuarioController::update/$1'); // Actualizar
-$routes->delete('usuarios/eliminar/(:num)', 'UsuarioController::delete/$1'); // Eliminar
-
+$routes->get('usuarios', 'UserController::index'); // Listar todos (incluyendo desactivados)
+$routes->get('usuarios/activos', 'UserController::activos'); // Listar solo activos
+$routes->get('usuarios/(:num)', 'UserController::show/$1'); // Ver uno (incluyendo desactivados)
+$routes->post('usuarios/crear', 'UserController::crear'); // Crear
+$routes->put('usuarios/editar/(:num)', 'UserController::update/$1'); // Actualizar
+$routes->delete('usuarios/eliminar/(:num)', 'UserController::delete/$1'); // Eliminación lógica
+$routes->put('usuarios/restaurar/(:num)', 'UserController::restaurar/$1'); // Restaurar usuario
 
 // CRUD de Productos
 $routes->get('productos', 'ProductoController::index'); // Listar todos
@@ -53,6 +54,47 @@ $routes->post('productos/crear', 'ProductoController::crear'); // Procesar creac
 $routes->get('productos/editar/(:num)', 'ProductoController::editarView/$1'); // Vista de edición
 $routes->put('productos/editar/(:num)', 'ProductoController::editar/$1'); // Procesar edición (PUT)
 $routes->delete('productos/eliminar/(:num)', 'ProductoController::eliminar/$1');
+
+// CRUD Carrito de compras
+$routes->get('carrito/usuario/(:num)', 'CarritoController::mostrarCarrito/$1');       // Ver el carrito de un usuario
+$routes->post('carrito/agregar', 'CarritoController::agregarProducto');               // Agregar producto al carrito
+$routes->put('carrito/editar/(:num)', 'CarritoController::editarProducto/$1');        // Editar cantidad de un producto
+$routes->delete('carrito/eliminar/(:num)', 'CarritoController::eliminarProducto/$1'); // Eliminar producto del carrito
+
+// CRUD Pedido
+$routes->get('pedido', 'PedidoController::index');               // Listar pedidos
+$routes->get('pedido/(:num)', 'PedidoController::show/$1');     // Ver pedido
+$routes->post('pedido/crear', 'PedidoController::crear');       // Crear pedido
+$routes->put('pedido/editar/(:num)', 'PedidoController::update/$1'); // Editar pedido
+$routes->delete('pedido/eliminar/(:num)', 'PedidoController::delete/$1'); // Eliminar pedido
+
+// CRUD Pedido Detalle
+$routes->get('pedido_detalle/(:num)', 'PedidoDetalleController::mostrarPorPedido/$1');      // Ver detalles de un pedido
+$routes->post('pedido_detalle/agregar', 'PedidoDetalleController::agregar');               // Agregar detalle
+$routes->put('pedido_detalle/editar/(:num)', 'PedidoDetalleController::editar/$1');        // Editar detalle
+$routes->delete('pedido_detalle/eliminar/(:num)', 'PedidoDetalleController::eliminar/$1'); // Eliminar detalle
+
+// Rutas para autenticación
+$routes->get('/', 'Home::index');                               // Página principal
+$routes->get('home', 'Home::index');                            // Página de inicio
+$routes->get('register', 'AuthController::register');           // Mostrar formulario
+$routes->post('register', 'AuthController::processRegister');   // Procesar registro
+$routes->get('login', 'AuthController::login');                 // Mostrar formulario  
+$routes->post('login', 'AuthController::processLogin');         // Procesar login
+$routes->get('logout', 'AuthController::logout');               // Cerrar sesión
+$routes->get('test', function() {
+    return 'Ruta de prueba funciona';
+});
+// Rutas para API de usuarios (si las necesitas)
+$routes->group('api', function($routes) {
+    $routes->get('users', 'UserController::index');              // Todos los usuarios
+    $routes->get('users/activos', 'UserController::activos');    // Solo activos
+    $routes->get('users/(:num)', 'UserController::show/$1');     // Un usuario específico
+    $routes->post('users', 'UserController::crear');             // Crear via API
+    $routes->put('users/(:num)', 'UserController::update/$1');   // Actualizar via API
+    $routes->delete('users/(:num)', 'UserController::delete/$1'); // Eliminar via API
+    $routes->post('users/(:num)/restore', 'UserController::restaurar/$1'); // Restaurar
+});
 /**
  * --------------------------------------------------------------------
  * Rutas adicionales

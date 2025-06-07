@@ -41,22 +41,28 @@ class UserController extends BaseController
     {
         $model = new UserModel();
         $data = $this->request->getJSON(true);
-        
-        if(empty($data)) {
-            return $this->failValidationErrors('Datos no recibidos');
-        }
 
-        if($model->insert($data)) {
-            return $this->respondCreated([
-                'status' => 201,
-                'message' => 'Usuario creado exitosamente',
-                'id' => $model->getInsertID()
-            ]);
-        }
-        
-        return $this->failValidationErrors($model->errors());
+            if (empty($data)) {
+                return $this->failValidationErrors('Datos no recibidos');
+            }
+
+            // Validar y encriptar la contraseña si viene
+            if (!empty($data['contraseña'])) {
+                $data['contraseña'] = password_hash($data['contraseña'], PASSWORD_DEFAULT);
+            } else {
+                return $this->failValidationErrors('La contraseña es obligatoria');
+            }
+
+            if ($model->insert($data)) {
+                return $this->respondCreated([
+                    'status' => 201,
+                    'message' => 'Usuario creado exitosamente',
+                    'id' => $model->getInsertID()
+                ]);
+            }
+
+            return $this->failValidationErrors($model->errors());
     }
-
     // Actualizar usuario
     public function update($id)
     {

@@ -29,6 +29,11 @@
           <a class="nav-link" href="termino_usos">Términos Y Usos</a>
         </li>
 
+         <li class="nav-item">
+          <a class="nav-link" href="register">registrarse</a>
+        </li>
+
+
       </ul>
 
       <!--<form class="d-flex" role="search">

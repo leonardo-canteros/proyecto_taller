@@ -58,4 +58,11 @@ class Home extends BaseController
 		echo view('footer_view');
 	}
 
+	public function register()
+	{
+    echo view('head_view');
+    echo view('navbar_view');
+    echo view('bodyregister');
+    echo view('footer_view');
+	}
 }

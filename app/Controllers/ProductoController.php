@@ -36,11 +36,14 @@ class ProductoController extends ResourceController
     }
 
  // Listar todos (GET)
-    public function index()
-    {
-        $model = new ProductoModel();
-        return $this->respond($model->findAll());
-    }
+   public function index()
+{
+    $model = new \App\Models\ProductoModel();
+    $productos = $model->findAll();
+
+    return $this->response->setJSON($productos);
+}
+
 
     // Mostrar uno (GET)
     public function show($id = null)

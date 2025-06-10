@@ -3,55 +3,47 @@ namespace App\Controllers;
 
 use App\Models\CarritoModel;
 use App\Models\CarritoProductoModel;
-use CodeIgniter\RESTful\ResourceController;
+use CodeIgniter\API\ResponseTrait;
 
-class CarritoController extends ResourceController
+class CarritoController extends BaseController
 {
+    use ResponseTrait;
+
     protected $carritoModel;
     protected $carritoProductoModel;
-    
+
     public function __construct()
     {
         $this->carritoModel = new CarritoModel();
         $this->carritoProductoModel = new CarritoProductoModel();
     }
 
-    // GET: carrito/usuario/{id_usuario}
-    public function mostrarCarrito($id_usuario = null)
-    {
-        if (!$id_usuario) {
-            return $this->fail('ID de usuario requerido', 400);
-        }
-        
-        $carrito = $this->carritoProductoModel->getCarritoPorUsuario($id_usuario);
-        return $this->respond($carrito);
-    }
-
-    // POST: carrito/agregar
+    // POST /carrito/agregar
     public function agregarProducto()
     {
-        // Verificar sesión
         $id_usuario = session()->get('id_usuario');
-        if (!$id_usuario) {
-            return $this->fail('Debe iniciar sesión', 401);
+        
+        // Obtener o crear carrito
+        $carrito = $this->carritoModel->obtenerCarritoActivo($id_usuario);
+        if (!$carrito) {
+            $id_carrito = $this->carritoModel->crearCarrito($id_usuario);
+        } else {
+            $id_carrito = $carrito['id_carrito'];
         }
 
         $data = $this->request->getJSON(true);
         
-        // Validar datos mínimos
-        if (!isset($data['id_producto'])) {
+        // Validación básica
+        if (empty($data['id_producto'])) {
             return $this->fail('ID de producto requerido', 400);
         }
-        
-        // Obtener o crear carrito
-        $id_carrito = $this->carritoModel->obtenerCarritoUsuario($id_usuario);
-        
+
         // Verificar si el producto ya está en el carrito
-        $itemExistente = $this->carritoProductoModel->productoExisteEnCarrito($id_carrito, $data['id_producto']);
+        $itemExistente = $this->carritoProductoModel->productoExiste($id_carrito, $data['id_producto']);
         
         if ($itemExistente) {
-            // Actualizar cantidad si ya existe
-            $nuevaCantidad = ($itemExistente['cantidad'] + ($data['cantidad'] ?? 1));
+            // Actualizar cantidad
+            $nuevaCantidad = $itemExistente['cantidad'] + ($data['cantidad'] ?? 1);
             $this->carritoProductoModel->update($itemExistente['id_carrito_producto'], ['cantidad' => $nuevaCantidad]);
         } else {
             // Agregar nuevo producto
@@ -61,29 +53,50 @@ class CarritoController extends ResourceController
                 'cantidad' => $data['cantidad'] ?? 1
             ]);
         }
-        
-        return $this->respondCreated(['mensaje' => 'Producto agregado al carrito']);
+
+        return $this->respond([
+            'status' => 'success',
+            'message' => 'Producto agregado al carrito',
+            'data' => $this->carritoProductoModel->obtenerProductos($id_carrito)
+        ]);
     }
 
-    // PUT: carrito/editar/{id}
-    public function editarProducto($id = null)
+    // GET /carrito
+    public function obtenerCarrito()
     {
-        $data = $this->request->getJSON(true);
+        $id_usuario = session()->get('id_usuario');
+        $carrito = $this->carritoModel->obtenerCarritoActivo($id_usuario);
         
-        if ($this->carritoProductoModel->update($id, $data)) {
-            return $this->respond(['mensaje' => 'Producto actualizado']);
+        if (!$carrito) {
+            return $this->respond(['data' => []]);
         }
         
-        return $this->fail('Error al actualizar', 400);
+        $productos = $this->carritoProductoModel->obtenerProductos($carrito['id_carrito']);
+        
+        return $this->respond([
+            'status' => 'success',
+            'data' => $productos
+        ]);
     }
 
-    // DELETE: carrito/eliminar/{id}
-    public function eliminarProducto($id = null)
+    // DELETE /carrito/eliminar/{id_producto}
+    public function eliminarProducto($id_producto)
     {
-        if ($this->carritoProductoModel->delete($id)) {
-            return $this->respondDeleted(['mensaje' => 'Producto eliminado']);
+        $id_usuario = session()->get('id_usuario');
+        $carrito = $this->carritoModel->obtenerCarritoActivo($id_usuario);
+        
+        if (!$carrito) {
+            return $this->failNotFound('Carrito no encontrado');
         }
         
-        return $this->fail('Producto no encontrado', 404);
+        $this->carritoProductoModel
+            ->where('id_carrito', $carrito['id_carrito'])
+            ->where('id_producto', $id_producto)
+            ->delete();
+            
+        return $this->respondDeleted([
+            'status' => 'success',
+            'message' => 'Producto eliminado del carrito'
+        ]);
     }
 }

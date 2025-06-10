@@ -10,7 +10,7 @@ class ProductoModel extends Model
     
     protected $allowedFields = [
         'nombre', 'descripcion', 'precio', 'stock', 
-        'talla', 'color', 'imagen_url', 'estado', 'id_categoria','deleted_at'
+        'talla', 'color', 'imagen', 'estado', 'id_categoria','deleted_at'
     ];
 
     

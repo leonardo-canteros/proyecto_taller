@@ -37,6 +37,8 @@ $routes->get('Contacto', 'Home::Contacto');
 $routes->get('Comercializacion', 'home::Comercializacion'); 
 $routes->get('termino_usos', 'home::termino_usos');
 $routes->get('footer', 'home::footer');
+$routes->get('catalogo', 'Home::Catalogo');
+
 
 // Rutas CRUD para usuarios 
 $routes->get('usuarios', 'UserController::index'); // Listar todos (incluyendo desactivados)

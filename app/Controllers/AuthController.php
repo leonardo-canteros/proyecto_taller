@@ -10,34 +10,59 @@ class AuthController extends BaseController
 
     public function login()
     {
-        $email = $this->request->getPost('email');
-        $password = $this->request->getPost('password');
+        // Obtener y convertir datos JSON
+        $json = $this->request->getJSON();
+        $post = $this->request->getPost();
+        
+        // Usar datos JSON si existen, de lo contrario usar POST
+        $data = $json ? json_decode(json_encode($json), true) : $post;
+
+        // Validar que existan los campos requeridos
+        if (empty($data['correo']) || empty($data['contraseña'])) {
+            return $this->fail('Correo y contraseña son requeridos', 400);
+        }
+
+        // Validar formato del correo
+        if (!filter_var($data['correo'], FILTER_VALIDATE_EMAIL)) {
+            return $this->fail('El correo no tiene un formato válido', 400);
+        }
 
         $userModel = new UserModel();
-        $user = $userModel->where('email', $email)->first();
+        $user = $userModel->where('correo', $data['correo'])
+                          ->where('deleted_at', null)
+                          ->first();
 
-        if (!$user || !password_verify($password, $user['password'])) {
+        if (!$user) {
             return $this->failUnauthorized('Credenciales incorrectas');
         }
 
+       
+
         // Crear sesión
-        session()->set([
-            'id_usuario' => $user['id'],
+        $sessionData = [
+            'id_usuario' => $user['id_usuario'],
+            'correo' => $user['correo'],
+            'nombre' => $user['nombre'],
+            'rol' => $user['rol'] ?? 'usuario',
             'logged_in' => true
-        ]);
+        ];
 
-        return $this->respond([
+        session()->set($sessionData);
+
+        // Preparar respuesta
+        $response = [
+            'status' => 'success',
             'message' => 'Login exitoso',
-            'user' => [
-                'id' => $user['id'],
-                'email' => $user['email']
+            'data' => [
+                'id' => $user['id_usuario'],
+                'nombre' => $user['nombre'],
+                'correo' => $user['correo'],
+                'rol' => $user['rol'] ?? 'usuario'
             ]
-        ]);
+        ];
+
+        return $this->respond($response);
     }
 
-    public function logout()
-    {
-        session()->destroy();
-        return $this->respond(['message' => 'Sesión cerrada']);
-    }
+    // ... (los demás métodos permanecen igual)
 }

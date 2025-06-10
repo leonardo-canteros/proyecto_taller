@@ -113,4 +113,21 @@ class UserController extends BaseController
         
         return $this->failNotFound('Usuario no encontrado o no estaba eliminado');
     }
+
+     // Método para validar correo únicos
+        public function correoExiste($correo) {
+            return $this->where('correo', $correo)->first();
+        }
+
+        protected $validationRules = [
+                    'nombre'     => 'required|min_length[3]',
+                    'correo'     => 'required|valid_email|is_unique[usuarios.correo]',
+                    'contraseña' => 'required|min_length[8]',
+                ];
+
+                protected $validationMessages = [
+                    'correo' => [
+                        'is_unique' => 'Este correo ya está registrado.'
+                    ]
+                ];
 }

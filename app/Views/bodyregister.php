@@ -1,73 +1,44 @@
-<div class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header">
-                    <h4>Registrarse</h4>
-                </div>
-                <div class="card-body">
-                    <?php if(session()->getFlashdata('error')): ?>
-                        <div class="alert alert-danger">
-                            <?= session()->getFlashdata('error') ?>
-                        </div>
-                    <?php endif; ?>
-                    
-                    <?php if(session()->getFlashdata('success')): ?>
-                        <div class="alert alert-success">
-                            <?= session()->getFlashdata('success') ?>
-                        </div>
-                    <?php endif; ?>
+<link rel="stylesheet" href="<?= base_url('assets/css/register.css') ?>">
 
-                    <form action="<?= base_url('register') ?>" method="post">
-                        <div class="mb-3">
-                            <label for="nombre" class="form-label">Nombre *</label>
-                            <input type="text" class="form-control" id="nombre" name="nombre" 
-                                   value="<?= old('nombre') ?>" required>
-                        </div>
+<div class="registro_contenedor">
+    <h2 class="registro_titulo">Registrar Usuario</h2>
 
-                        <div class="mb-3">
-                            <label for="apellido" class="form-label">Apellido</label>
-                            <input type="text" class="form-control" id="apellido" name="apellido" 
-                                   value="<?= old('apellido') ?>">
-                        </div>
+    <?php if (isset($error)): ?>
+        <div class="registro_alerta"><?= esc($error) ?></div>
+    <?php endif; ?>
 
-                        <div class="mb-3">
-                            <label for="correo" class="form-label">Correo Electrónico *</label>
-                            <input type="email" class="form-control" id="correo" name="correo" 
-                                   value="<?= old('correo') ?>" required>
-                        </div>
+    <form action="<?= base_url('register') ?>" method="post" class="registro_formulario">
 
-                        <div class="mb-3">
-                            <label for="contraseña" class="form-label">Contraseña *</label>
-                            <input type="password" class="form-control" id="contraseña" name="contraseña" 
-                                   minlength="8" required>
-                            <small class="form-text text-muted">Mínimo 8 caracteres</small>
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="direccion" class="form-label">Dirección</label>
-                            <input type="text" class="form-control" id="direccion" name="direccion" 
-                                   value="<?= old('direccion') ?>">
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="telefono" class="form-label">Teléfono</label>
-                            <input type="tel" class="form-control" id="telefono" name="telefono" 
-                                   value="<?= old('telefono') ?>">
-                        </div>
-
-
-
-                        <div class="d-grid">
-                            <button type="submit" class="btn btn-primary">Registrarse</button>
-                        </div>
-
-                        <div class="text-center mt-3">
-                            <p>¿Ya tienes cuenta? <a href="<?= base_url('login') ?>">Inicia sesión aquí</a></p>
-                        </div>
-                    </form>
-                </div>
-            </div>
+        <div class="registro_grupo">
+            <label for="nombre" class="registro_label">Nombre</label>
+            <input type="text" name="nombre" id="nombre" class="registro_input" required>
         </div>
-    </div>
+
+        <div class="registro_grupo">
+            <label for="apellido" class="registro_label">Apellido</label>
+            <input type="text" name="apellido" id="apellido" class="registro_input" required>
+        </div>
+
+        <div class="registro_grupo">
+            <label for="correo" class="registro_label">Correo electrónico</label>
+            <input type="email" name="correo" id="correo" class="registro_input" required>
+        </div>
+
+        <div class="registro_grupo">
+            <label for="contraseña" class="registro_label">Contraseña</label>
+            <input type="password" name="contraseña" id="contraseña" class="registro_input" required minlength="8">
+        </div>
+
+        <div class="registro_grupo">
+            <label for="direccion" class="registro_label">Dirección</label>
+            <input type="text" name="direccion" id="direccion" class="registro_input" required>
+        </div>
+
+        <div class="registro_grupo">
+            <label for="telefono" class="registro_label">Teléfono</label>
+            <input type="text" name="telefono" id="telefono" class="registro_input" required>
+        </div>
+
+        <button type="submit" class="registro_boton">Registrarse</button>
+    </form>
 </div>

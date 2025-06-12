@@ -36,8 +36,57 @@ class UserController extends BaseController
         return $this->failNotFound('Usuario no encontrado');
     }
 
-    // Crear nuevo usuario
     public function crear()
+        {
+            $model = new UserModel();
+
+            // Detectar si vienen datos JSON (API) o desde un formulario (POST)
+            $data = $this->request->getPost();
+
+            if (empty($data)) {
+                $data = $this->request->getJSON(true);
+            }
+
+            if (empty($data)) {
+                return $this->failValidationErrors('Datos no recibidos');
+            }
+
+            // Validar contraseña
+            if (!empty($data['contraseña'])) {
+                $data['contraseña'] = password_hash($data['contraseña'], PASSWORD_DEFAULT);
+            } else {
+                return $this->failValidationErrors('La contraseña es obligatoria');
+            }
+
+            // Valor fijo para el rol
+            $data['rol'] = 'usuario';
+
+            if ($model->insert($data)) {
+                // Si es API, responder JSON
+                if ($this->request->isAJAX() || $this->request->getHeaderLine('Accept') === 'application/json') {
+                    return $this->respondCreated([
+                        'status' => 201,
+                        'message' => 'Usuario creado exitosamente',
+                        'id' => $model->getInsertID()
+                    ]);
+                }
+
+                // Si es formulario, redirigir al login
+                return redirect()->to(base_url('login'))->with('success', 'Usuario registrado correctamente.');
+            }
+
+            // Si hubo errores
+            if ($this->request->isAJAX()) {
+                return $this->failValidationErrors($model->errors());
+            }
+
+            // Para vista HTML
+            return view('bodyregister', ['error' => 'Error al registrar usuario.']);
+        }
+
+
+    /* Crear nuevo usuario
+    //public function crear()
     {
         $model = new UserModel();
         $data = $this->request->getJSON(true);
@@ -62,7 +111,8 @@ class UserController extends BaseController
             }
 
             return $this->failValidationErrors($model->errors());
-    }
+    }*/
+
     // Actualizar usuario
     public function update($id)
     {

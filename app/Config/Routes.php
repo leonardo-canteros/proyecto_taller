@@ -78,8 +78,16 @@ $routes->delete('pedido_detalle/eliminar/(:num)', 'PedidoDetalleController::elim
 
 
 // Login y autenticación
-$routes->post('login', 'AuthController::login');
-$routes->get('logout', 'AuthController::logout');
+$routes->get('login', 'Home::login');          // Mostrar formulario login
+$routes->post('login', 'AuthController::login');  // Procesar login
+/*
+$routes->get('login', 'Home::loginForm'); // Mostrar vista
+$routes->post('login', 'AuthController::login'); // Procesar login
+*/
+
+$routes->get('register', 'Home::registerForm');       // Muestra formulario
+$routes->post('register', 'UserController::crear');   // Procesa registro
+
 
 
 

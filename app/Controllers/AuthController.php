@@ -7,7 +7,6 @@ use CodeIgniter\API\ResponseTrait;
 class AuthController extends BaseController
 {
     use ResponseTrait;
-
     public function login()
     {
         // Obtener y convertir datos JSON
@@ -64,5 +63,16 @@ class AuthController extends BaseController
         return $this->respond($response);
     }
 
-    // ... (los demás métodos permanecen igual)
+    public function logout()
+        {
+            session()->destroy();
+
+            // Si la petición es web normal, redirige:
+            if ($this->request->isAJAX()) {
+                return $this->respond(['status' => 'success', 'message' => 'Sesión cerrada']);
+            } else {
+                return redirect()->to('/');
+            }
+        }
+
 }

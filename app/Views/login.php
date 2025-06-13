@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Iniciar Sesión</title>
-    <link rel="stylesheet" href="<?= base_url('assets/css/login.css') ?>">
+    <link rel="stylesheet" href="/proyecto_taller/assets/css/login.css">
 </head>
 <body>
 

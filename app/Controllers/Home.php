@@ -74,12 +74,12 @@ class Home extends BaseController
 	}
 
 	public function registerForm()
-		{
-			echo view('head_view');
-			echo view('navbar_view');
-			echo view('bodyregister');
-			echo view('footer_view');
-		}
+	{
+		echo view('head_view');
+		echo view('navbar_view');
+		echo view('bodyregister');
+		echo view('footer_view');
+	}
 
 
 }

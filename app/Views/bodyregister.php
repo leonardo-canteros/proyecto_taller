@@ -1,13 +1,9 @@
-<link rel="stylesheet" href="<?= base_url('assets/css/register.css') ?>">
+<link rel="stylesheet" href="/proyecto_taller/assets/css/register.css">
 
 <div class="registro_contenedor">
     <h2 class="registro_titulo">Registrar Usuario</h2>
 
-    <?php if (isset($error)): ?>
-        <div class="registro_alerta"><?= esc($error) ?></div>
-    <?php endif; ?>
-
-    <form action="<?= base_url('register') ?>" method="post" class="registro_formulario">
+    <form action="register" method="post" class="registro_formulario">
 
         <div class="registro_grupo">
             <label for="nombre" class="registro_label">Nombre</label>

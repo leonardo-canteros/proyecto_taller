@@ -1,0 +1,1587 @@
+DEBUG - 2025-06-13 00:29:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-13 00:30:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-13 00:59:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-13 00:59:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-13 01:01:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-13 01:02:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-13 01:02:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-06-13 01:02:43 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'proyecto_cf'@'localhost' (using password: YES) in C:\xampp\htdocs\proyecto_taller\system\Database\MySQLi\Connection.php:202
+Stack trace:
+#0 C:\xampp\htdocs\proyecto_taller\system\Database\MySQLi\Connection.php(202): mysqli->real_connect('localhost', 'proyecto_cf', '9dejulio1449', 'costura_fina', 3306, '', 0)
+#1 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\proyecto_taller\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT 1\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\proyecto_taller\system\Validation\Rules.php(175): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\proyecto_taller\system\Validation\StrictRules\Rules.php(187): CodeIgniter\Validation\Rules->is_unique('abdulcalculo@gm...', 'usuarios.correo', Array)
+#6 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(337): CodeIgniter\Validation\StrictRules\Rules->is_unique('abdulcalculo@gm...', 'usuarios.correo', Array, NULL, 'correo')
+#7 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(202): CodeIgniter\Validation\Validation->processRules('correo', 'correo', 'abdulcalculo@gm...', Array, Array, 'correo')
+#8 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(1576): CodeIgniter\Validation\Validation->run(Array, NULL, NULL)
+#9 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(808): CodeIgniter\BaseModel->validate(Array)
+#10 C:\xampp\htdocs\proyecto_taller\system\Model.php(800): CodeIgniter\BaseModel->insert(Array, true)
+#11 C:\xampp\htdocs\proyecto_taller\app\Controllers\UserController.php(64): CodeIgniter\Model->insert(Array)
+#12 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(933): App\Controllers\UserController->crear()
+#13 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#14 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#15 C:\xampp\htdocs\proyecto_taller\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#16 C:\xampp\htdocs\proyecto_taller\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#17 C:\xampp\htdocs\proyecto_taller\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#18 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user '****'@'localhost' (using password: YES) in C:\xampp\htdocs\proyecto_taller\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\proyecto_taller\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT 1\nFROM `...', Array, false)
+#3 C:\xampp\htdocs\proyecto_taller\system\Validation\Rules.php(175): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp\htdocs\proyecto_taller\system\Validation\StrictRules\Rules.php(187): CodeIgniter\Validation\Rules->is_unique('abdulcalculo@gm...', 'usuarios.correo', Array)
+#5 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(337): CodeIgniter\Validation\StrictRules\Rules->is_unique('abdulcalculo@gm...', 'usuarios.correo', Array, NULL, 'correo')
+#6 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(202): CodeIgniter\Validation\Validation->processRules('correo', 'correo', 'abdulcalculo@gm...', Array, Array, 'correo')
+#7 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(1576): CodeIgniter\Validation\Validation->run(Array, NULL, NULL)
+#8 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(808): CodeIgniter\BaseModel->validate(Array)
+#9 C:\xampp\htdocs\proyecto_taller\system\Model.php(800): CodeIgniter\BaseModel->insert(Array, true)
+#10 C:\xampp\htdocs\proyecto_taller\app\Controllers\UserController.php(64): CodeIgniter\Model->insert(Array)
+#11 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(933): App\Controllers\UserController->crear()
+#12 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#13 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#14 C:\xampp\htdocs\proyecto_taller\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#15 C:\xampp\htdocs\proyecto_taller\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#16 C:\xampp\htdocs\proyecto_taller\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#17 {main}
+CRITICAL - 2025-06-13 01:02:43 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user '****'@'localhost' (using password: YES)
+[Method: POST, Route: register]
+in SYSTEMPATH\Database\BaseConnection.php on line 467.
+ 1 SYSTEMPATH\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT 1
+FROM `usuarios`
+WHERE `correo` = :correo:
+ LIMIT 1', [...], false)
+ 3 SYSTEMPATH\Validation\Rules.php(175): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\Validation\StrictRules\Rules.php(187): CodeIgniter\Validation\Rules->is_unique('abdulcalculo@gmail.com', 'usuarios.correo', [...])
+ 5 SYSTEMPATH\Validation\Validation.php(337): CodeIgniter\Validation\StrictRules\Rules->is_unique('abdulcalculo@gmail.com', 'usuarios.correo', [...], null, 'correo')
+ 6 SYSTEMPATH\Validation\Validation.php(202): CodeIgniter\Validation\Validation->processRules('correo', 'correo', 'abdulcalculo@gmail.com', [...], [...], 'correo')
+ 7 SYSTEMPATH\BaseModel.php(1576): CodeIgniter\Validation\Validation->run([...], null, null)
+ 8 SYSTEMPATH\BaseModel.php(808): CodeIgniter\BaseModel->validate([...])
+ 9 SYSTEMPATH\Model.php(800): CodeIgniter\BaseModel->insert([...], true)
+10 APPPATH\Controllers\UserController.php(64): CodeIgniter\Model->insert([...])
+11 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->crear()
+12 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+13 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+14 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+15 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+16 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-06-13 01:04:50 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'proyecto_cf'@'localhost' (using password: YES) in C:\xampp\htdocs\proyecto_taller\system\Database\MySQLi\Connection.php:202
+Stack trace:
+#0 C:\xampp\htdocs\proyecto_taller\system\Database\MySQLi\Connection.php(202): mysqli->real_connect('localhost', 'proyecto_cf', '9dejulio1449', 'costura_fina', 3306, '', 0)
+#1 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\proyecto_taller\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT 1\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\proyecto_taller\system\Validation\Rules.php(175): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\proyecto_taller\system\Validation\StrictRules\Rules.php(187): CodeIgniter\Validation\Rules->is_unique('abdulcalculo@gm...', 'usuarios.correo', Array)
+#6 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(337): CodeIgniter\Validation\StrictRules\Rules->is_unique('abdulcalculo@gm...', 'usuarios.correo', Array, NULL, 'correo')
+#7 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(202): CodeIgniter\Validation\Validation->processRules('correo', 'correo', 'abdulcalculo@gm...', Array, Array, 'correo')
+#8 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(1576): CodeIgniter\Validation\Validation->run(Array, NULL, NULL)
+#9 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(808): CodeIgniter\BaseModel->validate(Array)
+#10 C:\xampp\htdocs\proyecto_taller\system\Model.php(800): CodeIgniter\BaseModel->insert(Array, true)
+#11 C:\xampp\htdocs\proyecto_taller\app\Controllers\UserController.php(64): CodeIgniter\Model->insert(Array)
+#12 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(933): App\Controllers\UserController->crear()
+#13 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#14 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#15 C:\xampp\htdocs\proyecto_taller\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#16 C:\xampp\htdocs\proyecto_taller\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#17 C:\xampp\htdocs\proyecto_taller\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#18 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user '****'@'localhost' (using password: YES) in C:\xampp\htdocs\proyecto_taller\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\proyecto_taller\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT 1\nFROM `...', Array, false)
+#3 C:\xampp\htdocs\proyecto_taller\system\Validation\Rules.php(175): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp\htdocs\proyecto_taller\system\Validation\StrictRules\Rules.php(187): CodeIgniter\Validation\Rules->is_unique('abdulcalculo@gm...', 'usuarios.correo', Array)
+#5 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(337): CodeIgniter\Validation\StrictRules\Rules->is_unique('abdulcalculo@gm...', 'usuarios.correo', Array, NULL, 'correo')
+#6 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(202): CodeIgniter\Validation\Validation->processRules('correo', 'correo', 'abdulcalculo@gm...', Array, Array, 'correo')
+#7 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(1576): CodeIgniter\Validation\Validation->run(Array, NULL, NULL)
+#8 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(808): CodeIgniter\BaseModel->validate(Array)
+#9 C:\xampp\htdocs\proyecto_taller\system\Model.php(800): CodeIgniter\BaseModel->insert(Array, true)
+#10 C:\xampp\htdocs\proyecto_taller\app\Controllers\UserController.php(64): CodeIgniter\Model->insert(Array)
+#11 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(933): App\Controllers\UserController->crear()
+#12 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#13 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#14 C:\xampp\htdocs\proyecto_taller\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#15 C:\xampp\htdocs\proyecto_taller\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#16 C:\xampp\htdocs\proyecto_taller\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#17 {main}
+CRITICAL - 2025-06-13 01:04:50 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user '****'@'localhost' (using password: YES)
+[Method: POST, Route: register]
+in SYSTEMPATH\Database\BaseConnection.php on line 467.
+ 1 SYSTEMPATH\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT 1
+FROM `usuarios`
+WHERE `correo` = :correo:
+ LIMIT 1', [...], false)
+ 3 SYSTEMPATH\Validation\Rules.php(175): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\Validation\StrictRules\Rules.php(187): CodeIgniter\Validation\Rules->is_unique('abdulcalculo@gmail.com', 'usuarios.correo', [...])
+ 5 SYSTEMPATH\Validation\Validation.php(337): CodeIgniter\Validation\StrictRules\Rules->is_unique('abdulcalculo@gmail.com', 'usuarios.correo', [...], null, 'correo')
+ 6 SYSTEMPATH\Validation\Validation.php(202): CodeIgniter\Validation\Validation->processRules('correo', 'correo', 'abdulcalculo@gmail.com', [...], [...], 'correo')
+ 7 SYSTEMPATH\BaseModel.php(1576): CodeIgniter\Validation\Validation->run([...], null, null)
+ 8 SYSTEMPATH\BaseModel.php(808): CodeIgniter\BaseModel->validate([...])
+ 9 SYSTEMPATH\Model.php(800): CodeIgniter\BaseModel->insert([...], true)
+10 APPPATH\Controllers\UserController.php(64): CodeIgniter\Model->insert([...])
+11 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->crear()
+12 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+13 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+14 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+15 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+16 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-06-13 01:04:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-13 01:07:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-13 01:08:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-13 01:23:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-13 01:32:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-13 01:32:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-06-13 01:33:12 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'proyecto_cf'@'localhost' (using password: YES) in C:\xampp\htdocs\proyecto_taller\system\Database\MySQLi\Connection.php:202
+Stack trace:
+#0 C:\xampp\htdocs\proyecto_taller\system\Database\MySQLi\Connection.php(202): mysqli->real_connect('localhost', 'proyecto_cf', '9dejulio1449', 'costura_fina', 3306, '', 0)
+#1 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\proyecto_taller\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT 1\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\proyecto_taller\system\Validation\Rules.php(175): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\proyecto_taller\system\Validation\StrictRules\Rules.php(187): CodeIgniter\Validation\Rules->is_unique('abdulham@gmail....', 'usuarios.correo', Array)
+#6 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(337): CodeIgniter\Validation\StrictRules\Rules->is_unique('abdulham@gmail....', 'usuarios.correo', Array, NULL, 'correo')
+#7 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(202): CodeIgniter\Validation\Validation->processRules('correo', 'correo', 'abdulham@gmail....', Array, Array, 'correo')
+#8 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(1576): CodeIgniter\Validation\Validation->run(Array, NULL, NULL)
+#9 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(808): CodeIgniter\BaseModel->validate(Array)
+#10 C:\xampp\htdocs\proyecto_taller\system\Model.php(800): CodeIgniter\BaseModel->insert(Array, true)
+#11 C:\xampp\htdocs\proyecto_taller\app\Controllers\UserController.php(64): CodeIgniter\Model->insert(Array)
+#12 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(933): App\Controllers\UserController->crear()
+#13 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#14 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#15 C:\xampp\htdocs\proyecto_taller\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#16 C:\xampp\htdocs\proyecto_taller\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#17 C:\xampp\htdocs\proyecto_taller\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#18 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user '****'@'localhost' (using password: YES) in C:\xampp\htdocs\proyecto_taller\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\proyecto_taller\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT 1\nFROM `...', Array, false)
+#3 C:\xampp\htdocs\proyecto_taller\system\Validation\Rules.php(175): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp\htdocs\proyecto_taller\system\Validation\StrictRules\Rules.php(187): CodeIgniter\Validation\Rules->is_unique('abdulham@gmail....', 'usuarios.correo', Array)
+#5 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(337): CodeIgniter\Validation\StrictRules\Rules->is_unique('abdulham@gmail....', 'usuarios.correo', Array, NULL, 'correo')
+#6 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(202): CodeIgniter\Validation\Validation->processRules('correo', 'correo', 'abdulham@gmail....', Array, Array, 'correo')
+#7 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(1576): CodeIgniter\Validation\Validation->run(Array, NULL, NULL)
+#8 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(808): CodeIgniter\BaseModel->validate(Array)
+#9 C:\xampp\htdocs\proyecto_taller\system\Model.php(800): CodeIgniter\BaseModel->insert(Array, true)
+#10 C:\xampp\htdocs\proyecto_taller\app\Controllers\UserController.php(64): CodeIgniter\Model->insert(Array)
+#11 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(933): App\Controllers\UserController->crear()
+#12 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#13 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#14 C:\xampp\htdocs\proyecto_taller\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#15 C:\xampp\htdocs\proyecto_taller\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#16 C:\xampp\htdocs\proyecto_taller\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#17 {main}
+CRITICAL - 2025-06-13 01:33:12 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user '****'@'localhost' (using password: YES)
+[Method: POST, Route: register]
+in SYSTEMPATH\Database\BaseConnection.php on line 467.
+ 1 SYSTEMPATH\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT 1
+FROM `usuarios`
+WHERE `correo` = :correo:
+ LIMIT 1', [...], false)
+ 3 SYSTEMPATH\Validation\Rules.php(175): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\Validation\StrictRules\Rules.php(187): CodeIgniter\Validation\Rules->is_unique('abdulham@gmail.com', 'usuarios.correo', [...])
+ 5 SYSTEMPATH\Validation\Validation.php(337): CodeIgniter\Validation\StrictRules\Rules->is_unique('abdulham@gmail.com', 'usuarios.correo', [...], null, 'correo')
+ 6 SYSTEMPATH\Validation\Validation.php(202): CodeIgniter\Validation\Validation->processRules('correo', 'correo', 'abdulham@gmail.com', [...], [...], 'correo')
+ 7 SYSTEMPATH\BaseModel.php(1576): CodeIgniter\Validation\Validation->run([...], null, null)
+ 8 SYSTEMPATH\BaseModel.php(808): CodeIgniter\BaseModel->validate([...])
+ 9 SYSTEMPATH\Model.php(800): CodeIgniter\BaseModel->insert([...], true)
+10 APPPATH\Controllers\UserController.php(64): CodeIgniter\Model->insert([...])
+11 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->crear()
+12 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+13 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+14 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+15 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+16 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-06-13 01:39:08 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'proyecto_cf'@'localhost' (using password: YES) in C:\xampp\htdocs\proyecto_taller\system\Database\MySQLi\Connection.php:202
+Stack trace:
+#0 C:\xampp\htdocs\proyecto_taller\system\Database\MySQLi\Connection.php(202): mysqli->real_connect('localhost', 'proyecto_cf', '9dejulio1449', 'costura_fina', 3306, '', 0)
+#1 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\proyecto_taller\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT 1\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\proyecto_taller\system\Validation\Rules.php(175): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\proyecto_taller\system\Validation\StrictRules\Rules.php(187): CodeIgniter\Validation\Rules->is_unique('abdulham@gmail....', 'usuarios.correo', Array)
+#6 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(337): CodeIgniter\Validation\StrictRules\Rules->is_unique('abdulham@gmail....', 'usuarios.correo', Array, NULL, 'correo')
+#7 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(202): CodeIgniter\Validation\Validation->processRules('correo', 'correo', 'abdulham@gmail....', Array, Array, 'correo')
+#8 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(1576): CodeIgniter\Validation\Validation->run(Array, NULL, NULL)
+#9 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(808): CodeIgniter\BaseModel->validate(Array)
+#10 C:\xampp\htdocs\proyecto_taller\system\Model.php(800): CodeIgniter\BaseModel->insert(Array, true)
+#11 C:\xampp\htdocs\proyecto_taller\app\Controllers\UserController.php(64): CodeIgniter\Model->insert(Array)
+#12 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(933): App\Controllers\UserController->crear()
+#13 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#14 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#15 C:\xampp\htdocs\proyecto_taller\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#16 C:\xampp\htdocs\proyecto_taller\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#17 C:\xampp\htdocs\proyecto_taller\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#18 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user '****'@'localhost' (using password: YES) in C:\xampp\htdocs\proyecto_taller\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\proyecto_taller\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT 1\nFROM `...', Array, false)
+#3 C:\xampp\htdocs\proyecto_taller\system\Validation\Rules.php(175): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp\htdocs\proyecto_taller\system\Validation\StrictRules\Rules.php(187): CodeIgniter\Validation\Rules->is_unique('abdulham@gmail....', 'usuarios.correo', Array)
+#5 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(337): CodeIgniter\Validation\StrictRules\Rules->is_unique('abdulham@gmail....', 'usuarios.correo', Array, NULL, 'correo')
+#6 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(202): CodeIgniter\Validation\Validation->processRules('correo', 'correo', 'abdulham@gmail....', Array, Array, 'correo')
+#7 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(1576): CodeIgniter\Validation\Validation->run(Array, NULL, NULL)
+#8 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(808): CodeIgniter\BaseModel->validate(Array)
+#9 C:\xampp\htdocs\proyecto_taller\system\Model.php(800): CodeIgniter\BaseModel->insert(Array, true)
+#10 C:\xampp\htdocs\proyecto_taller\app\Controllers\UserController.php(64): CodeIgniter\Model->insert(Array)
+#11 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(933): App\Controllers\UserController->crear()
+#12 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#13 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#14 C:\xampp\htdocs\proyecto_taller\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#15 C:\xampp\htdocs\proyecto_taller\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#16 C:\xampp\htdocs\proyecto_taller\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#17 {main}
+CRITICAL - 2025-06-13 01:39:08 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user '****'@'localhost' (using password: YES)
+[Method: POST, Route: register]
+in SYSTEMPATH\Database\BaseConnection.php on line 467.
+ 1 SYSTEMPATH\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT 1
+FROM `usuarios`
+WHERE `correo` = :correo:
+ LIMIT 1', [...], false)
+ 3 SYSTEMPATH\Validation\Rules.php(175): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\Validation\StrictRules\Rules.php(187): CodeIgniter\Validation\Rules->is_unique('abdulham@gmail.com', 'usuarios.correo', [...])
+ 5 SYSTEMPATH\Validation\Validation.php(337): CodeIgniter\Validation\StrictRules\Rules->is_unique('abdulham@gmail.com', 'usuarios.correo', [...], null, 'correo')
+ 6 SYSTEMPATH\Validation\Validation.php(202): CodeIgniter\Validation\Validation->processRules('correo', 'correo', 'abdulham@gmail.com', [...], [...], 'correo')
+ 7 SYSTEMPATH\BaseModel.php(1576): CodeIgniter\Validation\Validation->run([...], null, null)
+ 8 SYSTEMPATH\BaseModel.php(808): CodeIgniter\BaseModel->validate([...])
+ 9 SYSTEMPATH\Model.php(800): CodeIgniter\BaseModel->insert([...], true)
+10 APPPATH\Controllers\UserController.php(64): CodeIgniter\Model->insert([...])
+11 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->crear()
+12 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+13 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+14 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+15 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+16 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-06-13 01:39:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-06-13 01:39:14 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'proyecto_cf'@'localhost' (using password: YES) in C:\xampp\htdocs\proyecto_taller\system\Database\MySQLi\Connection.php:202
+Stack trace:
+#0 C:\xampp\htdocs\proyecto_taller\system\Database\MySQLi\Connection.php(202): mysqli->real_connect('localhost', 'proyecto_cf', '9dejulio1449', 'costura_fina', 3306, '', 0)
+#1 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\proyecto_taller\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT 1\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\proyecto_taller\system\Validation\Rules.php(175): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\proyecto_taller\system\Validation\StrictRules\Rules.php(187): CodeIgniter\Validation\Rules->is_unique('abdulham@gmail....', 'usuarios.correo', Array)
+#6 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(337): CodeIgniter\Validation\StrictRules\Rules->is_unique('abdulham@gmail....', 'usuarios.correo', Array, NULL, 'correo')
+#7 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(202): CodeIgniter\Validation\Validation->processRules('correo', 'correo', 'abdulham@gmail....', Array, Array, 'correo')
+#8 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(1576): CodeIgniter\Validation\Validation->run(Array, NULL, NULL)
+#9 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(808): CodeIgniter\BaseModel->validate(Array)
+#10 C:\xampp\htdocs\proyecto_taller\system\Model.php(800): CodeIgniter\BaseModel->insert(Array, true)
+#11 C:\xampp\htdocs\proyecto_taller\app\Controllers\UserController.php(64): CodeIgniter\Model->insert(Array)
+#12 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(933): App\Controllers\UserController->crear()
+#13 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#14 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#15 C:\xampp\htdocs\proyecto_taller\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#16 C:\xampp\htdocs\proyecto_taller\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#17 C:\xampp\htdocs\proyecto_taller\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#18 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user '****'@'localhost' (using password: YES) in C:\xampp\htdocs\proyecto_taller\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\proyecto_taller\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT 1\nFROM `...', Array, false)
+#3 C:\xampp\htdocs\proyecto_taller\system\Validation\Rules.php(175): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp\htdocs\proyecto_taller\system\Validation\StrictRules\Rules.php(187): CodeIgniter\Validation\Rules->is_unique('abdulham@gmail....', 'usuarios.correo', Array)
+#5 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(337): CodeIgniter\Validation\StrictRules\Rules->is_unique('abdulham@gmail....', 'usuarios.correo', Array, NULL, 'correo')
+#6 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(202): CodeIgniter\Validation\Validation->processRules('correo', 'correo', 'abdulham@gmail....', Array, Array, 'correo')
+#7 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(1576): CodeIgniter\Validation\Validation->run(Array, NULL, NULL)
+#8 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(808): CodeIgniter\BaseModel->validate(Array)
+#9 C:\xampp\htdocs\proyecto_taller\system\Model.php(800): CodeIgniter\BaseModel->insert(Array, true)
+#10 C:\xampp\htdocs\proyecto_taller\app\Controllers\UserController.php(64): CodeIgniter\Model->insert(Array)
+#11 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(933): App\Controllers\UserController->crear()
+#12 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#13 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#14 C:\xampp\htdocs\proyecto_taller\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#15 C:\xampp\htdocs\proyecto_taller\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#16 C:\xampp\htdocs\proyecto_taller\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#17 {main}
+CRITICAL - 2025-06-13 01:39:14 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user '****'@'localhost' (using password: YES)
+[Method: POST, Route: register]
+in SYSTEMPATH\Database\BaseConnection.php on line 467.
+ 1 SYSTEMPATH\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT 1
+FROM `usuarios`
+WHERE `correo` = :correo:
+ LIMIT 1', [...], false)
+ 3 SYSTEMPATH\Validation\Rules.php(175): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\Validation\StrictRules\Rules.php(187): CodeIgniter\Validation\Rules->is_unique('abdulham@gmail.com', 'usuarios.correo', [...])
+ 5 SYSTEMPATH\Validation\Validation.php(337): CodeIgniter\Validation\StrictRules\Rules->is_unique('abdulham@gmail.com', 'usuarios.correo', [...], null, 'correo')
+ 6 SYSTEMPATH\Validation\Validation.php(202): CodeIgniter\Validation\Validation->processRules('correo', 'correo', 'abdulham@gmail.com', [...], [...], 'correo')
+ 7 SYSTEMPATH\BaseModel.php(1576): CodeIgniter\Validation\Validation->run([...], null, null)
+ 8 SYSTEMPATH\BaseModel.php(808): CodeIgniter\BaseModel->validate([...])
+ 9 SYSTEMPATH\Model.php(800): CodeIgniter\BaseModel->insert([...], true)
+10 APPPATH\Controllers\UserController.php(64): CodeIgniter\Model->insert([...])
+11 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->crear()
+12 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+13 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+14 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+15 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+16 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-06-13 01:41:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-06-13 01:41:30 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'proyecto_cf'@'localhost' (using password: YES) in C:\xampp\htdocs\proyecto_taller\system\Database\MySQLi\Connection.php:202
+Stack trace:
+#0 C:\xampp\htdocs\proyecto_taller\system\Database\MySQLi\Connection.php(202): mysqli->real_connect('localhost', 'proyecto_cf', '9dejulio1449', 'costura_fina', 3306, '', 0)
+#1 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\proyecto_taller\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT 1\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\proyecto_taller\system\Validation\Rules.php(175): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\proyecto_taller\system\Validation\StrictRules\Rules.php(187): CodeIgniter\Validation\Rules->is_unique('abdulham@gmail....', 'usuarios.correo', Array)
+#6 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(337): CodeIgniter\Validation\StrictRules\Rules->is_unique('abdulham@gmail....', 'usuarios.correo', Array, NULL, 'correo')
+#7 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(202): CodeIgniter\Validation\Validation->processRules('correo', 'correo', 'abdulham@gmail....', Array, Array, 'correo')
+#8 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(1576): CodeIgniter\Validation\Validation->run(Array, NULL, NULL)
+#9 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(808): CodeIgniter\BaseModel->validate(Array)
+#10 C:\xampp\htdocs\proyecto_taller\system\Model.php(800): CodeIgniter\BaseModel->insert(Array, true)
+#11 C:\xampp\htdocs\proyecto_taller\app\Controllers\UserController.php(64): CodeIgniter\Model->insert(Array)
+#12 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(933): App\Controllers\UserController->crear()
+#13 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#14 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#15 C:\xampp\htdocs\proyecto_taller\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#16 C:\xampp\htdocs\proyecto_taller\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#17 C:\xampp\htdocs\proyecto_taller\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#18 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user '****'@'localhost' (using password: YES) in C:\xampp\htdocs\proyecto_taller\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\proyecto_taller\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT 1\nFROM `...', Array, false)
+#3 C:\xampp\htdocs\proyecto_taller\system\Validation\Rules.php(175): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp\htdocs\proyecto_taller\system\Validation\StrictRules\Rules.php(187): CodeIgniter\Validation\Rules->is_unique('abdulham@gmail....', 'usuarios.correo', Array)
+#5 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(337): CodeIgniter\Validation\StrictRules\Rules->is_unique('abdulham@gmail....', 'usuarios.correo', Array, NULL, 'correo')
+#6 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(202): CodeIgniter\Validation\Validation->processRules('correo', 'correo', 'abdulham@gmail....', Array, Array, 'correo')
+#7 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(1576): CodeIgniter\Validation\Validation->run(Array, NULL, NULL)
+#8 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(808): CodeIgniter\BaseModel->validate(Array)
+#9 C:\xampp\htdocs\proyecto_taller\system\Model.php(800): CodeIgniter\BaseModel->insert(Array, true)
+#10 C:\xampp\htdocs\proyecto_taller\app\Controllers\UserController.php(64): CodeIgniter\Model->insert(Array)
+#11 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(933): App\Controllers\UserController->crear()
+#12 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#13 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#14 C:\xampp\htdocs\proyecto_taller\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#15 C:\xampp\htdocs\proyecto_taller\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#16 C:\xampp\htdocs\proyecto_taller\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#17 {main}
+CRITICAL - 2025-06-13 01:41:30 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user '****'@'localhost' (using password: YES)
+[Method: POST, Route: register]
+in SYSTEMPATH\Database\BaseConnection.php on line 467.
+ 1 SYSTEMPATH\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT 1
+FROM `usuarios`
+WHERE `correo` = :correo:
+ LIMIT 1', [...], false)
+ 3 SYSTEMPATH\Validation\Rules.php(175): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\Validation\StrictRules\Rules.php(187): CodeIgniter\Validation\Rules->is_unique('abdulham@gmail.com', 'usuarios.correo', [...])
+ 5 SYSTEMPATH\Validation\Validation.php(337): CodeIgniter\Validation\StrictRules\Rules->is_unique('abdulham@gmail.com', 'usuarios.correo', [...], null, 'correo')
+ 6 SYSTEMPATH\Validation\Validation.php(202): CodeIgniter\Validation\Validation->processRules('correo', 'correo', 'abdulham@gmail.com', [...], [...], 'correo')
+ 7 SYSTEMPATH\BaseModel.php(1576): CodeIgniter\Validation\Validation->run([...], null, null)
+ 8 SYSTEMPATH\BaseModel.php(808): CodeIgniter\BaseModel->validate([...])
+ 9 SYSTEMPATH\Model.php(800): CodeIgniter\BaseModel->insert([...], true)
+10 APPPATH\Controllers\UserController.php(64): CodeIgniter\Model->insert([...])
+11 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->crear()
+12 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+13 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+14 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+15 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+16 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-06-13 01:41:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-06-13 01:41:44 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'proyecto_cf'@'localhost' (using password: YES) in C:\xampp\htdocs\proyecto_taller\system\Database\MySQLi\Connection.php:202
+Stack trace:
+#0 C:\xampp\htdocs\proyecto_taller\system\Database\MySQLi\Connection.php(202): mysqli->real_connect('localhost', 'proyecto_cf', '9dejulio1449', 'costura_fina', 3306, '', 0)
+#1 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\proyecto_taller\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT 1\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\proyecto_taller\system\Validation\Rules.php(175): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\proyecto_taller\system\Validation\StrictRules\Rules.php(187): CodeIgniter\Validation\Rules->is_unique('abdulham@gmail....', 'usuarios.correo', Array)
+#6 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(337): CodeIgniter\Validation\StrictRules\Rules->is_unique('abdulham@gmail....', 'usuarios.correo', Array, NULL, 'correo')
+#7 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(202): CodeIgniter\Validation\Validation->processRules('correo', 'correo', 'abdulham@gmail....', Array, Array, 'correo')
+#8 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(1576): CodeIgniter\Validation\Validation->run(Array, NULL, NULL)
+#9 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(808): CodeIgniter\BaseModel->validate(Array)
+#10 C:\xampp\htdocs\proyecto_taller\system\Model.php(800): CodeIgniter\BaseModel->insert(Array, true)
+#11 C:\xampp\htdocs\proyecto_taller\app\Controllers\UserController.php(64): CodeIgniter\Model->insert(Array)
+#12 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(933): App\Controllers\UserController->crear()
+#13 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#14 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#15 C:\xampp\htdocs\proyecto_taller\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#16 C:\xampp\htdocs\proyecto_taller\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#17 C:\xampp\htdocs\proyecto_taller\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#18 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user '****'@'localhost' (using password: YES) in C:\xampp\htdocs\proyecto_taller\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\proyecto_taller\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT 1\nFROM `...', Array, false)
+#3 C:\xampp\htdocs\proyecto_taller\system\Validation\Rules.php(175): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp\htdocs\proyecto_taller\system\Validation\StrictRules\Rules.php(187): CodeIgniter\Validation\Rules->is_unique('abdulham@gmail....', 'usuarios.correo', Array)
+#5 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(337): CodeIgniter\Validation\StrictRules\Rules->is_unique('abdulham@gmail....', 'usuarios.correo', Array, NULL, 'correo')
+#6 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(202): CodeIgniter\Validation\Validation->processRules('correo', 'correo', 'abdulham@gmail....', Array, Array, 'correo')
+#7 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(1576): CodeIgniter\Validation\Validation->run(Array, NULL, NULL)
+#8 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(808): CodeIgniter\BaseModel->validate(Array)
+#9 C:\xampp\htdocs\proyecto_taller\system\Model.php(800): CodeIgniter\BaseModel->insert(Array, true)
+#10 C:\xampp\htdocs\proyecto_taller\app\Controllers\UserController.php(64): CodeIgniter\Model->insert(Array)
+#11 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(933): App\Controllers\UserController->crear()
+#12 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#13 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#14 C:\xampp\htdocs\proyecto_taller\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#15 C:\xampp\htdocs\proyecto_taller\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#16 C:\xampp\htdocs\proyecto_taller\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#17 {main}
+CRITICAL - 2025-06-13 01:41:44 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user '****'@'localhost' (using password: YES)
+[Method: POST, Route: register]
+in SYSTEMPATH\Database\BaseConnection.php on line 467.
+ 1 SYSTEMPATH\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT 1
+FROM `usuarios`
+WHERE `correo` = :correo:
+ LIMIT 1', [...], false)
+ 3 SYSTEMPATH\Validation\Rules.php(175): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\Validation\StrictRules\Rules.php(187): CodeIgniter\Validation\Rules->is_unique('abdulham@gmail.com', 'usuarios.correo', [...])
+ 5 SYSTEMPATH\Validation\Validation.php(337): CodeIgniter\Validation\StrictRules\Rules->is_unique('abdulham@gmail.com', 'usuarios.correo', [...], null, 'correo')
+ 6 SYSTEMPATH\Validation\Validation.php(202): CodeIgniter\Validation\Validation->processRules('correo', 'correo', 'abdulham@gmail.com', [...], [...], 'correo')
+ 7 SYSTEMPATH\BaseModel.php(1576): CodeIgniter\Validation\Validation->run([...], null, null)
+ 8 SYSTEMPATH\BaseModel.php(808): CodeIgniter\BaseModel->validate([...])
+ 9 SYSTEMPATH\Model.php(800): CodeIgniter\BaseModel->insert([...], true)
+10 APPPATH\Controllers\UserController.php(64): CodeIgniter\Model->insert([...])
+11 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->crear()
+12 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+13 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+14 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+15 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+16 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-06-13 01:43:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-06-13 01:43:11 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'proyecto_cf'@'localhost' (using password: YES) in C:\xampp\htdocs\proyecto_taller\system\Database\MySQLi\Connection.php:202
+Stack trace:
+#0 C:\xampp\htdocs\proyecto_taller\system\Database\MySQLi\Connection.php(202): mysqli->real_connect('localhost', 'proyecto_cf', '9dejulio1449', 'costura_fina', 3306, '', 0)
+#1 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\proyecto_taller\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT 1\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\proyecto_taller\system\Validation\Rules.php(175): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\proyecto_taller\system\Validation\StrictRules\Rules.php(187): CodeIgniter\Validation\Rules->is_unique('abdulham@gmail....', 'usuarios.correo', Array)
+#6 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(337): CodeIgniter\Validation\StrictRules\Rules->is_unique('abdulham@gmail....', 'usuarios.correo', Array, NULL, 'correo')
+#7 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(202): CodeIgniter\Validation\Validation->processRules('correo', 'correo', 'abdulham@gmail....', Array, Array, 'correo')
+#8 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(1576): CodeIgniter\Validation\Validation->run(Array, NULL, NULL)
+#9 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(808): CodeIgniter\BaseModel->validate(Array)
+#10 C:\xampp\htdocs\proyecto_taller\system\Model.php(800): CodeIgniter\BaseModel->insert(Array, true)
+#11 C:\xampp\htdocs\proyecto_taller\app\Controllers\UserController.php(64): CodeIgniter\Model->insert(Array)
+#12 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(933): App\Controllers\UserController->crear()
+#13 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#14 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#15 C:\xampp\htdocs\proyecto_taller\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#16 C:\xampp\htdocs\proyecto_taller\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#17 C:\xampp\htdocs\proyecto_taller\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#18 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user '****'@'localhost' (using password: YES) in C:\xampp\htdocs\proyecto_taller\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\proyecto_taller\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT 1\nFROM `...', Array, false)
+#3 C:\xampp\htdocs\proyecto_taller\system\Validation\Rules.php(175): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp\htdocs\proyecto_taller\system\Validation\StrictRules\Rules.php(187): CodeIgniter\Validation\Rules->is_unique('abdulham@gmail....', 'usuarios.correo', Array)
+#5 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(337): CodeIgniter\Validation\StrictRules\Rules->is_unique('abdulham@gmail....', 'usuarios.correo', Array, NULL, 'correo')
+#6 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(202): CodeIgniter\Validation\Validation->processRules('correo', 'correo', 'abdulham@gmail....', Array, Array, 'correo')
+#7 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(1576): CodeIgniter\Validation\Validation->run(Array, NULL, NULL)
+#8 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(808): CodeIgniter\BaseModel->validate(Array)
+#9 C:\xampp\htdocs\proyecto_taller\system\Model.php(800): CodeIgniter\BaseModel->insert(Array, true)
+#10 C:\xampp\htdocs\proyecto_taller\app\Controllers\UserController.php(64): CodeIgniter\Model->insert(Array)
+#11 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(933): App\Controllers\UserController->crear()
+#12 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#13 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#14 C:\xampp\htdocs\proyecto_taller\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#15 C:\xampp\htdocs\proyecto_taller\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#16 C:\xampp\htdocs\proyecto_taller\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#17 {main}
+CRITICAL - 2025-06-13 01:43:11 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user '****'@'localhost' (using password: YES)
+[Method: POST, Route: register]
+in SYSTEMPATH\Database\BaseConnection.php on line 467.
+ 1 SYSTEMPATH\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT 1
+FROM `usuarios`
+WHERE `correo` = :correo:
+ LIMIT 1', [...], false)
+ 3 SYSTEMPATH\Validation\Rules.php(175): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\Validation\StrictRules\Rules.php(187): CodeIgniter\Validation\Rules->is_unique('abdulham@gmail.com', 'usuarios.correo', [...])
+ 5 SYSTEMPATH\Validation\Validation.php(337): CodeIgniter\Validation\StrictRules\Rules->is_unique('abdulham@gmail.com', 'usuarios.correo', [...], null, 'correo')
+ 6 SYSTEMPATH\Validation\Validation.php(202): CodeIgniter\Validation\Validation->processRules('correo', 'correo', 'abdulham@gmail.com', [...], [...], 'correo')
+ 7 SYSTEMPATH\BaseModel.php(1576): CodeIgniter\Validation\Validation->run([...], null, null)
+ 8 SYSTEMPATH\BaseModel.php(808): CodeIgniter\BaseModel->validate([...])
+ 9 SYSTEMPATH\Model.php(800): CodeIgniter\BaseModel->insert([...], true)
+10 APPPATH\Controllers\UserController.php(64): CodeIgniter\Model->insert([...])
+11 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->crear()
+12 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+13 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+14 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+15 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+16 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-06-13 01:43:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-06-13 01:44:02 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'proyecto_cf'@'localhost' (using password: YES) in C:\xampp\htdocs\proyecto_taller\system\Database\MySQLi\Connection.php:202
+Stack trace:
+#0 C:\xampp\htdocs\proyecto_taller\system\Database\MySQLi\Connection.php(202): mysqli->real_connect('localhost', 'proyecto_cf', '9dejulio1449', 'costura_fina', 3306, '', 0)
+#1 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\proyecto_taller\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT 1\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\proyecto_taller\system\Validation\Rules.php(175): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\proyecto_taller\system\Validation\StrictRules\Rules.php(187): CodeIgniter\Validation\Rules->is_unique('abdulham@gmail....', 'usuarios.correo', Array)
+#6 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(337): CodeIgniter\Validation\StrictRules\Rules->is_unique('abdulham@gmail....', 'usuarios.correo', Array, NULL, 'correo')
+#7 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(202): CodeIgniter\Validation\Validation->processRules('correo', 'correo', 'abdulham@gmail....', Array, Array, 'correo')
+#8 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(1576): CodeIgniter\Validation\Validation->run(Array, NULL, NULL)
+#9 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(808): CodeIgniter\BaseModel->validate(Array)
+#10 C:\xampp\htdocs\proyecto_taller\system\Model.php(800): CodeIgniter\BaseModel->insert(Array, true)
+#11 C:\xampp\htdocs\proyecto_taller\app\Controllers\UserController.php(64): CodeIgniter\Model->insert(Array)
+#12 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(933): App\Controllers\UserController->crear()
+#13 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#14 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#15 C:\xampp\htdocs\proyecto_taller\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#16 C:\xampp\htdocs\proyecto_taller\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#17 C:\xampp\htdocs\proyecto_taller\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#18 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user '****'@'localhost' (using password: YES) in C:\xampp\htdocs\proyecto_taller\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\proyecto_taller\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT 1\nFROM `...', Array, false)
+#3 C:\xampp\htdocs\proyecto_taller\system\Validation\Rules.php(175): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp\htdocs\proyecto_taller\system\Validation\StrictRules\Rules.php(187): CodeIgniter\Validation\Rules->is_unique('abdulham@gmail....', 'usuarios.correo', Array)
+#5 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(337): CodeIgniter\Validation\StrictRules\Rules->is_unique('abdulham@gmail....', 'usuarios.correo', Array, NULL, 'correo')
+#6 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(202): CodeIgniter\Validation\Validation->processRules('correo', 'correo', 'abdulham@gmail....', Array, Array, 'correo')
+#7 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(1576): CodeIgniter\Validation\Validation->run(Array, NULL, NULL)
+#8 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(808): CodeIgniter\BaseModel->validate(Array)
+#9 C:\xampp\htdocs\proyecto_taller\system\Model.php(800): CodeIgniter\BaseModel->insert(Array, true)
+#10 C:\xampp\htdocs\proyecto_taller\app\Controllers\UserController.php(64): CodeIgniter\Model->insert(Array)
+#11 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(933): App\Controllers\UserController->crear()
+#12 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#13 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#14 C:\xampp\htdocs\proyecto_taller\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#15 C:\xampp\htdocs\proyecto_taller\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#16 C:\xampp\htdocs\proyecto_taller\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#17 {main}
+CRITICAL - 2025-06-13 01:44:02 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user '****'@'localhost' (using password: YES)
+[Method: POST, Route: register]
+in SYSTEMPATH\Database\BaseConnection.php on line 467.
+ 1 SYSTEMPATH\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT 1
+FROM `usuarios`
+WHERE `correo` = :correo:
+ LIMIT 1', [...], false)
+ 3 SYSTEMPATH\Validation\Rules.php(175): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\Validation\StrictRules\Rules.php(187): CodeIgniter\Validation\Rules->is_unique('abdulham@gmail.com', 'usuarios.correo', [...])
+ 5 SYSTEMPATH\Validation\Validation.php(337): CodeIgniter\Validation\StrictRules\Rules->is_unique('abdulham@gmail.com', 'usuarios.correo', [...], null, 'correo')
+ 6 SYSTEMPATH\Validation\Validation.php(202): CodeIgniter\Validation\Validation->processRules('correo', 'correo', 'abdulham@gmail.com', [...], [...], 'correo')
+ 7 SYSTEMPATH\BaseModel.php(1576): CodeIgniter\Validation\Validation->run([...], null, null)
+ 8 SYSTEMPATH\BaseModel.php(808): CodeIgniter\BaseModel->validate([...])
+ 9 SYSTEMPATH\Model.php(800): CodeIgniter\BaseModel->insert([...], true)
+10 APPPATH\Controllers\UserController.php(64): CodeIgniter\Model->insert([...])
+11 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->crear()
+12 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+13 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+14 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+15 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+16 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-06-13 01:44:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-06-13 01:44:43 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'proyecto_cf'@'localhost' (using password: YES) in C:\xampp\htdocs\proyecto_taller\system\Database\MySQLi\Connection.php:202
+Stack trace:
+#0 C:\xampp\htdocs\proyecto_taller\system\Database\MySQLi\Connection.php(202): mysqli->real_connect('localhost', 'proyecto_cf', '9dejulio1449', 'costura_fina', 3306, '', 0)
+#1 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\proyecto_taller\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT 1\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\proyecto_taller\system\Validation\Rules.php(175): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\proyecto_taller\system\Validation\StrictRules\Rules.php(187): CodeIgniter\Validation\Rules->is_unique('abdulham@gmail....', 'usuarios.correo', Array)
+#6 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(337): CodeIgniter\Validation\StrictRules\Rules->is_unique('abdulham@gmail....', 'usuarios.correo', Array, NULL, 'correo')
+#7 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(202): CodeIgniter\Validation\Validation->processRules('correo', 'correo', 'abdulham@gmail....', Array, Array, 'correo')
+#8 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(1576): CodeIgniter\Validation\Validation->run(Array, NULL, NULL)
+#9 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(808): CodeIgniter\BaseModel->validate(Array)
+#10 C:\xampp\htdocs\proyecto_taller\system\Model.php(800): CodeIgniter\BaseModel->insert(Array, true)
+#11 C:\xampp\htdocs\proyecto_taller\app\Controllers\UserController.php(64): CodeIgniter\Model->insert(Array)
+#12 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(933): App\Controllers\UserController->crear()
+#13 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#14 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#15 C:\xampp\htdocs\proyecto_taller\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#16 C:\xampp\htdocs\proyecto_taller\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#17 C:\xampp\htdocs\proyecto_taller\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#18 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user '****'@'localhost' (using password: YES) in C:\xampp\htdocs\proyecto_taller\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\proyecto_taller\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT 1\nFROM `...', Array, false)
+#3 C:\xampp\htdocs\proyecto_taller\system\Validation\Rules.php(175): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp\htdocs\proyecto_taller\system\Validation\StrictRules\Rules.php(187): CodeIgniter\Validation\Rules->is_unique('abdulham@gmail....', 'usuarios.correo', Array)
+#5 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(337): CodeIgniter\Validation\StrictRules\Rules->is_unique('abdulham@gmail....', 'usuarios.correo', Array, NULL, 'correo')
+#6 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(202): CodeIgniter\Validation\Validation->processRules('correo', 'correo', 'abdulham@gmail....', Array, Array, 'correo')
+#7 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(1576): CodeIgniter\Validation\Validation->run(Array, NULL, NULL)
+#8 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(808): CodeIgniter\BaseModel->validate(Array)
+#9 C:\xampp\htdocs\proyecto_taller\system\Model.php(800): CodeIgniter\BaseModel->insert(Array, true)
+#10 C:\xampp\htdocs\proyecto_taller\app\Controllers\UserController.php(64): CodeIgniter\Model->insert(Array)
+#11 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(933): App\Controllers\UserController->crear()
+#12 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#13 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#14 C:\xampp\htdocs\proyecto_taller\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#15 C:\xampp\htdocs\proyecto_taller\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#16 C:\xampp\htdocs\proyecto_taller\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#17 {main}
+CRITICAL - 2025-06-13 01:44:43 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user '****'@'localhost' (using password: YES)
+[Method: POST, Route: register]
+in SYSTEMPATH\Database\BaseConnection.php on line 467.
+ 1 SYSTEMPATH\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT 1
+FROM `usuarios`
+WHERE `correo` = :correo:
+ LIMIT 1', [...], false)
+ 3 SYSTEMPATH\Validation\Rules.php(175): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\Validation\StrictRules\Rules.php(187): CodeIgniter\Validation\Rules->is_unique('abdulham@gmail.com', 'usuarios.correo', [...])
+ 5 SYSTEMPATH\Validation\Validation.php(337): CodeIgniter\Validation\StrictRules\Rules->is_unique('abdulham@gmail.com', 'usuarios.correo', [...], null, 'correo')
+ 6 SYSTEMPATH\Validation\Validation.php(202): CodeIgniter\Validation\Validation->processRules('correo', 'correo', 'abdulham@gmail.com', [...], [...], 'correo')
+ 7 SYSTEMPATH\BaseModel.php(1576): CodeIgniter\Validation\Validation->run([...], null, null)
+ 8 SYSTEMPATH\BaseModel.php(808): CodeIgniter\BaseModel->validate([...])
+ 9 SYSTEMPATH\Model.php(800): CodeIgniter\BaseModel->insert([...], true)
+10 APPPATH\Controllers\UserController.php(64): CodeIgniter\Model->insert([...])
+11 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->crear()
+12 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+13 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+14 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+15 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+16 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-06-13 01:49:57 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'proyecto_cf'@'localhost' (using password: YES) in C:\xampp\htdocs\proyecto_taller\system\Database\MySQLi\Connection.php:202
+Stack trace:
+#0 C:\xampp\htdocs\proyecto_taller\system\Database\MySQLi\Connection.php(202): mysqli->real_connect('localhost', 'proyecto_cf', '9dejulio1449', 'costura_fina', 3306, '', 0)
+#1 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\proyecto_taller\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT 1\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\proyecto_taller\system\Validation\Rules.php(175): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\proyecto_taller\system\Validation\StrictRules\Rules.php(187): CodeIgniter\Validation\Rules->is_unique('abdulham@gmail....', 'usuarios.correo', Array)
+#6 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(337): CodeIgniter\Validation\StrictRules\Rules->is_unique('abdulham@gmail....', 'usuarios.correo', Array, NULL, 'correo')
+#7 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(202): CodeIgniter\Validation\Validation->processRules('correo', 'correo', 'abdulham@gmail....', Array, Array, 'correo')
+#8 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(1576): CodeIgniter\Validation\Validation->run(Array, NULL, NULL)
+#9 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(808): CodeIgniter\BaseModel->validate(Array)
+#10 C:\xampp\htdocs\proyecto_taller\system\Model.php(800): CodeIgniter\BaseModel->insert(Array, true)
+#11 C:\xampp\htdocs\proyecto_taller\app\Controllers\UserController.php(51): CodeIgniter\Model->insert(Array)
+#12 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(933): App\Controllers\UserController->crear()
+#13 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#14 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#15 C:\xampp\htdocs\proyecto_taller\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#16 C:\xampp\htdocs\proyecto_taller\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#17 C:\xampp\htdocs\proyecto_taller\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#18 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user '****'@'localhost' (using password: YES) in C:\xampp\htdocs\proyecto_taller\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\proyecto_taller\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT 1\nFROM `...', Array, false)
+#3 C:\xampp\htdocs\proyecto_taller\system\Validation\Rules.php(175): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp\htdocs\proyecto_taller\system\Validation\StrictRules\Rules.php(187): CodeIgniter\Validation\Rules->is_unique('abdulham@gmail....', 'usuarios.correo', Array)
+#5 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(337): CodeIgniter\Validation\StrictRules\Rules->is_unique('abdulham@gmail....', 'usuarios.correo', Array, NULL, 'correo')
+#6 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(202): CodeIgniter\Validation\Validation->processRules('correo', 'correo', 'abdulham@gmail....', Array, Array, 'correo')
+#7 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(1576): CodeIgniter\Validation\Validation->run(Array, NULL, NULL)
+#8 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(808): CodeIgniter\BaseModel->validate(Array)
+#9 C:\xampp\htdocs\proyecto_taller\system\Model.php(800): CodeIgniter\BaseModel->insert(Array, true)
+#10 C:\xampp\htdocs\proyecto_taller\app\Controllers\UserController.php(51): CodeIgniter\Model->insert(Array)
+#11 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(933): App\Controllers\UserController->crear()
+#12 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#13 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#14 C:\xampp\htdocs\proyecto_taller\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#15 C:\xampp\htdocs\proyecto_taller\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#16 C:\xampp\htdocs\proyecto_taller\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#17 {main}
+CRITICAL - 2025-06-13 01:49:57 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user '****'@'localhost' (using password: YES)
+[Method: POST, Route: register]
+in SYSTEMPATH\Database\BaseConnection.php on line 467.
+ 1 SYSTEMPATH\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT 1
+FROM `usuarios`
+WHERE `correo` = :correo:
+ LIMIT 1', [...], false)
+ 3 SYSTEMPATH\Validation\Rules.php(175): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\Validation\StrictRules\Rules.php(187): CodeIgniter\Validation\Rules->is_unique('abdulham@gmail.com', 'usuarios.correo', [...])
+ 5 SYSTEMPATH\Validation\Validation.php(337): CodeIgniter\Validation\StrictRules\Rules->is_unique('abdulham@gmail.com', 'usuarios.correo', [...], null, 'correo')
+ 6 SYSTEMPATH\Validation\Validation.php(202): CodeIgniter\Validation\Validation->processRules('correo', 'correo', 'abdulham@gmail.com', [...], [...], 'correo')
+ 7 SYSTEMPATH\BaseModel.php(1576): CodeIgniter\Validation\Validation->run([...], null, null)
+ 8 SYSTEMPATH\BaseModel.php(808): CodeIgniter\BaseModel->validate([...])
+ 9 SYSTEMPATH\Model.php(800): CodeIgniter\BaseModel->insert([...], true)
+10 APPPATH\Controllers\UserController.php(51): CodeIgniter\Model->insert([...])
+11 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->crear()
+12 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+13 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+14 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+15 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+16 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-06-13 01:49:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-06-13 01:50:04 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'proyecto_cf'@'localhost' (using password: YES) in C:\xampp\htdocs\proyecto_taller\system\Database\MySQLi\Connection.php:202
+Stack trace:
+#0 C:\xampp\htdocs\proyecto_taller\system\Database\MySQLi\Connection.php(202): mysqli->real_connect('localhost', 'proyecto_cf', '9dejulio1449', 'costura_fina', 3306, '', 0)
+#1 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\proyecto_taller\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT 1\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\proyecto_taller\system\Validation\Rules.php(175): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\proyecto_taller\system\Validation\StrictRules\Rules.php(187): CodeIgniter\Validation\Rules->is_unique('abdulham@gmail....', 'usuarios.correo', Array)
+#6 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(337): CodeIgniter\Validation\StrictRules\Rules->is_unique('abdulham@gmail....', 'usuarios.correo', Array, NULL, 'correo')
+#7 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(202): CodeIgniter\Validation\Validation->processRules('correo', 'correo', 'abdulham@gmail....', Array, Array, 'correo')
+#8 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(1576): CodeIgniter\Validation\Validation->run(Array, NULL, NULL)
+#9 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(808): CodeIgniter\BaseModel->validate(Array)
+#10 C:\xampp\htdocs\proyecto_taller\system\Model.php(800): CodeIgniter\BaseModel->insert(Array, true)
+#11 C:\xampp\htdocs\proyecto_taller\app\Controllers\UserController.php(51): CodeIgniter\Model->insert(Array)
+#12 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(933): App\Controllers\UserController->crear()
+#13 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#14 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#15 C:\xampp\htdocs\proyecto_taller\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#16 C:\xampp\htdocs\proyecto_taller\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#17 C:\xampp\htdocs\proyecto_taller\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#18 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user '****'@'localhost' (using password: YES) in C:\xampp\htdocs\proyecto_taller\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\proyecto_taller\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT 1\nFROM `...', Array, false)
+#3 C:\xampp\htdocs\proyecto_taller\system\Validation\Rules.php(175): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp\htdocs\proyecto_taller\system\Validation\StrictRules\Rules.php(187): CodeIgniter\Validation\Rules->is_unique('abdulham@gmail....', 'usuarios.correo', Array)
+#5 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(337): CodeIgniter\Validation\StrictRules\Rules->is_unique('abdulham@gmail....', 'usuarios.correo', Array, NULL, 'correo')
+#6 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(202): CodeIgniter\Validation\Validation->processRules('correo', 'correo', 'abdulham@gmail....', Array, Array, 'correo')
+#7 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(1576): CodeIgniter\Validation\Validation->run(Array, NULL, NULL)
+#8 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(808): CodeIgniter\BaseModel->validate(Array)
+#9 C:\xampp\htdocs\proyecto_taller\system\Model.php(800): CodeIgniter\BaseModel->insert(Array, true)
+#10 C:\xampp\htdocs\proyecto_taller\app\Controllers\UserController.php(51): CodeIgniter\Model->insert(Array)
+#11 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(933): App\Controllers\UserController->crear()
+#12 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#13 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#14 C:\xampp\htdocs\proyecto_taller\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#15 C:\xampp\htdocs\proyecto_taller\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#16 C:\xampp\htdocs\proyecto_taller\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#17 {main}
+CRITICAL - 2025-06-13 01:50:04 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user '****'@'localhost' (using password: YES)
+[Method: POST, Route: register]
+in SYSTEMPATH\Database\BaseConnection.php on line 467.
+ 1 SYSTEMPATH\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT 1
+FROM `usuarios`
+WHERE `correo` = :correo:
+ LIMIT 1', [...], false)
+ 3 SYSTEMPATH\Validation\Rules.php(175): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\Validation\StrictRules\Rules.php(187): CodeIgniter\Validation\Rules->is_unique('abdulham@gmail.com', 'usuarios.correo', [...])
+ 5 SYSTEMPATH\Validation\Validation.php(337): CodeIgniter\Validation\StrictRules\Rules->is_unique('abdulham@gmail.com', 'usuarios.correo', [...], null, 'correo')
+ 6 SYSTEMPATH\Validation\Validation.php(202): CodeIgniter\Validation\Validation->processRules('correo', 'correo', 'abdulham@gmail.com', [...], [...], 'correo')
+ 7 SYSTEMPATH\BaseModel.php(1576): CodeIgniter\Validation\Validation->run([...], null, null)
+ 8 SYSTEMPATH\BaseModel.php(808): CodeIgniter\BaseModel->validate([...])
+ 9 SYSTEMPATH\Model.php(800): CodeIgniter\BaseModel->insert([...], true)
+10 APPPATH\Controllers\UserController.php(51): CodeIgniter\Model->insert([...])
+11 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->crear()
+12 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+13 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+14 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+15 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+16 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-06-13 01:51:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-06-13 01:51:04 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'proyecto_cf'@'localhost' (using password: YES) in C:\xampp\htdocs\proyecto_taller\system\Database\MySQLi\Connection.php:202
+Stack trace:
+#0 C:\xampp\htdocs\proyecto_taller\system\Database\MySQLi\Connection.php(202): mysqli->real_connect('localhost', 'proyecto_cf', '9dejulio1449', 'costura_fina', 3306, '', 0)
+#1 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\proyecto_taller\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT 1\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\proyecto_taller\system\Validation\Rules.php(175): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\proyecto_taller\system\Validation\StrictRules\Rules.php(187): CodeIgniter\Validation\Rules->is_unique('abdulham@gmail....', 'usuarios.correo', Array)
+#6 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(337): CodeIgniter\Validation\StrictRules\Rules->is_unique('abdulham@gmail....', 'usuarios.correo', Array, NULL, 'correo')
+#7 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(202): CodeIgniter\Validation\Validation->processRules('correo', 'correo', 'abdulham@gmail....', Array, Array, 'correo')
+#8 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(1576): CodeIgniter\Validation\Validation->run(Array, NULL, NULL)
+#9 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(808): CodeIgniter\BaseModel->validate(Array)
+#10 C:\xampp\htdocs\proyecto_taller\system\Model.php(800): CodeIgniter\BaseModel->insert(Array, true)
+#11 C:\xampp\htdocs\proyecto_taller\app\Controllers\UserController.php(51): CodeIgniter\Model->insert(Array)
+#12 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(933): App\Controllers\UserController->crear()
+#13 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#14 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#15 C:\xampp\htdocs\proyecto_taller\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#16 C:\xampp\htdocs\proyecto_taller\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#17 C:\xampp\htdocs\proyecto_taller\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#18 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user '****'@'localhost' (using password: YES) in C:\xampp\htdocs\proyecto_taller\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\proyecto_taller\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT 1\nFROM `...', Array, false)
+#3 C:\xampp\htdocs\proyecto_taller\system\Validation\Rules.php(175): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp\htdocs\proyecto_taller\system\Validation\StrictRules\Rules.php(187): CodeIgniter\Validation\Rules->is_unique('abdulham@gmail....', 'usuarios.correo', Array)
+#5 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(337): CodeIgniter\Validation\StrictRules\Rules->is_unique('abdulham@gmail....', 'usuarios.correo', Array, NULL, 'correo')
+#6 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(202): CodeIgniter\Validation\Validation->processRules('correo', 'correo', 'abdulham@gmail....', Array, Array, 'correo')
+#7 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(1576): CodeIgniter\Validation\Validation->run(Array, NULL, NULL)
+#8 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(808): CodeIgniter\BaseModel->validate(Array)
+#9 C:\xampp\htdocs\proyecto_taller\system\Model.php(800): CodeIgniter\BaseModel->insert(Array, true)
+#10 C:\xampp\htdocs\proyecto_taller\app\Controllers\UserController.php(51): CodeIgniter\Model->insert(Array)
+#11 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(933): App\Controllers\UserController->crear()
+#12 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#13 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#14 C:\xampp\htdocs\proyecto_taller\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#15 C:\xampp\htdocs\proyecto_taller\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#16 C:\xampp\htdocs\proyecto_taller\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#17 {main}
+CRITICAL - 2025-06-13 01:51:04 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user '****'@'localhost' (using password: YES)
+[Method: POST, Route: register]
+in SYSTEMPATH\Database\BaseConnection.php on line 467.
+ 1 SYSTEMPATH\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT 1
+FROM `usuarios`
+WHERE `correo` = :correo:
+ LIMIT 1', [...], false)
+ 3 SYSTEMPATH\Validation\Rules.php(175): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\Validation\StrictRules\Rules.php(187): CodeIgniter\Validation\Rules->is_unique('abdulham@gmail.com', 'usuarios.correo', [...])
+ 5 SYSTEMPATH\Validation\Validation.php(337): CodeIgniter\Validation\StrictRules\Rules->is_unique('abdulham@gmail.com', 'usuarios.correo', [...], null, 'correo')
+ 6 SYSTEMPATH\Validation\Validation.php(202): CodeIgniter\Validation\Validation->processRules('correo', 'correo', 'abdulham@gmail.com', [...], [...], 'correo')
+ 7 SYSTEMPATH\BaseModel.php(1576): CodeIgniter\Validation\Validation->run([...], null, null)
+ 8 SYSTEMPATH\BaseModel.php(808): CodeIgniter\BaseModel->validate([...])
+ 9 SYSTEMPATH\Model.php(800): CodeIgniter\BaseModel->insert([...], true)
+10 APPPATH\Controllers\UserController.php(51): CodeIgniter\Model->insert([...])
+11 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->crear()
+12 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+13 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+14 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+15 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+16 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-06-13 01:57:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-06-13 01:58:04 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'proyecto_cf'@'localhost' (using password: YES) in C:\xampp\htdocs\proyecto_taller\system\Database\MySQLi\Connection.php:202
+Stack trace:
+#0 C:\xampp\htdocs\proyecto_taller\system\Database\MySQLi\Connection.php(202): mysqli->real_connect('localhost', 'proyecto_cf', '9dejulio1449', 'costura_fina', 3306, '', 0)
+#1 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\proyecto_taller\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT 1\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\proyecto_taller\system\Validation\Rules.php(175): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\proyecto_taller\system\Validation\StrictRules\Rules.php(187): CodeIgniter\Validation\Rules->is_unique('abdulham@gmail....', 'usuarios.correo', Array)
+#6 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(337): CodeIgniter\Validation\StrictRules\Rules->is_unique('abdulham@gmail....', 'usuarios.correo', Array, NULL, 'correo')
+#7 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(202): CodeIgniter\Validation\Validation->processRules('correo', 'correo', 'abdulham@gmail....', Array, Array, 'correo')
+#8 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(1576): CodeIgniter\Validation\Validation->run(Array, NULL, NULL)
+#9 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(808): CodeIgniter\BaseModel->validate(Array)
+#10 C:\xampp\htdocs\proyecto_taller\system\Model.php(800): CodeIgniter\BaseModel->insert(Array, true)
+#11 C:\xampp\htdocs\proyecto_taller\app\Controllers\UserController.php(51): CodeIgniter\Model->insert(Array)
+#12 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(933): App\Controllers\UserController->crear()
+#13 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#14 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#15 C:\xampp\htdocs\proyecto_taller\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#16 C:\xampp\htdocs\proyecto_taller\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#17 C:\xampp\htdocs\proyecto_taller\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#18 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user '****'@'localhost' (using password: YES) in C:\xampp\htdocs\proyecto_taller\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\proyecto_taller\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT 1\nFROM `...', Array, false)
+#3 C:\xampp\htdocs\proyecto_taller\system\Validation\Rules.php(175): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp\htdocs\proyecto_taller\system\Validation\StrictRules\Rules.php(187): CodeIgniter\Validation\Rules->is_unique('abdulham@gmail....', 'usuarios.correo', Array)
+#5 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(337): CodeIgniter\Validation\StrictRules\Rules->is_unique('abdulham@gmail....', 'usuarios.correo', Array, NULL, 'correo')
+#6 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(202): CodeIgniter\Validation\Validation->processRules('correo', 'correo', 'abdulham@gmail....', Array, Array, 'correo')
+#7 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(1576): CodeIgniter\Validation\Validation->run(Array, NULL, NULL)
+#8 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(808): CodeIgniter\BaseModel->validate(Array)
+#9 C:\xampp\htdocs\proyecto_taller\system\Model.php(800): CodeIgniter\BaseModel->insert(Array, true)
+#10 C:\xampp\htdocs\proyecto_taller\app\Controllers\UserController.php(51): CodeIgniter\Model->insert(Array)
+#11 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(933): App\Controllers\UserController->crear()
+#12 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#13 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#14 C:\xampp\htdocs\proyecto_taller\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#15 C:\xampp\htdocs\proyecto_taller\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#16 C:\xampp\htdocs\proyecto_taller\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#17 {main}
+CRITICAL - 2025-06-13 01:58:04 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user '****'@'localhost' (using password: YES)
+[Method: POST, Route: register]
+in SYSTEMPATH\Database\BaseConnection.php on line 467.
+ 1 SYSTEMPATH\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT 1
+FROM `usuarios`
+WHERE `correo` = :correo:
+ LIMIT 1', [...], false)
+ 3 SYSTEMPATH\Validation\Rules.php(175): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\Validation\StrictRules\Rules.php(187): CodeIgniter\Validation\Rules->is_unique('abdulham@gmail.com', 'usuarios.correo', [...])
+ 5 SYSTEMPATH\Validation\Validation.php(337): CodeIgniter\Validation\StrictRules\Rules->is_unique('abdulham@gmail.com', 'usuarios.correo', [...], null, 'correo')
+ 6 SYSTEMPATH\Validation\Validation.php(202): CodeIgniter\Validation\Validation->processRules('correo', 'correo', 'abdulham@gmail.com', [...], [...], 'correo')
+ 7 SYSTEMPATH\BaseModel.php(1576): CodeIgniter\Validation\Validation->run([...], null, null)
+ 8 SYSTEMPATH\BaseModel.php(808): CodeIgniter\BaseModel->validate([...])
+ 9 SYSTEMPATH\Model.php(800): CodeIgniter\BaseModel->insert([...], true)
+10 APPPATH\Controllers\UserController.php(51): CodeIgniter\Model->insert([...])
+11 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->crear()
+12 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+13 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+14 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+15 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+16 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-06-13 01:58:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-13 01:58:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-06-13 01:58:50 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'proyecto_cf'@'localhost' (using password: YES) in C:\xampp\htdocs\proyecto_taller\system\Database\MySQLi\Connection.php:202
+Stack trace:
+#0 C:\xampp\htdocs\proyecto_taller\system\Database\MySQLi\Connection.php(202): mysqli->real_connect('localhost', 'proyecto_cf', '9dejulio1449', 'costura_fina', 3306, '', 0)
+#1 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\proyecto_taller\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT 1\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\proyecto_taller\system\Validation\Rules.php(175): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\proyecto_taller\system\Validation\StrictRules\Rules.php(187): CodeIgniter\Validation\Rules->is_unique('abdulham@gmail....', 'usuarios.correo', Array)
+#6 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(337): CodeIgniter\Validation\StrictRules\Rules->is_unique('abdulham@gmail....', 'usuarios.correo', Array, NULL, 'correo')
+#7 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(202): CodeIgniter\Validation\Validation->processRules('correo', 'correo', 'abdulham@gmail....', Array, Array, 'correo')
+#8 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(1576): CodeIgniter\Validation\Validation->run(Array, NULL, NULL)
+#9 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(808): CodeIgniter\BaseModel->validate(Array)
+#10 C:\xampp\htdocs\proyecto_taller\system\Model.php(800): CodeIgniter\BaseModel->insert(Array, true)
+#11 C:\xampp\htdocs\proyecto_taller\app\Controllers\UserController.php(51): CodeIgniter\Model->insert(Array)
+#12 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(933): App\Controllers\UserController->crear()
+#13 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#14 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#15 C:\xampp\htdocs\proyecto_taller\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#16 C:\xampp\htdocs\proyecto_taller\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#17 C:\xampp\htdocs\proyecto_taller\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#18 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user '****'@'localhost' (using password: YES) in C:\xampp\htdocs\proyecto_taller\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\proyecto_taller\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT 1\nFROM `...', Array, false)
+#3 C:\xampp\htdocs\proyecto_taller\system\Validation\Rules.php(175): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp\htdocs\proyecto_taller\system\Validation\StrictRules\Rules.php(187): CodeIgniter\Validation\Rules->is_unique('abdulham@gmail....', 'usuarios.correo', Array)
+#5 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(337): CodeIgniter\Validation\StrictRules\Rules->is_unique('abdulham@gmail....', 'usuarios.correo', Array, NULL, 'correo')
+#6 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(202): CodeIgniter\Validation\Validation->processRules('correo', 'correo', 'abdulham@gmail....', Array, Array, 'correo')
+#7 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(1576): CodeIgniter\Validation\Validation->run(Array, NULL, NULL)
+#8 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(808): CodeIgniter\BaseModel->validate(Array)
+#9 C:\xampp\htdocs\proyecto_taller\system\Model.php(800): CodeIgniter\BaseModel->insert(Array, true)
+#10 C:\xampp\htdocs\proyecto_taller\app\Controllers\UserController.php(51): CodeIgniter\Model->insert(Array)
+#11 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(933): App\Controllers\UserController->crear()
+#12 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#13 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#14 C:\xampp\htdocs\proyecto_taller\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#15 C:\xampp\htdocs\proyecto_taller\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#16 C:\xampp\htdocs\proyecto_taller\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#17 {main}
+CRITICAL - 2025-06-13 01:58:50 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user '****'@'localhost' (using password: YES)
+[Method: POST, Route: register]
+in SYSTEMPATH\Database\BaseConnection.php on line 467.
+ 1 SYSTEMPATH\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT 1
+FROM `usuarios`
+WHERE `correo` = :correo:
+ LIMIT 1', [...], false)
+ 3 SYSTEMPATH\Validation\Rules.php(175): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\Validation\StrictRules\Rules.php(187): CodeIgniter\Validation\Rules->is_unique('abdulham@gmail.com', 'usuarios.correo', [...])
+ 5 SYSTEMPATH\Validation\Validation.php(337): CodeIgniter\Validation\StrictRules\Rules->is_unique('abdulham@gmail.com', 'usuarios.correo', [...], null, 'correo')
+ 6 SYSTEMPATH\Validation\Validation.php(202): CodeIgniter\Validation\Validation->processRules('correo', 'correo', 'abdulham@gmail.com', [...], [...], 'correo')
+ 7 SYSTEMPATH\BaseModel.php(1576): CodeIgniter\Validation\Validation->run([...], null, null)
+ 8 SYSTEMPATH\BaseModel.php(808): CodeIgniter\BaseModel->validate([...])
+ 9 SYSTEMPATH\Model.php(800): CodeIgniter\BaseModel->insert([...], true)
+10 APPPATH\Controllers\UserController.php(51): CodeIgniter\Model->insert([...])
+11 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->crear()
+12 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+13 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+14 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+15 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+16 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-06-13 02:03:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-06-13 02:03:27 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'proyecto_cf'@'localhost' (using password: YES) in C:\xampp\htdocs\proyecto_taller\system\Database\MySQLi\Connection.php:202
+Stack trace:
+#0 C:\xampp\htdocs\proyecto_taller\system\Database\MySQLi\Connection.php(202): mysqli->real_connect('localhost', 'proyecto_cf', '9dejulio1449', 'costura_fina', 3306, '', 0)
+#1 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\proyecto_taller\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT 1\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\proyecto_taller\system\Validation\Rules.php(175): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\proyecto_taller\system\Validation\StrictRules\Rules.php(187): CodeIgniter\Validation\Rules->is_unique('abdulham@gmail....', 'usuarios.correo', Array)
+#6 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(337): CodeIgniter\Validation\StrictRules\Rules->is_unique('abdulham@gmail....', 'usuarios.correo', Array, NULL, 'correo')
+#7 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(202): CodeIgniter\Validation\Validation->processRules('correo', 'correo', 'abdulham@gmail....', Array, Array, 'correo')
+#8 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(1576): CodeIgniter\Validation\Validation->run(Array, NULL, NULL)
+#9 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(808): CodeIgniter\BaseModel->validate(Array)
+#10 C:\xampp\htdocs\proyecto_taller\system\Model.php(800): CodeIgniter\BaseModel->insert(Array, true)
+#11 C:\xampp\htdocs\proyecto_taller\app\Controllers\UserController.php(51): CodeIgniter\Model->insert(Array)
+#12 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(933): App\Controllers\UserController->crear()
+#13 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#14 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#15 C:\xampp\htdocs\proyecto_taller\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#16 C:\xampp\htdocs\proyecto_taller\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#17 C:\xampp\htdocs\proyecto_taller\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#18 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user '****'@'localhost' (using password: YES) in C:\xampp\htdocs\proyecto_taller\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\proyecto_taller\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT 1\nFROM `...', Array, false)
+#3 C:\xampp\htdocs\proyecto_taller\system\Validation\Rules.php(175): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp\htdocs\proyecto_taller\system\Validation\StrictRules\Rules.php(187): CodeIgniter\Validation\Rules->is_unique('abdulham@gmail....', 'usuarios.correo', Array)
+#5 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(337): CodeIgniter\Validation\StrictRules\Rules->is_unique('abdulham@gmail....', 'usuarios.correo', Array, NULL, 'correo')
+#6 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(202): CodeIgniter\Validation\Validation->processRules('correo', 'correo', 'abdulham@gmail....', Array, Array, 'correo')
+#7 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(1576): CodeIgniter\Validation\Validation->run(Array, NULL, NULL)
+#8 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(808): CodeIgniter\BaseModel->validate(Array)
+#9 C:\xampp\htdocs\proyecto_taller\system\Model.php(800): CodeIgniter\BaseModel->insert(Array, true)
+#10 C:\xampp\htdocs\proyecto_taller\app\Controllers\UserController.php(51): CodeIgniter\Model->insert(Array)
+#11 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(933): App\Controllers\UserController->crear()
+#12 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#13 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#14 C:\xampp\htdocs\proyecto_taller\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#15 C:\xampp\htdocs\proyecto_taller\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#16 C:\xampp\htdocs\proyecto_taller\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#17 {main}
+CRITICAL - 2025-06-13 02:03:27 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user '****'@'localhost' (using password: YES)
+[Method: POST, Route: register]
+in SYSTEMPATH\Database\BaseConnection.php on line 467.
+ 1 SYSTEMPATH\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT 1
+FROM `usuarios`
+WHERE `correo` = :correo:
+ LIMIT 1', [...], false)
+ 3 SYSTEMPATH\Validation\Rules.php(175): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\Validation\StrictRules\Rules.php(187): CodeIgniter\Validation\Rules->is_unique('abdulham@gmail.com', 'usuarios.correo', [...])
+ 5 SYSTEMPATH\Validation\Validation.php(337): CodeIgniter\Validation\StrictRules\Rules->is_unique('abdulham@gmail.com', 'usuarios.correo', [...], null, 'correo')
+ 6 SYSTEMPATH\Validation\Validation.php(202): CodeIgniter\Validation\Validation->processRules('correo', 'correo', 'abdulham@gmail.com', [...], [...], 'correo')
+ 7 SYSTEMPATH\BaseModel.php(1576): CodeIgniter\Validation\Validation->run([...], null, null)
+ 8 SYSTEMPATH\BaseModel.php(808): CodeIgniter\BaseModel->validate([...])
+ 9 SYSTEMPATH\Model.php(800): CodeIgniter\BaseModel->insert([...], true)
+10 APPPATH\Controllers\UserController.php(51): CodeIgniter\Model->insert([...])
+11 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->crear()
+12 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+13 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+14 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+15 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+16 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-06-13 02:03:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-13 02:03:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-06-13 02:03:41 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'proyecto_cf'@'localhost' (using password: YES) in C:\xampp\htdocs\proyecto_taller\system\Database\MySQLi\Connection.php:202
+Stack trace:
+#0 C:\xampp\htdocs\proyecto_taller\system\Database\MySQLi\Connection.php(202): mysqli->real_connect('localhost', 'proyecto_cf', '9dejulio1449', 'costura_fina', 3306, '', 0)
+#1 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\proyecto_taller\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT 1\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\proyecto_taller\system\Validation\Rules.php(175): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\proyecto_taller\system\Validation\StrictRules\Rules.php(187): CodeIgniter\Validation\Rules->is_unique('abdulcalculo@gm...', 'usuarios.correo', Array)
+#6 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(337): CodeIgniter\Validation\StrictRules\Rules->is_unique('abdulcalculo@gm...', 'usuarios.correo', Array, NULL, 'correo')
+#7 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(202): CodeIgniter\Validation\Validation->processRules('correo', 'correo', 'abdulcalculo@gm...', Array, Array, 'correo')
+#8 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(1576): CodeIgniter\Validation\Validation->run(Array, NULL, NULL)
+#9 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(808): CodeIgniter\BaseModel->validate(Array)
+#10 C:\xampp\htdocs\proyecto_taller\system\Model.php(800): CodeIgniter\BaseModel->insert(Array, true)
+#11 C:\xampp\htdocs\proyecto_taller\app\Controllers\UserController.php(51): CodeIgniter\Model->insert(Array)
+#12 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(933): App\Controllers\UserController->crear()
+#13 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#14 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#15 C:\xampp\htdocs\proyecto_taller\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#16 C:\xampp\htdocs\proyecto_taller\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#17 C:\xampp\htdocs\proyecto_taller\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#18 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user '****'@'localhost' (using password: YES) in C:\xampp\htdocs\proyecto_taller\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\proyecto_taller\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT 1\nFROM `...', Array, false)
+#3 C:\xampp\htdocs\proyecto_taller\system\Validation\Rules.php(175): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp\htdocs\proyecto_taller\system\Validation\StrictRules\Rules.php(187): CodeIgniter\Validation\Rules->is_unique('abdulcalculo@gm...', 'usuarios.correo', Array)
+#5 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(337): CodeIgniter\Validation\StrictRules\Rules->is_unique('abdulcalculo@gm...', 'usuarios.correo', Array, NULL, 'correo')
+#6 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(202): CodeIgniter\Validation\Validation->processRules('correo', 'correo', 'abdulcalculo@gm...', Array, Array, 'correo')
+#7 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(1576): CodeIgniter\Validation\Validation->run(Array, NULL, NULL)
+#8 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(808): CodeIgniter\BaseModel->validate(Array)
+#9 C:\xampp\htdocs\proyecto_taller\system\Model.php(800): CodeIgniter\BaseModel->insert(Array, true)
+#10 C:\xampp\htdocs\proyecto_taller\app\Controllers\UserController.php(51): CodeIgniter\Model->insert(Array)
+#11 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(933): App\Controllers\UserController->crear()
+#12 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#13 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#14 C:\xampp\htdocs\proyecto_taller\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#15 C:\xampp\htdocs\proyecto_taller\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#16 C:\xampp\htdocs\proyecto_taller\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#17 {main}
+CRITICAL - 2025-06-13 02:03:41 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user '****'@'localhost' (using password: YES)
+[Method: POST, Route: register]
+in SYSTEMPATH\Database\BaseConnection.php on line 467.
+ 1 SYSTEMPATH\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT 1
+FROM `usuarios`
+WHERE `correo` = :correo:
+ LIMIT 1', [...], false)
+ 3 SYSTEMPATH\Validation\Rules.php(175): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\Validation\StrictRules\Rules.php(187): CodeIgniter\Validation\Rules->is_unique('abdulcalculo@gmail.com', 'usuarios.correo', [...])
+ 5 SYSTEMPATH\Validation\Validation.php(337): CodeIgniter\Validation\StrictRules\Rules->is_unique('abdulcalculo@gmail.com', 'usuarios.correo', [...], null, 'correo')
+ 6 SYSTEMPATH\Validation\Validation.php(202): CodeIgniter\Validation\Validation->processRules('correo', 'correo', 'abdulcalculo@gmail.com', [...], [...], 'correo')
+ 7 SYSTEMPATH\BaseModel.php(1576): CodeIgniter\Validation\Validation->run([...], null, null)
+ 8 SYSTEMPATH\BaseModel.php(808): CodeIgniter\BaseModel->validate([...])
+ 9 SYSTEMPATH\Model.php(800): CodeIgniter\BaseModel->insert([...], true)
+10 APPPATH\Controllers\UserController.php(51): CodeIgniter\Model->insert([...])
+11 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->crear()
+12 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+13 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+14 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+15 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+16 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-06-13 02:07:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-06-13 02:07:48 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'proyecto_cf'@'localhost' (using password: YES) in C:\xampp\htdocs\proyecto_taller\system\Database\MySQLi\Connection.php:202
+Stack trace:
+#0 C:\xampp\htdocs\proyecto_taller\system\Database\MySQLi\Connection.php(202): mysqli->real_connect('localhost', 'proyecto_cf', '9dejulio1449', 'costura_fina', 3306, '', 0)
+#1 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\proyecto_taller\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT 1\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\proyecto_taller\system\Validation\Rules.php(175): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\proyecto_taller\system\Validation\StrictRules\Rules.php(187): CodeIgniter\Validation\Rules->is_unique('abdulcalculo@gm...', 'usuarios.correo', Array)
+#6 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(337): CodeIgniter\Validation\StrictRules\Rules->is_unique('abdulcalculo@gm...', 'usuarios.correo', Array, NULL, 'correo')
+#7 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(202): CodeIgniter\Validation\Validation->processRules('correo', 'correo', 'abdulcalculo@gm...', Array, Array, 'correo')
+#8 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(1576): CodeIgniter\Validation\Validation->run(Array, NULL, NULL)
+#9 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(808): CodeIgniter\BaseModel->validate(Array)
+#10 C:\xampp\htdocs\proyecto_taller\system\Model.php(800): CodeIgniter\BaseModel->insert(Array, true)
+#11 C:\xampp\htdocs\proyecto_taller\app\Controllers\UserController.php(51): CodeIgniter\Model->insert(Array)
+#12 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(933): App\Controllers\UserController->crear()
+#13 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#14 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#15 C:\xampp\htdocs\proyecto_taller\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#16 C:\xampp\htdocs\proyecto_taller\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#17 C:\xampp\htdocs\proyecto_taller\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#18 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user '****'@'localhost' (using password: YES) in C:\xampp\htdocs\proyecto_taller\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\proyecto_taller\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT 1\nFROM `...', Array, false)
+#3 C:\xampp\htdocs\proyecto_taller\system\Validation\Rules.php(175): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp\htdocs\proyecto_taller\system\Validation\StrictRules\Rules.php(187): CodeIgniter\Validation\Rules->is_unique('abdulcalculo@gm...', 'usuarios.correo', Array)
+#5 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(337): CodeIgniter\Validation\StrictRules\Rules->is_unique('abdulcalculo@gm...', 'usuarios.correo', Array, NULL, 'correo')
+#6 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(202): CodeIgniter\Validation\Validation->processRules('correo', 'correo', 'abdulcalculo@gm...', Array, Array, 'correo')
+#7 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(1576): CodeIgniter\Validation\Validation->run(Array, NULL, NULL)
+#8 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(808): CodeIgniter\BaseModel->validate(Array)
+#9 C:\xampp\htdocs\proyecto_taller\system\Model.php(800): CodeIgniter\BaseModel->insert(Array, true)
+#10 C:\xampp\htdocs\proyecto_taller\app\Controllers\UserController.php(51): CodeIgniter\Model->insert(Array)
+#11 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(933): App\Controllers\UserController->crear()
+#12 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#13 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#14 C:\xampp\htdocs\proyecto_taller\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#15 C:\xampp\htdocs\proyecto_taller\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#16 C:\xampp\htdocs\proyecto_taller\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#17 {main}
+CRITICAL - 2025-06-13 02:07:48 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user '****'@'localhost' (using password: YES)
+[Method: POST, Route: register]
+in SYSTEMPATH\Database\BaseConnection.php on line 467.
+ 1 SYSTEMPATH\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT 1
+FROM `usuarios`
+WHERE `correo` = :correo:
+ LIMIT 1', [...], false)
+ 3 SYSTEMPATH\Validation\Rules.php(175): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\Validation\StrictRules\Rules.php(187): CodeIgniter\Validation\Rules->is_unique('abdulcalculo@gmail.com', 'usuarios.correo', [...])
+ 5 SYSTEMPATH\Validation\Validation.php(337): CodeIgniter\Validation\StrictRules\Rules->is_unique('abdulcalculo@gmail.com', 'usuarios.correo', [...], null, 'correo')
+ 6 SYSTEMPATH\Validation\Validation.php(202): CodeIgniter\Validation\Validation->processRules('correo', 'correo', 'abdulcalculo@gmail.com', [...], [...], 'correo')
+ 7 SYSTEMPATH\BaseModel.php(1576): CodeIgniter\Validation\Validation->run([...], null, null)
+ 8 SYSTEMPATH\BaseModel.php(808): CodeIgniter\BaseModel->validate([...])
+ 9 SYSTEMPATH\Model.php(800): CodeIgniter\BaseModel->insert([...], true)
+10 APPPATH\Controllers\UserController.php(51): CodeIgniter\Model->insert([...])
+11 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->crear()
+12 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+13 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+14 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+15 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+16 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-06-13 02:08:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-13 02:08:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-13 02:10:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-13 02:10:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-13 02:10:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-13 02:10:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-13 02:10:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-13 02:10:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-06-13 02:10:49 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'proyecto_cf'@'localhost' (using password: YES) in C:\xampp\htdocs\proyecto_taller\system\Database\MySQLi\Connection.php:202
+Stack trace:
+#0 C:\xampp\htdocs\proyecto_taller\system\Database\MySQLi\Connection.php(202): mysqli->real_connect('localhost', 'proyecto_cf', '9dejulio1449', 'costura_fina', 3306, '', 0)
+#1 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\proyecto_taller\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT 1\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\proyecto_taller\system\Validation\Rules.php(175): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\proyecto_taller\system\Validation\StrictRules\Rules.php(187): CodeIgniter\Validation\Rules->is_unique('abdala@gmail.co...', 'usuarios.correo', Array)
+#6 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(337): CodeIgniter\Validation\StrictRules\Rules->is_unique('abdala@gmail.co...', 'usuarios.correo', Array, NULL, 'correo')
+#7 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(202): CodeIgniter\Validation\Validation->processRules('correo', 'correo', 'abdala@gmail.co...', Array, Array, 'correo')
+#8 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(1576): CodeIgniter\Validation\Validation->run(Array, NULL, NULL)
+#9 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(808): CodeIgniter\BaseModel->validate(Array)
+#10 C:\xampp\htdocs\proyecto_taller\system\Model.php(800): CodeIgniter\BaseModel->insert(Array, true)
+#11 C:\xampp\htdocs\proyecto_taller\app\Controllers\UserController.php(51): CodeIgniter\Model->insert(Array)
+#12 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(933): App\Controllers\UserController->crear()
+#13 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#14 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#15 C:\xampp\htdocs\proyecto_taller\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#16 C:\xampp\htdocs\proyecto_taller\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#17 C:\xampp\htdocs\proyecto_taller\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#18 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user '****'@'localhost' (using password: YES) in C:\xampp\htdocs\proyecto_taller\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\proyecto_taller\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT 1\nFROM `...', Array, false)
+#3 C:\xampp\htdocs\proyecto_taller\system\Validation\Rules.php(175): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp\htdocs\proyecto_taller\system\Validation\StrictRules\Rules.php(187): CodeIgniter\Validation\Rules->is_unique('abdala@gmail.co...', 'usuarios.correo', Array)
+#5 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(337): CodeIgniter\Validation\StrictRules\Rules->is_unique('abdala@gmail.co...', 'usuarios.correo', Array, NULL, 'correo')
+#6 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(202): CodeIgniter\Validation\Validation->processRules('correo', 'correo', 'abdala@gmail.co...', Array, Array, 'correo')
+#7 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(1576): CodeIgniter\Validation\Validation->run(Array, NULL, NULL)
+#8 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(808): CodeIgniter\BaseModel->validate(Array)
+#9 C:\xampp\htdocs\proyecto_taller\system\Model.php(800): CodeIgniter\BaseModel->insert(Array, true)
+#10 C:\xampp\htdocs\proyecto_taller\app\Controllers\UserController.php(51): CodeIgniter\Model->insert(Array)
+#11 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(933): App\Controllers\UserController->crear()
+#12 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#13 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#14 C:\xampp\htdocs\proyecto_taller\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#15 C:\xampp\htdocs\proyecto_taller\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#16 C:\xampp\htdocs\proyecto_taller\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#17 {main}
+CRITICAL - 2025-06-13 02:10:49 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user '****'@'localhost' (using password: YES)
+[Method: POST, Route: register]
+in SYSTEMPATH\Database\BaseConnection.php on line 467.
+ 1 SYSTEMPATH\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT 1
+FROM `usuarios`
+WHERE `correo` = :correo:
+ LIMIT 1', [...], false)
+ 3 SYSTEMPATH\Validation\Rules.php(175): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\Validation\StrictRules\Rules.php(187): CodeIgniter\Validation\Rules->is_unique('abdala@gmail.com', 'usuarios.correo', [...])
+ 5 SYSTEMPATH\Validation\Validation.php(337): CodeIgniter\Validation\StrictRules\Rules->is_unique('abdala@gmail.com', 'usuarios.correo', [...], null, 'correo')
+ 6 SYSTEMPATH\Validation\Validation.php(202): CodeIgniter\Validation\Validation->processRules('correo', 'correo', 'abdala@gmail.com', [...], [...], 'correo')
+ 7 SYSTEMPATH\BaseModel.php(1576): CodeIgniter\Validation\Validation->run([...], null, null)
+ 8 SYSTEMPATH\BaseModel.php(808): CodeIgniter\BaseModel->validate([...])
+ 9 SYSTEMPATH\Model.php(800): CodeIgniter\BaseModel->insert([...], true)
+10 APPPATH\Controllers\UserController.php(51): CodeIgniter\Model->insert([...])
+11 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->crear()
+12 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+13 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+14 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+15 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+16 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-06-13 02:16:47 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'proyecto_cf'@'localhost' (using password: YES) in C:\xampp\htdocs\proyecto_taller\system\Database\MySQLi\Connection.php:202
+Stack trace:
+#0 C:\xampp\htdocs\proyecto_taller\system\Database\MySQLi\Connection.php(202): mysqli->real_connect('localhost', 'proyecto_cf', '9dejulio1449', 'costura_fina', 3306, '', 0)
+#1 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\proyecto_taller\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT 1\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\proyecto_taller\system\Validation\Rules.php(175): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\proyecto_taller\system\Validation\StrictRules\Rules.php(187): CodeIgniter\Validation\Rules->is_unique('ana.gomez@examp...', 'usuarios.correo', Array)
+#6 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(337): CodeIgniter\Validation\StrictRules\Rules->is_unique('ana.gomez@examp...', 'usuarios.correo', Array, NULL, 'correo')
+#7 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(202): CodeIgniter\Validation\Validation->processRules('correo', 'correo', 'ana.gomez@examp...', Array, Array, 'correo')
+#8 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(1576): CodeIgniter\Validation\Validation->run(Array, NULL, NULL)
+#9 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(808): CodeIgniter\BaseModel->validate(Array)
+#10 C:\xampp\htdocs\proyecto_taller\system\Model.php(800): CodeIgniter\BaseModel->insert(Array, true)
+#11 C:\xampp\htdocs\proyecto_taller\app\Controllers\UserController.php(51): CodeIgniter\Model->insert(Array)
+#12 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(933): App\Controllers\UserController->crear()
+#13 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#14 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#15 C:\xampp\htdocs\proyecto_taller\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#16 C:\xampp\htdocs\proyecto_taller\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#17 C:\xampp\htdocs\proyecto_taller\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#18 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user '****'@'localhost' (using password: YES) in C:\xampp\htdocs\proyecto_taller\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\proyecto_taller\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT 1\nFROM `...', Array, false)
+#3 C:\xampp\htdocs\proyecto_taller\system\Validation\Rules.php(175): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp\htdocs\proyecto_taller\system\Validation\StrictRules\Rules.php(187): CodeIgniter\Validation\Rules->is_unique('ana.gomez@examp...', 'usuarios.correo', Array)
+#5 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(337): CodeIgniter\Validation\StrictRules\Rules->is_unique('ana.gomez@examp...', 'usuarios.correo', Array, NULL, 'correo')
+#6 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(202): CodeIgniter\Validation\Validation->processRules('correo', 'correo', 'ana.gomez@examp...', Array, Array, 'correo')
+#7 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(1576): CodeIgniter\Validation\Validation->run(Array, NULL, NULL)
+#8 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(808): CodeIgniter\BaseModel->validate(Array)
+#9 C:\xampp\htdocs\proyecto_taller\system\Model.php(800): CodeIgniter\BaseModel->insert(Array, true)
+#10 C:\xampp\htdocs\proyecto_taller\app\Controllers\UserController.php(51): CodeIgniter\Model->insert(Array)
+#11 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(933): App\Controllers\UserController->crear()
+#12 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#13 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#14 C:\xampp\htdocs\proyecto_taller\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#15 C:\xampp\htdocs\proyecto_taller\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#16 C:\xampp\htdocs\proyecto_taller\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#17 {main}
+CRITICAL - 2025-06-13 02:16:47 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user '****'@'localhost' (using password: YES)
+[Method: POST, Route: register]
+in SYSTEMPATH\Database\BaseConnection.php on line 467.
+ 1 SYSTEMPATH\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT 1
+FROM `usuarios`
+WHERE `correo` = :correo:
+ LIMIT 1', [...], false)
+ 3 SYSTEMPATH\Validation\Rules.php(175): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\Validation\StrictRules\Rules.php(187): CodeIgniter\Validation\Rules->is_unique('ana.gomez@example.com', 'usuarios.correo', [...])
+ 5 SYSTEMPATH\Validation\Validation.php(337): CodeIgniter\Validation\StrictRules\Rules->is_unique('ana.gomez@example.com', 'usuarios.correo', [...], null, 'correo')
+ 6 SYSTEMPATH\Validation\Validation.php(202): CodeIgniter\Validation\Validation->processRules('correo', 'correo', 'ana.gomez@example.com', [...], [...], 'correo')
+ 7 SYSTEMPATH\BaseModel.php(1576): CodeIgniter\Validation\Validation->run([...], null, null)
+ 8 SYSTEMPATH\BaseModel.php(808): CodeIgniter\BaseModel->validate([...])
+ 9 SYSTEMPATH\Model.php(800): CodeIgniter\BaseModel->insert([...], true)
+10 APPPATH\Controllers\UserController.php(51): CodeIgniter\Model->insert([...])
+11 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->crear()
+12 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+13 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+14 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+15 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+16 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-06-13 03:32:13 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'proyecto_cf'@'localhost' (using password: YES) in C:\xampp\htdocs\proyecto_taller\system\Database\MySQLi\Connection.php:202
+Stack trace:
+#0 C:\xampp\htdocs\proyecto_taller\system\Database\MySQLi\Connection.php(202): mysqli->real_connect('localhost', 'proyecto_cf', '9dejulio1449', 'costura_fina', 3306, '', 0)
+#1 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\proyecto_taller\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT 1\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\proyecto_taller\system\Validation\Rules.php(175): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\proyecto_taller\system\Validation\StrictRules\Rules.php(187): CodeIgniter\Validation\Rules->is_unique('ana.gomez@examp...', 'usuarios.correo', Array)
+#6 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(337): CodeIgniter\Validation\StrictRules\Rules->is_unique('ana.gomez@examp...', 'usuarios.correo', Array, NULL, 'correo')
+#7 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(202): CodeIgniter\Validation\Validation->processRules('correo', 'correo', 'ana.gomez@examp...', Array, Array, 'correo')
+#8 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(1576): CodeIgniter\Validation\Validation->run(Array, NULL, NULL)
+#9 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(808): CodeIgniter\BaseModel->validate(Array)
+#10 C:\xampp\htdocs\proyecto_taller\system\Model.php(800): CodeIgniter\BaseModel->insert(Array, true)
+#11 C:\xampp\htdocs\proyecto_taller\app\Controllers\UserController.php(51): CodeIgniter\Model->insert(Array)
+#12 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(933): App\Controllers\UserController->crear()
+#13 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#14 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#15 C:\xampp\htdocs\proyecto_taller\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#16 C:\xampp\htdocs\proyecto_taller\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#17 C:\xampp\htdocs\proyecto_taller\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#18 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user '****'@'localhost' (using password: YES) in C:\xampp\htdocs\proyecto_taller\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\proyecto_taller\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT 1\nFROM `...', Array, false)
+#3 C:\xampp\htdocs\proyecto_taller\system\Validation\Rules.php(175): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp\htdocs\proyecto_taller\system\Validation\StrictRules\Rules.php(187): CodeIgniter\Validation\Rules->is_unique('ana.gomez@examp...', 'usuarios.correo', Array)
+#5 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(337): CodeIgniter\Validation\StrictRules\Rules->is_unique('ana.gomez@examp...', 'usuarios.correo', Array, NULL, 'correo')
+#6 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(202): CodeIgniter\Validation\Validation->processRules('correo', 'correo', 'ana.gomez@examp...', Array, Array, 'correo')
+#7 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(1576): CodeIgniter\Validation\Validation->run(Array, NULL, NULL)
+#8 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(808): CodeIgniter\BaseModel->validate(Array)
+#9 C:\xampp\htdocs\proyecto_taller\system\Model.php(800): CodeIgniter\BaseModel->insert(Array, true)
+#10 C:\xampp\htdocs\proyecto_taller\app\Controllers\UserController.php(51): CodeIgniter\Model->insert(Array)
+#11 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(933): App\Controllers\UserController->crear()
+#12 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#13 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#14 C:\xampp\htdocs\proyecto_taller\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#15 C:\xampp\htdocs\proyecto_taller\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#16 C:\xampp\htdocs\proyecto_taller\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#17 {main}
+CRITICAL - 2025-06-13 03:32:13 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user '****'@'localhost' (using password: YES)
+[Method: POST, Route: register]
+in SYSTEMPATH\Database\BaseConnection.php on line 467.
+ 1 SYSTEMPATH\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT 1
+FROM `usuarios`
+WHERE `correo` = :correo:
+ LIMIT 1', [...], false)
+ 3 SYSTEMPATH\Validation\Rules.php(175): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\Validation\StrictRules\Rules.php(187): CodeIgniter\Validation\Rules->is_unique('ana.gomez@example.com', 'usuarios.correo', [...])
+ 5 SYSTEMPATH\Validation\Validation.php(337): CodeIgniter\Validation\StrictRules\Rules->is_unique('ana.gomez@example.com', 'usuarios.correo', [...], null, 'correo')
+ 6 SYSTEMPATH\Validation\Validation.php(202): CodeIgniter\Validation\Validation->processRules('correo', 'correo', 'ana.gomez@example.com', [...], [...], 'correo')
+ 7 SYSTEMPATH\BaseModel.php(1576): CodeIgniter\Validation\Validation->run([...], null, null)
+ 8 SYSTEMPATH\BaseModel.php(808): CodeIgniter\BaseModel->validate([...])
+ 9 SYSTEMPATH\Model.php(800): CodeIgniter\BaseModel->insert([...], true)
+10 APPPATH\Controllers\UserController.php(51): CodeIgniter\Model->insert([...])
+11 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->crear()
+12 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+13 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+14 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+15 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+16 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-06-13 03:32:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-06-13 03:32:18 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'proyecto_cf'@'localhost' (using password: YES) in C:\xampp\htdocs\proyecto_taller\system\Database\MySQLi\Connection.php:202
+Stack trace:
+#0 C:\xampp\htdocs\proyecto_taller\system\Database\MySQLi\Connection.php(202): mysqli->real_connect('localhost', 'proyecto_cf', '9dejulio1449', 'costura_fina', 3306, '', 0)
+#1 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\proyecto_taller\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT 1\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\proyecto_taller\system\Validation\Rules.php(175): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\proyecto_taller\system\Validation\StrictRules\Rules.php(187): CodeIgniter\Validation\Rules->is_unique('ana.gomez@examp...', 'usuarios.correo', Array)
+#6 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(337): CodeIgniter\Validation\StrictRules\Rules->is_unique('ana.gomez@examp...', 'usuarios.correo', Array, NULL, 'correo')
+#7 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(202): CodeIgniter\Validation\Validation->processRules('correo', 'correo', 'ana.gomez@examp...', Array, Array, 'correo')
+#8 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(1576): CodeIgniter\Validation\Validation->run(Array, NULL, NULL)
+#9 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(808): CodeIgniter\BaseModel->validate(Array)
+#10 C:\xampp\htdocs\proyecto_taller\system\Model.php(800): CodeIgniter\BaseModel->insert(Array, true)
+#11 C:\xampp\htdocs\proyecto_taller\app\Controllers\UserController.php(51): CodeIgniter\Model->insert(Array)
+#12 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(933): App\Controllers\UserController->crear()
+#13 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#14 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#15 C:\xampp\htdocs\proyecto_taller\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#16 C:\xampp\htdocs\proyecto_taller\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#17 C:\xampp\htdocs\proyecto_taller\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#18 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user '****'@'localhost' (using password: YES) in C:\xampp\htdocs\proyecto_taller\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\proyecto_taller\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT 1\nFROM `...', Array, false)
+#3 C:\xampp\htdocs\proyecto_taller\system\Validation\Rules.php(175): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp\htdocs\proyecto_taller\system\Validation\StrictRules\Rules.php(187): CodeIgniter\Validation\Rules->is_unique('ana.gomez@examp...', 'usuarios.correo', Array)
+#5 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(337): CodeIgniter\Validation\StrictRules\Rules->is_unique('ana.gomez@examp...', 'usuarios.correo', Array, NULL, 'correo')
+#6 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(202): CodeIgniter\Validation\Validation->processRules('correo', 'correo', 'ana.gomez@examp...', Array, Array, 'correo')
+#7 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(1576): CodeIgniter\Validation\Validation->run(Array, NULL, NULL)
+#8 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(808): CodeIgniter\BaseModel->validate(Array)
+#9 C:\xampp\htdocs\proyecto_taller\system\Model.php(800): CodeIgniter\BaseModel->insert(Array, true)
+#10 C:\xampp\htdocs\proyecto_taller\app\Controllers\UserController.php(51): CodeIgniter\Model->insert(Array)
+#11 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(933): App\Controllers\UserController->crear()
+#12 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#13 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#14 C:\xampp\htdocs\proyecto_taller\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#15 C:\xampp\htdocs\proyecto_taller\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#16 C:\xampp\htdocs\proyecto_taller\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#17 {main}
+CRITICAL - 2025-06-13 03:32:18 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user '****'@'localhost' (using password: YES)
+[Method: POST, Route: register]
+in SYSTEMPATH\Database\BaseConnection.php on line 467.
+ 1 SYSTEMPATH\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT 1
+FROM `usuarios`
+WHERE `correo` = :correo:
+ LIMIT 1', [...], false)
+ 3 SYSTEMPATH\Validation\Rules.php(175): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\Validation\StrictRules\Rules.php(187): CodeIgniter\Validation\Rules->is_unique('ana.gomez@example.com', 'usuarios.correo', [...])
+ 5 SYSTEMPATH\Validation\Validation.php(337): CodeIgniter\Validation\StrictRules\Rules->is_unique('ana.gomez@example.com', 'usuarios.correo', [...], null, 'correo')
+ 6 SYSTEMPATH\Validation\Validation.php(202): CodeIgniter\Validation\Validation->processRules('correo', 'correo', 'ana.gomez@example.com', [...], [...], 'correo')
+ 7 SYSTEMPATH\BaseModel.php(1576): CodeIgniter\Validation\Validation->run([...], null, null)
+ 8 SYSTEMPATH\BaseModel.php(808): CodeIgniter\BaseModel->validate([...])
+ 9 SYSTEMPATH\Model.php(800): CodeIgniter\BaseModel->insert([...], true)
+10 APPPATH\Controllers\UserController.php(51): CodeIgniter\Model->insert([...])
+11 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->crear()
+12 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+13 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+14 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+15 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+16 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-06-13 03:34:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-13 03:34:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-06-13 03:34:35 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'proyecto_cf'@'localhost' (using password: YES) in C:\xampp\htdocs\proyecto_taller\system\Database\MySQLi\Connection.php:202
+Stack trace:
+#0 C:\xampp\htdocs\proyecto_taller\system\Database\MySQLi\Connection.php(202): mysqli->real_connect('localhost', 'proyecto_cf', '9dejulio1449', 'costura_fina', 3306, '', 0)
+#1 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\proyecto_taller\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT 1\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\proyecto_taller\system\Validation\Rules.php(175): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\proyecto_taller\system\Validation\StrictRules\Rules.php(187): CodeIgniter\Validation\Rules->is_unique('abdulcalculo@gm...', 'usuarios.correo', Array)
+#6 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(337): CodeIgniter\Validation\StrictRules\Rules->is_unique('abdulcalculo@gm...', 'usuarios.correo', Array, NULL, 'correo')
+#7 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(202): CodeIgniter\Validation\Validation->processRules('correo', 'correo', 'abdulcalculo@gm...', Array, Array, 'correo')
+#8 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(1576): CodeIgniter\Validation\Validation->run(Array, NULL, NULL)
+#9 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(808): CodeIgniter\BaseModel->validate(Array)
+#10 C:\xampp\htdocs\proyecto_taller\system\Model.php(800): CodeIgniter\BaseModel->insert(Array, true)
+#11 C:\xampp\htdocs\proyecto_taller\app\Controllers\UserController.php(51): CodeIgniter\Model->insert(Array)
+#12 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(933): App\Controllers\UserController->crear()
+#13 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#14 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#15 C:\xampp\htdocs\proyecto_taller\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#16 C:\xampp\htdocs\proyecto_taller\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#17 C:\xampp\htdocs\proyecto_taller\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#18 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user '****'@'localhost' (using password: YES) in C:\xampp\htdocs\proyecto_taller\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\proyecto_taller\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\proyecto_taller\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT 1\nFROM `...', Array, false)
+#3 C:\xampp\htdocs\proyecto_taller\system\Validation\Rules.php(175): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp\htdocs\proyecto_taller\system\Validation\StrictRules\Rules.php(187): CodeIgniter\Validation\Rules->is_unique('abdulcalculo@gm...', 'usuarios.correo', Array)
+#5 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(337): CodeIgniter\Validation\StrictRules\Rules->is_unique('abdulcalculo@gm...', 'usuarios.correo', Array, NULL, 'correo')
+#6 C:\xampp\htdocs\proyecto_taller\system\Validation\Validation.php(202): CodeIgniter\Validation\Validation->processRules('correo', 'correo', 'abdulcalculo@gm...', Array, Array, 'correo')
+#7 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(1576): CodeIgniter\Validation\Validation->run(Array, NULL, NULL)
+#8 C:\xampp\htdocs\proyecto_taller\system\BaseModel.php(808): CodeIgniter\BaseModel->validate(Array)
+#9 C:\xampp\htdocs\proyecto_taller\system\Model.php(800): CodeIgniter\BaseModel->insert(Array, true)
+#10 C:\xampp\htdocs\proyecto_taller\app\Controllers\UserController.php(51): CodeIgniter\Model->insert(Array)
+#11 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(933): App\Controllers\UserController->crear()
+#12 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#13 C:\xampp\htdocs\proyecto_taller\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#14 C:\xampp\htdocs\proyecto_taller\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#15 C:\xampp\htdocs\proyecto_taller\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#16 C:\xampp\htdocs\proyecto_taller\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#17 {main}
+CRITICAL - 2025-06-13 03:34:35 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user '****'@'localhost' (using password: YES)
+[Method: POST, Route: register]
+in SYSTEMPATH\Database\BaseConnection.php on line 467.
+ 1 SYSTEMPATH\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT 1
+FROM `usuarios`
+WHERE `correo` = :correo:
+ LIMIT 1', [...], false)
+ 3 SYSTEMPATH\Validation\Rules.php(175): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\Validation\StrictRules\Rules.php(187): CodeIgniter\Validation\Rules->is_unique('abdulcalculo@gmail.com', 'usuarios.correo', [...])
+ 5 SYSTEMPATH\Validation\Validation.php(337): CodeIgniter\Validation\StrictRules\Rules->is_unique('abdulcalculo@gmail.com', 'usuarios.correo', [...], null, 'correo')
+ 6 SYSTEMPATH\Validation\Validation.php(202): CodeIgniter\Validation\Validation->processRules('correo', 'correo', 'abdulcalculo@gmail.com', [...], [...], 'correo')
+ 7 SYSTEMPATH\BaseModel.php(1576): CodeIgniter\Validation\Validation->run([...], null, null)
+ 8 SYSTEMPATH\BaseModel.php(808): CodeIgniter\BaseModel->validate([...])
+ 9 SYSTEMPATH\Model.php(800): CodeIgniter\BaseModel->insert([...], true)
+10 APPPATH\Controllers\UserController.php(51): CodeIgniter\Model->insert([...])
+11 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->crear()
+12 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+13 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+14 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+15 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+16 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-06-13 03:36:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-13 03:36:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-13 03:43:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-13 03:43:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-13 03:43:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-13 03:43:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-13 03:45:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-13 03:46:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-13 03:51:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-13 04:03:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-13 04:03:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-13 04:09:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-13 04:09:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-13 04:14:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-13 04:16:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-13 04:19:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-13 04:19:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-13 04:19:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-13 04:19:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-13 04:19:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-13 04:19:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-13 04:19:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-13 04:19:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-13 04:19:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-13 04:19:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-13 04:20:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-13 04:21:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-13 04:21:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-13 04:22:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-13 04:22:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-13 04:22:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-13 04:22:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-13 04:22:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-13 04:22:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-13 04:22:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-13 04:23:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-13 04:23:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-13 04:25:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-13 04:26:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-13 04:27:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-13 04:27:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-13 04:27:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-13 04:29:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-13 04:30:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-13 04:30:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-13 04:30:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-13 04:30:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-13 04:30:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-13 04:31:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-13 04:31:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-13 04:34:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-13 04:35:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-13 04:35:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

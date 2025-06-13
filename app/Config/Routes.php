@@ -37,6 +37,8 @@ $routes->get('Contacto', 'Home::Contacto');
 $routes->get('Comercializacion', 'home::Comercializacion'); 
 $routes->get('termino_usos', 'home::termino_usos');
 $routes->get('footer', 'home::footer');
+$routes->get('catalogo', 'Home::Catalogo');
+
 
 // Rutas CRUD para usuarios 
 $routes->get('usuarios', 'UserController::index'); // Listar todos (incluyendo desactivados)
@@ -55,11 +57,11 @@ $routes->get('productos/editar/(:num)', 'ProductoController::editarView/$1'); //
 $routes->put('productos/editar/(:num)', 'ProductoController::editar/$1'); // Procesar edición (PUT)
 $routes->delete('productos/eliminar/(:num)', 'ProductoController::eliminar/$1');
 
-// CRUD Carrito de compras
-$routes->get('carrito/usuario/(:num)', 'CarritoController::mostrarCarrito/$1');       // Ver el carrito de un usuario
-$routes->post('carrito/agregar', 'CarritoController::agregarProducto');               // Agregar producto al carrito
-$routes->put('carrito/editar/(:num)', 'CarritoController::editarProducto/$1');        // Editar cantidad de un producto
-$routes->delete('carrito/eliminar/(:num)', 'CarritoController::eliminarProducto/$1'); // Eliminar producto del carrito
+// CRUD Carrito
+$routes->get('carrito/usuario/(:num)', 'CarritoController::mostrarCarrito/$1');
+$routes->post('carrito/agregar', 'CarritoController::agregarProducto');
+$routes->put('carrito/editar/(:num)', 'CarritoController::editarProducto/$1');
+$routes->delete('carrito/eliminar/(:num)', 'CarritoController::eliminarProducto/$1');
 
 // CRUD Pedido
 $routes->get('pedido', 'PedidoController::index');               // Listar pedidos
@@ -74,38 +76,21 @@ $routes->post('pedido_detalle/agregar', 'PedidoDetalleController::agregar');    
 $routes->put('pedido_detalle/editar/(:num)', 'PedidoDetalleController::editar/$1');        // Editar detalle
 $routes->delete('pedido_detalle/eliminar/(:num)', 'PedidoDetalleController::eliminar/$1'); // Eliminar detalle
 
-// Rutas para autenticación
-$routes->get('/', 'Home::index');                               // Página principal
-$routes->get('home', 'Home::index');                            // Página de inicio
-$routes->get('register', 'AuthController::register');           // Mostrar formulario
-$routes->post('register', 'AuthController::processRegister');   // Procesar registro
-$routes->get('login', 'AuthController::login');                 // Mostrar formulario  
-$routes->post('login', 'AuthController::processLogin');         // Procesar login
-$routes->get('logout', 'AuthController::logout');               // Cerrar sesión
-$routes->get('test', function() {
-    return 'Ruta de prueba funciona';
-});
-// Rutas para API de usuarios (si las necesitas)
-$routes->group('api', function($routes) {
-    $routes->get('users', 'UserController::index');              // Todos los usuarios
-    $routes->get('users/activos', 'UserController::activos');    // Solo activos
-    $routes->get('users/(:num)', 'UserController::show/$1');     // Un usuario específico
-    $routes->post('users', 'UserController::crear');             // Crear via API
-    $routes->put('users/(:num)', 'UserController::update/$1');   // Actualizar via API
-    $routes->delete('users/(:num)', 'UserController::delete/$1'); // Eliminar via API
-    $routes->post('users/(:num)/restore', 'UserController::restaurar/$1'); // Restaurar
-});
-/**
- * --------------------------------------------------------------------
- * Rutas adicionales
- * --------------------------------------------------------------------
- *
- * A menudo necesitarás rutas adicionales y
- * querrás que puedan sobrescribir cualquier valor por defecto en este archivo.
- * Las rutas basadas en entorno son un ejemplo de ello. Usa require() para cargar archivos adicionales aquí.
- *
- * Tendrás acceso al objeto $routes dentro de ese archivo sin necesidad de volver a cargarlo.
- */
+
+// Login y autenticación
+$routes->get('login', 'Home::login');          // Mostrar formulario login
+$routes->post('login', 'AuthController::login');  // Procesar login
+/*
+$routes->get('login', 'Home::loginForm'); // Mostrar vista
+$routes->post('login', 'AuthController::login'); // Procesar login
+*/
+
+$routes->get('register', 'Home::registerForm');       // Muestra formulario
+$routes->post('register', 'UserController::crear');   // Procesa registro
+
+
+
+
 if (file_exists(APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php'))
 {
 	require APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php';

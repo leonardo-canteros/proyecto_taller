@@ -66,6 +66,43 @@ class UserController extends BaseController
         return redirect()->to('login')->with('success', 'Usuario registrado correctamente.');
     }
 
+    public function crearAdmin()
+    {
+        $model = new UserModel();
+        $data = $this->request->getPost();
+
+        if (empty($data)) {
+            $data = $this->request->getJSON(true);
+        }
+
+        if (!$data) {
+            return $this->failValidationErrors('Datos no recibidos');
+        }
+
+        // Forzar rol como 'usuario'
+        $data['rol'] = 'administrador';
+
+        if (!empty($data['contraseña'])) {
+            $data['contraseña'] = password_hash($data['contraseña'], PASSWORD_DEFAULT);
+        } else {
+            return $this->failValidationErrors('La contraseña es obligatoria');
+        }
+
+        if (!$model->insert($data)) {
+            return $this->failValidationErrors($model->errors());
+        }
+
+        if ($this->request->isAJAX()) {
+            return $this->respondCreated([
+                'status' => 201,
+                'message' => 'Usuario creado exitosamente',
+                'id' => $model->getInsertID()
+            ]);
+        }
+
+        return redirect()->to('login')->with('success', 'Usuario registrado correctamente.');
+    }
+
     public function update($id)
     {
         $model = new UserModel();

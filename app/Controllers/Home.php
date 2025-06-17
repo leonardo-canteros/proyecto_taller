@@ -80,6 +80,30 @@ class Home extends BaseController
 		echo view('bodyregister');
 		echo view('footer_view');
 	}
+	
+	public function admin()
+{
+    if (session()->get('rol') !== 'admin') {
+        return redirect()->to('/'); // Bloqueo si no es admin
+    }
+
+    echo view('head_view');
+    echo view('navbar_view');
+    echo view('admin_view'); // Asegurate de tener esta vista
+    echo view('footer_view');
+}
+
+public function usuario()
+{
+    if (!session()->get('logged_in')) {
+        return redirect()->to('/login');
+    }
+
+    echo view('head_view');
+    echo view('navbar_view');
+    echo view('usuario/usuario_view'); // Asegurate de tener esta vista
+    echo view('footer_view');
+}
 
 
 }

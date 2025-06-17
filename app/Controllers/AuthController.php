@@ -7,72 +7,69 @@ use CodeIgniter\API\ResponseTrait;
 class AuthController extends BaseController
 {
     use ResponseTrait;
-    public function login()
-    {
-        // Obtener y convertir datos JSON
-        $json = $this->request->getJSON();
-        $post = $this->request->getPost();
-        
-        // Usar datos JSON si existen, de lo contrario usar POST
-        $data = $json ? json_decode(json_encode($json), true) : $post;
+  public function login()
+{
+    // Verifica si es JSON o POST normal
+    if ($this->request->getHeaderLine('Content-Type') === 'application/json') {
+        $data = $this->request->getJSON(true); // Devuelve array
+    } else {
+        $data = $this->request->getPost(); // Formulario HTML normal
+    }
 
-        // Validar que existan los campos requeridos
-        if (empty($data['correo']) || empty($data['contraseña'])) {
-            return $this->fail('Correo y contraseña son requeridos', 400);
-        }
+    // Validar campos requeridos
+    if (empty($data['correo']) || empty($data['contraseña'])) {
+        return $this->fail('Correo y contraseña son requeridos', 400);
+    }
 
-        // Validar formato del correo
-        if (!filter_var($data['correo'], FILTER_VALIDATE_EMAIL)) {
-            return $this->fail('El correo no tiene un formato válido', 400);
-        }
+    if (!filter_var($data['correo'], FILTER_VALIDATE_EMAIL)) {
+        return $this->fail('El correo no tiene un formato válido', 400);
+    }
 
-        $userModel = new UserModel();
-        $user = $userModel->where('correo', $data['correo'])
-                          ->where('deleted_at', null)
-                          ->first();
+    $userModel = new UserModel();
+    $user = $userModel->where('correo', $data['correo'])
+                      ->where('deleted_at', null)
+                      ->first();
 
-        if (!$user) {
-            return $this->failUnauthorized('Credenciales incorrectas');
-        }
+    if (!$user || !password_verify($data['contraseña'], $user['contraseña'])) {
+        return $this->failUnauthorized('Credenciales incorrectas');
+    }
 
-       
+    // Crear sesión
+    $sessionData = [
+        'id_usuario' => $user['id_usuario'],
+        'correo' => $user['correo'],
+        'nombre' => $user['nombre'],
+        'rol' => $user['rol'] ?? 'usuario',
+        'logged_in' => true
+    ];
+    session()->set($sessionData);
 
-        // Crear sesión
-        $sessionData = [
-            'id_usuario' => $user['id_usuario'],
-            'correo' => $user['correo'],
-            'nombre' => $user['nombre'],
-            'rol' => $user['rol'] ?? 'usuario',
-            'logged_in' => true
-        ];
-
-        session()->set($sessionData);
-
-        // Preparar respuesta
-        $response = [
+    // Redirección o respuesta JSON
+    if ($this->request->isAJAX()) {
+        return $this->respond([
             'status' => 'success',
             'message' => 'Login exitoso',
-            'data' => [
-                'id' => $user['id_usuario'],
-                'nombre' => $user['nombre'],
-                'correo' => $user['correo'],
-                'rol' => $user['rol'] ?? 'usuario'
-            ]
-        ];
-
-        return $this->respond($response);
+            'data' => $sessionData
+        ]);
+    } else {
+        // Redirigir según el rol
+        return redirect()->to($user['rol'] === 'administrador' ? '/admin' : '/usuario');
     }
+}
+
+
 
     public function logout()
         {
             session()->destroy();
 
-            // Si la petición es web normal, redirige:
             if ($this->request->isAJAX()) {
                 return $this->respond(['status' => 'success', 'message' => 'Sesión cerrada']);
             } else {
-                return redirect()->to('/');
+                return redirect()->to('principal');
+
             }
         }
+
 
 }

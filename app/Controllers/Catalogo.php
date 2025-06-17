@@ -8,10 +8,16 @@ use CodeIgniter\Controller;
 
 class Catalogo extends Controller
 {
-    public function index()
-    {
-        return view('catalogo');
-    }
+   
+  
+        public function index()
+        {
+            $model = new \App\Models\ProductoModel();
+            $productos = $model->findAll();
+
+            return $this->response->setJSON($productos);
+        }
+
 
     public function obtenerProductos()
     {

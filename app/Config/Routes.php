@@ -56,6 +56,7 @@ $routes->post('productos/crear', 'ProductoController::crear'); // Procesar creac
 $routes->get('productos/editar/(:num)', 'ProductoController::editarView/$1'); // Vista de edición
 $routes->put('productos/editar/(:num)', 'ProductoController::editar/$1'); // Procesar edición (PUT)
 $routes->delete('productos/eliminar/(:num)', 'ProductoController::eliminar/$1');
+$routes->get('productos', 'ProductoController::index');
 
 // CRUD Carrito
 $routes->get('carrito/usuario/(:num)', 'CarritoController::mostrarCarrito/$1');

@@ -36,12 +36,18 @@ class ProductoController extends ResourceController
     }
 
  // Listar todos (GET)
-   public function index()
+public function index()
 {
     $model = new \App\Models\ProductoModel();
-    $productos = $model->findAll();
+    
+    $data = [
+        'productos' => $model->where('estado', 'activo')
+                            ->where('deleted_at', null)
+                            ->findAll(),
+        'base_url' => base_url() // Pasamos la URL base a la vista
+    ];
 
-    return $this->response->setJSON($productos);
+    return view('catalogo_view', $data);
 }
 
 

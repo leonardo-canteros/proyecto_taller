@@ -1,84 +1,49 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <title>Catálogo de Productos</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="<?= base_url('css/catalogo.css') ?>" rel="stylesheet" />
-</head>
+<div class="container mt-4">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <?php if (!empty($productos)): ?>
+            <?php foreach ($productos as $prod): ?>
+                <div class="col">
+                    <div class="card h-100 shadow">
+                        <?php
+                        // Defino ruta imagen correcta
+                        // Si en BD $prod['imagen'] tiene ruta relativa tipo 'img/modelo1.webp'
+                        // ajusto para que quede 'assets/img/modelo1.webp'
+                        $imagenRelativa = !empty($prod['imagen']) 
+                            ? 'assets/' . ltrim($prod['imagen'], '/')
+                            : 'assets/img/no-image.jpg';
 
-<body>
+                        $imagenPath = base_url($imagenRelativa);
+                        ?>
 
-<div class="container catalogo_producto-contenedor py-4">
-  <h1 class="catalogo_producto-titulo mb-4 text-center">Catálogo de Productos</h1>
+                        <img src="<?= esc($imagenPath) ?>" 
+                             class="card-img-top p-2" 
+                             alt="<?= esc($prod['nombre']) ?>"
+                             style="height: 200px; object-fit: contain;">
 
-  <div id="catalogo_producto-lista" class="row g-4">
-    <!-- Aquí se insertarán las cards de productos -->
-  </div>
-</div>
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
- const apiURL = '/proyecto_taller/public/productos';
-
-$(document).ready(function() {
-  $.getJSON(apiURL, function(data) {
-    if (!data || data.length === 0) {
-      $('#catalogo_producto-lista').html('<p class="text-center">No hay productos disponibles.</p>');
-      return;
-    }
-
-    let productosVisibles = 0;
-
-    data.forEach(producto => {
-      // Mostrar solo productos activos y NO eliminados
-      if (producto.estado === 'activo' && producto.deleted_at === null) {
-        productosVisibles++;
-
-        let descripcion = producto.descripcion || '';
-        if (descripcion.length > 60) {
-          descripcion = descripcion.substring(0, 57) + '...';
-        }
-
-        // Armar ruta completa para la imagen
-            let imagen = producto.imagen?.startsWith('http') || producto.imagen?.startsWith('/assets/')
-            ? producto.imagen
-            : '/assets/' + producto.imagen;
-
-
-        $('#catalogo_producto-lista').append(`
-          <div class="col-md-4 col-sm-6">
-            <div class="catalogo_producto-card shadow-sm h-100 d-flex flex-column">
-              <img src="${imagen}" class="catalogo_producto-img" alt="${producto.nombre}">
-              <div class="catalogo_producto-body d-flex flex-column flex-grow-1">
-                <div>
-                  <h5 class="catalogo_producto-nombre">${producto.nombre}</h5>
-                  <p class="catalogo_producto-descripcion" title="${producto.descripcion}">${descripcion}</p>
-                  <small>Color: ${producto.color || 'N/A'}</small><br/>
-                  <small>Talla: ${producto.talla || 'N/A'}</small>
+                        <div class="card-body">
+                            <h5 class="card-title"><?= esc($prod['nombre']) ?></h5>
+                            <p class="card-text text-muted small">
+                                <?= esc($prod['descripcion']) ?>
+                            </p>
+                        </div>
+                        <div class="card-footer bg-white">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="text-success fw-bold">$<?= number_format($prod['precio'], 2) ?></span>
+                                <div>
+                                    <span class="badge bg-secondary me-1"><?= esc($prod['talla']) ?></span>
+                                    <span class="badge bg-info"><?= esc($prod['color']) ?></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="mt-auto catalogo_producto-precio">$${parseFloat(producto.precio).toFixed(2)}</div>
-              </div>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <div class="col-12">
+                <div class="alert alert-warning text-center py-4">
+                    <i class="fas fa-box-open me-2"></i> No hay productos disponibles
+                </div>
             </div>
-          </div>
-        `);
-      }
-    });
-
-    if (productosVisibles === 0) {
-      $('#catalogo_producto-lista').html('<p class="text-center">No hay productos activos disponibles.</p>');
-    }
-  }).fail(function(jqXHR, textStatus, errorThrown) {
-    $('#catalogo_producto-lista').html(`
-      <p class="text-center text-danger">
-        Error al cargar los productos: ${textStatus} - ${errorThrown}
-      </p>
-    `);
-    console.error('Error en la petición AJAX:', textStatus, errorThrown);
-    console.error('Respuesta del servidor:', jqXHR.responseText);
-  });
-});
-</script>
-
-</body>
-</html>
+        <?php endif; ?>
+    </div>
+</div>

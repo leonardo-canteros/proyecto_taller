@@ -58,12 +58,27 @@ class Home extends BaseController
 		echo view('footer_view');
 	}
 
-	public function Catalogo()
+	public function catalogo()
 	{
-		echo view('head_view');
-		echo view('navbar_view');
-		echo view('catalogo_view');
-		echo view('footer_view');
+    $productoModel = new \App\Models\ProductoModel();
+    
+    $data['productos'] = $productoModel->select([
+        'id_producto',
+        'nombre',
+        'descripcion',
+        'precio',
+        'talla',
+        'color',
+        'imagen', // Asegúrate que este campo contiene los BLOB
+        'estado'
+    ])->where('estado', 'activo')
+      ->where('deleted_at', null)
+      ->findAll();
+
+    echo view('head_view');
+    echo view('navbar_view');
+    echo view('catalogo_view', $data);
+    echo view('footer_view');
 	}
 
 	public function login(){

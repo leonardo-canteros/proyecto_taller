@@ -48,7 +48,7 @@ $routes->post('usuarios/crear', 'UserController::crear'); // Crear
 $routes->put('usuarios/editar/(:num)', 'UserController::update/$1'); // Actualizar
 $routes->delete('usuarios/eliminar/(:num)', 'UserController::delete/$1'); // Eliminación lógica
 $routes->put('usuarios/restaurar/(:num)', 'UserController::restaurar/$1'); // Restaurar usuario
-
+$routes->post('usuarios/crearAdmin', 'UserController::crearAdmin'); // Crear
 // CRUD de Productos
 $routes->get('productos', 'ProductoController::index'); // Listar todos
 $routes->get('productos/crear', 'ProductoController::crearView'); // Vista de creación (formulario)
@@ -56,6 +56,7 @@ $routes->post('productos/crear', 'ProductoController::crear'); // Procesar creac
 $routes->get('productos/editar/(:num)', 'ProductoController::editarView/$1'); // Vista de edición
 $routes->put('productos/editar/(:num)', 'ProductoController::editar/$1'); // Procesar edición (PUT)
 $routes->delete('productos/eliminar/(:num)', 'ProductoController::eliminar/$1');
+$routes->get('productos', 'ProductoController::index');
 
 // CRUD Carrito
 $routes->get('carrito/usuario/(:num)', 'CarritoController::mostrarCarrito/$1');
@@ -77,16 +78,28 @@ $routes->put('pedido_detalle/editar/(:num)', 'PedidoDetalleController::editar/$1
 $routes->delete('pedido_detalle/eliminar/(:num)', 'PedidoDetalleController::eliminar/$1'); // Eliminar detalle
 
 
-// Login y autenticación
-$routes->get('login', 'Home::login');          // Mostrar formulario login
-$routes->post('login', 'AuthController::login');  // Procesar login
+// Mostrar login (formulario) con GET
+$routes->get('login', 'Home::login');
+
+// Procesar login con POST
+$routes->post('login', 'AuthController::login');
+
+// Logout con GET para enlace simple
+$routes->post('logout', 'AuthController::logout');
+
+
+
 /*
 $routes->get('login', 'Home::loginForm'); // Mostrar vista
 $routes->post('login', 'AuthController::login'); // Procesar login
 */
-
+//register
 $routes->get('register', 'Home::registerForm');       // Muestra formulario
 $routes->post('register', 'UserController::crear');   // Procesa registro
+// redireccionamiento a admin/user
+$routes->get('/admin', 'Home::admin');
+$routes->get('/usuario', 'Home::usuario');
+
 
 
 

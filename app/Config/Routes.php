@@ -51,9 +51,7 @@ $routes->put('usuarios/restaurar/(:num)', 'UserController::restaurar/$1'); // Re
 $routes->post('usuarios/crearAdmin', 'UserController::crearAdmin'); // Crear
 // CRUD de Productos
 $routes->get('productos', 'ProductoController::index'); // Listar todos
-$routes->get('productos/crear', 'ProductoController::crearView'); // Vista de creación (formulario)
 $routes->post('admin/panel/crear', 'ProductoController::crear'); // Crear producto
-$routes->post('productos/crear', 'ProductoController::crear'); // Procesar creación (POST)
 $routes->get('productos/editar/(:num)', 'ProductoController::editarView/$1'); // Vista de edición
 $routes->put('productos/editar/(:num)', 'ProductoController::editar/$1'); // Procesar edición (PUT)
 $routes->delete('productos/eliminar/(:num)', 'ProductoController::eliminar/$1');

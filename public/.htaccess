@@ -2,7 +2,7 @@
 Options -Indexes
 
 # ----------------------------------------------------------------------
-# Rewrite engine
+# Rewrite engine para CodeIgniter
 # ----------------------------------------------------------------------
 
 <IfModule mod_rewrite.c>
@@ -11,12 +11,15 @@ Options -Indexes
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteRule ^(.*)$ index.php/$1 [L]
+    RewriteRule ^assets/(.*)$ /proyecto_taller/assets/$1 [L]
 </IfModule>
 
 <IfModule !mod_rewrite.c>
-    # Si no hay mod_rewrite, maneja los 404 con index.php
+    # Si mod_rewrite no está habilitado, maneja los 404 con index.php
     ErrorDocument 404 index.php
 </IfModule>
+
+
 
 # Disable server signature
 ServerSignature Off

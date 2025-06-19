@@ -5,14 +5,13 @@
                 <div class="col">
                     <div class="card h-100 shadow">
                         <?php
-                        // Defino ruta imagen correcta
-                        // Si en BD $prod['imagen'] tiene ruta relativa tipo 'img/modelo1.webp'
-                        // ajusto para que quede 'assets/img/modelo1.webp'
-                         $imagenPath = !empty($prod['imagen']) 
-                        ? '/proyecto_taller/assets/' . ltrim($prod['imagen'], '/')
-                        :   '/proyecto_taller/assets/img/no-image.jpg';
+                        // Defino la ruta de la imagen correcta sin usar base_url()
+                        $imagenPath = !empty($prod['imagen']) 
+                            ? 'http://' . $_SERVER['HTTP_HOST'] . '/proyecto_taller/assets/' . ltrim($prod['imagen'], '/')
+                            : 'http://' . $_SERVER['HTTP_HOST'] . '/proyecto_taller/assets/img/no-image.jpg';
                         ?>
 
+                        <!-- Mostrar la imagen del producto -->
                         <img src="<?= esc($imagenPath) ?>" 
                              class="card-img-top p-2" 
                              alt="<?= esc($prod['nombre']) ?>"

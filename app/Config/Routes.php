@@ -37,7 +37,7 @@ $routes->get('Contacto', 'Home::Contacto');
 $routes->get('Comercializacion', 'home::Comercializacion'); 
 $routes->get('termino_usos', 'home::termino_usos');
 $routes->get('footer', 'home::footer');
-$routes->get('catalogo', 'Home::Catalogo');
+$routes->get('catalogo', 'Home::catalogo');
 
 
 // Rutas CRUD para usuarios 
@@ -97,15 +97,10 @@ $routes->post('login', 'AuthController::login');
 // Logout con GET para enlace simple
 $routes->post('logout', 'AuthController::logout');
 
-
-
-/*
-$routes->get('login', 'Home::loginForm'); // Mostrar vista
-$routes->post('login', 'AuthController::login'); // Procesar login
-*/
 //register
 $routes->get('register', 'Home::registerForm');       // Muestra formulario
 $routes->post('register', 'UserController::crear');   // Procesa registro
+
 // redireccionamiento a admin/user
 $routes->get('admin/panel', 'Home::admin_panel');
 $routes->get('admin/principal', 'Home::admin_principal_view');
@@ -113,6 +108,7 @@ $routes->get('admin/quienes_somos', 'Home::admin_quienes_somos');
 $routes->get('admin/comercializacion', 'Home::admin_comercializacion');
 $routes->get('admin/contacto', 'Home::admin_contacto');
 $routes->get('admin/terminos_usos', 'Home::admin_terminos_usos');
+$routes->get('admin/catalogo', 'Home::catalogo');
 $routes->get('/usuario', 'Home::usuario');
 
 

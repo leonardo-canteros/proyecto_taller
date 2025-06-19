@@ -51,7 +51,7 @@ public function agregar()
         return $this->response->setJSON([
             'success' => false,
             'message' => 'Debes iniciar sesión para agregar productos al carrito',
-            'redirect' => base_url('login') // Opcional: redirección para login
+            'redirect' => base_url('login') // redirección para login
         ]);
     }
 
@@ -59,19 +59,16 @@ public function agregar()
     $id_usuario = (int)session()->get('id_usuario');
     $id_producto = $this->request->getPost('id_producto');
     $cantidad = $this->request->getPost('cantidad') ?? 1;
-
-    // Validaciones básicas
+    
+ 
+     // Validaciones básicas
     if (empty($id_producto)) {
         return $this->response->setJSON([
             'success' => false,
             'message' => 'No se especificó el producto a agregar'
         ]);
     }
-
-    // Convertir y validar tipos de datos
-    $id_producto = (int)$id_producto;
-    $cantidad = (int)$cantidad;
-
+   
     if ($id_producto <= 0) {
         return $this->response->setJSON([
             'success' => false,

@@ -52,6 +52,7 @@ $routes->post('usuarios/crearAdmin', 'UserController::crearAdmin'); // Crear
 // CRUD de Productos
 $routes->get('productos', 'ProductoController::index'); // Listar todos
 $routes->get('productos/crear', 'ProductoController::crearView'); // Vista de creación (formulario)
+$routes->post('admin/panel/crear', 'ProductoController::crear'); // Crear producto
 $routes->post('productos/crear', 'ProductoController::crear'); // Procesar creación (POST)
 $routes->get('productos/editar/(:num)', 'ProductoController::editarView/$1'); // Vista de edición
 $routes->put('productos/editar/(:num)', 'ProductoController::editar/$1'); // Procesar edición (PUT)
@@ -97,7 +98,12 @@ $routes->post('login', 'AuthController::login'); // Procesar login
 $routes->get('register', 'Home::registerForm');       // Muestra formulario
 $routes->post('register', 'UserController::crear');   // Procesa registro
 // redireccionamiento a admin/user
-$routes->get('/admin', 'Home::admin');
+$routes->get('admin/panel', 'Home::admin_panel');
+$routes->get('admin/principal', 'Home::admin_principal_view');
+$routes->get('admin/quienes_somos', 'Home::admin_quienes_somos');
+$routes->get('admin/comercializacion', 'Home::admin_comercializacion');
+$routes->get('admin/contacto', 'Home::admin_contacto');
+$routes->get('admin/terminos_usos', 'Home::admin_terminos_usos');
 $routes->get('/usuario', 'Home::usuario');
 
 

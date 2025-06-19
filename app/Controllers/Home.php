@@ -3,122 +3,155 @@ namespace App\Controllers;
 
 class Home extends BaseController
 {
-    /*public function index(): string
+    // Método privado para cargar vistas repetitivas
+    private function loadView($contentView, $data = [])
     {
-        return view('principal.html');
+        echo view('head_view', $data);
+        echo view('navbar_view', $data);
+        echo view($contentView, $data);
+        echo view('footer_view', $data);
     }
- */
+
     public function index()
-	{
-		echo view('head_view');
-		echo view('navbar_view');
-		echo view('principal_view');
-		echo view('footer_view');
-		
-	}
+    {
+        $this->loadView('principal_view');
+    }
 
-	public function testdb()
-{
-    $db = \Config\Database::connect();
-    echo $db->connect() ? '✅ ¡Conexión exitosa!' : '❌ No se pudo conectar.';
-}
+    public function testdb()
+    {
+        $db = \Config\Database::connect();
+        echo $db->connect() ? '✅ ¡Conexión exitosa!' : '❌ No se pudo conectar.';
+    }
 
-	
     public function quienes_somos()
-	{
-		echo view('head_view');
-		echo view('navbar_view');
-		echo view('quienes_somos');
-		echo view('footer_view');
-	}
+    {
+        $this->loadView('quienes_somos');
+    }
 
-	public function Contacto()
-	{
-		echo view('head_view');
-		echo view('navbar_view');
-		echo view('Contacto');
-		echo view('footer_view');
-	}
+    public function Contacto()
+    {
+        $this->loadView('Contacto');
+    }
 
-
-	
     public function Comercializacion()
-	{
-		echo view('head_view');
-		echo view('navbar_view');
-		echo view('Comercializacion');
-		echo view('footer_view');
-	}
+    {
+        $this->loadView('Comercializacion');
+    }
 
-	public function termino_usos()
-	{
-		echo view('head_view');
-		echo view('navbar_view');
-		echo view('termino_usos');
-		echo view('footer_view');
-	}
+    public function termino_usos()
+    {
+        $this->loadView('termino_usos');
+    }
 
-	public function catalogo()
-	{
-    $productoModel = new \App\Models\ProductoModel();
+    public function catalogo()
+    {
+        $productoModel = new \App\Models\ProductoModel();
+        
+        $data['productos'] = $productoModel->select([
+            'id_producto',
+            'nombre',
+            'descripcion',
+            'precio',
+            'talla',
+            'color',
+            'imagen',
+            'estado'
+        ])->where('estado', 'activo')
+          ->where('deleted_at', null)
+          ->findAll();
+
+        $this->loadView('catalogo_view', $data);
+    }
+
+    public function login()
+    {
+        $this->loadView('login');
+    }
+
+    public function registerForm()
+    {
+        $this->loadView('bodyregister');
+    }
     
-    $data['productos'] = $productoModel->select([
-        'id_producto',
-        'nombre',
-        'descripcion',
-        'precio',
-        'talla',
-        'color',
-        'imagen', // Asegúrate que este campo contiene los BLOB
-        'estado'
-    ])->where('estado', 'activo')
-      ->where('deleted_at', null)
-      ->findAll();
+    public function admin()
+    {
+        // Corrección en la palabra 'administrador'
+        if (session()->get('rol') !== 'administrador') {
+            return redirect()->to('/')->with('error', 'Acceso no autorizado');
+        }
 
-    echo view('head_view');
-    echo view('navbar_view');
-    echo view('catalogo_view', $data);
-    echo view('footer_view');
-	}
+        $this->loadView('admin_view');
+    }
 
-	public function login(){
-	echo view('head_view');
-    echo view('navbar_view');
-    echo view('login');
-    echo view('footer_view');
-	}
+	public function admin_quienes_somos(){
+        if (session()->get('rol') !== 'administrador') {
+            return redirect()->to('/')->with('error', 'Acceso no autorizado');
+        }
 
-	public function registerForm()
+        $this->loadView('admin/quienes_somos');
+    }
+
+
+	public function admin_contacto()
 	{
-		echo view('head_view');
-		echo view('navbar_view');
-		echo view('bodyregister');
-		echo view('footer_view');
+		if (session()->get('rol') !== 'administrador') {
+			return redirect()->to('/')->with('error', 'Acceso no autorizado');
+		}
+
+		$this->loadView('admin/contacto');
 	}
+
+// ... (resto de los métodos existentes)
+
+	public function admin_principal_view()
+    {
+        
+        if (session()->get('rol') !== 'administrador') {
+            return redirect()->to('/')->with('error', 'Acceso no autorizado');
+        }
+
+        $this->loadView('admin/principal_view');
+    }
 	
-	public function admin()
-{
-    if (session()->get('rol') !== 'admin') {
-        return redirect()->to('/'); // Bloqueo si no es admin
+	public function admin_comercializacion()
+    {
+        // Corrección en la palabra 'administrador'
+        if (session()->get('rol') !== 'administrador') {
+            return redirect()->to('/')->with('error', 'Acceso no autorizado');
+        }
+
+        $this->loadView('admin/comercializacion');
     }
 
-    echo view('head_view');
-    echo view('navbar_view');
-    echo view('admin_view'); // Asegurate de tener esta vista
-    echo view('footer_view');
-}
+	public function admin_terminos_usos()
+    {
+        // Corrección en la palabra 'administrador'
+        if (session()->get('rol') !== 'administrador') {
+            return redirect()->to('/')->with('error', 'Acceso no autorizado');
+        }
 
-public function usuario()
-{
-    if (!session()->get('logged_in')) {
-        return redirect()->to('/login');
+        $this->loadView('admin/terminos_usos');
     }
 
-    echo view('head_view');
-    echo view('navbar_view');
-    echo view('usuario/usuario_view'); // Asegurate de tener esta vista
-    echo view('footer_view');
-}
+    public function admin_panel()
+	{
+		if (session()->get('rol') !== 'administrador') {
+			return redirect()->to('/')->with('error', 'Acceso no autorizado');
+		}
 
+		$userModel = new \App\Models\UserModel();
+		$data['usuarios'] = $userModel->withDeleted()->findAll();
+		$data['title'] = 'Panel de Administración';
 
+		$this->loadView('admin/panel_admin', $data);
+	}
+
+    public function usuario()
+    {
+        if (!session()->get('logged_in')) {
+            return redirect()->to('/login')->with('error', 'Debe iniciar sesión');
+        }
+
+        $this->loadView('usuario/usuario_view');
+    }
 }

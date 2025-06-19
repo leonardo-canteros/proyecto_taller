@@ -82,7 +82,7 @@ $currentUrl = current_url();
                 </a>
               </li>
               <li>
-                <a class="dropdown-item" href="<?= site_url('registerForm') ?>">
+                <a class="dropdown-item" href="<?= site_url('register') ?>">
                   <i class="fas fa-user-plus me-2"></i> Registrarse
                 </a>
               </li>

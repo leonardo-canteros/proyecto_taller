@@ -60,7 +60,10 @@ public function agregar()
     $id_producto = $this->request->getPost('id_producto');
     $cantidad = $this->request->getPost('cantidad') ?? 1;
     
- 
+    $id_producto = $this->request->getVar('id_producto');
+    // O
+    $input = $this->request->getJSON(); // Si envías como JSON
+    $id_producto = $input->id_producto ?? null;
      // Validaciones básicas
     if (empty($id_producto)) {
         return $this->response->setJSON([

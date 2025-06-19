@@ -1,10 +1,11 @@
 <?php 
+// ProductoController.php
 namespace App\Controllers;
 
 use App\Models\ProductoModel;
-use CodeIgniter\RESTful\ResourceController; // ¡Cambia esta línea!
+use CodeIgniter\Controller;
 
-class ProductoController extends ResourceController
+class ProductoController extends Controller
 {
     protected $productoModel;
 
@@ -12,104 +13,35 @@ class ProductoController extends ResourceController
         $this->productoModel = new ProductoModel();
     }
 
-    // Crear producto (POST /productos/crear)
-   public function crear(){
-    // Obtener datos como array (más seguro que getJSON())
-    $data = $this->request->getPost(); // Para form-data
-    // O alternativamente para JSON:
-    $json = $this->request->getJSON();
-    $data = json_decode(json_encode($json), true);
+    // Crear producto (POST /admin/panel_admin/crear)
+    public function crear() {
+        // Obtener datos del formulario
+        $data = $this->request->getPost(); // Para form-data
 
-    // Depuración (verifica en writable/logs/)
-    log_message('error', 'Datos recibidos: '.print_r($data, true));
-
-    if (empty($data['nombre'])) {
-        return $this->fail('El campo "nombre" es requerido', 400);
-    }
-
-    $model = new ProductoModel();
-    if ($model->insert($data)) {
-        return $this->respondCreated(['message' => 'Producto creado']);
-    } else {
-        return $this->failValidationErrors($model->errors());
-    }
-    }
-
- // Listar todos (GET)
-public function index()
-{
-    $model = new \App\Models\ProductoModel();
-    
-    $data = [
-        'productos' => $model->where('estado', 'activo')
-                            ->where('deleted_at', null)
-                            ->findAll(),
-        'base_url' => base_url() // Pasamos la URL base a la vista
-    ];
-
-    return view('catalogo_view', $data);
-}
-
-
-    // Mostrar uno (GET)
-    public function show($id = null)
-    {
-        $model = new ProductoModel();
-        $producto = $model->find($id);
-        
-        return $producto ? $this->respond($producto) 
-                        : $this->failNotFound('Producto no encontrado');
-    }
-
-    // Actualizar (PUT)
-    public function editar($id = null)
-    {
-        $model = new ProductoModel();
-        $data = $this->request->getJSON();
-        
-        if ($model->update($id, $data)) {
-            return $this->respondUpdated(['message' => 'Producto actualizado']);
+        // Validación básica
+        if (empty($data['nombre'])) {
+            return redirect()->back()->with('error', 'El campo "nombre" es requerido');
         }
-        
-        return $this->failValidationErrors($model->errors());
+
+        // Subir imagen
+        if ($this->request->getFile('imagen')->isValid()) {
+            $imagen = $this->request->getFile('imagen');
+            $imagenName = $imagen->getRandomName();
+            $imagen->move(WRITEPATH . 'uploads', $imagenName);  // Guardar imagen en la carpeta uploads
+            $data['imagen'] = $imagenName; // Guardamos el nombre de la imagen en la base de datos
+        }
+
+        // Insertar en la base de datos
+        if ($this->productoModel->insert($data)) {
+            return redirect()->to('/admin/panel')->with('success', 'Producto creado exitosamente');
+        } else {
+            return redirect()->back()->with('error', 'No se pudo crear el producto');
+        }
     }
 
-    public function eliminar($id = null)
-{
-    $model = new ProductoModel();
-    
-    // Buscar el producto incluyendo eliminados lógicos
-    $producto = $model->withDeleted()->find($id);
-    
-    if (!$producto) {
-        return $this->failNotFound("No se encontró el producto con ID $id");
+    // Método para obtener todos los productos (en caso de que lo necesites para el listado)
+    public function index() {
+        $productos = $this->productoModel->findAll();
+        return view('catalogo_view', ['productos' => $productos]);
     }
-    
-    // Verificar si ya está eliminado
-    if ($producto['deleted_at'] !== null) {
-        return $this->fail("El producto ya fue eliminado anteriormente", 400);
-    }
-    
-    // Eliminación lógica usando el método estándar delete()
-    try {
-        if ($model->delete($id)) {
-            // Obtener el producto actualizado para mostrar la fecha de eliminación
-            $productoEliminado = $model->onlyDeleted()->find($id);
-            
-            return $this->respondDeleted([
-                'status' => 200,
-                'message' => 'Producto marcado como eliminado (soft delete)',
-                'data' => [
-                    'id' => $id,
-                    'deleted_at' => $productoEliminado['deleted_at']
-                ]
-            ]);
-        }
-    } catch (\Exception $e) {
-        log_message('error', "Error al eliminar producto ID $id: ".$e->getMessage());
-        return $this->failServerError('Error interno del servidor al intentar eliminar');
-    }
-    
-    return $this->fail('No se pudo completar la eliminación', 400);
-}
 }

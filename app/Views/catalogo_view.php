@@ -8,11 +8,9 @@
                         // Defino ruta imagen correcta
                         // Si en BD $prod['imagen'] tiene ruta relativa tipo 'img/modelo1.webp'
                         // ajusto para que quede 'assets/img/modelo1.webp'
-                        $imagenRelativa = !empty($prod['imagen']) 
-                            ? 'assets/' . ltrim($prod['imagen'], '/')
-                            : 'assets/img/no-image.jpg';
-
-                        $imagenPath = base_url($imagenRelativa);
+                         $imagenPath = !empty($prod['imagen']) 
+                        ? '/proyecto_taller/assets/' . ltrim($prod['imagen'], '/')
+                        :   '/proyecto_taller/assets/img/no-image.jpg';
                         ?>
 
                         <img src="<?= esc($imagenPath) ?>" 

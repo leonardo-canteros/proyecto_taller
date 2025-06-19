@@ -17,7 +17,8 @@ class App extends BaseConfig
      *
      * E.g., http://example.com/
      */
-    public string $baseURL = 'http://localhost:8080/';
+    public string $baseURL = 'http://localhost/proyecto_taller/';
+
 
     /**
      * Allowed Hostnames in the Site URL other than the hostname in the baseURL.
@@ -41,7 +42,7 @@ class App extends BaseConfig
      * something else. If you have configured your web server to remove this file
      * from your site URIs, set this variable to an empty string.
      */
-    public string $indexPage = 'index.php';
+    public string $indexPage = '';
 
     /**
      * --------------------------------------------------------------------------
@@ -182,6 +183,14 @@ class App extends BaseConfig
      * @var array<string, string>
      */
     public array $proxyIPs = [];
+
+    public $sessionDriver = 'CodeIgniter\Session\Handlers\FileHandler';
+    public $sessionCookieName = 'ci_session';
+    public $sessionExpiration = 7200; // 2 horas
+    public $sessionSavePath = WRITEPATH . 'session';
+    public $sessionMatchIP = false;
+    public $sessionTimeToUpdate = 300;
+    public $sessionRegenerateDestroy = true;
 
     /**
      * --------------------------------------------------------------------------

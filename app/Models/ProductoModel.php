@@ -10,7 +10,7 @@ class ProductoModel extends Model
     
     protected $allowedFields = [
         'nombre', 'descripcion', 'precio', 'stock', 
-        'talla', 'color', 'imagen_url', 'estado', 'id_categoria','deleted_at'
+        'talla', 'color', 'imagen', 'estado', 'id_categoria','deleted_at'
     ];
 
     
@@ -21,6 +21,17 @@ class ProductoModel extends Model
         'precio' => 'required|decimal',
         'stock' => 'required|integer'
     ];
+
+         protected $beforeInsert = ['setDefaultImage'];
+        protected $beforeUpdate = ['setDefaultImage'];
+
+        protected function setDefaultImage(array $data)
+        {
+            if (empty($data['data']['imagen'])) {
+                $data['data']['imagen'] = 'default.webp';
+            }
+            return $data;
+}
 }
 
 

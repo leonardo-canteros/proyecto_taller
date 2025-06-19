@@ -1,116 +1,203 @@
 <?php namespace App\Controllers;
 
 use App\Models\UserModel;
+use App\Models\CarritoModel;
 use CodeIgniter\API\ResponseTrait;
 
 class UserController extends BaseController
 {
     use ResponseTrait;
 
-    // Obtener todos los usuarios (incluyendo eliminados lógicos)
     public function index()
     {
         $model = new UserModel();
-        $usuarios = $model->withDeleted()->findAll();
-        return $this->respond($usuarios);
+        return $this->respond($model->withDeleted()->findAll());
     }
 
-    // Obtener solo usuarios activos
     public function activos()
     {
         $model = new UserModel();
-        $usuarios = $model->findAll();
-        return $this->respond($usuarios);
+        return $this->respond($model->findAll());
     }
 
-    // Obtener un usuario específico (incluyendo eliminados)
     public function show($id)
     {
         $model = new UserModel();
         $usuario = $model->withDeleted()->find($id);
-        
-        if($usuario) {
-            return $this->respond($usuario);
-        }
-        
-        return $this->failNotFound('Usuario no encontrado');
+
+        return $usuario
+            ? $this->respond($usuario)
+            : $this->failNotFound('Usuario no encontrado');
     }
 
-    // Crear nuevo usuario
-    public function crear()
+   public function crear()
+{
+    $userModel = new UserModel();
+    $carritoModel = new CarritoModel(); // Añade esta línea
+    
+    $data = $this->request->getPost();
+
+    if (empty($data)) {
+        $data = $this->request->getJSON(true);
+    }
+
+    if (!$data) {
+        return $this->failValidationErrors('Datos no recibidos');
+    }
+
+    // Validación adicional recomendada
+    $rules = [
+        'nombre' => 'required|min_length[3]',
+        'apellido' => 'required|min_length[3]',
+        'correo' => 'required|valid_email|is_unique[usuarios.correo]',
+        'contraseña' => 'required|min_length[8]',
+        'direccion' => 'required',
+        'telefono' => 'required'
+    ];
+
+    if (!$this->validate($rules)) {
+        return $this->failValidationErrors($this->validator->getErrors());
+    }
+
+    // Forzar rol como 'usuario'
+    $data['rol'] = 'usuario';
+
+    // Hashear contraseña
+    $data['contraseña'] = password_hash($data['contraseña'], PASSWORD_DEFAULT);
+
+    // Iniciar transacción
+    $db = \Config\Database::connect();
+    $db->transStart();
+
+    try {
+        // 1. Crear usuario
+        $id_usuario = $userModel->insert($data);
+        
+        if (!$id_usuario) {
+            throw new \RuntimeException('Error al crear usuario');
+        }
+
+        // 2. Crear carrito automáticamente (NUEVO)
+        $carritoModel->crearCarrito($id_usuario);
+
+        $db->transComplete();
+
+        // 3. Iniciar sesión automáticamente (opcional pero recomendado)
+        session()->set([
+            'id_usuario' => $id_usuario,
+            'nombre' => $data['nombre'],
+            'correo' => $data['correo'],
+            'rol' => 'usuario',
+            'logged_in' => true
+        ]);
+
+        // Respuesta
+        if ($this->request->isAJAX()) {
+            return $this->respondCreated([
+                'status' => 201,
+                'message' => 'Usuario creado exitosamente',
+                'id' => $id_usuario
+            ]);
+        }
+
+        return redirect()->to('/dashboard')->with('success', 'Registro exitoso');
+
+    } catch (\Exception $e) {
+        $db->transRollback();
+        return $this->failServerError('Error en el registro: ' . $e->getMessage());
+    }
+}
+
+    public function crearAdmin()
     {
         $model = new UserModel();
-        $data = $this->request->getJSON(true);
+        $data = $this->request->getPost();
 
-            if (empty($data)) {
-                return $this->failValidationErrors('Datos no recibidos');
-            }
+        if (empty($data)) {
+            $data = $this->request->getJSON(true);
+        }
 
-            // Validar y encriptar la contraseña si viene
-            if (!empty($data['contraseña'])) {
-                $data['contraseña'] = password_hash($data['contraseña'], PASSWORD_DEFAULT);
-            } else {
-                return $this->failValidationErrors('La contraseña es obligatoria');
-            }
+        if (!$data) {
+            return $this->failValidationErrors('Datos no recibidos');
+        }
 
-            if ($model->insert($data)) {
-                return $this->respondCreated([
-                    'status' => 201,
-                    'message' => 'Usuario creado exitosamente',
-                    'id' => $model->getInsertID()
-                ]);
-            }
+        // Forzar rol como 'usuario'
+        $data['rol'] = 'administrador';
 
+        if (!empty($data['contraseña'])) {
+            $data['contraseña'] = password_hash($data['contraseña'], PASSWORD_DEFAULT);
+        } else {
+            return $this->failValidationErrors('La contraseña es obligatoria');
+        }
+
+        if (!$model->insert($data)) {
             return $this->failValidationErrors($model->errors());
+        }
+
+        if ($this->request->isAJAX()) {
+            return $this->respondCreated([
+                'status' => 201,
+                'message' => 'Usuario creado exitosamente',
+                'id' => $model->getInsertID()
+            ]);
+        }
+
+        return redirect()->to('login')->with('success', 'Usuario registrado correctamente.');
     }
-    // Actualizar usuario
+
     public function update($id)
     {
         $model = new UserModel();
         $data = $this->request->getJSON(true);
-        
-        if($model->withDeleted()->find($id)) {
-            if($model->update($id, $data)) {
-                return $this->respond([
-                    'status' => 200,
-                    'message' => 'Usuario actualizado correctamente'
-                ]);
-            }
+
+        // Forzar rol como 'usuario' para evitar que se modifique
+        $data['rol'] = 'usuario';
+
+        if (isset($data['contraseña']) && !empty($data['contraseña'])) {
+            $data['contraseña'] = password_hash($data['contraseña'], PASSWORD_DEFAULT);
+        }
+
+        if (!$model->withDeleted()->find($id)) {
+            return $this->failNotFound('Usuario no encontrado');
+        }
+
+        if (!$model->update($id, $data)) {
             return $this->failValidationErrors($model->errors());
         }
-        
-        return $this->failNotFound('Usuario no encontrado');
+
+        return $this->respond([
+            'status' => 200,
+            'message' => 'Usuario actualizado correctamente'
+        ]);
     }
 
-    // Eliminación lógica
     public function delete($id)
     {
         $model = new UserModel();
-        
-        if($model->find($id)) {
-            $model->delete($id);
-            return $this->respondDeleted([
-                'status' => 200,
-                'message' => 'Usuario desactivado (eliminación lógica)'
-            ]);
+
+        if (!$model->find($id)) {
+            return $this->failNotFound('Usuario no encontrado');
         }
-        
-        return $this->failNotFound('Usuario no encontrado');
+
+        $model->delete($id);
+        return $this->respondDeleted([
+            'status' => 200,
+            'message' => 'Usuario eliminado lógicamente'
+        ]);
     }
 
-    // Restaurar usuario eliminado lógicamente
     public function restaurar($id)
     {
         $model = new UserModel();
-        
-        if($model->onlyDeleted()->find($id)) {
-            $model->update($id, ['deleted_at' => null]);
-            return $this->respond([
-                'status' => 200,
-                'message' => 'Usuario restaurado exitosamente'
-            ]);
+
+        if (!$model->onlyDeleted()->find($id)) {
+            return $this->failNotFound('Usuario no encontrado o no está eliminado');
         }
-        
-        return $this->failNotFound('Usuario no encontrado o no estaba eliminado');
+
+        $model->update($id, ['deleted_at' => null]);
+        return $this->respond([
+            'status' => 200,
+            'message' => 'Usuario restaurado exitosamente'
+        ]);
     }
 }

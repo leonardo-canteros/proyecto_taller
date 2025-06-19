@@ -58,11 +58,67 @@ class Home extends BaseController
 		echo view('footer_view');
 	}
 
-	public function register()
+	public function catalogo()
 	{
+    $productoModel = new \App\Models\ProductoModel();
+    
+    $data['productos'] = $productoModel->select([
+        'id_producto',
+        'nombre',
+        'descripcion',
+        'precio',
+        'talla',
+        'color',
+        'imagen', // Asegúrate que este campo contiene los BLOB
+        'estado'
+    ])->where('estado', 'activo')
+      ->where('deleted_at', null)
+      ->findAll();
+
     echo view('head_view');
     echo view('navbar_view');
-    echo view('bodyregister');
+    echo view('catalogo_view', $data);
     echo view('footer_view');
 	}
+
+	public function login(){
+	echo view('head_view');
+    echo view('navbar_view');
+    echo view('login');
+    echo view('footer_view');
+	}
+
+	public function registerForm()
+	{
+		echo view('head_view');
+		echo view('navbar_view');
+		echo view('bodyregister');
+		echo view('footer_view');
+	}
+	
+	public function admin()
+{
+    if (session()->get('rol') !== 'admin') {
+        return redirect()->to('/'); // Bloqueo si no es admin
+    }
+
+    echo view('head_view');
+    echo view('navbar_view');
+    echo view('admin_view'); // Asegurate de tener esta vista
+    echo view('footer_view');
+}
+
+public function usuario()
+{
+    if (!session()->get('logged_in')) {
+        return redirect()->to('/login');
+    }
+
+    echo view('head_view');
+    echo view('navbar_view');
+    echo view('usuario/usuario_view'); // Asegurate de tener esta vista
+    echo view('footer_view');
+}
+
+
 }

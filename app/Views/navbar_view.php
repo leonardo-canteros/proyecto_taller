@@ -1,8 +1,8 @@
 <?php
-$session = session();
-$loggedIn = $session->get('logged_in');
-$rol = $session->get('rol');
-$isAdmin = ($loggedIn && $rol === 'administrador');
+$session    = session();
+$loggedIn   = $session->get('logged_in');
+$rol        = $session->get('rol');
+$isAdmin    = ($loggedIn && $rol === 'administrador');
 $currentUrl = current_url();
 ?>
 
@@ -57,7 +57,7 @@ $currentUrl = current_url();
 
         <li class="nav-item mx-2">
           <a class="nav-link <?= strpos($currentUrl, 'catalogo') ? 'active' : '' ?>" 
-            href="<?= $isAdmin ? site_url('admin/catalogo') : site_url('catalogo') ?>">
+             href="<?= $isAdmin ? site_url('admin/catalogo') : site_url('catalogo') ?>">
             <i class="fas fa-box-open me-1"></i> Catálogo
           </a>
         </li>
@@ -91,15 +91,36 @@ $currentUrl = current_url();
         <?php else: ?>
           <!-- Usuario logueado -->
           <?php if ($isAdmin): ?>
-            <li class="nav-item mx-2">
-              <a class="nav-link" href="<?= site_url('admin/panel') ?>">
+            <!-- Dropdown Panel Admin -->
+            <li class="nav-item dropdown mx-2">
+              <a class="nav-link dropdown-toggle" href="#"
+                 id="adminDropdown" role="button"
+                 data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="fas fa-tachometer-alt me-1"></i> Panel Admin
               </a>
-            </li>
-            <li class="nav-item mx-2">
-              <a class="nav-link" href="<?= site_url('admin/usuarios') ?>">
-                <i class="fas fa-users-cog me-1"></i> Usuarios
-              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="adminDropdown">
+                <li>
+                  <a class="dropdown-item" href="<?= site_url('admin/productos/crear') ?>">
+                    <i class="fas fa-plus-circle me-2"></i> Crear Producto
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="<?= site_url('admin/productos') ?>">
+                    <i class="fas fa-edit me-2"></i> Modificar Productos
+                  </a>
+                </li>
+                <li><hr class="dropdown-divider"></li>
+                <li>
+                  <a class="dropdown-item" href="<?= site_url('admin/usuarios') ?>">
+                    <i class="fas fa-users me-2"></i> Listar Usuarios
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="<?= site_url('admin/usuarios/modificar') ?>">
+                    <i class="fas fa-user-edit me-2"></i> Modificar Usuarios
+                  </a>
+                </li>
+              </ul>
             </li>
           <?php endif; ?>
           

@@ -40,7 +40,10 @@ class AuthController extends BaseController
         'correo' => $user['correo'],
         'nombre' => $user['nombre'],
         'rol' => $user['rol'] ?? 'usuario',
-        'logged_in' => true
+        'logged_in' => true,
+
+        // Inicializar carrito vacío
+        'carrito' => []
     ];
     session()->set($sessionData);
 

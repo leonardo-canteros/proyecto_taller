@@ -1,6 +1,7 @@
 <?php namespace App\Controllers;
 
 use App\Models\UserModel;
+use App\Models\CarritoModel;
 use CodeIgniter\API\ResponseTrait;
 
 class UserController extends BaseController
@@ -29,42 +30,83 @@ class UserController extends BaseController
             : $this->failNotFound('Usuario no encontrado');
     }
 
-    public function crear()
-    {
-        $model = new UserModel();
-        $data = $this->request->getPost();
+   public function crear()
+{
+    $userModel = new UserModel();
+    $carritoModel = new CarritoModel(); // Añade esta línea
+    
+    $data = $this->request->getPost();
 
-        if (empty($data)) {
-            $data = $this->request->getJSON(true);
+    if (empty($data)) {
+        $data = $this->request->getJSON(true);
+    }
+
+    if (!$data) {
+        return $this->failValidationErrors('Datos no recibidos');
+    }
+
+    // Validación adicional recomendada
+    $rules = [
+        'nombre' => 'required|min_length[3]',
+        'apellido' => 'required|min_length[3]',
+        'correo' => 'required|valid_email|is_unique[usuarios.correo]',
+        'contraseña' => 'required|min_length[8]',
+        'direccion' => 'required',
+        'telefono' => 'required'
+    ];
+
+    if (!$this->validate($rules)) {
+        return $this->failValidationErrors($this->validator->getErrors());
+    }
+
+    // Forzar rol como 'usuario'
+    $data['rol'] = 'usuario';
+
+    // Hashear contraseña
+    $data['contraseña'] = password_hash($data['contraseña'], PASSWORD_DEFAULT);
+
+    // Iniciar transacción
+    $db = \Config\Database::connect();
+    $db->transStart();
+
+    try {
+        // 1. Crear usuario
+        $id_usuario = $userModel->insert($data);
+        
+        if (!$id_usuario) {
+            throw new \RuntimeException('Error al crear usuario');
         }
 
-        if (!$data) {
-            return $this->failValidationErrors('Datos no recibidos');
-        }
+        // 2. Crear carrito automáticamente (NUEVO)
+        $carritoModel->crearCarrito($id_usuario);
 
-        // Forzar rol como 'usuario'
-        $data['rol'] = 'usuario';
+        $db->transComplete();
 
-        if (!empty($data['contraseña'])) {
-            $data['contraseña'] = password_hash($data['contraseña'], PASSWORD_DEFAULT);
-        } else {
-            return $this->failValidationErrors('La contraseña es obligatoria');
-        }
+        // 3. Iniciar sesión automáticamente (opcional pero recomendado)
+        session()->set([
+            'id_usuario' => $id_usuario,
+            'nombre' => $data['nombre'],
+            'correo' => $data['correo'],
+            'rol' => 'usuario',
+            'logged_in' => true
+        ]);
 
-        if (!$model->insert($data)) {
-            return $this->failValidationErrors($model->errors());
-        }
-
+        // Respuesta
         if ($this->request->isAJAX()) {
             return $this->respondCreated([
                 'status' => 201,
                 'message' => 'Usuario creado exitosamente',
-                'id' => $model->getInsertID()
+                'id' => $id_usuario
             ]);
         }
 
-        return redirect()->to('login')->with('success', 'Usuario registrado correctamente.');
+        return redirect()->to('/usuario')->with('success', 'Registro exitoso');
+
+    } catch (\Exception $e) {
+        $db->transRollback();
+        return $this->failServerError('Error en el registro: ' . $e->getMessage());
     }
+}
 
     public function crearAdmin()
     {

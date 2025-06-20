@@ -31,13 +31,13 @@ $routes->set404Override();                        // Manejador personalizado par
 // Obtenemos un aumento de rendimiento al especificar la ruta por defecto
 // ya que no es necesario escanear directorios.
 $routes->get('/', 'Home::index');
-$routes->get('principal', 'Home::index');
+$routes->get('/principal', 'Home::index');
 $routes->get('quienes_somos', 'Home::quienes_somos');
 $routes->get('Contacto', 'Home::Contacto'); 
 $routes->get('Comercializacion', 'home::Comercializacion'); 
 $routes->get('termino_usos', 'home::termino_usos');
 $routes->get('footer', 'home::footer');
-$routes->get('catalogo', 'Home::Catalogo');
+$routes->get('catalogo', 'Home::catalogo');
 
 
 // Rutas CRUD para usuarios 
@@ -57,9 +57,20 @@ $routes->put('productos/editar/(:num)', 'ProductoController::editar/$1'); // Pro
 $routes->delete('productos/eliminar/(:num)', 'ProductoController::eliminar/$1');
 $routes->get('productos', 'ProductoController::index');
 
+/*
+// Grupo de rutas para el carrito (protegidas por autenticación)
+$routes->group('carrito', ['filter' => 'auth'], function($routes) {
+    $routes->get('usuario/(:num)', 'CarritoController::obtenerCarrito/$1');
+    $routes->post('agregar', 'CarritoController::agregar');
+    $routes->put('actualizar/(:num)', 'CarritoController::editarProducto/$1'); // :num = id_producto
+    $routes->delete('eliminar/(:num)', 'CarritoController::eliminarProducto/$1'); // :num = id_producto
+    $routes->delete('vaciar/(:num)', 'CarritoController::vaciarCarrito/$1'); // :num = id_usuario
+});
+*/
+
 // CRUD Carrito
-$routes->get('carrito/usuario/(:num)', 'CarritoController::mostrarCarrito/$1');
-$routes->post('carrito/agregar', 'CarritoController::agregarProducto');
+$routes->get('carrito/usuario/(:num)', 'CarritoController::obtenerCarrito/$1');
+$routes->post('carrito/agregar', 'CarritoController::agregar');
 $routes->put('carrito/editar/(:num)', 'CarritoController::editarProducto/$1');
 $routes->delete('carrito/eliminar/(:num)', 'CarritoController::eliminarProducto/$1');
 
@@ -86,15 +97,10 @@ $routes->post('login', 'AuthController::login');
 // Logout con GET para enlace simple
 $routes->post('logout', 'AuthController::logout');
 
-
-
-/*
-$routes->get('login', 'Home::loginForm'); // Mostrar vista
-$routes->post('login', 'AuthController::login'); // Procesar login
-*/
 //register
 $routes->get('register', 'Home::registerForm');       // Muestra formulario
 $routes->post('register', 'UserController::crear');   // Procesa registro
+
 // redireccionamiento a admin/user
 $routes->get('admin/panel', 'Home::admin_panel');
 $routes->get('admin/principal', 'Home::admin_principal_view');
@@ -102,6 +108,8 @@ $routes->get('admin/quienes_somos', 'Home::admin_quienes_somos');
 $routes->get('admin/comercializacion', 'Home::admin_comercializacion');
 $routes->get('admin/contacto', 'Home::admin_contacto');
 $routes->get('admin/terminos_usos', 'Home::admin_terminos_usos');
+$routes->get('admin/catalogo', 'Home::catalogo');
+
 $routes->get('/usuario', 'Home::usuario');
 
 

@@ -53,7 +53,7 @@ class AuthController extends BaseController
         ]);
     } else {
         // Redirigir según el rol
-        return redirect()->to($user['rol'] === 'administrador' ? '/admin' : '/usuario');
+        return redirect()->to($user['rol'] === 'administrador' ? '/admin/principal' : '/usuario');
     }
 }
 

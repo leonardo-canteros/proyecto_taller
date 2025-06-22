@@ -1,8 +1,8 @@
 <?php
-$session = session();
-$loggedIn = $session->get('logged_in');
-$rol = $session->get('rol');
-$isAdmin = ($loggedIn && $rol === 'administrador');
+$session    = session();
+$loggedIn   = $session->get('logged_in');
+$rol        = $session->get('rol');
+$isAdmin    = ($loggedIn && $rol === 'administrador');
 $currentUrl = current_url();
 
 // Obtener cantidad TOTAL de productos en el carrito (sumando cantidades)
@@ -18,7 +18,7 @@ if ($loggedIn) {
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container">
     <!-- Logo -->
-    <a class="navbar-brand" href="<?= $isAdmin ? site_url('admin/principal') : site_url('/') ?>">
+    <a class="navbar-brand" href="<?= $isAdmin ? site_url('admin/principal') : site_url('/principal') ?>">
       <img src="/proyecto_taller/assets/img/canTfor.jpg" alt="Logo" height="40">
     </a>
     
@@ -64,12 +64,22 @@ if ($loggedIn) {
           </a>
         </li>
 
-        <li class="nav-item mx-2">
-          <a class="nav-link <?= strpos($currentUrl, 'catalogo') ? 'active' : '' ?>" 
-            href="<?= $isAdmin ? site_url('admin/catalogo') : site_url('catalogo') ?>">
-            <i class="fas fa-box-open me-1"></i> Catálogo
-          </a>
-        </li>
+        <!-- Catálogo público o admin según rol -->
+        <?php if ($isAdmin): ?>
+          <li class="nav-item mx-2">
+            <a class="nav-link <?= strpos($currentUrl, 'admin/catalogo') ? 'active' : '' ?>" 
+               href="<?= site_url('admin/catalogo') ?>">
+              <i class="fas fa-box-open me-1"></i> Catálogo Admin
+            </a>
+          </li>
+        <?php else: ?>
+          <li class="nav-item mx-2">
+            <a class="nav-link <?= strpos($currentUrl, 'catalogo') ? 'active' : '' ?>" 
+               href="<?= site_url('catalogo') ?>">
+              <i class="fas fa-box-open me-1"></i> Catálogo
+            </a>
+          </li>
+        <?php endif; ?>
       </ul>
 
       <!-- Menú derecho -->
@@ -115,15 +125,25 @@ if ($loggedIn) {
         <?php else: ?>
           <!-- Usuario logueado -->
           <?php if ($isAdmin): ?>
-            <li class="nav-item mx-2">
-              <a class="nav-link" href="<?= site_url('admin/panel') ?>">
+            <!-- Dropdown Panel Admin -->
+            <li class="nav-item dropdown mx-2">
+              <a class="nav-link dropdown-toggle" href="#"
+                 id="adminDropdown" role="button"
+                 data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="fas fa-tachometer-alt me-1"></i> Panel Admin
               </a>
-            </li>
-            <li class="nav-item mx-2">
-              <a class="nav-link" href="<?= site_url('admin/usuarios') ?>">
-                <i class="fas fa-users-cog me-1"></i> Usuarios
-              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="adminDropdown">
+                <li>
+                  <a class="dropdown-item" href="<?= site_url('admin/panel') ?>">
+                    <i class="fas fa-plus-circle me-2"></i> Crear Producto
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="<?= site_url('admin/productos') ?>">
+                    <i class="fas fa-list me-2"></i> Listar Productos
+                  </a>
+                </li>
+              </ul>
             </li>
           <?php endif; ?>
           
@@ -143,15 +163,15 @@ if ($loggedIn) {
                 </a>
               </li>
               <?php if ($isAdmin): ?>
-              <li>
-                <a class="dropdown-item" href="<?= site_url('admin/configuracion') ?>">
-                  <i class="fas fa-cog me-2"></i> Configuración
-                </a>
-              </li>
+                <li>
+                  <a class="dropdown-item" href="<?= site_url('admin/configuracion') ?>">
+                    <i class="fas fa-cog me-2"></i> Configuración
+                  </a>
+                </li>
               <?php endif; ?>
               <li><hr class="dropdown-divider"></li>
               <li>
-                <form action="<?= site_url('logout') ?>" method="POST">
+                <form action="<?= site_url('logout') ?>" method="POST" class="d-inline">
                   <button type="submit" class="dropdown-item">
                     <i class="fas fa-sign-out-alt me-2"></i> Cerrar Sesión
                   </button>
@@ -208,3 +228,4 @@ $(document).ready(function() {
     window.actualizarContadorCarrito = actualizarContadorCarrito;
 });
 </script>
+

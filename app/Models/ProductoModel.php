@@ -9,9 +9,10 @@ class ProductoModel extends Model
     protected $deletedField = 'deleted_at'; // Campo para marcar eliminación
     
     protected $allowedFields = [
-        'nombre', 'descripcion', 'precio', 'stock', 
-        'talla', 'color', 'imagen', 'estado', 'id_categoria','deleted_at'
+    'nombre', 'descripcion', 'precio', 'stock', 
+    'talla', 'color', 'imagen', 'estado', 'categoria', 'deleted_at'
     ];
+
 
     
 
@@ -22,16 +23,6 @@ class ProductoModel extends Model
         'stock' => 'required|integer'
     ];
 
-         protected $beforeInsert = ['setDefaultImage'];
-        protected $beforeUpdate = ['setDefaultImage'];
-
-        protected function setDefaultImage(array $data)
-        {
-            if (empty($data['data']['imagen'])) {
-                $data['data']['imagen'] = 'default.webp';
-            }
-            return $data;
-}
 }
 
 

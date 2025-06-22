@@ -31,7 +31,7 @@ $routes->set404Override();                        // Manejador personalizado par
 // Obtenemos un aumento de rendimiento al especificar la ruta por defecto
 // ya que no es necesario escanear directorios.
 $routes->get('/', 'Home::index');
-$routes->get('principal', 'Home::index');
+$routes->get('/principal', 'Home::index');
 $routes->get('quienes_somos', 'Home::quienes_somos');
 $routes->get('Contacto', 'Home::Contacto'); 
 $routes->get('Comercializacion', 'home::Comercializacion'); 
@@ -134,12 +134,24 @@ $routes->post('register', 'UserController::crear');   // Procesa registro
 
 // redireccionamiento a admin/user
 $routes->get('admin/panel', 'Home::admin_panel');
+$routes->get('admin/usuarios',   'Home::admin_usuarios');
+// Rutas para ProductController
+// Listado de productos (Admin)
+$routes->get(  'admin/productos',                      'Home::admin_productos');
+// Formulario de edición (GET) —> ahora en Home
+$routes->get(  'admin/productos/modificar/(:segment)', 'Home::admin_editar_producto/$1');
+// Procesar actualización (POST) —> en ProductoController
+$routes->post( 'admin/productos/actualizar/(:segment)', 'ProductoController::actualizar/$1');
+// Crear producto (POST)  
+$routes->post( 'admin/panel/crear',                     'ProductoController::crear');
+$routes->get('admin/catalogo', 'Home::catalogo_admin');
 $routes->get('admin/principal', 'Home::admin_principal_view');
 $routes->get('admin/quienes_somos', 'Home::admin_quienes_somos');
 $routes->get('admin/comercializacion', 'Home::admin_comercializacion');
 $routes->get('admin/contacto', 'Home::admin_contacto');
 $routes->get('admin/terminos_usos', 'Home::admin_terminos_usos');
 $routes->get('admin/catalogo', 'Home::catalogo');
+$routes->get('admin/lista', 'Home::admin_panel');
 $routes->get('/usuario', 'Home::usuario');
 
 

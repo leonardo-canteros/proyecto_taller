@@ -3,9 +3,10 @@
     margin: 0 auto;
     padding: 20px;
     max-width: 600px;
-    background-color: #f8f9fa;
+    background-color: #e2e2e2;    /* gris claro */
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    color: #666666;               /* texto gris medio */
 }
 
 /* Título del formulario */
@@ -14,7 +15,7 @@
     font-weight: bold;
     text-align: center;
     margin-bottom: 20px;
-    color: #343a40;
+    color: #444444;               /* gris oscuro */
 }
 
 /* Contenedor de cada campo del formulario */
@@ -26,35 +27,36 @@
 .formuProdu .formuProdu-label {
     font-size: 14px;
     font-weight: 600;
-    color: #495057;
+    color: #2B3440;               /* gris intermedio */
     margin-bottom: 5px;
     display: block;
 }
 
-/* Campos de entrada de texto */
+/* Campos de entrada de texto, textarea y select */
 .formuProdu .formuProdu-input,
 .formuProdu .formuProdu-textarea,
-.formuProdu .formuProdu-select {
+.formuProdu .formuProdu-select,
+.formuProdu .formuProdu-file {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ced4da;
+    border: 1px solid #2B3440;    /* borde gris */
     border-radius: 5px;
     font-size: 14px;
-    color: #495057;
-    background-color: #ffffff;
+    color: #333333;               /* texto gris oscuro */
+    background-color: #f0f0f0;    /* gris muy claro */
     box-sizing: border-box;
 }
 
-/* Estilos para el área de texto (textarea) */
+/* Altura del textarea */
 .formuProdu .formuProdu-textarea {
     height: 100px;
 }
 
-/* Estilo para los botones */
+/* Botón de submit */
 .formuProdu .formuProdu-btn {
     display: inline-block;
-    background-color: #007bff;
-    color: #ffffff;
+    background-color: #888888;    /* gris medio */
+    color: #ffffff;               /* texto blanco para contraste */
     padding: 10px 15px;
     font-size: 16px;
     font-weight: bold;
@@ -64,37 +66,28 @@
     text-align: center;
     width: 100%;
     margin-top: 10px;
+    transition: background-color 0.3s;
 }
 
 .formuProdu .formuProdu-btn:hover {
-    background-color: #0056b3;
+    background-color: #2B3440;    /* gris más oscuro */
 }
 
-/* Estilos para los botones de selección (select) */
+/* Apariencia del select */
 .formuProdu .formuProdu-select {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
 }
 
-/* Estilo para los campos de tipo archivo (imagen) */
-.formuProdu .formuProdu-file {
-    padding: 5px;
-    border: 1px solid #ced4da;
-    border-radius: 5px;
-    font-size: 14px;
-    width: 100%;
-    box-sizing: border-box;
-}
-
 /* Estilos de error */
 .formuProdu .formuProdu-error {
-    color: #dc3545;
+    color: #bb0000;
     font-size: 12px;
     margin-top: 5px;
 }
 
-/* Estilos para el contenedor del formulario dentro de un modal */
+/* Modal (si lo usas) */
 .formuProdu .formuProdu-modal-container {
     display: flex;
     justify-content: center;
@@ -102,15 +95,11 @@
     padding: 20px;
     background-color: rgba(0, 0, 0, 0.5);
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    top: 0; left: 0; right: 0; bottom: 0;
 }
 
-/* Estilos para el modal */
 .formuProdu .formuProdu-modal-content {
-    background-color: #ffffff;
+    background-color: #2B3440;    /* gris claro */
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     padding: 30px;
@@ -118,9 +107,18 @@
     max-width: 600px;
 }
 
-/* Responsividad para pantallas pequeñas */
+/* Responsividad */
 @media (max-width: 768px) {
     .formuProdu {
         width: 90%;
     }
+}
+
+/* Al final, para sobreescribir cualquier otro body { background } */
+body {
+  /* color de .bg-dark en Bootstrap 5 */
+  background-color: #2B3440 !important;
+  /* opcional para que ocupe siempre toda la pantalla */
+  min-height: 100vh;
+  margin: 0;
 }

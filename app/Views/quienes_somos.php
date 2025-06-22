@@ -1,3 +1,9 @@
+<style>
+  body {
+    background-color: beige !important;
+  }
+</style>
+
 <body class="pagina-quienes">
 
 <div class="container quienes-somos">

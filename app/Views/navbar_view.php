@@ -55,12 +55,22 @@ $currentUrl = current_url();
           </a>
         </li>
 
-        <li class="nav-item mx-2">
-          <a class="nav-link <?= strpos($currentUrl, 'catalogo') ? 'active' : '' ?>" 
-             href="<?= $isAdmin ? site_url('admin/catalogo') : site_url('catalogo') ?>">
-            <i class="fas fa-box-open me-1"></i> Catálogo
-          </a>
-        </li>
+        <!-- Catálogo público o admin según rol -->
+        <?php if ($isAdmin): ?>
+          <li class="nav-item mx-2">
+            <a class="nav-link <?= strpos($currentUrl, 'admin/catalogo') ? 'active' : '' ?>" 
+               href="<?= site_url('admin/catalogo') ?>">
+              <i class="fas fa-box-open me-1"></i> Catálogo Admin
+            </a>
+          </li>
+        <?php else: ?>
+          <li class="nav-item mx-2">
+            <a class="nav-link <?= strpos($currentUrl, 'catalogo') ? 'active' : '' ?>" 
+               href="<?= site_url('catalogo') ?>">
+              <i class="fas fa-box-open me-1"></i> Catálogo
+            </a>
+          </li>
+        <?php endif; ?>
       </ul>
 
       <!-- Menú derecho -->
@@ -100,24 +110,13 @@ $currentUrl = current_url();
               </a>
               <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="adminDropdown">
                 <li>
-                  <a class="dropdown-item" href="<?= site_url('admin/productos/crear') ?>">
+                  <a class="dropdown-item" href="<?= site_url('admin/panel') ?>">
                     <i class="fas fa-plus-circle me-2"></i> Crear Producto
                   </a>
                 </li>
                 <li>
                   <a class="dropdown-item" href="<?= site_url('admin/productos') ?>">
-                    <i class="fas fa-edit me-2"></i> Modificar Productos
-                  </a>
-                </li>
-                <li><hr class="dropdown-divider"></li>
-                <li>
-                  <a class="dropdown-item" href="<?= site_url('admin/usuarios') ?>">
-                    <i class="fas fa-users me-2"></i> Listar Usuarios
-                  </a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="<?= site_url('admin/usuarios/modificar') ?>">
-                    <i class="fas fa-user-edit me-2"></i> Modificar Usuarios
+                    <i class="fas fa-list me-2"></i> Listar Productos
                   </a>
                 </li>
               </ul>
@@ -140,15 +139,15 @@ $currentUrl = current_url();
                 </a>
               </li>
               <?php if ($isAdmin): ?>
-              <li>
-                <a class="dropdown-item" href="<?= site_url('admin/configuracion') ?>">
-                  <i class="fas fa-cog me-2"></i> Configuración
-                </a>
-              </li>
+                <li>
+                  <a class="dropdown-item" href="<?= site_url('admin/configuracion') ?>">
+                    <i class="fas fa-cog me-2"></i> Configuración
+                  </a>
+                </li>
               <?php endif; ?>
               <li><hr class="dropdown-divider"></li>
               <li>
-                <form action="<?= site_url('logout') ?>" method="POST">
+                <form action="<?= site_url('logout') ?>" method="POST" class="d-inline">
                   <button type="submit" class="dropdown-item">
                     <i class="fas fa-sign-out-alt me-2"></i> Cerrar Sesión
                   </button>

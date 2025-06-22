@@ -4,6 +4,15 @@ $loggedIn = $session->get('logged_in');
 $rol = $session->get('rol');
 $isAdmin = ($loggedIn && $rol === 'administrador');
 $currentUrl = current_url();
+
+// Obtener cantidad TOTAL de productos en el carrito (sumando cantidades)
+$cartCount = 0;
+$userId = null;
+if ($loggedIn) {
+    $userId = $session->get('id_usuario');
+    $carritoModel = new \App\Models\CarritoModel();
+    $cartCount = $carritoModel->contarProductos($userId); // Esto ahora suma las cantidades
+}
 ?>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -65,6 +74,21 @@ $currentUrl = current_url();
 
       <!-- Menú derecho -->
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <?php if ($loggedIn && $userId): ?>
+          <!-- Ícono del carrito con contador dinámico -->
+          <li class="nav-item mx-2">
+            <a class="nav-link position-relative" href="<?= site_url('carrito/usuario/'.$userId) ?>">
+              <i class="fas fa-shopping-cart"></i>
+              <?php if ($cartCount > 0): ?>
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger cart-counter">
+                  <?= $cartCount ?>
+                  <span class="visually-hidden">productos en el carrito</span>
+                </span>
+              <?php endif; ?>
+            </a>
+          </li>
+        <?php endif; ?>
+        
         <?php if (!$loggedIn): ?>
           <!-- Dropdown para usuarios no logueados -->
           <li class="nav-item dropdown mx-2">
@@ -140,3 +164,47 @@ $currentUrl = current_url();
     </div>
   </div>
 </nav>
+
+<!-- JavaScript para actualización dinámica -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+    // Función para actualizar el contador
+    function actualizarContadorCarrito(nuevaCantidad) {
+        const cartIcon = $('.fa-shopping-cart');
+        let badge = cartIcon.siblings('.cart-counter');
+        
+        if (nuevaCantidad > 0) {
+            if (badge.length === 0) {
+                cartIcon.after(
+                    `<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger cart-counter">
+                        ${nuevaCantidad}
+                        <span class="visually-hidden">productos en el carrito</span>
+                    </span>`
+                );
+            } else {
+                badge.text(nuevaCantidad);
+            }
+        } else {
+            badge.remove();
+        }
+    }
+
+    // Manejar respuestas AJAX
+    $(document).ajaxSuccess(function(event, xhr, settings) {
+        if (settings.url.includes('/carrito/')) {
+            try {
+                const response = JSON.parse(xhr.responseText);
+                if (response.success && response.carrito?.total_items !== undefined) {
+                    actualizarContadorCarrito(response.carrito.total_items);
+                }
+            } catch (e) {
+                console.error("Error al procesar respuesta AJAX:", e);
+            }
+        }
+    });
+    
+    // Hacer la función accesible globalmente
+    window.actualizarContadorCarrito = actualizarContadorCarrito;
+});
+</script>

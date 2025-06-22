@@ -68,11 +68,42 @@ $routes->group('carrito', ['filter' => 'auth'], function($routes) {
 });
 */
 
-// CRUD Carrito
-$routes->get('carrito/usuario/(:num)', 'CarritoController::obtenerCarrito/$1');
-$routes->post('carrito/agregar', 'CarritoController::agregar');
-$routes->put('carrito/editar/(:num)', 'CarritoController::editarProducto/$1');
-$routes->delete('carrito/eliminar/(:num)', 'CarritoController::eliminarProducto/$1');
+// Rutas para el Carrito de Compras
+$routes->group('carrito', function($routes) {
+    // Obtener el carrito de un usuario (GET)
+    $routes->get('usuario/(:num)', 'CarritoController::obtenerCarrito/$1');
+    
+    // Vista del carrito (GET)
+    $routes->get('ver', 'CarritoController::verCarrito');
+    
+    // Agregar producto al carrito (POST)
+    $routes->post('agregar', 'CarritoController::agregar');
+    
+    // Actualizar cantidad de un producto (PUT)
+    $routes->post('actualizar/(:num)', 'CarritoController::actualizar/$1'); // :num = id_carrito
+    
+    // Eliminar un producto del carrito (DELETE)
+    $routes->post('eliminar/(:num)', 'CarritoController::eliminar/$1'); // :num = id_carrito
+    
+    // Vaciar todo el carrito (DELETE)
+    $routes->post('vaciar/(:num)', 'CarritoController::vaciar/$1'); // :num = id_usuario
+    
+    // Calcular total del carrito (GET)
+    $routes->get('total/(:num)', 'CarritoController::calcularTotal/$1'); // :num = id_usuario
+    
+    // Contar items en el carrito (GET)
+    $routes->get('contar/(:num)', 'CarritoController::contarItems/$1'); // :num = id_usuario
+});
+
+// Versión alternativa con filtro de autenticación (descomentar si lo prefieres)
+/*
+$routes->group('carrito', ['filter' => 'auth'], function($routes) {
+    // Todas las rutas aquí estarían protegidas por autenticación
+    $routes->get('ver', 'CarritoController::verCarrito');
+    $routes->post('agregar', 'CarritoController::agregar');
+    // ... otras rutas
+});
+*/
 
 // CRUD Pedido
 $routes->get('pedido', 'PedidoController::index');               // Listar pedidos

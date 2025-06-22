@@ -33,10 +33,7 @@ class CarritoController extends BaseController
         ];
         
         // Retornar siempre JSON
-        return $this->response->setJSON([
-            'success' => true,
-            'data' => $data
-        ]);
+        return view('carrito_view', $data);
         }
     
     /**
@@ -128,7 +125,7 @@ public function agregar()
                 'cantidad_agregada' => $cantidad
             ],
             'carrito' => [
-                'total_items' => count($productos_carrito),
+                'total_items' => $this->carritoModel->contarProductos($id_usuario), // Usar la nueva función
                 'total' => number_format($total_carrito, 2),
                 'items' => $productos_carrito
             ]
@@ -156,7 +153,7 @@ public function agregar()
     /**
      * Elimina un producto del carrito
      */
-    public function eliminar($id_producto)
+    public function eliminar( $id_carrito)
     {
         if (!session()->has('id_usuario')) {
             return redirect()->to('/login')->with('error', 'Debes iniciar sesión');
@@ -164,8 +161,8 @@ public function agregar()
         
         $id_usuario = session()->get('id_usuario');
         
-        if ($this->carritoModel->removerProducto($id_usuario, $id_producto)) {
-            return redirect()->to('/carrito')->with('success', 'Producto eliminado del carrito');
+        if ($this->carritoModel->eliminarProducto($id_carrito, $id_usuario)) {
+            return redirect()->to('carrito/usuario/'.$id_usuario)->with('success', 'Producto eliminado del carrito');
         }
         
         return redirect()->to('/carrito')->with('error', 'No se pudo eliminar el producto');
@@ -183,9 +180,64 @@ public function agregar()
         $id_usuario = session()->get('id_usuario');
         
         if ($this->carritoModel->vaciarCarrito($id_usuario)) {
-            return redirect()->to('/carrito')->with('success', 'Carrito vaciado correctamente');
+            return redirect()->to('carrito/usuario/'.$id_usuario) ->with('success', 'Carrito vaciado correctamente');
         }
         
         return redirect()->to('/carrito')->with('error', 'No se pudo vaciar el carrito');
     }
+
+
+   public function actualizar($id_carrito)
+{
+    if (!session()->has('id_usuario')) {
+        return $this->response->setJSON([
+            'success' => false,
+            'message' => 'Debes iniciar sesión para actualizar el carrito',
+            'redirect' => base_url('login')
+        ]);
+    }
+
+    $cantidad = $this->request->getPost('cantidad');
+    $id_usuario = session()->get('id_usuario');
+
+    // Validar que el item pertenece al usuario
+    $item = $this->carritoModel->obtenerItem($id_carrito, $id_usuario);
+
+    if (!$item) {
+        return $this->response->setJSON([
+            'success' => false,
+            'message' => 'El producto no se encontró en tu carrito'
+        ]);
+    }
+
+    // Validar cantidad
+    if ($cantidad <= 0) {
+        return $this->response->setJSON([
+            'success' => false,
+            'message' => 'La cantidad debe ser mayor a cero'
+        ]);
+    }
+
+    // Verificar stock
+    $producto = $this->productoModel->find($item['id_producto']);
+    if ($producto['stock'] < $cantidad) {
+        return $this->response->setJSON([
+            'success' => false,
+            'message' => 'No hay suficiente stock disponible',
+            'stock_disponible' => $producto['stock']
+        ]);
+    }
+
+    // Actualizar cantidad
+    if ($this->carritoModel->actualizarCantidad($id_carrito, $cantidad)) {
+        // Calcular nuevo total
+        $nuevoTotal = $this->carritoModel->calcularTotalCarrito($id_usuario);
+         return redirect()->to('carrito/usuario/'.$id_usuario) ;
+    }
+
+    return $this->response->setJSON([
+        'success' => false,
+        'message' => 'No se pudo actualizar la cantidad'
+    ]);
+}
 }

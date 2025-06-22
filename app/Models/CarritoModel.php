@@ -29,7 +29,8 @@ class CarritoModel extends Model
     {
         return $this->insert([
             'id_usuario' => $id_usuario,
-            'estado' => 'activo'
+            'estado' => 'activo',
+            'fecha_creacion' => date('Y-m-d H:i:s')
         ]);
     }
     
@@ -47,7 +48,8 @@ class CarritoModel extends Model
         if ($item) {
             // Actualizar cantidad
             return $this->update($item['id_carrito'], [
-                'cantidad' => $item['cantidad'] + $cantidad
+                'cantidad' => $item['cantidad'] + $cantidad,
+                'fecha_actualizacion' => date('Y-m-d H:i:s')
             ]);
         }
         
@@ -56,7 +58,33 @@ class CarritoModel extends Model
             'id_usuario' => $id_usuario,
             'id_producto' => $id_producto,
             'cantidad' => $cantidad,
-            'estado' => 'activo'
+            'estado' => 'activo',
+            'fecha_creacion' => date('Y-m-d H:i:s')
+        ]);
+    }
+    
+    /**
+     * Obtiene un item específico del carrito
+     */
+    public function obtenerItem(int $id_carrito, int $id_usuario )
+    {
+        $builder = $this->where('id_carrito', $id_carrito);
+        
+        if ($id_usuario !== null) {
+            $builder->where('id_usuario', $id_usuario);
+        }
+        
+        return $builder->first();
+    }
+    
+    /**
+     * Actualiza la cantidad de un producto en el carrito
+     */
+    public function actualizarCantidad(int $id_carrito, int $cantidad): bool
+    {
+        return $this->update($id_carrito, [
+            'cantidad' => $cantidad,
+            'fecha_actualizacion' => date('Y-m-d H:i:s')
         ]);
     }
     
@@ -65,17 +93,31 @@ class CarritoModel extends Model
      */
     public function obtenerProductosConDetalles(int $id_usuario): array
     {
-        $productoModel = new ProductoModel();
-        
-        return $this->select('carritos.*, productos.nombre, productos.precio, productos.imagen, productos.stock')
+        return $this->select('carritos.*, productos.nombre, productos.precio, productos.imagen, productos.stock, productos.descripcion')
                   ->join('productos', 'productos.id_producto = carritos.id_producto')
                   ->where('carritos.id_usuario', $id_usuario)
                   ->where('carritos.estado', 'activo')
+                  ->orderBy('carritos.fecha_creacion', 'DESC')
                   ->findAll();
     }
     
     /**
-     * Elimina un producto del carrito
+     * Elimina un producto del carrito por ID de carrito
+     */
+    public function eliminarProducto(int $id_carrito, int $id_usuario): bool
+    {
+        $builder = $this->where('id_carrito', $id_carrito);
+        
+        if ($id_usuario !== null) {
+            $builder->where('id_usuario', $id_usuario);
+        }
+        
+        return $builder->delete();
+    }
+    
+    /**
+     * Elimina un producto del carrito por ID de producto
+     * @deprecated Usar eliminarProducto() en su lugar
      */
     public function removerProducto(int $id_usuario, int $id_producto): bool
     {
@@ -113,10 +155,49 @@ class CarritoModel extends Model
     /**
      * Obtiene la cantidad de items en el carrito
      */
-    public function contarProductos(int $id_usuario): int
+   public function contarProductos(int $id_usuario): int
+    {
+        $builder = $this->db->table($this->table);
+        $builder->selectSum('cantidad');
+        $builder->where('id_usuario', $id_usuario);
+        $builder->where('estado', 'activo');
+        $query = $builder->get();
+        
+        return (int) $query->getRow()->cantidad ?? 0;
+    }
+    
+    /**
+     * Verifica si un producto existe en el carrito
+     */
+    public function productoExisteEnCarrito(int $id_usuario, int $id_producto): bool
+    {
+        return $this->where('id_usuario', $id_usuario)
+                  ->where('id_producto', $id_producto)
+                  ->where('estado', 'activo')
+                  ->countAllResults() > 0;
+    }
+    
+    /**
+     * Obtiene la cantidad de un producto específico en el carrito
+     */
+    public function obtenerCantidadProducto(int $id_usuario, int $id_producto): int
+    {
+        $item = $this->where('id_usuario', $id_usuario)
+                   ->where('id_producto', $id_producto)
+                   ->where('estado', 'activo')
+                   ->first();
+                   
+        return $item ? $item['cantidad'] : 0;
+    }
+    
+    /**
+     * Actualiza el estado del carrito (para checkout)
+     */
+    public function actualizarEstado(int $id_usuario, string $estado): bool
     {
         return $this->where('id_usuario', $id_usuario)
                   ->where('estado', 'activo')
-                  ->countAllResults();
+                  ->set(['estado' => $estado, 'fecha_actualizacion' => date('Y-m-d H:i:s')])
+                  ->update();
     }
 }

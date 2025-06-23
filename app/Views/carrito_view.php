@@ -66,7 +66,7 @@
                                         <tr>
                                             <td>
                                                 <?php if (!empty($producto['imagen'])): ?>
-                                                    <img src="<?= base_url('uploads/' . $producto['imagen']) ?>" alt="<?= esc($producto['nombre']) ?>" class="img-thumbnail">
+                                                    <img src="<?= base_url('assets' . $producto['imagen']) ?>" alt="<?= esc($producto['nombre']) ?>" class="img-thumbnail">
                                                 <?php else: ?>
                                                     <div class="bg-light d-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
                                                         <i class="fas fa-image text-muted"></i>
@@ -146,9 +146,33 @@
                                 <span>$<?= number_format($total, 2) ?></span>
                             </div>
                             <hr>
-                            <a href="<?= base_url('checkout') ?>" class="btn btn-primary w-100 py-2">
-                                <i class="fas fa-credit-card me-2"></i> Proceder al pago
-                            </a>
+                             <form action="<?= base_url('pedidos/finalizar-compra') ?>" method="post" id="formPago">
+                                <?= csrf_field() ?>
+                                <div class="mb-3">
+                                    <label for="direccion" class="form-label">Dirección de envío</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="direccion" name="direccion" 
+                                            value="<?= esc(session()->get('direccion') ?? '') ?>" required>
+                                        <button class="btn btn-outline-secondary" type="button" id="btn-usar-perfil">
+                                            <i class="fas fa-user"></i> Usar de mi perfil
+                                        </button>
+                                    </div>
+                                    <small class="text-muted">Puedes modificarla si es diferente a la de tu perfil</small>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="metodo_pago" class="form-label">Método de pago</label>
+                                    <select class="form-select" id="metodo_pago" name="metodo_pago" required>
+                                        <option value="">Seleccione un método</option>
+                                        <option value="Tarjeta de crédito">Tarjeta de crédito</option>
+                                        <option value="Transferencia bancaria">Transferencia bancaria</option>
+                                        <option value="Efectivo">Efectivo</option>
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100 py-2">
+                                    <i class="fas fa-credit-card me-2"></i> Confirmar pedido
+                                </button>
+                            </form>
+                            
                         </div>
                     </div>
                 </div>
@@ -198,6 +222,76 @@
             return confirm('¿Estás seguro de eliminar este producto del carrito?');
         });
     });
+
+    
+    // Obtener dirección del usuario desde la sesión
+    const direccionUsuario = "<?= esc(session()->get('direccion') ?? '') ?>";
+
+    // Botón para restaurar la dirección del perfil
+    $('#btn-usar-perfil').on('click', function() {
+        if (direccionUsuario) {
+            $('#direccion').val(direccionUsuario);
+            $(this).html('<i class="fas fa-check"></i> Usada');
+            setTimeout(() => {
+                $(this).html('<i class="fas fa-user"></i> Usar de mi perfil');
+            }, 2000);
+        } else {
+            alert('No tienes una dirección guardada en tu perfil');
+        }
+    });
+
+    // Validar formulario antes de enviar
+    $('#formPago').on('submit', function(e) {
+        e.preventDefault();
+        
+        // Validaciones básicas
+        if ($('#direccion').val().trim() === '') {
+            alert('Por favor ingresa una dirección de envío');
+            return;
+        }
+        
+        if ($('#metodo_pago').val() === '') {
+            alert('Por favor selecciona un método de pago');
+            return;
+        }
+
+        const boton = $(this).find('button[type="submit"]');
+        const textoOriginal = boton.html();
+        boton.html('<i class="fas fa-spinner fa-spin me-2"></i> Procesando...');
+        boton.prop('disabled', true);
+        
+        // Agregar CSRF token manualmente
+        const formData = $(this).serialize() + '&<?= csrf_token() ?>=<?= csrf_hash() ?>';
+        
+        $.ajax({
+            url: $(this).attr('action'),
+            type: 'POST',
+            data: formData,
+            dataType: 'json',
+            success: function(response) {
+                if (response.success) {
+                    window.location.href = "<?= base_url('catalogo') ?>";
+                } else {
+                    alert(response.message || 'Error al procesar el pedido');
+                    boton.html(textoOriginal);
+                    boton.prop('disabled', false);
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error('Error detallado:', status, error);
+                alert('Error de conexión. Detalles en consola (F12)');
+                boton.html(textoOriginal);
+                boton.prop('disabled', false);
+            }
+        });
+    });
+
+    // Validación en tiempo real
+    $('#direccion, #metodo_pago').on('input change', function() {
+        const formValid = $('#direccion').val().trim() !== '' && $('#metodo_pago').val() !== '';
+        $('#formPago button[type="submit"]').prop('disabled', !formValid);
+    });
+
     </script>
 </body>
 </html>

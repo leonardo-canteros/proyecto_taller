@@ -1,15 +1,97 @@
-<?php
+<?php namespace App\Models;
 
-namespace App\Models;
 use CodeIgniter\Model;
 
 class PedidoModel extends Model
 {
     protected $table = 'pedido';
     protected $primaryKey = 'id_pedido';
-    protected $allowedFields = [
-        'id_usuario', 'fecha_pedido', 'total', 'estado_pedido',
-        'direccion_envio', 'metodo_pago'
-    ];
     protected $returnType = 'array';
+    protected $useSoftDeletes = false;
+    protected $allowedFields = [
+        'id_usuario', 
+        'fecha_pedido',
+        'Total',
+        'estado_pedido',
+        'direccion_envio',
+        'metodo_pago'
+    ];
+    protected $useTimestamps = false;
+    protected $createdField = 'fecha_pedido';
+
+    /**
+     * Crea un nuevo pedido desde el carrito
+     */
+   public function crearPedido($idUsuario, $datos, $items)
+{
+    $db = \Config\Database::connect();
+    $db->transStart();
+
+    try {
+        log_message('info', 'Iniciando creación de pedido para usuario: '.$idUsuario);
+        
+        $pedidoData = [
+            'id_usuario' => $idUsuario,
+            'fecha_pedido' => date('Y-m-d H:i:s'),
+            'Total' => $datos['total'],
+            'estado_pedido' => 1,
+            'direccion_envio' => $datos['direccion'],
+            'metodo_pago' => $datos['metodo_pago']
+        ];
+        
+        log_message('info', 'Intentando insertar pedido: '.print_r($pedidoData, true));
+        
+        if (!$this->insert($pedidoData)) {
+            log_message('error', 'Error al insertar: '.print_r($this->errors(), true));
+            throw new \RuntimeException('Error insertando pedido');
+        }
+        
+        $idPedido = $this->getInsertID();
+        log_message('info', 'Pedido creado con ID: '.$idPedido);
+        
+            $db->transComplete();
+
+            return $idPedido;
+
+        } catch (\Exception $e) {
+            $db->transRollback();
+            log_message('error', 'Error al crear pedido: '.$e->getMessage());
+            return false;
+        }
+    }
+
+    /**
+     * Obtiene pedidos con información del usuario
+     */
+    public function getPedidosConUsuario()
+    {
+        return $this->select('pedido.*, usuarios.nombre as nombre_usuario')
+                   ->join('usuarios', 'usuarios.id_usuario = pedido.id_usuario')
+                   ->orderBy('pedido.fecha_pedido', 'DESC')
+                   ->findAll();
+    }
+
+    /**
+     * Obtiene pedidos de un usuario específico
+     */
+    public function getPedidosPorUsuario($idUsuario)
+    {
+        return $this->where('id_usuario', $idUsuario)
+                   ->orderBy('fecha_pedido', 'DESC')
+                   ->findAll();
+    }
+
+    /**
+     * Cambia el estado de un pedido
+     */
+    public function cambiarEstado($idPedido, $estado)
+    {
+        $estadosValidos = [0 => 'cancelado', 1 => 'pendiente', 2 => 'enviado'];
+        
+        if (!array_key_exists($estado, $estadosValidos)) {
+            throw new \InvalidArgumentException('Estado de pedido no válido');
+        }
+
+        return $this->update($idPedido, ['estado_pedido' => $estado]);
+    }
 }

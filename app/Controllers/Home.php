@@ -98,9 +98,6 @@ class Home extends BaseController
     }
 
 
-
-
-
     public function login()
     {
         $this->loadView('login');

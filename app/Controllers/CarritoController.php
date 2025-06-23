@@ -165,7 +165,7 @@ public function agregar()
             return redirect()->to('carrito/usuario/'.$id_usuario)->with('success', 'Producto eliminado del carrito');
         }
         
-        return redirect()->to('/carrito')->with('error', 'No se pudo eliminar el producto');
+        return redirect()->to('carrito/usuario/'.$id_usuario)->with('error', 'No se pudo eliminar el producto');
     }
     
     /**
@@ -240,4 +240,6 @@ public function agregar()
         'message' => 'No se pudo actualizar la cantidad'
     ]);
 }
+
+
 }

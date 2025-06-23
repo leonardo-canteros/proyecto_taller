@@ -57,36 +57,31 @@ $routes->put('productos/editar/(:num)', 'ProductoController::editar/$1'); // Pro
 $routes->delete('productos/eliminar/(:num)', 'ProductoController::eliminar/$1');
 $routes->get('productos', 'ProductoController::index');
 
-/*
+
 // Grupo de rutas para el carrito (protegidas por autenticación)
 $routes->group('carrito', ['filter' => 'auth'], function($routes) {
     $routes->get('usuario/(:num)', 'CarritoController::obtenerCarrito/$1');
     $routes->post('agregar', 'CarritoController::agregar');
-    $routes->put('actualizar/(:num)', 'CarritoController::editarProducto/$1'); // :num = id_producto
-    $routes->delete('eliminar/(:num)', 'CarritoController::eliminarProducto/$1'); // :num = id_producto
-    $routes->delete('vaciar/(:num)', 'CarritoController::vaciarCarrito/$1'); // :num = id_usuario
+     $routes->post('finalizar', 'CarritoController::finalizar');
+    $routes->post('actualizar/(:num)', 'CarritoController::actualizar/$1'); // :num = id_producto
+    $routes->post('eliminar/(:num)', 'CarritoController::eliminar/$1'); // :num = id_producto
+    $routes->post('vaciar/(:num)', 'CarritoController::vaciar/$1'); // :num = id_usuario
 });
-*/
 
-// CRUD Carrito
-$routes->get('carrito/usuario/(:num)', 'CarritoController::obtenerCarrito/$1');
-$routes->post('carrito/agregar', 'CarritoController::agregar');
-$routes->put('carrito/editar/(:num)', 'CarritoController::editarProducto/$1');
-$routes->delete('carrito/eliminar/(:num)', 'CarritoController::eliminarProducto/$1');
 
-// CRUD Pedido
-$routes->get('pedido', 'PedidoController::index');               // Listar pedidos
-$routes->get('pedido/(:num)', 'PedidoController::show/$1');     // Ver pedido
-$routes->post('pedido/crear', 'PedidoController::crear');       // Crear pedido
-$routes->put('pedido/editar/(:num)', 'PedidoController::update/$1'); // Editar pedido
-$routes->delete('pedido/eliminar/(:num)', 'PedidoController::delete/$1'); // Eliminar pedido
+// Rutas para clientes
+$routes->group('pedidos', function($routes) {
+    $routes->get('mis-pedidos', 'PedidosController::misPedidos');
+    $routes->get('ver/(:num)', 'PedidosController::verPedido/$1');
+    $routes->post('finalizar-compra', 'PedidosController::finalizarCompra');
+});
 
-// CRUD Pedido Detalle
-$routes->get('pedido_detalle/(:num)', 'PedidoDetalleController::mostrarPorPedido/$1');      // Ver detalles de un pedido
-$routes->post('pedido_detalle/agregar', 'PedidoDetalleController::agregar');               // Agregar detalle
-$routes->put('pedido_detalle/editar/(:num)', 'PedidoDetalleController::editar/$1');        // Editar detalle
-$routes->delete('pedido_detalle/eliminar/(:num)', 'PedidoDetalleController::eliminar/$1'); // Eliminar detalle
-
+// Rutas para administradores
+$routes->group('admin/pedidos', ['filter' => 'auth:admin'], function($routes) {
+    $routes->get('/', 'PedidosController::adminListaPedidos');
+    $routes->get('ver/(:num)', 'PedidosController::adminVerPedido/$1');
+    $routes->post('cambiar-estado/(:num)', 'PedidosController::adminCambiarEstado/$1');
+});
 
 // Mostrar login (formulario) con GET
 $routes->get('login', 'Home::login');

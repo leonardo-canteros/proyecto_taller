@@ -150,6 +150,20 @@ class Home extends BaseController
         $this->loadView('admin/usuarios_listar', $data);
     }
 
+    public function verProducto($id)
+    {
+        $productoModel = new \App\Models\ProductoModel();
+        $producto = $productoModel->find($id);
+
+        if (!$producto) {
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound("Producto no encontrado.");
+        }
+
+        $data = ['producto' => $producto];
+        return $this->loadView('producto/ver_producto', $data);
+    }
+
+
 
 // ... (resto de los métodos existentes)
 

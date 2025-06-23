@@ -39,6 +39,8 @@ $routes->get('Comercializacion', 'home::Comercializacion');
 $routes->get('termino_usos', 'home::termino_usos');
 $routes->get('footer', 'home::footer');
 $routes->get('catalogo', 'Home::catalogo');
+$routes->get('producto/(:num)', 'Home::verProducto/$1');
+
 
 
 // Rutas CRUD para usuarios 

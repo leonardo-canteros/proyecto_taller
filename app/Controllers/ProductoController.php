@@ -63,6 +63,7 @@ class ProductoController extends Controller
             return redirect()->to('/admin/panel')->with('error', 'Hubo un problema al crear el producto');
         }
     }
+    
 
      // ————————— Admin: listado de productos —————————
     public function panel()

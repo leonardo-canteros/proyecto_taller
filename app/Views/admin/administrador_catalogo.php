@@ -53,9 +53,17 @@
           </div>
 
           <div class="card-footer bg-light">
-            <div class="d-flex justify-content-between align-items-center mb-2">
+            <div class="mb-2">
               <span class="text-success fw-bold">$<?= number_format($prod['precio'],2) ?></span>
             </div>
+
+            <!-- Botón Ver más (detalle público) -->
+            <a href="<?= base_url('producto/' . $prod['id_producto']) ?>"
+               class="btn btn-outline-secondary w-100 mb-2">
+              <i class="fas fa-eye me-1"></i> Ver más
+            </a>
+
+            <!-- Botón Editar (admin) -->
             <a href="<?= site_url('admin/productos/modificar/' . $prod['id_producto']) ?>"
                class="btn btn-info w-100">
               <i class="fas fa-edit me-1"></i> Editar
@@ -72,18 +80,6 @@
     <?php endif; ?>
   </div>
 </div>
-
-<!-- Opcional: toast para confirmaciones -->
-<!--
-<div id="toast" style="display: none;
-  position: fixed; bottom: 20px; right: 20px;
-  background: #17a2b8; color: white;
-  padding: 15px 20px; border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.3);
-  z-index: 9999;">
-  Acción realizada correctamente
-</div>
--->
 
 <script>
 // Animación escalonada para admin

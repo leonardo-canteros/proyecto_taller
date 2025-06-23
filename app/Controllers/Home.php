@@ -151,8 +151,6 @@ class Home extends BaseController
     }
 
 
-
-
 // ... (resto de los métodos existentes)
 
 	public function admin_principal_view()
@@ -370,6 +368,45 @@ class Home extends BaseController
     {
         return $this->loadView('termino_usos', ['title' => 'Términos y Condiciones']);
     }
+
+    public function perfilUsuario()
+    {
+        $session = session();
+
+        if (!$session->get('logged_in')) {
+            return redirect()->to('/login')->with('error', 'Debes iniciar sesión para acceder al perfil.');
+        }
+
+        $userModel = new \App\Models\UserModel();
+        $idUsuario = $session->get('id_usuario');
+        $usuario = $userModel->find($idUsuario);
+
+        if (!$usuario) {
+            return redirect()->to('/')->with('error', 'Usuario no encontrado.');
+        }
+
+        $this->loadView('usuario/perfil_view', ['usuario' => $usuario]);
+    }
+
+    public function perfilAdmin()
+    {
+        $session = session();
+        $id = $session->get('id_usuario');
+
+        $usuarioModel = new \App\Models\UserModel();
+        
+        // Este withDeleted() permite que aunque el admin esté marcado como eliminado, se muestre su perfil
+        $usuario = $usuarioModel->withDeleted()->find($id);
+
+        if (!$usuario) {
+            return redirect()->to('/')->with('error', 'Administrador no encontrado');
+        }
+
+        $this->loadView('admin/perfil', ['usuario' => $usuario]);
+    }
+
+
+
 
     public function usuario_comercializacion()
     {

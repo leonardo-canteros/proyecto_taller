@@ -118,8 +118,8 @@ $routes->get('admin/terminos_usos', 'Home::admin_terminos_usos');
 $routes->get('admin/catalogo', 'Home::catalogo');
 $routes->get('admin/lista', 'Home::admin_panel');
 $routes->get('admin/usuarios', 'Home::admin_usuarios');
-$routes->post('usuarios/desactivar/(:num)', 'UserController::delete/$1');
-$routes->post('usuarios/restaurar/(:num)', 'UserController::restaurar/$1');
+$routes->get('admin/perfil', 'Home::perfilAdmin');
+
 
 // Ver listado completo de consultas
 $routes->get('admin/consultas', 'Home::adminConsultas');
@@ -143,7 +143,9 @@ $routes->get('usuario/consultas', 'Home::formularioConsulta');
 // Procesar el formulario
 $routes->post('usuario/consultas', 'ConsultaController::enviar');
 $routes->get('usuario/mis_consultas', 'Home::misConsultas');
-
+$routes->post('usuarios/desactivar/(:num)', 'UserController::delete/$1');
+$routes->post('usuarios/restaurar/(:num)', 'UserController::restaurar/$1');
+$routes->get('usuario/perfil', 'Home::perfilUsuario');
 
 
 

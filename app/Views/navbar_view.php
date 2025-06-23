@@ -1,4 +1,4 @@
-<?php
+<?php 
 $session    = session();
 $loggedIn   = $session->get('logged_in');
 $rol        = $session->get('rol');

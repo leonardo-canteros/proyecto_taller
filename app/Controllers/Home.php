@@ -309,8 +309,31 @@ class Home extends BaseController
         return $this->loadView('admin/listado', $data);
     }
 
+    public function adminResponder($id_consulta)
+    {
+        $consultaModel = new \App\Models\ConsultaModel();
+        $db = \Config\Database::connect();
 
+        // Traemos la consulta y datos del usuario que la envió
+        $consulta = $db->table('consultas')
+                    ->select('consultas.*, usuarios.nombre AS nombre_usuario, usuarios.apellido AS apellido_usuario')
+                    ->join('usuarios', 'usuarios.id_usuario = consultas.id_usuario')
+                    ->where('consultas.id_consulta', $id_consulta)
+                    ->get()
+                    ->getRowArray();
 
+        if (!$consulta) {
+            return redirect()->to(site_url('admin/consultas'))->with('error', 'Consulta no encontrada.');
+        }
+
+        $data = [
+            'title' => 'Responder Consulta',
+            'consulta' => $consulta
+        ];
+
+        return $this->loadView('admin/enviar', $data);
+    }
+    /*usuarios <registrados> */ 
 
     public function usuario()
     {
@@ -318,6 +341,98 @@ class Home extends BaseController
             return redirect()->to('/login')->with('error', 'Debe iniciar sesión');
         }
 
-        $this->loadView('usuario/usuario_view');
+        $this->loadView('usuario/principal_view');
+        
     }
+    public function usuario_quienes_somos()
+    {
+        return $this->loadView('quienes_somos', ['title' => '¿Quiénes Somos?']);
+    }
+
+    public function usuario_termino_usos()
+    {
+        return $this->loadView('termino_usos', ['title' => 'Términos y Condiciones']);
+    }
+
+    public function usuario_comercializacion()
+    {
+        return $this->loadView('Comercializacion', ['title' => 'Comercialización']);
+    }
+
+    public function usuario_catalogo()
+    {
+        $productoModel = new \App\Models\ProductoModel();
+
+        // Obtener filtros desde la URL
+        $categoria = $this->request->getGet('categoria');
+        $color = $this->request->getGet('color');
+        $precio_min = $this->request->getGet('precio_min');
+        $precio_max = $this->request->getGet('precio_max');
+
+        // Construir la consulta
+        $query = $productoModel;
+        if (!empty($categoria)) {
+            $query = $query->where('categoria', $categoria);
+        }
+        if (!empty($color)) {
+            $query = $query->where('color', $color);
+        }
+        if (!empty($precio_min)) {
+            $query = $query->where('precio >=', $precio_min);
+        }
+        if (!empty($precio_max)) {
+            $query = $query->where('precio <=', $precio_max);
+        }
+
+        // Obtener productos filtrados
+        $productos = $query->findAll();
+
+        // Obtener todas las categorías y colores únicos para los filtros
+        $categorias = $productoModel->distinct()->select('categoria')->findColumn('categoria');
+        $colores    = $productoModel->distinct()->select('color')->findColumn('color');
+
+        // Preparar datos para la vista
+        $data = [
+            'title'      => 'Catálogo de Productos',
+            'productos'  => $productos,
+            'categorias' => $categorias,
+            'colores'    => $colores,
+            'filtros'    => [
+                'categoria'   => $categoria,
+                'color'       => $color,
+                'precio_min'  => $precio_min,
+                'precio_max'  => $precio_max,
+            ]
+        ];
+
+        return $this->loadView('catalogo_view', $data);
+    }
+    
+    public function formularioConsulta()
+    {
+        return $this->loadView('usuario/enviar', ['title' => 'Enviar Consulta']);
+    }
+
+    public function misConsultas()
+{
+    $session = session();
+    if (!$session->get('logged_in')) {
+        return redirect()->to('/login');
+    }
+
+    $idUsuario = $session->get('id_usuario');
+    $consultaModel = new \App\Models\ConsultaModel();
+
+    $consultas = $consultaModel
+        ->where('id_usuario', $idUsuario)
+        ->orderBy('created_at', 'DESC')
+        ->findAll();
+
+    return $this->loadView('usuario/mis_consultas', [
+        'title' => 'Mis Consultas',
+        'consultas' => $consultas
+    ]);
+}
+
+
 }

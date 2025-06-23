@@ -1,5 +1,3 @@
-   <script src="/proyecto_taller/assets/js/bootstrap.bundle.min.js"></script>
- </body> 
   <footer class="footer">
     <div class="links">
       <a href="https://www.linkedin.com/in/leonardo-oscar-canteros-03916223a/" target="_blank">
@@ -15,4 +13,7 @@
     <p>Derechos De Autor ©2025 | Costura Fine S.A</p>
   </footer>
 
+  <!-- Bootstrap Bundle JS (Popper incluido) -->
+  <script src="/proyecto_taller/assets/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>

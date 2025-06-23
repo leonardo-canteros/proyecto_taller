@@ -118,20 +118,25 @@ $routes->get('admin/catalogo', 'Home::catalogo');
 $routes->get('admin/lista', 'Home::admin_panel');
 // Ver listado completo de consultas
 $routes->get('admin/consultas', 'Home::adminConsultas');
-
 // Mostrar formulario para responder una consulta puntual
 $routes->get('admin/consultas/(:num)', 'Home::adminResponder/$1');
-
 // Guardar la respuesta (POST)
 $routes->post('admin/consultas/responder/(:num)', 'ConsultaController::guardarRespuesta/$1');
 
 
+
 /*usuario*/
-$routes->get('/usuario', 'Home::usuario');
+$routes->get('usuario/principal', 'Home::usuario');
+$routes->get('usuario/quienes_somos', 'Home::usuario_quienes_somos');
+$routes->get('usuario/termino_usos', 'Home::usuario_termino_usos');
+$routes->get('usuario/comercializacion', 'Home::usuario_comercializacion');
+$routes->get('usuario/catalogo', 'Home::usuario_catalogo');
+
 // Mostrar el formulario
 $routes->get('usuario/consultas', 'Home::formularioConsulta');
 // Procesar el formulario
-$routes->post('consultas/enviar', 'ConsultaController::enviar');
+$routes->post('usuario/consultas', 'ConsultaController::enviar');
+$routes->get('usuario/mis_consultas', 'Home::misConsultas');
 
 
 

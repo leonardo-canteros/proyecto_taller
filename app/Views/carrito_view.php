@@ -258,3 +258,117 @@
     });
 
     </script>
+
+    <!-- jQuery y Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+    $(document).ready(function() {
+        // Actualización de cantidad con feedback
+        $('form[action^="/carrito/actualizar/"]').on('submit', function(e) {
+            e.preventDefault();
+            var form = $(this);
+            var button = form.find('button[type="submit"]');
+            
+            button.html('<i class="fas fa-spinner fa-spin"></i>');
+            button.prop('disabled', true);
+            
+            $.ajax({
+                url: form.attr('action'),
+                type: 'POST',
+                data: form.serialize(),
+                dataType: 'json',
+                success: function(response) {
+                    if (response.success) {
+                        location.reload();
+                    } else {
+                        alert(response.message);
+                        button.html('<i class="fas fa-check"></i>');
+                        button.prop('disabled', false);
+                    }
+                },
+                error: function() {
+                    alert('Error al actualizar la cantidad');
+                    button.html('<i class="fas fa-check"></i>');
+                    button.prop('disabled', false);
+                }
+            });
+        });
+
+        // Confirmación antes de eliminar
+        $('form[action^="/carrito/eliminar/"]').on('submit', function() {
+            return confirm('¿Estás seguro de eliminar este producto del carrito?');
+        });
+    });
+
+    
+    // Obtener dirección del usuario desde la sesión
+    const direccionUsuario = "<?= esc(session()->get('direccion') ?? '') ?>";
+
+    // Botón para restaurar la dirección del perfil
+    $('#btn-usar-perfil').on('click', function() {
+        if (direccionUsuario) {
+            $('#direccion').val(direccionUsuario);
+            $(this).html('<i class="fas fa-check"></i> Usada');
+            setTimeout(() => {
+                $(this).html('<i class="fas fa-user"></i> Usar de mi perfil');
+            }, 2000);
+        } else {
+            alert('No tienes una dirección guardada en tu perfil');
+        }
+    });
+
+    // Validar formulario antes de enviar
+    $('#formPago').on('submit', function(e) {
+        e.preventDefault();
+        
+        // Validaciones básicas
+        if ($('#direccion').val().trim() === '') {
+            alert('Por favor ingresa una dirección de envío');
+            return;
+        }
+        
+        if ($('#metodo_pago').val() === '') {
+            alert('Por favor selecciona un método de pago');
+            return;
+        }
+
+        const boton = $(this).find('button[type="submit"]');
+        const textoOriginal = boton.html();
+        boton.html('<i class="fas fa-spinner fa-spin me-2"></i> Procesando...');
+        boton.prop('disabled', true);
+        
+        // Agregar CSRF token manualmente
+        const formData = $(this).serialize() + '&<?= csrf_token() ?>=<?= csrf_hash() ?>';
+        
+        $.ajax({
+            url: $(this).attr('action'),
+            type: 'POST',
+            data: formData,
+            dataType: 'json',
+            success: function(response) {
+                if (response.success) {
+                    window.location.href = "<?= base_url('catalogo') ?>";
+                } else {
+                    alert(response.message || 'Error al procesar el pedido');
+                    boton.html(textoOriginal);
+                    boton.prop('disabled', false);
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error('Error detallado:', status, error);
+                alert('Error de conexión. Detalles en consola (F12)');
+                boton.html(textoOriginal);
+                boton.prop('disabled', false);
+            }
+        });
+    });
+
+    // Validación en tiempo real
+    $('#direccion, #metodo_pago').on('input change', function() {
+        const formValid = $('#direccion').val().trim() !== '' && $('#metodo_pago').val() !== '';
+        $('#formPago button[type="submit"]').prop('disabled', !formValid);
+    });
+
+    </script>

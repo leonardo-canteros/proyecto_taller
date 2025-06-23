@@ -86,7 +86,7 @@ if ($loggedIn) {
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <?php if ($loggedIn && $userId): ?>
           <li class="nav-item mx-2">
-            <a class="nav-link position-relative" href="<?= site_url('carrito/'.$userId) ?>">
+            <a class="nav-link position-relative" href="<?= site_url('carrito/usuario/'.$userId) ?>">
               <i class="fas fa-shopping-cart"></i>
               <?php if ($cartCount > 0): ?>
               <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger cart-counter">

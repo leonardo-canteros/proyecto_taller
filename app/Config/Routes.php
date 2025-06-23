@@ -63,10 +63,10 @@ $routes->get('productos', 'ProductoController::index');
 
 // Grupo de rutas para el carrito (protegidas por autenticación)
 $routes->group('carrito', ['filter' => 'auth'], function($routes) {
-    $routes->get('/(:num)', 'Home::carrito/$1');
     $routes->get('usuario/(:num)', 'CarritoController::obtenerCarrito/$1');
+    $routes->get('(:num)', 'Home::carrito/$1');
     $routes->post('agregar', 'CarritoController::agregar');
-     $routes->post('finalizar', 'CarritoController::finalizar');
+    $routes->post('finalizar', 'CarritoController::finalizar');
     $routes->post('actualizar/(:num)', 'CarritoController::actualizar/$1'); // :num = id_producto
     $routes->post('eliminar/(:num)', 'CarritoController::eliminar/$1'); // :num = id_producto
     $routes->post('vaciar/(:num)', 'CarritoController::vaciar/$1'); // :num = id_usuario
@@ -136,10 +136,10 @@ $routes->get('admin/contactos', 'ContactoController::listar');
 
 /*usuario*/
 $routes->get('usuario/principal', 'Home::usuario');
-$routes->get('usuario/quienes_somos', 'Home::usuario_quienes_somos');
-$routes->get('usuario/termino_usos', 'Home::usuario_termino_usos');
-$routes->get('usuario/comercializacion', 'Home::usuario_comercializacion');
-$routes->get('usuario/catalogo', 'Home::usuario_catalogo');
+$routes->get('usuario/quienes_somos', 'Home::quienes_somos');
+$routes->get('usuario/termino_usos', 'Home::termino_usos');
+$routes->get('usuario/comercializacion', 'Home::comercializacion');
+$routes->get('usuario/catalogo', 'Home::catalogo');
 
 // Mostrar el formulario
 $routes->get('usuario/consultas', 'Home::formularioConsulta');

@@ -33,7 +33,8 @@ $routes->set404Override();                        // Manejador personalizado par
 $routes->get('/', 'Home::index');
 $routes->get('/principal', 'Home::index');
 $routes->get('quienes_somos', 'Home::quienes_somos');
-$routes->get('Contacto', 'Home::Contacto'); 
+$routes->get('Contacto', 'Home::Contacto'); // Para mostrar la vista
+$routes->post('Contacto', 'ContactoController::Enviar'); // Para procesar
 $routes->get('Comercializacion', 'home::Comercializacion'); 
 $routes->get('termino_usos', 'home::termino_usos');
 $routes->get('footer', 'home::footer');
@@ -112,27 +113,39 @@ $routes->get('admin/catalogo', 'Home::catalogo_admin');
 $routes->get('admin/principal', 'Home::admin_principal_view');
 $routes->get('admin/quienes_somos', 'Home::admin_quienes_somos');
 $routes->get('admin/comercializacion', 'Home::admin_comercializacion');
-$routes->get('admin/contacto', 'Home::admin_contacto');
+$routes->get('admin/contacto','Home::admin_contacto');
 $routes->get('admin/terminos_usos', 'Home::admin_terminos_usos');
 $routes->get('admin/catalogo', 'Home::catalogo');
 $routes->get('admin/lista', 'Home::admin_panel');
+$routes->get('admin/usuarios', 'Home::admin_usuarios');
+$routes->get('admin/perfil', 'Home::perfilAdmin');
+
+
 // Ver listado completo de consultas
 $routes->get('admin/consultas', 'Home::adminConsultas');
-
 // Mostrar formulario para responder una consulta puntual
 $routes->get('admin/consultas/(:num)', 'Home::adminResponder/$1');
-
 // Guardar la respuesta (POST)
 $routes->post('admin/consultas/responder/(:num)', 'ConsultaController::guardarRespuesta/$1');
+$routes->get('admin/contactos', 'ContactoController::listar');
+
 
 
 /*usuario*/
-$routes->get('/usuario', 'Home::usuario');
+$routes->get('usuario/principal', 'Home::usuario');
+$routes->get('usuario/quienes_somos', 'Home::usuario_quienes_somos');
+$routes->get('usuario/termino_usos', 'Home::usuario_termino_usos');
+$routes->get('usuario/comercializacion', 'Home::usuario_comercializacion');
+$routes->get('usuario/catalogo', 'Home::usuario_catalogo');
+
 // Mostrar el formulario
 $routes->get('usuario/consultas', 'Home::formularioConsulta');
 // Procesar el formulario
-$routes->post('consultas/enviar', 'ConsultaController::enviar');
-
+$routes->post('usuario/consultas', 'ConsultaController::enviar');
+$routes->get('usuario/mis_consultas', 'Home::misConsultas');
+$routes->post('usuarios/desactivar/(:num)', 'UserController::delete/$1');
+$routes->post('usuarios/restaurar/(:num)', 'UserController::restaurar/$1');
+$routes->get('usuario/perfil', 'Home::perfilUsuario');
 
 
 

@@ -44,4 +44,16 @@ class ConsultaController extends BaseController
 
         return redirect()->to('/usuario/mis_consultas')->with('success', 'Consulta enviada correctamente');
     }
+
+    public function formularioConsulta()
+    {
+        $session = session();
+        if (!$session->get('logged_in') || $session->get('rol') !== 'usuario') {
+            return redirect()->to('/login');
+        }
+
+        return $this->loadView('usuario/enviar', ['title' => 'Enviar Consulta']);
+
+    }
+
 }

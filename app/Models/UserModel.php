@@ -12,10 +12,11 @@ class UserModel extends Model
     protected $deletedField  = 'deleted_at';
 
     // Removido 'rol' para que no pueda ser seteado manualmente por usuarios
-    protected $allowedFields = [
-        'nombre', 'apellido', 'correo', 'contraseña',
-        'direccion', 'telefono', 'rol'
+   protected $allowedFields = [
+    'nombre', 'apellido', 'correo', 'contraseña',
+    'direccion', 'telefono', 'rol', 'deleted_at' 
     ];
+
 
     protected $useTimestamps = false;
 

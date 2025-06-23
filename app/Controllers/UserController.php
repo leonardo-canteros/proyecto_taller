@@ -176,28 +176,34 @@ class UserController extends BaseController
         $model = new UserModel();
 
         if (!$model->find($id)) {
-            return $this->failNotFound('Usuario no encontrado');
+            return redirect()->back()->with('error', 'Usuario no encontrado');
         }
 
         $model->delete($id);
-        return $this->respondDeleted([
-            'status' => 200,
-            'message' => 'Usuario eliminado lógicamente'
-        ]);
+        return redirect()->to(site_url('admin/usuarios'))->with('success', 'Usuario desactivado correctamente');
     }
+
 
     public function restaurar($id)
     {
         $model = new UserModel();
 
-        if (!$model->onlyDeleted()->find($id)) {
+        // Verificamos que el usuario esté eliminado lógicamente
+        $usuario = $model->onlyDeleted()->find($id);
+        if (!$usuario) {
             return $this->failNotFound('Usuario no encontrado o no está eliminado');
         }
 
-        $model->update($id, ['deleted_at' => null]);
-        return $this->respond([
-            'status' => 200,
-            'message' => 'Usuario restaurado exitosamente'
-        ]);
+        // Restauramos limpiando el campo deleted_at
+        $actualizado = $model->update($id, ['deleted_at' => null]);
+
+        if (!$actualizado) {
+            return $this->failServerError('No se pudo restaurar el usuario.');
+        }
+
+        return redirect()->to(site_url('admin/usuarios'))->with('success', 'Usuario restaurado correctamente');
     }
+
+
+
 }

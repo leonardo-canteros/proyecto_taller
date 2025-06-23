@@ -1,44 +1,47 @@
+<main class="container my-5 d-flex justify-content-center">
+  <div class="col-md-6 col-lg-5 col-xl-4">
+    <h1 class="text-white text-center mb-4">Formulario de Contacto</h1>
 
-    <script>
-        // Función para manejar el envío del formulario
-        function handleSubmit(event) {
-            // Evitar que el formulario se envíe de la manera tradicional
-            event.preventDefault();
+    <!-- Alerta si existe mensaje de éxito -->
+    <?php if (session()->getFlashdata('success')): ?>
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <?= esc(session()->getFlashdata('success')) ?>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+      </div>
+    <?php endif; ?>
 
-            // Mostrar el alert con el mensaje
-            alert("Solicitud enviada");
+    <!-- Formulario -->
+    <form action="<?= site_url('Contacto') ?>" method="post" class="bg-light p-4 rounded shadow-sm">
+      <div class="mb-3">
+        <label for="nombre" class="form-label">Nombre *</label>
+        <input type="text" class="form-control" id="nombre" name="nombre" required>
+      </div>
 
-            // Limpiar los campos del formulario después de cerrar el alert
-            document.getElementById("contactForm").reset();
-        }
-    </script>
-<body class="pagina-contacto">
-<form id="contactForm" onsubmit="handleSubmit(event)">
-  <div class="mb-3">
-    <label for="exampleInputNombre" class="form-label">Nombre*</label>
-    <input type="text" class="form-control" aria-describedby="nombreHelp" required>
-    <div id="nombreError" class="invalid-feedback">Por favor ingresa tu nombre</div>
-  </div>
-  <div class="mb-3">
-    <label for="exampleInputAsunto" class="form-label">Asunto*</label>
-    <input type="text" class="form-control"aria-describedby="asuntoHelp" required>
-    <div id="asuntoError" class="invalid-feedback">Por favor ingresa el asunto</div>
-  </div>
-  <div class="mb-3">
-    <label for="exampleInputCorreo" class="form-label">Correo*</label>
-    <input type="email" class="form-control"required>
-    <div id="correoError" class="invalid-feedback">Por favor ingresa un correo válido</div>
-  </div>
-  <div class="mb-3">
-    <label for="exampleInputTexto" class="form-label">Texto*</label>
-    <textarea class="form-control"rows="3" required></textarea>
-    <div id="textoError" class="invalid-feedback">Por favor ingresa tu mensaje</div>
-  </div>
-  <div class="mb-3 form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
-    <label class="form-check-label" for="exampleCheck1">Confirmar enviar la Solicitud*</label>
-    <div id="checkError" class="invalid-feedback">Debes confirmar el envío</div>
-  </div>
-  <button type="submit" class="btn btn-primary">Enviar</button>
-</form>
+      <div class="mb-3">
+        <label for="asunto" class="form-label">Asunto *</label>
+        <input type="text" class="form-control" id="asunto" name="asunto" required>
+      </div>
 
+      <div class="mb-3">
+        <label for="correo" class="form-label">Correo electrónico *</label>
+        <input type="email" class="form-control" id="correo" name="correo" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="mensaje" class="form-label">Mensaje *</label>
+        <textarea class="form-control" id="mensaje" name="mensaje" rows="4" required></textarea>
+      </div>
+
+      <div class="form-check mb-3">
+        <input class="form-check-input" type="checkbox" name="confirmar" id="confirmar" required>
+        <label class="form-check-label" for="confirmar">
+          Confirmo que deseo enviar esta solicitud *
+        </label>
+      </div>
+
+      <button type="submit" class="btn btn-primary w-100">
+        Enviar mensaje
+      </button>
+    </form>
+  </div>
+</main>

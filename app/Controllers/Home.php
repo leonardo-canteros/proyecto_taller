@@ -127,14 +127,31 @@ class Home extends BaseController
     }
 
 
-	public function admin_contacto()
-	{
-		if (session()->get('rol') !== 'administrador') {
-			return redirect()->to('/')->with('error', 'Acceso no autorizado');
-		}
+	public function admin_contacto() 
+    {
+        if (session()->get('rol') !== 'administrador') {
+            return redirect()->to('/')->with('error', 'Acceso no autorizado');
+        }
+        $model = new \App\Models\ContactoModel();
+        $data['contactos'] = $model->findAll();
+        $this->loadView('admin/contactos_listar', $data);
+    }
 
-		$this->loadView('admin/contacto');
-	}
+    public function admin_usuarios()
+    {
+        if (session()->get('rol') !== 'administrador') {
+            return redirect()->to('/')->with('error', 'Acceso no autorizado');
+        }
+
+        $model = new \App\Models\UserModel();
+        $usuarios = $model->withDeleted()->findAll();
+
+        $data['usuarios'] = $usuarios;
+        $this->loadView('admin/usuarios_listar', $data);
+    }
+
+
+
 
 // ... (resto de los métodos existentes)
 

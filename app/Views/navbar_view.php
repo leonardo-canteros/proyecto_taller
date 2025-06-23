@@ -17,7 +17,6 @@ if ($loggedIn) {
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container">
-    <!-- Logo -->
     <a class="navbar-brand" href="<?= $isAdmin ? site_url('admin/principal') : ($isUser ? site_url('usuario/principal') : site_url('/principal')) ?>">
       <img src="/proyecto_taller/assets/img/canTfor.jpg" alt="Logo" height="40">
     </a>
@@ -30,7 +29,6 @@ if ($loggedIn) {
 
     <div class="collapse navbar-collapse" id="navbarContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <!-- Ítems visibles según rol -->
         <li class="nav-item mx-2">
           <a class="nav-link <?= strpos($currentUrl, 'quienes_somos') ? 'active' : '' ?>"
              href="<?= $isAdmin ? site_url('admin/quienes_somos') : ($isUser ? site_url('usuario/quienes_somos') : site_url('quienes_somos')) ?>">
@@ -45,7 +43,6 @@ if ($loggedIn) {
           </a>
         </li>
 
-        <!-- Consultas o Contacto -->
         <?php if ($isUser): ?>
           <li class="nav-item mx-2">
             <a class="nav-link <?= strpos($currentUrl, 'usuario/consultas') ? 'active' : '' ?>"
@@ -86,7 +83,6 @@ if ($loggedIn) {
         <?php endif; ?>
       </ul>
 
-      <!-- Panel derecho -->
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <?php if ($loggedIn && $userId): ?>
           <li class="nav-item mx-2">
@@ -112,7 +108,6 @@ if ($loggedIn) {
             </ul>
           </li>
         <?php else: ?>
-          <!-- Panel Admin -->
           <?php if ($isAdmin): ?>
             <li class="nav-item dropdown mx-2">
               <a class="nav-link dropdown-toggle" href="#" id="adminDropdown" role="button" data-bs-toggle="dropdown">
@@ -122,11 +117,12 @@ if ($loggedIn) {
                 <li><a class="dropdown-item" href="<?= site_url('admin/panel') ?>"><i class="fas fa-plus-circle me-2"></i> Crear Producto</a></li>
                 <li><a class="dropdown-item" href="<?= site_url('admin/productos') ?>"><i class="fas fa-list me-2"></i> Listar Productos</a></li>
                 <li><a class="dropdown-item" href="<?= site_url('admin/consultas') ?>"><i class="fas fa-comments me-2"></i> Gestionar Consultas</a></li>
+                <li><a class="dropdown-item" href="<?= site_url('admin/contacto') ?>"><i class="fas fa-inbox me-2"></i> Ver Contactos</a></li>
+                <li><a class="dropdown-item" href="<?= site_url('admin/usuarios') ?>"><i class="fas fa-users me-2"></i> Gestionar Usuarios</a></li>
               </ul>
             </li>
           <?php endif; ?>
 
-          <!-- Usuario común -->
           <li class="nav-item dropdown mx-2">
             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown">
               <i class="fas fa-user-circle me-1"></i> <?= esc($session->get('nombre')) ?>

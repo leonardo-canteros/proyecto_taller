@@ -22,8 +22,9 @@ class ProductoController extends Controller
         // Validar los datos (si es necesario)
         if (!$this->validate([
             'nombre' => 'required|min_length[3]',
-            'precio' => 'required|decimal',
+            'precio'  => 'required|decimal|greater_than_equal_to[0]',
             'stock'  => 'required|integer',
+            'categoria' => 'required',
         ])) {
             return redirect()->back()->with('error', 'Por favor, complete todos los campos correctamente.');
         }
@@ -62,6 +63,83 @@ class ProductoController extends Controller
             return redirect()->to('/admin/panel')->with('error', 'Hubo un problema al crear el producto');
         }
     }
+
+     // ————————— Admin: listado de productos —————————
+    public function panel()
+    {
+        $productos = $this->productoModel->findAll();
+        return view('admin/lista_productos', [
+            'productos' => $productos
+        ]);
+    }
+
+    // ————————— Admin: formulario de edición —————————
+    // … dentro de class ProductoController …
+
+// ————————— Admin: formulario de edición —————————
+public function editar($id)
+{
+    $producto = $this->productoModel->find($id);
+    if (!$producto) {
+        return redirect()->to('/admin/panel')
+                         ->with('error','Producto no encontrado');
+    }
+    return view('admin/editar_producto', [
+        'producto' => $producto
+    ]);
+}
+
+
+    // ————————— Admin: procesar actualización —————————
+
+
+       public function actualizar($id)
+    {
+    // validación básica…
+    if (! $this->validate([
+        'nombre'    => 'required|min_length[3]',
+        'precio'  => 'required|decimal|greater_than_equal_to[0]',
+        'stock'     => 'required|integer',
+        'categoria' => 'required',
+    ])) {
+        // Obtengo el array de errores
+        $errores = $this->validator->getErrors();
+        // Lo detengo y muestro para ver exactamente qué campos fallan
+        dd($errores);
+    }
+
+
+         $data = $this->request->getPost();
+            $data['id_producto'] = $id;
+            // 1) Cojo el ítem viejo para tener su ruta de imagen actual
+            $viejo = $this->productoModel->find($id);
+
+            // 2) Procesar nueva subida, si la hay:
+            $img = $this->request->getFile('imagen');
+            if ($img && $img->isValid() && ! $img->hasMoved()) {
+                $name       = $img->getName();
+                $uploadPath = 'C:/xampp/htdocs/proyecto_taller/assets/img/';
+                if (! is_dir($uploadPath)) {
+                    mkdir($uploadPath, 0777, true);
+                }
+                $img->move($uploadPath, $name);
+                $data['imagen'] = 'img/' . $name;
+            } else {
+                // no sube nada → preservo la ruta que ya tenía
+                $data['imagen'] = $viejo['imagen'];
+            }
+
+            if ($this->productoModel->save($data)) {
+                return redirect()->to('/admin/productos')
+                                ->with('success','Producto actualizado con exito');
+            }
+            return redirect()->to('/admin/productos')
+                            ->with('error','Error al actualizar');
+     }
+
+
+
+
 
     // Método para obtener todos los productos (en caso de que lo necesites para el listado)
     public function index() {

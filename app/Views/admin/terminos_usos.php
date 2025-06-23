@@ -1,3 +1,9 @@
+<style>
+  body {
+    background-color: beige !important;
+  }
+</style>
+
 <div class="terminosluzu">
     <h1>Términos y Condiciones de Uso</h1>
     <p><strong>Última actualización:</strong> Abril 2025</p>

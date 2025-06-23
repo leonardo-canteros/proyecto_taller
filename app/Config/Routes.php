@@ -31,7 +31,7 @@ $routes->set404Override();                        // Manejador personalizado par
 // Obtenemos un aumento de rendimiento al especificar la ruta por defecto
 // ya que no es necesario escanear directorios.
 $routes->get('/', 'Home::index');
-$routes->get('principal', 'Home::index');
+$routes->get('/principal', 'Home::index');
 $routes->get('quienes_somos', 'Home::quienes_somos');
 $routes->get('Contacto', 'Home::Contacto'); 
 $routes->get('Comercializacion', 'home::Comercializacion'); 
@@ -68,42 +68,11 @@ $routes->group('carrito', ['filter' => 'auth'], function($routes) {
 });
 */
 
-// Rutas para el Carrito de Compras
-$routes->group('carrito', function($routes) {
-    // Obtener el carrito de un usuario (GET)
-    $routes->get('usuario/(:num)', 'CarritoController::obtenerCarrito/$1');
-    
-    // Vista del carrito (GET)
-    $routes->get('ver', 'CarritoController::verCarrito');
-    
-    // Agregar producto al carrito (POST)
-    $routes->post('agregar', 'CarritoController::agregar');
-    
-    // Actualizar cantidad de un producto (PUT)
-    $routes->post('actualizar/(:num)', 'CarritoController::actualizar/$1'); // :num = id_carrito
-    
-    // Eliminar un producto del carrito (DELETE)
-    $routes->post('eliminar/(:num)', 'CarritoController::eliminar/$1'); // :num = id_carrito
-    
-    // Vaciar todo el carrito (DELETE)
-    $routes->post('vaciar/(:num)', 'CarritoController::vaciar/$1'); // :num = id_usuario
-    
-    // Calcular total del carrito (GET)
-    $routes->get('total/(:num)', 'CarritoController::calcularTotal/$1'); // :num = id_usuario
-    
-    // Contar items en el carrito (GET)
-    $routes->get('contar/(:num)', 'CarritoController::contarItems/$1'); // :num = id_usuario
-});
-
-// Versión alternativa con filtro de autenticación (descomentar si lo prefieres)
-/*
-$routes->group('carrito', ['filter' => 'auth'], function($routes) {
-    // Todas las rutas aquí estarían protegidas por autenticación
-    $routes->get('ver', 'CarritoController::verCarrito');
-    $routes->post('agregar', 'CarritoController::agregar');
-    // ... otras rutas
-});
-*/
+// CRUD Carrito
+$routes->get('carrito/usuario/(:num)', 'CarritoController::obtenerCarrito/$1');
+$routes->post('carrito/agregar', 'CarritoController::agregar');
+$routes->put('carrito/editar/(:num)', 'CarritoController::editarProducto/$1');
+$routes->delete('carrito/eliminar/(:num)', 'CarritoController::eliminarProducto/$1');
 
 // CRUD Pedido
 $routes->get('pedido', 'PedidoController::index');               // Listar pedidos
@@ -134,13 +103,41 @@ $routes->post('register', 'UserController::crear');   // Procesa registro
 
 // redireccionamiento a admin/user
 $routes->get('admin/panel', 'Home::admin_panel');
+$routes->get('admin/usuarios',   'Home::admin_usuarios');
+// Rutas para ProductController
+// Listado de productos (Admin)
+$routes->get(  'admin/productos','Home::admin_productos');
+// Formulario de edición (GET) —> ahora en Home
+$routes->get(  'admin/productos/modificar/(:segment)','Home::admin_editar_producto/$1');
+// Procesar actualización (POST) —> en ProductoController
+$routes->post( 'admin/productos/actualizar/(:segment)','ProductoController::actualizar/$1');
+// Crear producto (POST)  
+$routes->post( 'admin/panel/crear','ProductoController::crear');
+$routes->get('admin/catalogo', 'Home::catalogo_admin');
 $routes->get('admin/principal', 'Home::admin_principal_view');
 $routes->get('admin/quienes_somos', 'Home::admin_quienes_somos');
 $routes->get('admin/comercializacion', 'Home::admin_comercializacion');
 $routes->get('admin/contacto', 'Home::admin_contacto');
 $routes->get('admin/terminos_usos', 'Home::admin_terminos_usos');
 $routes->get('admin/catalogo', 'Home::catalogo');
+$routes->get('admin/lista', 'Home::admin_panel');
+// Ver listado completo de consultas
+$routes->get('admin/consultas', 'Home::adminConsultas');
+
+// Mostrar formulario para responder una consulta puntual
+$routes->get('admin/consultas/(:num)', 'Home::adminResponder/$1');
+
+// Guardar la respuesta (POST)
+$routes->post('admin/consultas/responder/(:num)', 'ConsultaController::guardarRespuesta/$1');
+
+
+/*usuario*/
 $routes->get('/usuario', 'Home::usuario');
+// Mostrar el formulario
+$routes->get('usuario/consultas', 'Home::formularioConsulta');
+// Procesar el formulario
+$routes->post('consultas/enviar', 'ConsultaController::enviar');
+
 
 
 

@@ -1,5 +1,12 @@
 <body class="pagina-quienes">
 
+<style>
+  body {
+    background-color: beige !important;
+  }
+</style>
+
+
 <div class="container quienes-somos">
         <section class="vision-empresa">
             <p class="vision-texto">La verdadera elegancia no se trata solo de lo que vistes, sino de cómo te haces sentir cuando te lo pones. En nuestra colección

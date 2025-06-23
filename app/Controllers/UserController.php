@@ -100,7 +100,7 @@ class UserController extends BaseController
             ]);
         }
 
-        return redirect()->to('/dashboard')->with('success', 'Registro exitoso');
+        return redirect()->to('/usuario')->with('success', 'Registro exitoso');
 
     } catch (\Exception $e) {
         $db->transRollback();

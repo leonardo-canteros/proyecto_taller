@@ -21,12 +21,26 @@ body {
 }
 header {
   background-color: #252A37;
-  padding: 20px 40px; /* Añade espacio interno */
-  min-height: 80px;   /* Establece una altura mínima */
-  color: white;       /* Asegúrate de que el texto sea visible */
-  display: flex;      /* Centra el contenido vertical y horizontalmente */
+  padding: 20px 40px;
+  min-height: 80px;
+  color: white;
+  display: flex;
   align-items: center;
+  animation: headerFadeIn 1s ease-out forwards;
+  opacity: 0; /* Oculto al inicio para animación */
 }
+
+@keyframes headerFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 
     
 section {
@@ -45,6 +59,33 @@ section {
   height: 35vh; /* 50% del alto */
   object-fit: cover; /* Mantiene la proporción de la imagen y la recorta si es necesario */
 }
+
+#toolbarContainer {
+  display: none !important;
+}
+
+
+@media (max-width: 900px) {
+  .logo {
+    width: 40vw;
+    height: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .logo {
+    width: 50vw;   /* más chico en pantallas chicas */
+    height: auto;  /* mantiene proporción */
+  }
+}
+
+@media (max-width: 480px) {
+  .logo {
+    width: 70vw;
+    height: auto;
+  }
+}
+
 
 .logonav{
   border-radius: 5px; /* Borde redondeado de 10px para suavizar el contorno */
@@ -67,36 +108,110 @@ section {
   width: 60vw; /* Ancho del menú: 50% del ancho del viewport */
   margin: auto;
 }
+ /* navbar*/
+/* ─── Variables ─── */
+:root {
+  --nav-bg: #7B9ea6;
+  --nav-hover: rgba(255,255,255,0.2);
+  --nav-text: #ffffff;
+  --nav-active: #f1f1f1;
+  --nav-shadow: rgba(0,0,0,0.15);
+  --font-main: 'Poppins', sans-serif;
+}
 
-/* Estilos para el nav y enlaces de ul y li */
-nav {
-  background-color:#7B9EA6;
-  padding: 10px;
-  }
-  
-nav ul {
-  list-style: none;
+/* ─── Reset básico ─── */
+nav, nav ul, nav li {
   margin: 0;
   padding: 0;
-  text-align: center;
+  list-style: none;
 }
 
+/* ─── Contenedor del nav ─── */
+nav {
+  background: var(--nav-bg);
+  margin-top: 0; /* no tocar esto si ya está */
+  padding: 0.25rem 1rem;
+  box-shadow: 0 4px 8px var(--nav-shadow);
+  font-family: var(--font-main);
+  position: relative;
+  z-index: 10; /* sobre el header si hace falta */
+}
+
+main {
+  margin-top: 30px;
+}
+
+
+
+/* ─── Layout flex ─── */
+nav ul {
+  display: flex;
+  justify-content: center;  /* centra horizontalmente */
+  align-items: center;      /* centra verticalmente */
+  gap: 1rem;                /* espacio uniforme entre items */
+  flex-wrap: wrap;          /* baja en móvil */
+}
+
+/* ─── Items ─── */
 nav ul li {
-  display: inline-block;
-  margin-right: 20px;
-}  
+  position: relative;
+}
 
+/* ─── Enlaces ─── */
 nav ul li a {
-  color: #ffffff;
+  display: block;
+  color: var(--nav-text);
   text-decoration: none;
-  padding: 8px 16px;
-  border-radius: 5px;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.25rem;
+  transition: background 0.3s, color 0.3s, transform 0.2s;
+  font-weight: 500;
 }
 
-nav ul li a:hover {
-  background-color:#394F64 ;
+/* hover y activo */
+nav ul li a:hover,
+nav ul li a.active {
+  background: var(--nav-hover);
+  color: var(--nav-active);
+  transform: translateY(-2px);
+  box-shadow: 0 2px 4px var(--nav-shadow);
 }
 
+/* ─── Responsive ─── */
+@media (max-width: 768px) {
+  nav {
+    padding: 0.5rem;
+  }
+  nav ul {
+    flex-direction: column;
+    gap: 0;
+  }
+  nav ul li + li {
+    margin-top: 0.5rem;
+  }
+}
+
+/* ─── Si más adelante quieres dropdowns ─── */
+nav ul li .dropdown {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  min-width: 160px;
+  border-radius: 0.25rem;
+  box-shadow: 0 4px 8px var(--nav-shadow);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+nav ul li:hover .dropdown {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Opcional: tipografías desde Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 
 
 .contenedor{
@@ -1046,3 +1161,103 @@ body.pagina-contacto {
     height: 30px;
   }
 }
+
+/*mejoras */
+
+/* === Animación de fadeIn para productos === */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Aplicamos fadeIn a cada tarjeta */
+.card.fade-in {
+  animation: fadeInUp 0.5s ease forwards;
+  opacity: 0; /* comienza invisible */
+}
+
+/* Estilo suave para los filtros */
+form .form-select, form .form-control {
+  transition: box-shadow 0.3s ease, border 0.3s ease;
+}
+
+form .form-select:focus, form .form-control:focus {
+  border-color: #8b7355;
+  box-shadow: 0 0 8px rgba(139, 115, 85, 0.5);
+}
+
+/* Botones */
+.btn-primary, .btn-secondary {
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #6a5a40;
+}
+
+.btn-secondary:hover {
+  background-color: #999;
+  color: white;
+}
+
+/* Estilo moderno para el botón Editar */
+.btn-info {
+  background-color: #17a2b8;
+  color: #fff;
+  border: none;
+  transition: all 0.3s ease;
+  font-weight: 600;
+}
+
+.btn-info:hover {
+  background-color: #138496;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(19, 132, 150, 0.4);
+  color: #fff;
+}
+
+
+main {
+  flex: 1 0 auto;
+}
+
+footer.footer {
+  flex-shrink: 0;
+}
+
+/* Asegura que el body ocupe todo el alto y permita empujar el footer */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Empuja el contenido para que el footer quede abajo si hay poco */
+body > *:not(footer) {
+  flex: 1 0 auto;
+}
+
+/* Evita que el footer se contraiga */
+.footer {
+  flex-shrink: 0;
+}
+body {
+  min-height: 100vh; /* asegura que ocupe todo el alto visible */
+  display: flex;
+  flex-direction: column;
+}
+
+.page-content {
+  flex: 1;
+}
+
+
+

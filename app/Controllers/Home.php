@@ -12,6 +12,12 @@ class Home extends BaseController
         echo view('footer_view', $data);
     }
 
+    public function carrito()
+    {
+        $this->loadView('carrito_view');
+    }
+
+
     public function index()
     {
         $this->loadView('principal_view');
@@ -127,29 +133,14 @@ class Home extends BaseController
     }
 
 
-	public function admin_contacto() 
-    {
-        if (session()->get('rol') !== 'administrador') {
-            return redirect()->to('/')->with('error', 'Acceso no autorizado');
-        }
-        $model = new \App\Models\ContactoModel();
-        $data['contactos'] = $model->findAll();
-        $this->loadView('admin/contactos_listar', $data);
-    }
+	public function admin_contacto()
+	{
+		if (session()->get('rol') !== 'administrador') {
+			return redirect()->to('/')->with('error', 'Acceso no autorizado');
+		}
 
-    public function admin_usuarios()
-    {
-        if (session()->get('rol') !== 'administrador') {
-            return redirect()->to('/')->with('error', 'Acceso no autorizado');
-        }
-
-        $model = new \App\Models\UserModel();
-        $usuarios = $model->withDeleted()->findAll();
-
-        $data['usuarios'] = $usuarios;
-        $this->loadView('admin/usuarios_listar', $data);
-    }
-
+		$this->loadView('admin/contacto');
+	}
 
 // ... (resto de los métodos existentes)
 
@@ -324,31 +315,8 @@ class Home extends BaseController
         return $this->loadView('admin/listado', $data);
     }
 
-    public function adminResponder($id_consulta)
-    {
-        $consultaModel = new \App\Models\ConsultaModel();
-        $db = \Config\Database::connect();
 
-        // Traemos la consulta y datos del usuario que la envió
-        $consulta = $db->table('consultas')
-                    ->select('consultas.*, usuarios.nombre AS nombre_usuario, usuarios.apellido AS apellido_usuario')
-                    ->join('usuarios', 'usuarios.id_usuario = consultas.id_usuario')
-                    ->where('consultas.id_consulta', $id_consulta)
-                    ->get()
-                    ->getRowArray();
 
-        if (!$consulta) {
-            return redirect()->to(site_url('admin/consultas'))->with('error', 'Consulta no encontrada.');
-        }
-
-        $data = [
-            'title' => 'Responder Consulta',
-            'consulta' => $consulta
-        ];
-
-        return $this->loadView('admin/enviar', $data);
-    }
-    /*usuarios <registrados> */ 
 
     public function usuario()
     {
@@ -356,137 +324,6 @@ class Home extends BaseController
             return redirect()->to('/login')->with('error', 'Debe iniciar sesión');
         }
 
-        $this->loadView('usuario/principal_view');
-        
+        $this->loadView('usuario/usuario_view');
     }
-    public function usuario_quienes_somos()
-    {
-        return $this->loadView('quienes_somos', ['title' => '¿Quiénes Somos?']);
-    }
-
-    public function usuario_termino_usos()
-    {
-        return $this->loadView('termino_usos', ['title' => 'Términos y Condiciones']);
-    }
-
-    public function perfilUsuario()
-    {
-        $session = session();
-
-        if (!$session->get('logged_in')) {
-            return redirect()->to('/login')->with('error', 'Debes iniciar sesión para acceder al perfil.');
-        }
-
-        $userModel = new \App\Models\UserModel();
-        $idUsuario = $session->get('id_usuario');
-        $usuario = $userModel->find($idUsuario);
-
-        if (!$usuario) {
-            return redirect()->to('/')->with('error', 'Usuario no encontrado.');
-        }
-
-        $this->loadView('usuario/perfil_view', ['usuario' => $usuario]);
-    }
-
-    public function perfilAdmin()
-    {
-        $session = session();
-        $id = $session->get('id_usuario');
-
-        $usuarioModel = new \App\Models\UserModel();
-        
-        // Este withDeleted() permite que aunque el admin esté marcado como eliminado, se muestre su perfil
-        $usuario = $usuarioModel->withDeleted()->find($id);
-
-        if (!$usuario) {
-            return redirect()->to('/')->with('error', 'Administrador no encontrado');
-        }
-
-        $this->loadView('admin/perfil', ['usuario' => $usuario]);
-    }
-
-
-
-
-    public function usuario_comercializacion()
-    {
-        return $this->loadView('Comercializacion', ['title' => 'Comercialización']);
-    }
-
-    public function usuario_catalogo()
-    {
-        $productoModel = new \App\Models\ProductoModel();
-
-        // Obtener filtros desde la URL
-        $categoria = $this->request->getGet('categoria');
-        $color = $this->request->getGet('color');
-        $precio_min = $this->request->getGet('precio_min');
-        $precio_max = $this->request->getGet('precio_max');
-
-        // Construir la consulta
-        $query = $productoModel;
-        if (!empty($categoria)) {
-            $query = $query->where('categoria', $categoria);
-        }
-        if (!empty($color)) {
-            $query = $query->where('color', $color);
-        }
-        if (!empty($precio_min)) {
-            $query = $query->where('precio >=', $precio_min);
-        }
-        if (!empty($precio_max)) {
-            $query = $query->where('precio <=', $precio_max);
-        }
-
-        // Obtener productos filtrados
-        $productos = $query->findAll();
-
-        // Obtener todas las categorías y colores únicos para los filtros
-        $categorias = $productoModel->distinct()->select('categoria')->findColumn('categoria');
-        $colores    = $productoModel->distinct()->select('color')->findColumn('color');
-
-        // Preparar datos para la vista
-        $data = [
-            'title'      => 'Catálogo de Productos',
-            'productos'  => $productos,
-            'categorias' => $categorias,
-            'colores'    => $colores,
-            'filtros'    => [
-                'categoria'   => $categoria,
-                'color'       => $color,
-                'precio_min'  => $precio_min,
-                'precio_max'  => $precio_max,
-            ]
-        ];
-
-        return $this->loadView('catalogo_view', $data);
-    }
-    
-    public function formularioConsulta()
-    {
-        return $this->loadView('usuario/enviar', ['title' => 'Enviar Consulta']);
-    }
-
-    public function misConsultas()
-{
-    $session = session();
-    if (!$session->get('logged_in')) {
-        return redirect()->to('/login');
-    }
-
-    $idUsuario = $session->get('id_usuario');
-    $consultaModel = new \App\Models\ConsultaModel();
-
-    $consultas = $consultaModel
-        ->where('id_usuario', $idUsuario)
-        ->orderBy('created_at', 'DESC')
-        ->findAll();
-
-    return $this->loadView('usuario/mis_consultas', [
-        'title' => 'Mis Consultas',
-        'consultas' => $consultas
-    ]);
-}
-
-
 }

@@ -1,39 +1,4 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= esc($titulo ?? 'Mi Carrito de Compras') ?></title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        body {
-            padding-top: 20px;
-            background-color: #f8f9fa;
-        }
-        .img-thumbnail {
-            max-height: 60px;
-            object-fit: cover;
-        }
-        .card {
-            border-radius: 10px;
-        }
-        .table th {
-            border-top: none;
-            background-color: #f8f9fa;
-        }
-        .quantity-input {
-            width: 60px;
-            text-align: center;
-        }
-        .btn-outline-primary, .btn-outline-danger {
-            transition: all 0.3s ease;
-        }
-    </style>
-</head>
-<body>
+
     <div class="container py-5">
         <h1 class="mb-4"><?= esc($titulo ?? 'Mi Carrito de Compras') ?></h1>
         
@@ -293,5 +258,3 @@
     });
 
     </script>
-</body>
-</html>

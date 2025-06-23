@@ -61,6 +61,7 @@ $routes->get('productos', 'ProductoController::index');
 
 // Grupo de rutas para el carrito (protegidas por autenticación)
 $routes->group('carrito', ['filter' => 'auth'], function($routes) {
+    $routes->get('/(:num)', 'Home::carrito/$1');
     $routes->get('usuario/(:num)', 'CarritoController::obtenerCarrito/$1');
     $routes->post('agregar', 'CarritoController::agregar');
      $routes->post('finalizar', 'CarritoController::finalizar');

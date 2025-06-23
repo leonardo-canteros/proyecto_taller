@@ -67,6 +67,10 @@
             </div>
 
             <div class="card-footer bg-light">
+              <a href="<?= base_url('producto/' . $prod['id_producto']) ?>" class="btn btn-outline-info w-100 mb-2">
+                <i class="fas fa-search me-2"></i> Ver más
+              </a>
+
               <?php if (session()->has('id_usuario')): ?>
                 <button class="btn btn-primary w-100 btn-comprar"
                         data-producto-id="<?= $prod['id_producto'] ?>">

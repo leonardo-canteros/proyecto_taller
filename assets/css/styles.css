@@ -60,6 +60,33 @@ section {
   object-fit: cover; /* Mantiene la proporción de la imagen y la recorta si es necesario */
 }
 
+#toolbarContainer {
+  display: none !important;
+}
+
+
+@media (max-width: 900px) {
+  .logo {
+    width: 40vw;
+    height: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .logo {
+    width: 50vw;   /* más chico en pantallas chicas */
+    height: auto;  /* mantiene proporción */
+  }
+}
+
+@media (max-width: 480px) {
+  .logo {
+    width: 70vw;
+    height: auto;
+  }
+}
+
+
 .logonav{
   border-radius: 5px; /* Borde redondeado de 10px para suavizar el contorno */
   border: 3px solid rgb(238, 229, 229);
@@ -1203,5 +1230,34 @@ main {
 footer.footer {
   flex-shrink: 0;
 }
+
+/* Asegura que el body ocupe todo el alto y permita empujar el footer */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Empuja el contenido para que el footer quede abajo si hay poco */
+body > *:not(footer) {
+  flex: 1 0 auto;
+}
+
+/* Evita que el footer se contraiga */
+.footer {
+  flex-shrink: 0;
+}
+body {
+  min-height: 100vh; /* asegura que ocupe todo el alto visible */
+  display: flex;
+  flex-direction: column;
+}
+
+.page-content {
+  flex: 1;
+}
+
 
 

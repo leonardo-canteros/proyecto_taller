@@ -1,5 +1,5 @@
 <main class="container my-5">
-  <h1 class="mb-4">Lista de Usuarios</h1>
+  <h1 class="text-white text-center mb-4">Lista de Usuarios</h1>
 
   <?php if (!empty($usuarios)): ?>
     <div class="table-responsive">

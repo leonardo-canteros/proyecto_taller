@@ -14,7 +14,7 @@ class UserModel extends Model
     // Removido 'rol' para que no pueda ser seteado manualmente por usuarios
    protected $allowedFields = [
     'nombre', 'apellido', 'correo', 'contraseña',
-    'direccion', 'telefono', 'rol', 'deleted_at' // ← bien escrito
+    'direccion', 'telefono', 'rol', 'deleted_at' 
     ];
 
 

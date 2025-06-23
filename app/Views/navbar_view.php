@@ -129,9 +129,6 @@ if ($loggedIn) {
             </a>
             <ul class="dropdown-menu dropdown-menu-end">
               <li><a class="dropdown-item" href="<?= $isAdmin ? site_url('admin/perfil') : site_url('usuario/perfil') ?>"><i class="fas fa-user me-2"></i> Mi Perfil</a></li>
-              <?php if ($isAdmin): ?>
-              <li><a class="dropdown-item" href="<?= site_url('admin/configuracion') ?>"><i class="fas fa-cog me-2"></i> Configuración</a></li>
-              <?php endif; ?>
               <li><hr class="dropdown-divider"></li>
               <li>
                 <form action="<?= site_url('logout') ?>" method="POST" class="d-inline">

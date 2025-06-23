@@ -290,6 +290,28 @@ class Home extends BaseController
             // 4) Cargar el layout + la vista editar_producto.php
             $this->loadView('admin/editar_producto', $data);
         }
+    public function adminConsultas()
+    {
+        $session = session();
+        if (!$session->get('logged_in') || $session->get('rol') !== 'administrador') {
+            return redirect()->to('/login')->with('error', 'Acceso denegado');
+        }
+
+        $model = new \App\Models\ConsultaModel();
+        $consultas = $model
+            ->select('consultas.*, usuarios.nombre AS nombre_usuario, usuarios.apellido AS apellido_usuario')
+            ->join('usuarios', 'usuarios.id_usuario = consultas.id_usuario', 'left')
+            ->orderBy('created_at', 'DESC')
+            ->findAll();
+
+        $data = [
+            'title'     => 'Consultas de usuarios',
+            'consultas' => $consultas,
+        ];
+
+        return $this->loadView('admin/listado', $data);
+    }
+
 
 
 

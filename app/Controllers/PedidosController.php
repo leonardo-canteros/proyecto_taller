@@ -112,31 +112,44 @@ class PedidosController extends BaseController
         $estado = (int) $this->request->getPost('estado');
         $pedidoModel = new PedidoModel();
 
-        if ($pedidoModel->cambiarEstado($id, $estado)) {
+        $detalleModel = new \App\Models\DetallePedidoModel();
+        $productoModel = new \App\Models\ProductoModel();
 
-            // Si el estado es finalizado, descontar stock
-            if ($estado === 3) {
-                $detalleModel = new \App\Models\DetallePedidoModel();
-                $productoModel = new \App\Models\ProductoModel();
+        $detalles = $detalleModel->where('id_pedido', $id)->findAll();
 
-                $detalles = $detalleModel->where('id_pedido', $id)->findAll();
+        // Si el nuevo estado es Enviado o Finalizado, validar stock
+        if ($estado === 2 || $estado === 3) {
+            foreach ($detalles as $detalle) {
+                $producto = $productoModel->find($detalle['id_producto']);
 
-                foreach ($detalles as $detalle) {
-                    $producto = $productoModel->find($detalle['id_producto']);
-                    if ($producto) {
-                        $nuevoStock = max(0, $producto['stock'] - $detalle['cantidad']);
-                        log_message('debug', 'Actualizando producto ID: ' . $detalle['id_producto'] . ' - Cantidad: ' . $detalle['cantidad'] . ' - Stock anterior: ' . $producto['stock'] . ' - Nuevo stock: ' . $nuevoStock);
-
-                        $productoModel->update($detalle['id_producto'], ['stock' => $nuevoStock]);
-                    }
+                if (!$producto || $producto['stock'] < $detalle['cantidad']) {
+                    return redirect()->to(base_url('admin/pedidos'))->with(
+                        'error',
+                        'Stock insuficiente para el producto "' . ($producto['nombre'] ?? 'Desconocido') . '". No se puede cambiar el estado.'
+                    );
                 }
             }
+        }
 
+        // Si pasa a FINALIZADO (3), descontar stock
+        if ($estado === 3) {
+            foreach ($detalles as $detalle) {
+                $producto = $productoModel->find($detalle['id_producto']);
+                $nuevoStock = $producto['stock'] - $detalle['cantidad'];
+
+                $productoModel->update($detalle['id_producto'], ['stock' => $nuevoStock]);
+            }
+        }
+
+        // Cambiar el estado
+        if ($pedidoModel->cambiarEstado($id, $estado)) {
             return redirect()->to(base_url('admin/pedidos'))->with('success', 'Estado actualizado correctamente');
         }
 
         return redirect()->to(base_url('admin/pedidos'))->with('error', 'Error al actualizar el estado');
     }
+
+
 
 
 

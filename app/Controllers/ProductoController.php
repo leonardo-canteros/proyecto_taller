@@ -144,7 +144,13 @@ public function editar($id)
 
     // Método para obtener todos los productos (en caso de que lo necesites para el listado)
     public function index() {
-        $productos = $this->productoModel->findAll();
-        return view('catalogo_view', ['productos' => $productos]);
-    }
+    $productos = $this->productoModel
+        ->where('stock >', 0)
+        ->where('estado', 'activo')
+        ->where('deleted_at', null)
+        ->findAll();
+
+    return view('catalogo_view', ['productos' => $productos]);
+}
+
 }

@@ -1,9 +1,9 @@
 <main class="container my-4">
   <h1 class="mb-4 text-white text-center">Catálogo de Productos</h1>
 
-  <!-- Formulario de filtros -->
+    <!-- Formulario de filtros -->
   <form method="get" action="<?= site_url('catalogo') ?>" class="row g-3 mb-4">
-    <div class="col-md-3">
+    <div class="col-12 col-md-3">
       <label class="form-label text-white">Categoría</label>
       <select name="categoria" class="form-select">
         <option value="">— Todas —</option>
@@ -15,7 +15,7 @@
       </select>
     </div>
 
-    <div class="col-md-3">
+    <div class="col-12 col-md-3">
       <label class="form-label text-white">Color</label>
       <select name="color" class="form-select">
         <option value="">— Todos —</option>
@@ -27,23 +27,24 @@
       </select>
     </div>
 
-    <div class="col-md-2">
+    <div class="col-6 col-md-2">
       <label class="form-label text-white">Precio desde</label>
       <input type="number" step="0.01" name="precio_min" class="form-control"
-             value="<?= esc($filtros['precio_min'] ?? '') ?>">
+            value="<?= esc($filtros['precio_min'] ?? '') ?>">
     </div>
 
-    <div class="col-md-2">
+    <div class="col-6 col-md-2">
       <label class="form-label text-white">Precio hasta</label>
       <input type="number" step="0.01" name="precio_max" class="form-control"
-             value="<?= esc($filtros['precio_max'] ?? '') ?>">
+            value="<?= esc($filtros['precio_max'] ?? '') ?>">
     </div>
 
-    <div class="col-md-2 d-flex align-items-end">
-      <button type="submit" class="btn btn-primary w-100 me-2">Filtrar</button>
-      <a href="<?= site_url('catalogo') ?>" class="btn btn-secondary w-100">Limpiar</a>
+    <div class="col-12 col-md-2 d-flex align-items-end gap-2 flex-column flex-md-row">
+      <button type="submit" class="btn btn-primary w-100 w-md-auto">Filtrar</button>
+      <a href="<?= site_url('catalogo') ?>" class="btn btn-secondary w-100 w-md-auto">Limpiar</a>
     </div>
   </form>
+
 
   <!-- Resultados -->
   <div class="row row-cols-1 row-cols-md-3 g-4 mb-5">

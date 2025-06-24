@@ -112,7 +112,6 @@ $routes->get('admin/quienes_somos', 'Home::admin_quienes_somos');
 $routes->get('admin/comercializacion', 'Home::admin_comercializacion');
 $routes->get('admin/contacto','Home::admin_contacto');
 $routes->get('admin/terminos_usos', 'Home::admin_terminos_usos');
-$routes->get('admin/catalogo', 'Home::catalogo');
 $routes->get('admin/lista', 'Home::admin_panel');
 $routes->get('admin/usuarios', 'Home::admin_usuarios');
 $routes->get('admin/perfil', 'Home::perfilAdmin');
@@ -148,6 +147,7 @@ $routes->post('usuarios/restaurar/(:num)', 'UserController::restaurar/$1');
 $routes->get('usuario/perfil', 'Home::perfilUsuario');
 $routes->get('usuario/pedidos', 'Home::usuario_pedidos');
 
+$routes->get('prueba-correo', 'ContactoController::pruebaCorreo');
 
 
 

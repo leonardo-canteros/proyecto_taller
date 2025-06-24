@@ -76,7 +76,8 @@ class Home extends BaseController
         $builder = $productoModel
             ->select(['id_producto', 'nombre', 'descripcion', 'precio', 'talla', 'color', 'imagen', 'estado', 'categoria'])
             ->where('estado', 'activo')
-            ->where('deleted_at', null);
+            ->where('deleted_at', null)
+            ->where('stock >', 0);  // 👈 se agregó este filtro
 
         if (!empty($categoria)) {
             $builder->where('categoria', $categoria);
@@ -97,8 +98,17 @@ class Home extends BaseController
         $productos = $builder->findAll();
 
         // Para llenar selects dinámicos
-        $categorias = $productoModel->distinct()->select('categoria')->where('estado', 'activo')->where('deleted_at', null)->findColumn('categoria');
-        $colores    = $productoModel->distinct()->select('color')->where('estado', 'activo')->where('deleted_at', null)->findColumn('color');
+        $categorias = $productoModel->distinct()->select('categoria')
+            ->where('estado', 'activo')
+            ->where('deleted_at', null)
+            ->where('stock >', 0)
+            ->findColumn('categoria');
+
+        $colores = $productoModel->distinct()->select('color')
+            ->where('estado', 'activo')
+            ->where('deleted_at', null)
+            ->where('stock >', 0)
+            ->findColumn('color');
 
         // Pasar filtros actuales para mantener los valores en el form
         $data = [
@@ -113,7 +123,7 @@ class Home extends BaseController
             ]
         ];
 
-         $this->loadView('catalogo_view', $data);
+        $this->loadView('catalogo_view', $data);
     }
 
 
@@ -241,7 +251,7 @@ class Home extends BaseController
     }
 
     public function catalogo_admin()
-{
+    {
     // Sólo administradores
     if (session()->get('rol') !== 'administrador') {
         return redirect()->to('/')->with('error','Acceso no autorizado');
@@ -261,17 +271,17 @@ class Home extends BaseController
 
     // 3) Activos y no borrados
     $productos = $model
+        ->where('stock >', 0)
         ->where('estado', 'activo')
         ->where('deleted_at', null)
         ->findAll();
 
     // 4) Saco lista de categorías para el select
-    $categorias = (new \App\Models\ProductoModel())
-        ->select('categoria')
-        ->distinct()
+    $categorias = $model->distinct()->select('categoria')
+        ->where('estado', 'activo')
         ->where('deleted_at', null)
+        ->where('stock >', 0)
         ->findColumn('categoria');
-
     $data = [
         'productos'  => $productos,
         'categorias' => $categorias,
@@ -280,7 +290,7 @@ class Home extends BaseController
     ];
 
     $this->loadView('admin/administrador_catalogo', $data);
-}
+    }
 
 
     /** ————————— Admin: formulario de edición ————————— */

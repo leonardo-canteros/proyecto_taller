@@ -13,6 +13,8 @@
 
   <!-- Bootstrap CSS -->
   <link href="/proyecto_taller/assets/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap CSS -->
+
 
   <!-- Font Awesome -->
   <link
@@ -23,6 +25,8 @@
   <!-- Tus estilos personalizados -->
   <link href="/proyecto_taller/assets/css/styles.css"    rel="stylesheet">
   <link href="/proyecto_taller/assets/css/formuProdu.css" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/carritofierrito.css">
+
   <!-- Si tienes un navbar.css específico, lo incluirías aquí: -->
   <!-- <link href="/proyecto_taller/assets/css/navbar.css" rel="stylesheet"> -->
 

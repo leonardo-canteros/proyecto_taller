@@ -79,7 +79,7 @@ class PedidosController extends BaseController
         return $this->response->setJSON([
             'success' => true,
             'message' => 'Pedido creado con éxito',
-            'redirect' => base_url('catalogo')
+            'redirect' => base_url('usuario/principal')
         ]);
     }
 

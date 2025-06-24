@@ -1,0 +1,130 @@
+
+/* carritofierrito.css mejorado para más ancho */
+
+/* General */
+body {
+    background-color: #2c3e50;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+h1 {
+    font-weight: 600;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+/* Contenedor principal con más ancho */
+.container.carrito-container {
+    max-width: 100%;
+    padding: 0 2rem;
+}
+
+/* Tarjeta horizontal más ancha */
+.carritofierrito-item {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    border-bottom: 1px solid #dee2e6;
+    background-color: #fff;
+    border-radius: 0.5rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    width: 100%;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.carritofierrito-item img {
+    width: 160px;
+    height: auto;
+    object-fit: contain;
+    border-radius: 0.5rem;
+    border: 1px solid #ccc;
+}
+
+/* Secciones internas */
+.carritofierrito-detalles {
+    flex: 2;
+    min-width: 200px;
+}
+
+.carritofierrito-precio,
+.carritofierrito-cantidad,
+.carritofierrito-subtotal,
+.carritofierrito-acciones {
+    min-width: 120px;
+    text-align: right;
+    flex: 1;
+}
+
+.carritofierrito-cantidad .input-group {
+    max-width: 140px;
+    margin-left: auto;
+}
+
+.carritofierrito-acciones button {
+    padding: 0.4rem 0.8rem;
+}
+
+.quantity-input {
+    width: 70px;
+    text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .carritofierrito-item {
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+    }
+
+    .carritofierrito-precio,
+    .carritofierrito-cantidad,
+    .carritofierrito-subtotal,
+    .carritofierrito-acciones {
+        text-align: left;
+        width: 100%;
+        margin-top: 0.5rem;
+    }
+
+    .carritofierrito-cantidad .input-group {
+        margin-left: 0;
+    }
+}
+
+.carritofierrito-productos {
+  flex: 1;
+  max-width: 100%;
+}
+
+.carritofierrito-productos .card {
+  width: 100%;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.carritofierrito-productos .card-body {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.carritofierrito-productos .img-thumbnail {
+  max-width: 140px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 0.5rem;
+}
+
+.carritofierrito-productos .card {
+    width: 100%;
+    max-width: 100%;
+}
+
+.carritofierrito-productos .table img.img-thumbnail {
+    max-width: 100px;
+    height: auto;
+}
+

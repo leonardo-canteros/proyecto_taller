@@ -18,24 +18,17 @@ class CarritoController extends BaseController
     /**
      * Muestra el contenido del carrito
      */
-    public function obtenerCarrito()
+   public function obtenerCarrito($id_usuario)
     {
-        if (!session()->has('id_usuario')) {
-            return redirect()->to('/login')->with('error', 'Debes iniciar sesión');
+        // Validación opcional
+        if (!session()->has('id_usuario') || session()->get('id_usuario') != $id_usuario) {
+            return redirect()->to('/login')->with('error', 'No autorizado');
         }
-        
-        $id_usuario = session()->get('id_usuario');
-        
-        $data = [
-            'productos' => $this->carritoModel->obtenerProductosConDetalles($id_usuario),
-            'total' => $this->carritoModel->calcularTotalCarrito($id_usuario),
-            'titulo' => 'Mi Carrito de Compras'
-        ];
-        
-        // Retornar siempre JSON
-        return view('carrito_view', $data);
-        }
-    
+
+        // Redirigir a la vista desde Home con layout completo
+        return redirect()->to(base_url('carrito/' . $id_usuario));
+    }
+
     /**
  * Agrega un producto al carrito (AJAX o Form)
  * 

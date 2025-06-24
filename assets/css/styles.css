@@ -64,6 +64,12 @@ section {
   display: none !important;
 }
 
+.img-thumbnail {
+    max-width: 100%;
+    height: auto;
+}
+
+
 
 @media (max-width: 900px) {
   .logo {

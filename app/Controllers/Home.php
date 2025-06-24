@@ -501,25 +501,51 @@ class Home extends BaseController
     }
 
     public function misConsultas()
-{
-    $session = session();
-    if (!$session->get('logged_in')) {
-        return redirect()->to('/login');
+    {
+        $session = session();
+        if (!$session->get('logged_in')) {
+            return redirect()->to('/login');
+        }
+
+        $idUsuario = $session->get('id_usuario');
+        $consultaModel = new \App\Models\ConsultaModel();
+
+        $consultas = $consultaModel
+            ->where('id_usuario', $idUsuario)
+            ->orderBy('created_at', 'DESC')
+            ->findAll();
+
+        return $this->loadView('usuario/mis_consultas', [
+            'title' => 'Mis Consultas',
+            'consultas' => $consultas
+        ]);
     }
 
-    $idUsuario = $session->get('id_usuario');
-    $consultaModel = new \App\Models\ConsultaModel();
+    public function verPedidosAdmin()
+    {
+        $pedidoModel = new \App\Models\PedidoModel();
+        $data['pedidos'] = $pedidoModel->getPedidosConUsuario();
 
-    $consultas = $consultaModel
-        ->where('id_usuario', $idUsuario)
-        ->orderBy('created_at', 'DESC')
-        ->findAll();
+        $this->loadView('pedidos/lista', $data);
+    }
 
-    return $this->loadView('usuario/mis_consultas', [
-        'title' => 'Mis Consultas',
-        'consultas' => $consultas
-    ]);
-}
+    
+    public function usuario_pedidos()
+    {
+        if (!session()->get('logged_in')) {
+            return redirect()->to('/login')->with('error', 'Debes iniciar sesión');
+        }
+
+        $pedidoModel = new \App\Models\PedidoModel();
+        $idUsuario = session('id_usuario');
+        $data['pedidos'] = $pedidoModel->getPedidosPorUsuario($idUsuario); // asumimos que este método ya existe
+
+        $this->loadView('usuario/mis_pedidos', $data);
+    }
+
+
+
+
 
 
 }

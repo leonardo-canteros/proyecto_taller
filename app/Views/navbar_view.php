@@ -119,6 +119,8 @@ if ($loggedIn) {
                 <li><a class="dropdown-item" href="<?= site_url('admin/consultas') ?>"><i class="fas fa-comments me-2"></i> Gestionar Consultas</a></li>
                 <li><a class="dropdown-item" href="<?= site_url('admin/contacto') ?>"><i class="fas fa-inbox me-2"></i> Ver Contactos</a></li>
                 <li><a class="dropdown-item" href="<?= site_url('admin/usuarios') ?>"><i class="fas fa-users me-2"></i> Gestionar Usuarios</a></li>
+                <li><a class="dropdown-item" href="<?= site_url('admin/pedidos') ?>"><i class="fas fa-shopping-bag me-2"></i> Pedidos</a></li> 
+                
               </ul>
             </li>
           <?php endif; ?>
@@ -128,6 +130,9 @@ if ($loggedIn) {
               <i class="fas fa-user-circle me-1"></i> <?= esc($session->get('nombre')) ?>
             </a>
             <ul class="dropdown-menu dropdown-menu-end">
+              <?php if (session()->get('logged_in') && session()->get('rol') === 'usuario'): ?>
+                    <li><a class="dropdown-item" href="<?= site_url('usuario/pedidos') ?>"><i class="fas fa-box me-2"></i> Mis pedidos</a></li>
+                <?php endif; ?>
               <li><a class="dropdown-item" href="<?= $isAdmin ? site_url('admin/perfil') : site_url('usuario/perfil') ?>"><i class="fas fa-user me-2"></i> Mi Perfil</a></li>
               <li><hr class="dropdown-divider"></li>
               <li>

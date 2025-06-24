@@ -4,7 +4,7 @@
     <?php if (!empty($pedidos)): ?>
         <div class="table-responsive">
             <table class="table table-bordered table-hover align-middle">
-                <thead class="table-dark">
+                <thead class="table-dark text-center">
                     <tr>
                         <th>ID</th>
                         <th>Fecha</th>
@@ -14,7 +14,7 @@
                         <th>Estado</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody class="text-center">
                     <?php foreach ($pedidos as $pedido): ?>
                         <tr>
                             <td><?= esc($pedido['id_pedido']) ?></td>
@@ -23,13 +23,19 @@
                             <td><?= esc($pedido['direccion_envio']) ?></td>
                             <td><?= esc($pedido['metodo_pago']) ?></td>
                             <td>
-                                <span class="badge bg-<?= 
-                                    $pedido['estado_pedido'] == 2 ? 'success' : 
-                                    ($pedido['estado_pedido'] == 1 ? 'warning' : 'secondary') ?>">
-                                    <?= 
-                                        $pedido['estado_pedido'] == 2 ? 'Finalizado' :
-                                        ($pedido['estado_pedido'] == 1 ? 'Pendiente' : 'Cancelado') ?>
-                                </span>
+                                <?php
+                                    $estados = [
+                                        0 => ['label' => 'Cancelado',  'class' => 'secondary'],
+                                        1 => ['label' => 'Pendiente',  'class' => 'warning'],
+                                        2 => ['label' => 'Enviado',    'class' => 'info'],
+                                        3 => ['label' => 'Finalizado', 'class' => 'success'],
+                                    ];
+
+                                    $estado = $pedido['estado_pedido'];
+                                    $label = $estados[$estado]['label'] ?? 'Desconocido';
+                                    $class = $estados[$estado]['class'] ?? 'dark';
+                                ?>
+                                <span class="badge bg-<?= $class ?>"><?= $label ?></span>
                             </td>
                         </tr>
                     <?php endforeach; ?>

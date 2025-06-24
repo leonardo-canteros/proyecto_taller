@@ -23,32 +23,43 @@ class PedidoModel extends Model
      * Crea un nuevo pedido desde el carrito
      */
    public function crearPedido($idUsuario, $datos, $items)
-{
-    $db = \Config\Database::connect();
-    $db->transStart();
+    {
+        $db = \Config\Database::connect();
+        $db->transStart();
 
-    try {
-        log_message('info', 'Iniciando creación de pedido para usuario: '.$idUsuario);
-        
-        $pedidoData = [
-            'id_usuario' => $idUsuario,
-            'fecha_pedido' => date('Y-m-d H:i:s'),
-            'Total' => $datos['total'],
-            'estado_pedido' => 1,
-            'direccion_envio' => $datos['direccion'],
-            'metodo_pago' => $datos['metodo_pago']
-        ];
-        
-        log_message('info', 'Intentando insertar pedido: '.print_r($pedidoData, true));
-        
-        if (!$this->insert($pedidoData)) {
-            log_message('error', 'Error al insertar: '.print_r($this->errors(), true));
-            throw new \RuntimeException('Error insertando pedido');
-        }
-        
-        $idPedido = $this->getInsertID();
-        log_message('info', 'Pedido creado con ID: '.$idPedido);
-        
+        try {
+            log_message('info', 'Iniciando creación de pedido para usuario: '.$idUsuario);
+            
+            $pedidoData = [
+                'id_usuario'      => $idUsuario,
+                'fecha_pedido'    => date('Y-m-d H:i:s'),
+                'Total'           => $datos['total'],
+                'estado_pedido'   => 1,
+                'direccion_envio' => $datos['direccion'],
+                'metodo_pago'     => $datos['metodo_pago']
+            ];
+            
+            log_message('info', 'Intentando insertar pedido: '.print_r($pedidoData, true));
+            
+            if (!$this->insert($pedidoData)) {
+                log_message('error', 'Error al insertar: '.print_r($this->errors(), true));
+                throw new \RuntimeException('Error insertando pedido');
+            }
+            
+            $idPedido = $this->getInsertID();
+            log_message('info', 'Pedido creado con ID: '.$idPedido);
+
+            // 🔥 Insertar detalles del pedido
+            $detalleModel = new \App\Models\DetallePedidoModel();
+            foreach ($items as $item) {
+                $detalleModel->insert([
+                    'id_pedido'       => $idPedido,
+                    'id_producto'     => $item['id_producto'],
+                    'cantidad'        => $item['cantidad'],
+                    'precio_unitario' => $item['precio'] ?? 0,
+                ]);
+            }
+
             $db->transComplete();
 
             return $idPedido;
@@ -67,17 +78,17 @@ class PedidoModel extends Model
     {
         return $this->select('pedido.*, usuarios.nombre as nombre_usuario')
                    ->join('usuarios', 'usuarios.id_usuario = pedido.id_usuario')
-                   ->orderBy('pedido.fecha_pedido', 'DESC')
+                   ->orderBy('pedido.fecha_pedido', 'ASC')
                    ->findAll();
     }
 
-    /**
+   /**
      * Obtiene pedidos de un usuario específico
      */
     public function getPedidosPorUsuario($idUsuario)
     {
         return $this->where('id_usuario', $idUsuario)
-                   ->orderBy('fecha_pedido', 'DESC')
+                   ->orderBy('fecha_pedido', 'ASC')
                    ->findAll();
     }
 
@@ -86,7 +97,13 @@ class PedidoModel extends Model
      */
     public function cambiarEstado($idPedido, $estado)
     {
-        $estadosValidos = [0 => 'cancelado', 1 => 'pendiente', 2 => 'enviado'];
+       $estadosValidos = [
+            0 => 'cancelado',
+            1 => 'pendiente',
+            2 => 'enviado',
+            3 => 'finalizado'
+        ];
+
         
         if (!array_key_exists($estado, $estadosValidos)) {
             throw new \InvalidArgumentException('Estado de pedido no válido');

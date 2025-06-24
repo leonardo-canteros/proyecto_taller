@@ -80,12 +80,6 @@ $routes->group('pedidos', function($routes) {
     $routes->post('finalizar-compra', 'PedidosController::finalizarCompra');
 });
 
-// Rutas para administradores
-$routes->group('admin/pedidos', ['filter' => 'auth:admin'], function($routes) {
-    $routes->get('/', 'PedidosController::adminListaPedidos');
-    $routes->get('ver/(:num)', 'PedidosController::adminVerPedido/$1');
-    $routes->post('cambiar-estado/(:num)', 'PedidosController::adminCambiarEstado/$1');
-});
 
 // Mostrar login (formulario) con GET
 $routes->get('login', 'Home::login');
@@ -122,6 +116,9 @@ $routes->get('admin/catalogo', 'Home::catalogo');
 $routes->get('admin/lista', 'Home::admin_panel');
 $routes->get('admin/usuarios', 'Home::admin_usuarios');
 $routes->get('admin/perfil', 'Home::perfilAdmin');
+$routes->get('admin/pedidos', 'Home::verPedidosAdmin');
+$routes->post('admin/pedidos/cambiarEstado/(:num)', 'PedidosController::cambiarEstado/$1');
+
 
 
 // Ver listado completo de consultas
@@ -149,6 +146,7 @@ $routes->get('usuario/mis_consultas', 'Home::misConsultas');
 $routes->post('usuarios/desactivar/(:num)', 'UserController::delete/$1');
 $routes->post('usuarios/restaurar/(:num)', 'UserController::restaurar/$1');
 $routes->get('usuario/perfil', 'Home::perfilUsuario');
+$routes->get('usuario/pedidos', 'Home::usuario_pedidos');
 
 
 

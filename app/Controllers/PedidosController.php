@@ -4,6 +4,7 @@ use App\Models\PedidoModel;
 use App\Models\CarritoModel;
 use App\Models\ProductoModel;
 
+
 class PedidosController extends BaseController
 {
     /**
@@ -13,36 +14,27 @@ class PedidosController extends BaseController
     {
         // Verificar autenticación
         if (!session()->has('id_usuario')) {
-            return $this->response->setJSON([
-                'success' => false,
-                'message' => 'Debes iniciar sesión'
-            ]);
+            return redirect()->to('/login')->with('error', 'Debes iniciar sesión');
         }
 
         // Validar datos
         $rules = [
-            'direccion' => 'required|max_length[150]',
-            'metodo_pago' => 'required|max_length[150]'
+            'direccion'    => 'required|max_length[150]',
+            'metodo_pago'  => 'required|max_length[150]'
         ];
 
         if (!$this->validate($rules)) {
-            return $this->response->setJSON([
-                'success' => false,
-                'message' => implode('<br>', $this->validator->getErrors())
-            ]);
+            return redirect()->back()->withInput()->with('error', implode('<br>', $this->validator->getErrors()));
         }
 
         // Procesar pedido
         $carritoModel = new CarritoModel();
         $items = $carritoModel->where('id_usuario', session('id_usuario'))
-                             ->where('estado', 'activo')
-                             ->findAll();
+                            ->where('estado', 'activo')
+                            ->findAll();
 
         if (empty($items)) {
-            return $this->response->setJSON([
-                'success' => false,
-                'message' => 'Carrito vacío'
-            ]);
+            return redirect()->back()->with('error', 'Carrito vacío');
         }
 
         // Calcular total
@@ -70,18 +62,13 @@ class PedidosController extends BaseController
         $carritoController->vaciar(session('id_usuario'));
 
         if (!$idPedido) {
-            return $this->response->setJSON([
-                'success' => false,
-                'message' => 'Error al crear el pedido'
-            ]);
+            return redirect()->back()->with('error', 'Error al crear el pedido');
         }
-        
-        return $this->response->setJSON([
-            'success' => true,
-            'message' => 'Pedido creado con éxito',
-            'redirect' => base_url('usuario/principal')
-        ]);
+
+        // Redirigir con mensaje de éxito
+        return redirect()->to('usuario/principal')->with('success', '✅ Pedido realizado con éxito');
     }
+
 
     /**
      * Mostrar pedidos del usuario
@@ -103,7 +90,7 @@ class PedidosController extends BaseController
      */
     public function adminLista()
     {
-        if (session('rol') != 'admin') {
+        if (session('rol') != 'admininistrador') {
             return redirect()->to('/');
         }
 
@@ -118,17 +105,39 @@ class PedidosController extends BaseController
      */
     public function cambiarEstado($id)
     {
-        if (session('rol') != 'admin') {
-            return redirect()->to('/');
+        if (session('rol') != 'administrador') {
+            return redirect()->to(base_url('admin/pedidos'));
         }
 
-        $estado = $this->request->getPost('estado');
-        $model = new PedidoModel();
+        $estado = (int) $this->request->getPost('estado');
+        $pedidoModel = new PedidoModel();
 
-        if ($model->cambiarEstado($id, $estado)) {
-            return redirect()->back()->with('success', 'Estado actualizado');
+        if ($pedidoModel->cambiarEstado($id, $estado)) {
+
+            // Si el estado es finalizado, descontar stock
+            if ($estado === 3) {
+                $detalleModel = new \App\Models\DetallePedidoModel();
+                $productoModel = new \App\Models\ProductoModel();
+
+                $detalles = $detalleModel->where('id_pedido', $id)->findAll();
+
+                foreach ($detalles as $detalle) {
+                    $producto = $productoModel->find($detalle['id_producto']);
+                    if ($producto) {
+                        $nuevoStock = max(0, $producto['stock'] - $detalle['cantidad']);
+                        log_message('debug', 'Actualizando producto ID: ' . $detalle['id_producto'] . ' - Cantidad: ' . $detalle['cantidad'] . ' - Stock anterior: ' . $producto['stock'] . ' - Nuevo stock: ' . $nuevoStock);
+
+                        $productoModel->update($detalle['id_producto'], ['stock' => $nuevoStock]);
+                    }
+                }
+            }
+
+            return redirect()->to(base_url('admin/pedidos'))->with('success', 'Estado actualizado correctamente');
         }
 
-        return redirect()->back()->with('error', 'Error al actualizar');
+        return redirect()->to(base_url('admin/pedidos'))->with('error', 'Error al actualizar el estado');
     }
+
+
+
 }

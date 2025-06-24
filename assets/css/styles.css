@@ -64,6 +64,25 @@ body {
   }
 }
 
+.text-truncate {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.table-responsive-sm {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.table td {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
+}
+
+
 @media (max-width: 576px) {
   .navbar-nav .nav-link {
     text-align: center;
@@ -149,11 +168,35 @@ section {
 }
 
 @media (max-width: 768px) {
-  .logo {
-    width: 50vw;   /* más chico en pantallas chicas */
-    height: auto;  /* mantiene proporción */
+  /* Hace que los selects, inputs y botones se expandan al 100% */
+  .form-select,
+  .form-control,
+  .btn {
+    width: 100% !important;
+  }
+
+  /* Fuerza que las columnas ocupen 100% del ancho en mobile */
+  form .col-6,
+  form .col-12,
+  form .col-md-1,
+  form .col-md-2,
+  form .col-md-3 {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* Espaciado inferior entre campos en mobile */
+  form .col-6,
+  form .col-12 {
+    margin-bottom: 0.5rem;
+  }
+
+  /* Centrado de botones en mobile (opcional) */
+  form .btn {
+    margin-top: 0.25rem;
   }
 }
+
 
 @media (max-width: 480px) {
   .logo {
@@ -1166,6 +1209,30 @@ body.pagina-contacto {
   }
   
 
+}
+
+@media (max-width: 992px) {
+  form.row.g-3 {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  form.row.g-3 > .col-12,
+  form.row.g-3 > .col-6,
+  form.row.g-3 > .col-sm-6,
+  form.row.g-3 > .col-md-2,
+  form.row.g-3 > .col-md-3,
+  form.row.g-3 > .col-md-1 {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: 0 0 100% !important;
+  }
+
+  form.row.g-3 .form-control,
+  form.row.g-3 .form-select,
+  form.row.g-3 .btn {
+    width: 100% !important;
+  }
 }
 
 

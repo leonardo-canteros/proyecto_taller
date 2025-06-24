@@ -82,15 +82,6 @@ class UserController extends BaseController
 
         $db->transComplete();
 
-        // 3. Iniciar sesión automáticamente (opcional pero recomendado)
-        session()->set([
-            'id_usuario' => $id_usuario,
-            'nombre' => $data['nombre'],
-            'correo' => $data['correo'],
-            'rol' => 'usuario',
-            'logged_in' => true
-        ]);
-
         // Respuesta
         if ($this->request->isAJAX()) {
             return $this->respondCreated([
@@ -100,7 +91,7 @@ class UserController extends BaseController
             ]);
         }
 
-        return redirect()->to('/usuario')->with('success', 'Registro exitoso');
+        return redirect()->to('/login')->with('success', 'Registro exitoso');
 
     } catch (\Exception $e) {
         $db->transRollback();

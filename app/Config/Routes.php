@@ -131,6 +131,7 @@ $routes->get('admin/contactos', 'ContactoController::listar');
 
 
 /*usuario*/
+$routes->get('usuario/', 'Home::usuario');
 $routes->get('usuario/principal', 'Home::usuario');
 $routes->get('usuario/quienes_somos', 'Home::quienes_somos');
 $routes->get('usuario/termino_usos', 'Home::termino_usos');

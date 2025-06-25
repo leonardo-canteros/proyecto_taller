@@ -149,6 +149,32 @@ class PedidosController extends BaseController
         return redirect()->to(base_url('admin/pedidos'))->with('error', 'Error al actualizar el estado');
     }
 
+    public function verFactura($idPedido)
+    {
+        $idUsuario = session()->get('id_usuario');
+        $pedidoModel = new \App\Models\PedidoModel();
+        $detalleModel = new \App\Models\DetallePedidoModel();
+
+        $pedido = $pedidoModel
+            ->where('id_pedido', $idPedido)
+            ->where('id_usuario', $idUsuario)
+            ->first();
+
+        if (!$pedido) {
+            return redirect()->to('usuario/pedidos')->with('error', 'Pedido no encontrado');
+        }
+
+        $detalles = $detalleModel
+            ->where('id_pedido', $idPedido)
+            ->findAll();
+
+        $data = [
+            'pedido'   => $pedido,
+            'detalles' => $detalles
+        ];
+
+        return view('usuario/factura_pedido', $data);
+    }
 
 
 

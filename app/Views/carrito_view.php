@@ -1,3 +1,6 @@
+<!-- Agrega SweetAlert2 desde CDN -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <div class="container-fluid px-4">
     <h1 class="text-center mb-5 text-white fw-bold">Mi Carrito de Compras</h1>
 
@@ -38,7 +41,14 @@
                                         <td class="text-center">
                                             <form action="/proyecto_taller/public/carrito/actualizar/<?= $p['id_carrito'] ?>" method="post">
                                                 <?= csrf_field() ?>
-                                                <input type="number" name="cantidad" value="<?= $p['cantidad'] ?>" min="1" max="<?= $p['stock'] ?? 99 ?>" class="form-control form-control-sm" style="width: 70px;">
+                                                <input type="number"
+                                                       name="cantidad"
+                                                       value="<?= $p['cantidad'] ?>"
+                                                       min="1"
+                                                       max="<?= $p['stock'] ?? 99 ?>"
+                                                       class="form-control form-control-sm"
+                                                       style="width: 70px;"
+                                                       onchange="validarCantidad(this, <?= $p['stock'] ?>, '<?= esc($p['nombre']) ?>', this.form);">
                                             </form>
                                         </td>
                                         <td class="text-end">$<?= number_format($p['precio'] * $p['cantidad'], 2) ?></td>
@@ -116,3 +126,23 @@
         </div>
     <?php endif; ?>
 </div>
+
+<script>
+function validarCantidad(input, stockDisponible, nombreProducto, form) {
+    const cantidad = parseInt(input.value);
+
+    if (cantidad > stockDisponible) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Sin stock suficiente',
+            text: `El producto "${nombreProducto}" solo tiene ${stockDisponible} unidades disponibles.`,
+            confirmButtonText: 'Entendido'
+        });
+
+        input.value = stockDisponible;
+        return false;
+    }
+
+    form.submit();
+}
+</script>

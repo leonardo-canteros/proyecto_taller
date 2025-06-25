@@ -28,4 +28,13 @@ class DetallePedidoModel extends Model
 
     protected $validationMessages = [];
     protected $skipValidation     = false;
+
+    public function obtenerDetallesConProducto($id_pedido)
+    {
+        return $this->select('detalle_pedido.*, productos.nombre AS nombre_producto')
+                    ->join('productos', 'productos.id_producto = detalle_pedido.id_producto')
+                    ->where('detalle_pedido.id_pedido', $id_pedido)
+                    ->findAll();
+    }
+
 }

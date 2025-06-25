@@ -28,8 +28,8 @@ class PedidoModel extends Model
         $db->transStart();
 
         try {
-            log_message('info', 'Iniciando creación de pedido para usuario: '.$idUsuario);
-            
+            log_message('info', 'Iniciando creación de pedido para usuario: ' . $idUsuario);
+
             $pedidoData = [
                 'id_usuario'      => $idUsuario,
                 'fecha_pedido'    => date('Y-m-d H:i:s'),
@@ -38,38 +38,54 @@ class PedidoModel extends Model
                 'direccion_envio' => $datos['direccion'],
                 'metodo_pago'     => $datos['metodo_pago']
             ];
-            
-            log_message('info', 'Intentando insertar pedido: '.print_r($pedidoData, true));
-            
+
+            log_message('info', 'Intentando insertar pedido: ' . print_r($pedidoData, true));
+
             if (!$this->insert($pedidoData)) {
-                log_message('error', 'Error al insertar: '.print_r($this->errors(), true));
+                log_message('error', 'Error al insertar pedido: ' . print_r($this->errors(), true));
                 throw new \RuntimeException('Error insertando pedido');
             }
-            
-            $idPedido = $this->getInsertID();
-            log_message('info', 'Pedido creado con ID: '.$idPedido);
 
-            // 🔥 Insertar detalles del pedido
+            $idPedido = $this->getInsertID();
+            log_message('info', 'Pedido creado con ID: ' . $idPedido);
+
+            // Insertar detalles del pedido con precio real desde productos
             $detalleModel = new \App\Models\DetallePedidoModel();
+            $productoModel = new \App\Models\ProductoModel();
+
             foreach ($items as $item) {
-                $detalleModel->insert([
+                $producto = $productoModel->find($item['id_producto']);
+
+                if (!$producto) {
+                    throw new \RuntimeException('Producto no encontrado: ID ' . $item['id_producto']);
+                }
+
+                $detalle = [
                     'id_pedido'       => $idPedido,
                     'id_producto'     => $item['id_producto'],
                     'cantidad'        => $item['cantidad'],
-                    'precio_unitario' => $item['precio'] ?? 0,
-                ]);
+                    'precio_unitario' => $producto['precio'],
+                ];
+
+                $detalleModel->insert($detalle);
+                log_message('info', 'Detalle insertado: ' . print_r($detalle, true));
             }
 
             $db->transComplete();
+
+            if ($db->transStatus() === false) {
+                throw new \RuntimeException('Error en la transacción');
+            }
 
             return $idPedido;
 
         } catch (\Exception $e) {
             $db->transRollback();
-            log_message('error', 'Error al crear pedido: '.$e->getMessage());
+            log_message('error', 'Error al crear pedido: ' . $e->getMessage());
             return false;
         }
     }
+
 
     /**
      * Obtiene pedidos con información del usuario

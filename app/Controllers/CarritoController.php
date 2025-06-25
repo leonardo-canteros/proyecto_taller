@@ -234,5 +234,19 @@ public function agregar()
     ]);
 }
 
+public function contador()
+{
+    if (!session()->has('id_usuario')) {
+        return $this->response->setJSON(['count' => 0]);
+    }
+
+    $id_usuario = session()->get('id_usuario');
+    $carritoModel = new \App\Models\CarritoModel();
+    $count = $carritoModel->contarProductos($id_usuario);
+
+    return $this->response->setJSON(['count' => $count]);
+}
+
+
 
 }

@@ -1,5 +1,6 @@
 <?php 
 namespace App\Controllers;
+use Dompdf\Dompdf;
 
 class Home extends BaseController
 {
@@ -76,7 +77,8 @@ class Home extends BaseController
         $builder = $productoModel
             ->select(['id_producto', 'nombre', 'descripcion', 'precio', 'talla', 'color', 'imagen', 'estado', 'categoria'])
             ->where('estado', 'activo')
-            ->where('deleted_at', null);
+            ->where('deleted_at', null)
+            ->where('stock >', 0);  // 👈 se agregó este filtro
 
         if (!empty($categoria)) {
             $builder->where('categoria', $categoria);
@@ -97,8 +99,17 @@ class Home extends BaseController
         $productos = $builder->findAll();
 
         // Para llenar selects dinámicos
-        $categorias = $productoModel->distinct()->select('categoria')->where('estado', 'activo')->where('deleted_at', null)->findColumn('categoria');
-        $colores    = $productoModel->distinct()->select('color')->where('estado', 'activo')->where('deleted_at', null)->findColumn('color');
+        $categorias = $productoModel->distinct()->select('categoria')
+            ->where('estado', 'activo')
+            ->where('deleted_at', null)
+            ->where('stock >', 0)
+            ->findColumn('categoria');
+
+        $colores = $productoModel->distinct()->select('color')
+            ->where('estado', 'activo')
+            ->where('deleted_at', null)
+            ->where('stock >', 0)
+            ->findColumn('color');
 
         // Pasar filtros actuales para mantener los valores en el form
         $data = [
@@ -113,7 +124,7 @@ class Home extends BaseController
             ]
         ];
 
-         $this->loadView('catalogo_view', $data);
+        $this->loadView('catalogo_view', $data);
     }
 
 
@@ -241,46 +252,57 @@ class Home extends BaseController
     }
 
     public function catalogo_admin()
-{
-    // Sólo administradores
-    if (session()->get('rol') !== 'administrador') {
-        return redirect()->to('/')->with('error','Acceso no autorizado');
+    {
+        // Sólo administradores
+        if (session()->get('rol') !== 'administrador') {
+            return redirect()->to('/')->with('error','Acceso no autorizado');
+        }
+
+        $model = new \App\Models\ProductoModel();
+
+        // 1) Leo filtros desde GET
+        $cat  = $this->request->getGet('categoria')  ?: null;
+        $min  = $this->request->getGet('precio_min') ?: null;
+        $max  = $this->request->getGet('precio_max') ?: null;
+        $color = $this->request->getGet('color')     ?: null;
+
+        // 2) Aplico filtros al query
+        if ($cat)   $model->where('categoria', $cat);
+        if ($color) $model->where('color', $color);
+        if (is_numeric($min)) $model->where('precio >=', (float)$min);
+        if (is_numeric($max)) $model->where('precio <=', (float)$max);
+
+        // 3) Activos y no borrados
+        $productos = $model
+            ->where('stock >', 0)
+            ->where('estado', 'activo')
+            ->where('deleted_at', null)
+            ->findAll();
+
+        // 4) Saco lista de categorías y colores para los select
+        $categorias = $model->distinct()->select('categoria')
+            ->where('estado', 'activo')
+            ->where('deleted_at', null)
+            ->where('stock >', 0)
+            ->findColumn('categoria');
+
+        $colores = $model->distinct()->select('color')
+            ->where('estado', 'activo')
+            ->where('deleted_at', null)
+            ->where('stock >', 0)
+            ->findColumn('color');
+
+        // 5) Paso todo a la vista
+        $data = [
+            'productos'  => $productos,
+            'categorias' => $categorias,
+            'colores'    => $colores,
+            'filtros'    => ['cat' => $cat, 'color' => $color, 'precio_min' => $min, 'precio_max' => $max],
+            'title'      => 'Catálogo Admin'
+        ];
+
+        $this->loadView('admin/administrador_catalogo', $data);
     }
-
-    $model = new \App\Models\ProductoModel();
-
-    // 1) Leo filtros desde GET
-    $cat = $this->request->getGet('categoria')  ?: null;
-    $min = $this->request->getGet('precio_min') ?: null;
-    $max = $this->request->getGet('precio_max') ?: null;
-
-    // 2) Aplico al query
-    if ($cat) $model->where('categoria', $cat);
-    if (is_numeric($min)) $model->where('precio >=', (float)$min);
-    if (is_numeric($max)) $model->where('precio <=', (float)$max);
-
-    // 3) Activos y no borrados
-    $productos = $model
-        ->where('estado', 'activo')
-        ->where('deleted_at', null)
-        ->findAll();
-
-    // 4) Saco lista de categorías para el select
-    $categorias = (new \App\Models\ProductoModel())
-        ->select('categoria')
-        ->distinct()
-        ->where('deleted_at', null)
-        ->findColumn('categoria');
-
-    $data = [
-        'productos'  => $productos,
-        'categorias' => $categorias,
-        'filtros'    => ['cat'=>$cat,'min'=>$min,'max'=>$max],
-        'title'      => 'Catálogo Admin'
-    ];
-
-    $this->loadView('admin/administrador_catalogo', $data);
-}
 
 
     /** ————————— Admin: formulario de edición ————————— */
@@ -529,6 +551,42 @@ class Home extends BaseController
         $this->loadView('pedidos/lista', $data);
     }
 
+   public function verFactura($id_pedido)
+    {
+        // Verifica si hay sesión iniciada
+        if (!session()->has('id_usuario')) {
+            return redirect()->to('/login')->with('error', 'Debes iniciar sesión para ver tus pedidos');
+        }
+
+        $id_usuario = session()->get('id_usuario');
+
+        // Modelos
+        $pedidoModel = new \App\Models\PedidoModel();
+        $detalleModel = new \App\Models\DetallePedidoModel();
+
+        // Obtener el pedido
+        $pedido = $pedidoModel->where('id_pedido', $id_pedido)
+                            ->where('id_usuario', $id_usuario)
+                            ->first();
+
+        if (!$pedido) {
+            return redirect()->to('/usuario/pedidos')->with('error', 'Pedido no encontrado');
+        }
+
+        // Obtener los detalles con nombre del producto
+        $detalles = $detalleModel->obtenerDetallesConProducto($id_pedido);
+
+        // Datos para pasar a la vista
+        $data = [
+            'pedido'   => $pedido,
+            'detalles' => $detalles,
+            'title'    => 'Factura del Pedido #' . $id_pedido
+        ];
+
+        return $this->loadView('usuario/factura_pedido', $data);
+    }
+
+
     
     public function usuario_pedidos()
     {
@@ -543,6 +601,42 @@ class Home extends BaseController
         $this->loadView('usuario/mis_pedidos', $data);
     }
 
+    public function descargarFactura($idPedido)
+    {
+        $pedidoModel   = new \App\Models\PedidoModel();
+        $detalleModel  = new \App\Models\DetallePedidoModel();
+        $productoModel = new \App\Models\ProductoModel();
+
+        $pedido = $pedidoModel->find($idPedido);
+        $detallesRaw = $detalleModel->where('id_pedido', $idPedido)->findAll();
+
+        $detalles = [];
+        foreach ($detallesRaw as $d) {
+            $producto = $productoModel->find($d['id_producto']);
+            $d['nombre_producto'] = $producto['nombre'] ?? 'Desconocido';
+            $detalles[] = $d;
+        }
+
+        $data = [
+            'pedido'   => $pedido,
+            'detalles' => $detalles,
+            
+        ];
+
+        // Render vista HTML
+        $html = view('usuario/factura_pedido', $data);
+
+        // Crear PDF
+        $dompdf = new Dompdf();
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper('A4', 'portrait');
+        $dompdf->render();
+
+        return $this->response
+            ->setHeader('Content-Type', 'application/pdf')
+            ->setHeader('Content-Disposition', 'attachment; filename="factura_pedido_'.$idPedido.'.pdf"')
+            ->setBody($dompdf->output());
+    }
 
 
 

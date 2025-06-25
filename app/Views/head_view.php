@@ -37,6 +37,13 @@
     type="image/x-icon"
   >
 
+    <style>
+    @media print {
+        .no-print {
+            display: none;
+        }
+    }
+</style>
   <!-- Forzar fuente Montserrat en todo el body -->
   <style>
     body { font-family: 'Montserrat', sans-serif; }

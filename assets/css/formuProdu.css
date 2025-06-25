@@ -122,3 +122,84 @@ body {
   min-height: 100vh;
   margin: 0;
 }
+
+/* Estilo base */
+.formuProdu {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+  background-color: #969696;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(255,255,255,0.05);
+  color: white;
+}
+
+.formuProdu-field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5rem;
+}
+
+.formuProdu-label {
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.formuProdu-input,
+.formuProdu-textarea,
+.formuProdu-select,
+.formuProdu-file {
+  padding: 0.6rem 0.8rem;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #969696;
+  background-color: #787878;
+  color: white;
+  transition: border-color 0.3s;
+}
+
+.formuProdu-input:focus,
+.formuProdu-textarea:focus,
+.formuProdu-select:focus,
+.formuProdu-file:focus {
+  outline: none;
+  border-color: #0d6efd;
+}
+
+.formuProdu-textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.formuProdu-btn {
+  background-color: #0d6efd;
+  color: white;
+  font-weight: bold;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s;
+}
+
+.formuProdu-btn:hover {
+  background-color: #0b5ed7;
+}
+
+/* Responsivo */
+@media (min-width: 768px) {
+  .formuProdu-field-row {
+    display: flex;
+    gap: 20px;
+  }
+
+  .formuProdu-field-row .formuProdu-field {
+    flex: 1;
+  }
+
+  .formuProdu-btn {
+    width: auto;
+    align-self: flex-end;
+  }
+}

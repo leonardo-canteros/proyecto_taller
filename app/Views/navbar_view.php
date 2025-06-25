@@ -89,8 +89,9 @@ if ($loggedIn) {
             <a class="nav-link position-relative" href="<?= site_url('carrito/usuario/'.$userId) ?>">
               <i class="fas fa-shopping-cart"></i>
               <?php if ($cartCount > 0): ?>
-              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger cart-counter">
-                <?= $cartCount ?>
+              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger cart-counter"
+                  <?= $cartCount == 0 ? 'style="display: none;"' : '' ?>>
+                  <?= $cartCount ?>
               </span>
               <?php endif; ?>
             </a>

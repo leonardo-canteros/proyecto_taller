@@ -54,4 +54,5 @@ class ContactoController extends BaseController
         return view('admin/contactos_listar', ['contactos' => $contactos]);
     }
 
+
 }

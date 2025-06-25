@@ -80,20 +80,18 @@ $routes->group('pedidos', function($routes) {
     $routes->post('finalizar-compra', 'PedidosController::finalizarCompra');
 });
 
+$routes->get('carrito/contador', 'CarritoController::contador');
+
 
 // Mostrar login (formulario) con GET
 $routes->get('login', 'Home::login');
-
 // Procesar login con POST
 $routes->post('login', 'AuthController::login');
-
 // Logout con GET para enlace simple
 $routes->post('logout', 'AuthController::logout');
-
 //register
 $routes->get('register', 'Home::registerForm');       // Muestra formulario
 $routes->post('register', 'UserController::crear');   // Procesa registro
-
 // redireccionamiento a admin/user
 $routes->get('admin/panel', 'Home::admin_panel');
 $routes->get('admin/usuarios',   'Home::admin_usuarios');
@@ -112,7 +110,6 @@ $routes->get('admin/quienes_somos', 'Home::admin_quienes_somos');
 $routes->get('admin/comercializacion', 'Home::admin_comercializacion');
 $routes->get('admin/contacto','Home::admin_contacto');
 $routes->get('admin/terminos_usos', 'Home::admin_terminos_usos');
-$routes->get('admin/catalogo', 'Home::catalogo');
 $routes->get('admin/lista', 'Home::admin_panel');
 $routes->get('admin/usuarios', 'Home::admin_usuarios');
 $routes->get('admin/perfil', 'Home::perfilAdmin');
@@ -132,6 +129,7 @@ $routes->get('admin/contactos', 'ContactoController::listar');
 
 
 /*usuario*/
+$routes->get('usuario/', 'Home::usuario');
 $routes->get('usuario/principal', 'Home::usuario');
 $routes->get('usuario/quienes_somos', 'Home::quienes_somos');
 $routes->get('usuario/termino_usos', 'Home::termino_usos');
@@ -147,7 +145,11 @@ $routes->post('usuarios/desactivar/(:num)', 'UserController::delete/$1');
 $routes->post('usuarios/restaurar/(:num)', 'UserController::restaurar/$1');
 $routes->get('usuario/perfil', 'Home::perfilUsuario');
 $routes->get('usuario/pedidos', 'Home::usuario_pedidos');
+$routes->get('usuario/pedido/factura/(:num)', 'Home::verFactura/$1');
+$routes->get('usuario/factura-pdf/(:num)', 'Home::descargarFactura/$1');
 
+
+$routes->get('prueba-correo', 'ContactoController::pruebaCorreo');
 
 
 

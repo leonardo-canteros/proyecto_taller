@@ -100,6 +100,8 @@ class CarritoModel extends Model
                   ->orderBy('carritos.fecha_creacion', 'DESC')
                   ->findAll();
     }
+
+
     
     /**
      * Elimina un producto del carrito por ID de carrito

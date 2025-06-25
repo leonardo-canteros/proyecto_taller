@@ -82,52 +82,6 @@
             </div>
         </div>
     </div>
-
-                    <!-- Sección de productos principales -->
-<div class="featured-products-section">
-    <div class="fp-container">
-        <h2 class="fp-title text-center">Productos Destacados</h2>
-        <!-- Ajuste con clases responsivas -->
-        <div class="fp-grid">
-        
-            <!-- Producto 1 -->
-            <div class="fp-col">
-                <div class="fp-card">
-                    <img src="/proyecto_taller/assets/img/marino.webp" class="fp-img" alt="Traje Elegante">
-                    <div class="fp-card-body">
-                        <h5 class="fp-card-title">Traje Elegante Marino</h5>
-                        <p class="fp-card-text">Traje de dos piezas en lana merino, perfecto para ocasiones formales y eventos de negocios.</p>
-                        <p class="fp-price">$299.99</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Producto 2 -->
-            <div class="fp-col">
-                <div class="fp-card">
-                    <img src="/proyecto_taller/assets/img/vestido.webp" class="fp-img" alt="Vestido de Noche">
-                    <div class="fp-card-body">
-                        <h5 class="fp-card-title">Vestido de Noche Blanco</h5>
-                        <p class="fp-card-text">Vestido largo en seda natural con detalles de encaje, ideal para galas y eventos especiales.</p>
-                        <p class="fp-price">$249.99</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Producto 3 -->
-            <div class="fp-col">
-                <div class="fp-card">
-                    <img src="/proyecto_taller/assets/img/camisa.webp" class="fp-img" alt="Camisa Clásica">
-                    <div class="fp-card-body">
-                        <h5 class="fp-card-title">Camisa Clásica Blanca</h5>
-                        <p class="fp-card-text">Camisa de algodón egipcio con cuello francés y dobles puños, esencial para cualquier guardarropa.</p>
-                        <p class="fp-price">$89.99</p>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
 </div>
 
    

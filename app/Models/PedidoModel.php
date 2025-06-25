@@ -9,13 +9,17 @@ class PedidoModel extends Model
     protected $returnType = 'array';
     protected $useSoftDeletes = false;
     protected $allowedFields = [
-        'id_usuario', 
+        'id_usuario',
         'fecha_pedido',
         'Total',
         'estado_pedido',
         'direccion_envio',
-        'metodo_pago'
+        'metodo_pago',
+        'pais',
+        'provincia',
+        'region'
     ];
+
     protected $useTimestamps = false;
     protected $createdField = 'fecha_pedido';
 
@@ -28,63 +32,52 @@ class PedidoModel extends Model
         $db->transStart();
 
         try {
-            log_message('info', 'Iniciando creación de pedido para usuario: ' . $idUsuario);
-
+            log_message('info', 'Iniciando creación de pedido para usuario: '.$idUsuario);
+            
+            // Armamos datos del pedido con dirección y nueva info
             $pedidoData = [
                 'id_usuario'      => $idUsuario,
                 'fecha_pedido'    => date('Y-m-d H:i:s'),
                 'Total'           => $datos['total'],
                 'estado_pedido'   => 1,
                 'direccion_envio' => $datos['direccion'],
+                'pais'            => $datos['pais'],
+                'provincia'       => $datos['provincia'],
+                'region'          => $datos['region'],
                 'metodo_pago'     => $datos['metodo_pago']
             ];
 
-            log_message('info', 'Intentando insertar pedido: ' . print_r($pedidoData, true));
-
+            log_message('info', 'Intentando insertar pedido: '.print_r($pedidoData, true));
+            
             if (!$this->insert($pedidoData)) {
-                log_message('error', 'Error al insertar pedido: ' . print_r($this->errors(), true));
+                log_message('error', 'Error al insertar pedido: '.print_r($this->errors(), true));
                 throw new \RuntimeException('Error insertando pedido');
             }
 
             $idPedido = $this->getInsertID();
-            log_message('info', 'Pedido creado con ID: ' . $idPedido);
+            log_message('info', 'Pedido creado con ID: '.$idPedido);
 
-            // Insertar detalles del pedido con precio real desde productos
+            // Insertar detalles del pedido
             $detalleModel = new \App\Models\DetallePedidoModel();
-            $productoModel = new \App\Models\ProductoModel();
-
             foreach ($items as $item) {
-                $producto = $productoModel->find($item['id_producto']);
-
-                if (!$producto) {
-                    throw new \RuntimeException('Producto no encontrado: ID ' . $item['id_producto']);
-                }
-
-                $detalle = [
+                $detalleModel->insert([
                     'id_pedido'       => $idPedido,
                     'id_producto'     => $item['id_producto'],
                     'cantidad'        => $item['cantidad'],
-                    'precio_unitario' => $producto['precio'],
-                ];
-
-                $detalleModel->insert($detalle);
-                log_message('info', 'Detalle insertado: ' . print_r($detalle, true));
+                    'precio_unitario' => $item['precio'] ?? 0,
+                ]);
             }
 
             $db->transComplete();
-
-            if ($db->transStatus() === false) {
-                throw new \RuntimeException('Error en la transacción');
-            }
-
             return $idPedido;
 
         } catch (\Exception $e) {
             $db->transRollback();
-            log_message('error', 'Error al crear pedido: ' . $e->getMessage());
+            log_message('error', 'Error al crear pedido: '.$e->getMessage());
             return false;
         }
     }
+
 
 
     /**

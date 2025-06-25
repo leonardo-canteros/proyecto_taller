@@ -148,6 +148,7 @@ $routes->post('usuarios/restaurar/(:num)', 'UserController::restaurar/$1');
 $routes->get('usuario/perfil', 'Home::perfilUsuario');
 $routes->get('usuario/pedidos', 'Home::usuario_pedidos');
 $routes->get('usuario/pedido/factura/(:num)', 'Home::verFactura/$1');
+$routes->get('usuario/factura-pdf/(:num)', 'Home::descargarFactura/$1');
 
 
 $routes->get('prueba-correo', 'ContactoController::pruebaCorreo');

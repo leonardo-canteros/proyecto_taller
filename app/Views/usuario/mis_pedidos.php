@@ -13,7 +13,7 @@
                             <th>Dirección</th>
                             <th>Método de Pago</th>
                             <th>Estado</th>
-                            <th>Factura</th> <!-- Nueva columna -->
+                            <th>Detalle del Pedido</th> <!-- Nueva columna -->
                         </tr>
                     </thead>
                     <tbody class="text-center">
@@ -41,7 +41,7 @@
                                 </td>
                                 <td>
                                     <a href="<?= site_url('usuario/pedido/factura/' . $pedido['id_pedido']) ?>" class="btn btn-sm btn-outline-primary">
-                                        <i class="fas fa-file-invoice"></i> Ver Factura
+                                        <i class="fas fa-file-invoice"></i> Detalle del Pedido
                                     </a>
                                 </td>
                             </tr>

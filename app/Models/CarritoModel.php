@@ -100,6 +100,19 @@ class CarritoModel extends Model
                   ->orderBy('carritos.fecha_creacion', 'DESC')
                   ->findAll();
     }
+
+    public function obtenerProductosCarrito($idUsuario)
+    {
+        return $this->db->table('carritos c')
+            ->select('c.id_carrito, cp.id_producto, cp.cantidad, p.nombre, p.precio, p.stock, p.imagen')
+            ->join('carrito_productos cp', 'cp.id_carrito = c.id_carrito')
+            ->join('productos p', 'p.id_producto = cp.id_producto')
+            ->where('c.id_usuario', $idUsuario)
+            ->where('c.estado', 1)
+            ->get()
+            ->getResultArray();
+    }
+
     
     /**
      * Elimina un producto del carrito por ID de carrito

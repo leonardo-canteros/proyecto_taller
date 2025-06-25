@@ -11,9 +11,7 @@
             <!-- Lista de productos -->
             <div class="col-lg-7 mb-4">
                 <div class="card shadow w-100" style="min-height: 100%;">
-                    <div class="card-header bg-dark text-white fw-bold">
-                        Productos en el carrito
-                    </div>
+                    <div class="card-header bg-dark text-white fw-bold">Productos en el carrito</div>
                     <div class="card-body p-0">
                         <div class="table-responsive">
                             <table class="table align-middle mb-0">
@@ -41,23 +39,14 @@
                                         <td class="text-center">
                                             <form action="/proyecto_taller/public/carrito/actualizar/<?= $p['id_carrito'] ?>" method="post">
                                                 <?= csrf_field() ?>
-                                                <input type="number"
-                                                       name="cantidad"
-                                                       value="<?= $p['cantidad'] ?>"
-                                                       min="1"
-                                                       max="<?= $p['stock'] ?? 99 ?>"
-                                                       class="form-control form-control-sm"
-                                                       style="width: 70px;"
-                                                       onchange="validarCantidad(this, <?= $p['stock'] ?>, '<?= esc($p['nombre']) ?>', this.form);">
+                                                <input type="number" name="cantidad" value="<?= $p['cantidad'] ?>" min="1" max="<?= $p['stock'] ?? 99 ?>" class="form-control form-control-sm" style="width: 70px;" onchange="validarCantidad(this, <?= $p['stock'] ?>, '<?= esc($p['nombre']) ?>', this.form);">
                                             </form>
                                         </td>
                                         <td class="text-end">$<?= number_format($p['precio'] * $p['cantidad'], 2) ?></td>
                                         <td class="text-end">
                                             <form action="/proyecto_taller/public/carrito/eliminar/<?= $p['id_carrito'] ?>" method="post" onsubmit="return confirm('¿Eliminar este producto?')">
                                                 <?= csrf_field() ?>
-                                                <button class="btn btn-sm btn-link text-danger" title="Eliminar">
-                                                    <i class="fas fa-trash-alt"></i>
-                                                </button>
+                                                <button class="btn btn-sm btn-link text-danger" title="Eliminar"><i class="fas fa-trash-alt"></i></button>
                                             </form>
                                         </td>
                                     </tr>
@@ -67,14 +56,10 @@
                         </div>
                     </div>
                     <div class="card-footer d-flex justify-content-between">
-                        <a href="/catalogo" class="btn btn-outline-primary">
-                            <i class="fas fa-arrow-left me-2"></i> Seguir comprando
-                        </a>
+                        <a href="/catalogo" class="btn btn-outline-primary"><i class="fas fa-arrow-left me-2"></i> Seguir comprando</a>
                         <form action="/proyecto_taller/public/carrito/vaciar/<?= session()->get('id_usuario') ?>" method="post" onsubmit="return confirm('¿Vaciar el carrito?')">
                             <?= csrf_field() ?>
-                            <button class="btn btn-outline-danger">
-                                <i class="fas fa-trash-alt me-2"></i> Vaciar carrito
-                            </button>
+                            <button class="btn btn-outline-danger"><i class="fas fa-trash-alt me-2"></i> Vaciar carrito</button>
                         </form>
                     </div>
                 </div>
@@ -83,9 +68,7 @@
             <!-- Resumen -->
             <div class="col-lg-4 mb-4">
                 <div class="card shadow" style="min-height: 100%;">
-                    <div class="card-header bg-primary text-white fw-bold">
-                        Resumen del Pedido
-                    </div>
+                    <div class="card-header bg-primary text-white fw-bold">Resumen del Pedido</div>
                     <div class="card-body">
                         <div class="d-flex justify-content-between mb-2">
                             <span>Subtotal:</span>
@@ -108,6 +91,18 @@
                                 <input type="text" name="direccion" id="direccion" class="form-control" required value="<?= esc(session()->get('direccion') ?? '') ?>">
                             </div>
                             <div class="mb-3">
+                                <label for="provincia" class="form-label">Provincia</label>
+                                <input type="text" name="provincia" id="provincia" class="form-control" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="region" class="form-label">Región</label>
+                                <input type="text" name="region" id="region" class="form-control" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="pais" class="form-label">País</label>
+                                <input type="text" name="pais" id="pais" class="form-control" required>
+                            </div>
+                            <div class="mb-3">
                                 <label for="metodo_pago" class="form-label">Método de pago</label>
                                 <select name="metodo_pago" id="metodo_pago" class="form-select" required>
                                     <option value="">Seleccionar</option>
@@ -116,9 +111,7 @@
                                     <option value="Efectivo">Efectivo</option>
                                 </select>
                             </div>
-                            <button class="btn btn-primary w-100">
-                                <i class="fas fa-credit-card me-2"></i> Confirmar pedido
-                            </button>
+                            <button class="btn btn-primary w-100"><i class="fas fa-credit-card me-2"></i> Confirmar pedido</button>
                         </form>
                     </div>
                 </div>

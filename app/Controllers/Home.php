@@ -1,5 +1,6 @@
 <?php 
 namespace App\Controllers;
+use Dompdf\Dompdf;
 
 class Home extends BaseController
 {
@@ -600,6 +601,42 @@ class Home extends BaseController
         $this->loadView('usuario/mis_pedidos', $data);
     }
 
+    public function descargarFactura($idPedido)
+    {
+        $pedidoModel   = new \App\Models\PedidoModel();
+        $detalleModel  = new \App\Models\DetallePedidoModel();
+        $productoModel = new \App\Models\ProductoModel();
+
+        $pedido = $pedidoModel->find($idPedido);
+        $detallesRaw = $detalleModel->where('id_pedido', $idPedido)->findAll();
+
+        $detalles = [];
+        foreach ($detallesRaw as $d) {
+            $producto = $productoModel->find($d['id_producto']);
+            $d['nombre_producto'] = $producto['nombre'] ?? 'Desconocido';
+            $detalles[] = $d;
+        }
+
+        $data = [
+            'pedido'   => $pedido,
+            'detalles' => $detalles,
+            
+        ];
+
+        // Render vista HTML
+        $html = view('usuario/factura_pedido', $data);
+
+        // Crear PDF
+        $dompdf = new Dompdf();
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper('A4', 'portrait');
+        $dompdf->render();
+
+        return $this->response
+            ->setHeader('Content-Type', 'application/pdf')
+            ->setHeader('Content-Disposition', 'attachment; filename="factura_pedido_'.$idPedido.'.pdf"')
+            ->setBody($dompdf->output());
+    }
 
 
 

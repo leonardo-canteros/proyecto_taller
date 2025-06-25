@@ -80,20 +80,18 @@ $routes->group('pedidos', function($routes) {
     $routes->post('finalizar-compra', 'PedidosController::finalizarCompra');
 });
 
+$routes->get('carrito/contador', 'CarritoController::contador');
+
 
 // Mostrar login (formulario) con GET
 $routes->get('login', 'Home::login');
-
 // Procesar login con POST
 $routes->post('login', 'AuthController::login');
-
 // Logout con GET para enlace simple
 $routes->post('logout', 'AuthController::logout');
-
 //register
 $routes->get('register', 'Home::registerForm');       // Muestra formulario
 $routes->post('register', 'UserController::crear');   // Procesa registro
-
 // redireccionamiento a admin/user
 $routes->get('admin/panel', 'Home::admin_panel');
 $routes->get('admin/usuarios',   'Home::admin_usuarios');

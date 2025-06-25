@@ -74,8 +74,8 @@
 
               <?php if (session()->has('id_usuario')): ?>
                 <button class="btn btn-primary w-100 btn-comprar"
-                        data-producto-id="<?= $prod['id_producto'] ?>">
-                  <i class="fas fa-cart-plus me-2"></i> Agregar al carrito
+                data-producto-id="<?= $prod['id_producto'] ?>">
+                <i class="fas fa-cart-plus me-2"></i> Agregar al carrito
                 </button>
               <?php else: ?>
                 <a href="<?= base_url('login') ?>" class="btn btn-outline-primary w-100">
@@ -115,7 +115,7 @@
 </div>
 
 <script>
-// Función para mostrar el toast
+// Mostrar toast de confirmación
 function showToast(message) {
   const toast = document.getElementById('toast');
   toast.textContent = message;
@@ -125,28 +125,56 @@ function showToast(message) {
   }, 2500);
 }
 
-// Agregar al carrito con fetch
-document.querySelectorAll('.btn-comprar').forEach(button => {
-  button.addEventListener('click', function() {
-    const productId = this.getAttribute('data-producto-id');
-
-    fetch('<?= base_url("carrito/agregar") ?>', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-Requested-With': 'XMLHttpRequest'
-      },
-      body: JSON.stringify({ id_producto: productId, cantidad: 1 })
-    })
+// Actualizar el contador del carrito en el navbar
+function actualizarContadorCarrito() {
+  fetch('<?= base_url("carrito/contador") ?>')
     .then(res => res.json())
     .then(data => {
-      if (data.success) {
-        showToast('Producto agregado al carrito 🛒');
-      } else {
-        alert(data.message || 'Error al agregar al carrito.');
+      const contador = document.querySelector('.cart-counter');
+      if (contador) {
+        if (data.count > 0) {
+          contador.textContent = data.count;
+          contador.style.display = 'inline-block';
+        } else {
+          contador.style.display = 'none';
+        }
       }
-    })
-    .catch(() => alert('Error de conexión'));
+    });
+}
+
+// Agregar al carrito
+function agregarAlCarrito(idProducto, cantidad = 1) {
+  fetch('<?= base_url("carrito/agregar") ?>', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-Requested-With': 'XMLHttpRequest'
+    },
+    body: JSON.stringify({ id_producto: idProducto, cantidad: cantidad })
+  })
+  .then(res => res.json())
+  .then(data => {
+    if (data.success) {
+      showToast('Producto agregado al carrito 🛒');
+      actualizarContadorCarrito();
+    } else if (data.redirect) {
+      window.location.href = data.redirect;
+    } else {
+      alert(data.message || 'Error al agregar al carrito.');
+    }
+  })
+  .catch(() => alert('Error de conexión'));
+}
+
+// Ejecutar al cargar el DOM
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('.btn-comprar').forEach(button => {
+    button.addEventListener('click', function () {
+      const productId = this.getAttribute('data-producto-id');
+      agregarAlCarrito(productId);
+    });
   });
+
+  actualizarContadorCarrito();
 });
 </script>
